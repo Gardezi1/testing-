@@ -5,5 +5,21 @@
 # but you can also edit it by hand.
 
 meteor-platform
-autopublish
-insecure
+accounts-password
+aldeed:autoform
+aldeed:collection2
+alethes:pages
+audit-argument-checks
+dburles:collection-helpers
+fortawesome:fontawesome
+iron:router
+less
+matb33:collection-hooks
+meteorhacks:fast-render
+momentjs:moment
+msavin:mongol
+reywood:publish-composite
+service-configuration
+twbs:bootstrap
+underscore
+useraccounts:bootstrap
