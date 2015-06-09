@@ -1,0 +1,10 @@
+<template name="masterLayout">
+  <header>
+    {{> yield region='nav'}}
+  </header>
+  <main id="container">
+    <div class="container">
+      {{> yield}}
+    </div>
+  </main>
+</template>
