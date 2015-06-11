@@ -1,14 +1,21 @@
 <template name="nav">
-  <nav>
+  <nav role="navigation">
     <div class="container">
       <div class="nav-wrapper">
-        <a href="#" class="brand-logo">MEDCircle</a>
-        <ul id="nav-mobile" class="right side-nav fixed">
+        <a href="#" class="brand-logo"><img src="/imgs/logo.jpg"></a>
+        <ul class="right hide-on-med-and-down">
           <li><a href="{{pathFor 'home'}}">Home</a></li>
           <li><a href="{{pathFor route='doctors'}}">Doctors</a></li>
           <li><a href="{{pathFor route='advocates'}}">Advocates</a></li>
           <li><a href="{{pathFor 'private'}}">Private</a></li>
           <!-- <li>{{> atForm}}</li> -->
+          <li>{{> atNavButton }}</li>
+        </ul>
+        <ul id="nav-mobile" class="side-nav">
+          <li><a href="{{pathFor 'home'}}">Home</a></li>
+          <li><a href="{{pathFor route='doctors'}}">Doctors</a></li>
+          <li><a href="{{pathFor route='advocates'}}">Advocates</a></li>
+          <li><a href="{{pathFor 'private'}}">Private</a></li>
           <li>{{> atNavButton }}</li>
         </ul>
         <a class="button-collapse" href="#" data-activates="nav-mobile"><i class="mdi-navigation-menu"></i></a>

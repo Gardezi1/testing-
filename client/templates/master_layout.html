@@ -1,10 +1,10 @@
 <template name="masterLayout">
-  <header>
+  <div class="navbar-fixed">
     {{> yield region='nav'}}
-  </header>
-  <main id="container">
-    <div class="container">
-      {{> yield}}
-    </div>
-  </main>
+  </div>
+  <main class="container">
+    <section class="section">
+    	{{> yield}}
+  	</section>
+   </main>
 </template>
