@@ -3,21 +3,25 @@ if (Meteor.isServer) {
     return Meteor.users.find({});
   });
 
+  Meteor.publish("Posts", function () {
+    return Posts.find();
+  });
+
   Meteor.publish(null, function (){ 
     return Meteor.roles.find({});
   });
-}
+
 
 var adminUser = Meteor.users.findOne({roles:{$in:["admin"]}});
 
   // if(!adminUser){
   //   adminUser = Accounts.createUser({
-  //     email: "mohsin.rafi@kwanso.com",
+  //     email: "mohsin.rafi@kwansoo.com",
   //     password: "admin",
   //     profile: { name: "admin", phone: '12345678' }
   //   });
   //   Roles.addUsersToRoles(adminUser, [ROLES.Admin]);
-  // //  Meteor.users.update(adminUser, {$set: {"emails.0.verified" :true}});
+  //  Meteor.users.update(adminUser, {$set: {"emails.0.verified" :true}});
   // }
 
 //    // By default, the email is sent from no-reply@meteor.com. If you wish to receive email from users asking for help with their account, be sure to set this to an email address that you can receive email at.
@@ -75,3 +79,18 @@ Accounts.onCreateUser(function(options, user) {
   
   return user;
 });
+
+  Accounts.onLogin(function (info) {
+    var user = info.user;
+    
+    if(user.profile.type === "doctor"){
+      Roles.addUsersToRoles(user, [ROLES.Doctor])
+    }
+    else 
+      if(user.profile.type === "advocate"){
+        Roles.addUsersToRoles(user, [ROLES.Advocate])
+        }
+    return user;
+  });
+
+}
