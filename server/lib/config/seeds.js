@@ -1,11 +1,4 @@
 if (Meteor.isServer) {
-  Meteor.publish("allUsers", function () {
-    return Meteor.users.find({});
-  });
-
-  Meteor.publish(null, function (){
-    return Meteor.roles.find({});
-  });
 
   if (Meteor.users.find().count() === 0) {
     var admins = [
