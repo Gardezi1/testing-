@@ -1,7 +1,7 @@
 <template name="posts">
   <h1>Add Post</h1>
   {{> quickForm collection="Posts" id="insertPostForm" type="insert"}}
- 
+
   <ul>
     {{#each posts}} 
       <li><a href="{{pathFor 'post.show'}}">{{title}}</a> - {{source}}</li>
