@@ -3,11 +3,7 @@ if (Meteor.isServer) {
     return Meteor.users.find({});
   });
 
-  Meteor.publish("Posts", function () {
-    return Posts.find();
-  });
-
-  Meteor.publish(null, function (){ 
+  Meteor.publish(null, function (){
     return Meteor.roles.find({});
   });
 
@@ -30,7 +26,7 @@ if (Meteor.isServer) {
       });
 
       if (user.roles.length > 0) {
-        // Need _id of existing user record so this call must come 
+        // Need _id of existing user record so this call must come
         // after `Accounts.createUser` or `Accounts.onCreate`
         Roles.addUsersToRoles(id, user.roles);
       }
@@ -66,7 +62,7 @@ if (Meteor.isServer) {
   Accounts.onCreateUser(function(options, user) {
     user.profile = options.profile || {};
     user.profile.code_verified = false;
-    
+
     if(user.profile.type === 'advocate'){
       var ph = user.profile.phone
       var code = Math.floor(Math.random()*9000) + 1000;
@@ -83,8 +79,8 @@ if (Meteor.isServer) {
         to: ph,
         from: '+14028755543',
         body: code
-      }, function(err, responseData) { 
-        if (!err) { 
+      }, function(err, responseData) {
+        if (!err) {
           console.log(responseData.from);
           console.log(responseData.body);
 
@@ -103,17 +99,17 @@ if (Meteor.isServer) {
             "\n\n" + "Thanks";
         };
       }
-    
+
     return user;
   });
 
   Accounts.onLogin(function (info) {
     var user = info.user;
-    
+
     if(user.profile.type === "doctor"){
       Roles.addUsersToRoles(user, [ROLES.Doctor])
     }
-    else 
+    else
       if(user.profile.type === "advocate"){
         Roles.addUsersToRoles(user, [ROLES.Advocate])
         }
