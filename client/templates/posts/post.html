@@ -1,5 +1,8 @@
 <template name="post">
   <h1>Edit Post</h1> 
+  <input type="file" class="file_bag">
+  <button class="upload">Upload</button>
+  <img src="">
   {{> quickForm collection="Posts" id="updatePostForm" type="update" doc=this}}
   <a class="btn" href="/add">Back</a>
 </template>
