@@ -1,9 +1,77 @@
 <template name="doctors">
-  <div class="row">
-    <div class="col-md-12">
-      <div class="page-header">
-        <h1>Doctors</h1>
-      </div>
-    </div>
+  <div class="custom-container">
+  	<div class="form-holder">
+  		<div class="row">
+		    <div class="col-md-12">
+		      <div class="shadow-box z-depth-1">
+		      	<div class="upload-btn-holder">
+		      		<div class="fileUpload btn ">
+							  <span class="mdi-content-add">Add Photo</span>
+							  <input type="file" class="upload" />
+							</div>
+		      	</div>
+		      	<div class="row">
+					    <form class="col s12">
+					      <div class="row">
+					        <div class="input-field col s12">
+					          <input id="email" type="text">
+					          <label for="email">Article Title</label>
+					        </div>
+					      </div>
+					      <div class="row">
+					        <div class="input-field col s12">
+					          <input id="source" type="text">
+					          <label for="source">Article Source Name</label>
+					        </div>
+					      </div>
+					      <div class="row">
+					        <div class="input-field col s12">
+					          <input id="URL" type="text">
+					          <label for="URL">Article Source URL</label>
+					        </div>
+					      </div>
+					      <div class="row">
+				      		<div class="input-field col s12">
+								    <select>
+								      <option value="" disabled selected>Article Type</option>
+								      <option value="1">Option 1</option>
+								      <option value="2">Option 2</option>
+								      <option value="3">Option 3</option>
+								    </select>
+								  </div>
+					      </div>
+					      <div class="row">
+				      		<div class="input-field col s12">
+								    <select>
+								      <option value="" disabled selected>Post To</option>
+								      <option value="1">Option 1</option>
+								      <option value="2">Option 2</option>
+								      <option value="3">Option 3</option>
+								    </select>
+								  </div>
+					      </div>
+					      <div class="row">
+				          <div class="input-field col s12">
+				            <textarea id="textarea1" class="materialize-textarea" length="120"></textarea>
+				            <label for="textarea1">Body</label>
+				          </div>
+				        </div>
+				        <div class="row">
+				          <div class="input-field col s12">
+				            <textarea id="textarea1" class="materialize-textarea" length="120"></textarea>
+				            <label for="textarea1">Add Comments</label>
+				          </div>
+				        </div>
+				        <div class="row">
+				        	<div class="col s12">
+				        		<a class="waves-effect waves-light btn right post-btn">Post To Advocates</a>
+				        	</div>
+				        </div>
+					    </form>
+					  </div>
+		      </div>
+		    </div>
+		  </div>
+  	</div>
   </div>
 </template>
