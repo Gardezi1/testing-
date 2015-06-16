@@ -1,10 +1,23 @@
 <template name="masterLayout">
-  <header>
+  <div class="navbar-fixed">
     {{> yield region='nav'}}
-  </header>
-  <main id="container">
-    <div class="container">
-      {{> yield}}
-    </div>
-  </main>
+  </div>
+  <div class="sub-head">
+  	<div class="container">
+  		<div class="row">
+  			<div class="col s12 m4 l4">
+  			<a href="#" class="mdi-image-navigate-before back-btn">Back</a>
+  			</div>
+  			<div class="col s12 m4 l4">
+  				<h5 class="title center-align">New Article </h5>
+  			</div>
+  			<div class="col s12 m4 l4"></div>
+  		</div>
+  	</div>
+  </div>
+  <main class="container">
+    <section class="section">
+    	{{> yield}}
+  	</section>
+   </main>
 </template>

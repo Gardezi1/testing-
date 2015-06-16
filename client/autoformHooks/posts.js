@@ -5,7 +5,13 @@ var postHooks = {
         doc.userId = Meteor.userId();
       }
       console.log(doc);
+
       return doc;
+    }
+  },
+  after: {
+    insert: function(doc) {
+      Router.go('/show');
     }
   }
 }

@@ -1,6 +1,5 @@
 Template.show.helpers({
     list: function() {
-      console.log(Posts.find());
     return Posts.find(); 
   },
     beforeRemove: function () {

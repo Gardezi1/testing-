@@ -1,5 +1,5 @@
 Template.postNew.events({
-    "click button.upload": function(){
+    "change .fileUpload": function(){
         var files = $("input.file_bag")[0].files
 
         S3.upload({
