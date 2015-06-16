@@ -1,0 +1,21 @@
+<template name="show">
+  <div class="container">
+    <ul>
+      {{#each list}} 
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="form-group">
+              <img src="{{imagePath.secure_url}}">
+            </div>
+            <li><b>Title: </b><a href="{{pathFor 'post.show'}}">{{title}}</a></li>
+            <li><b>Source: </b> {{source}} </li>
+            <li><b>Body: </b> {{body}} </li>
+            <li><b>Comment: </b> {{comment}} </li>
+            {{> quickRemoveButton collection="Posts" _id=this._id beforeRemove=beforeRemove class="btn btn-danger"}}
+            <a href="{{pathFor 'post.show'}}" class="btn btn-danger">Edit</a>
+          </div>
+        </div>    
+      {{/each}}
+    </ul>
+  </div>  
+</template>

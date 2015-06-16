@@ -19,11 +19,6 @@ if (Meteor.isClient) {
             var birthday_day = event.target.birthday_day.value;
             var birthday_year = event.target.birthday_year.value;
             var dob = birthday_day +'-'+birthday_month+'-'+birthday_year
-            console.log("zip: "+ zipcode)
-            console.log("birthday_month: "+ birthday_month)
-            console.log("birthday_day: "+ birthday_day)
-            console.log("birthday_year: "+ birthday_year)
-            console.log("Form submitted.");
           
             Meteor.users.update(Meteor.userId(), {$set: {"profile.zipcode": [zipcode], "profile.dob": [dob], "profile.code_verified": [true]}});
             Router.go('/');
@@ -41,9 +36,6 @@ if (Meteor.isClient) {
                 Meteor.users.update(Meteor.userId(), {$set: {"profile.code_verified": [true]}});
                 Router.go('/');
             }
-            // console.log("phonecode: "+ phonecode)
-            console.log(Meteor.user().profile.code);
-            // Router.go('/');
         }
     });
 }

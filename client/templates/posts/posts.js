@@ -1,4 +1,4 @@
-Template.posts.events({
+Template.postNew.events({
     "click button.upload": function(){
         var files = $("input.file_bag")[0].files
 
@@ -13,7 +13,7 @@ Template.posts.events({
     }
 })
 
-Template.posts.helpers({
+Template.postNew.helpers({
     "files": function(){
         return S3.collection.find();
     },

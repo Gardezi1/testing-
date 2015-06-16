@@ -2,7 +2,7 @@ if (Meteor.isServer) {
 
   if (Meteor.users.find().count() === 0) {
     var admins = [
-      { name: "Admin", email: "test@kwanso.com", password: "admin", phone: '12345678', roles: ['admin'] }
+      { name: "Admin", email: "test@kwanso.com", password: "123456", phone: '12345678', roles: ['admin'] }
     ];
     Accounts.emailTemplates.verifyEmail.text = function(user, url) {
       return "Dear " + user.profile.name + ",\n\n" +
