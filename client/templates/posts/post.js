@@ -7,3 +7,13 @@ var postHooks = {
 }
  
 AutoForm.addHooks('updatePostForm', postHooks);
+
+Template.post.helpers({
+    file_S3_url: function(){
+        var file = Files.findOne({_id:this.fileId});
+        if(file){
+          url = "https://s3.amazonaws.com/medcircle/upload/files/"+file._id+"-"+file.copies.images.name
+          return url
+        }
+    },
+})

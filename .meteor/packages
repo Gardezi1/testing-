@@ -22,6 +22,8 @@ aldeed:autoform
 aldeed:collection2
 ongoworks:security
 useraccounts:core
-lepozepo:s3
 aldeed:delete-button
 cfs:autoform
+cfs:standard-packages
+cfs:s3
+cfs:filesystem
