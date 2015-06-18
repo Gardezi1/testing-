@@ -1,21 +1,29 @@
 <template name="show">
-  <div class="container">
-    <ul>
-      {{#each list}} 
-        <div class="panel panel-default">
-          <div class="panel-body">
-            <div class="form-group center">
-              <img src="{{file_S3}}">
-            </div>
-            <li><b>Title: </b><a href="{{pathFor 'post.show'}}">{{title}}</a></li>
-            <li><b>Source: </b> {{source}} </li>
-            <li><b>Body: </b> {{body}} </li>
-            <li><b>Comment: </b> {{comment}} </li>
-            {{> quickRemoveButton collection="Posts" _id=this._id beforeRemove=beforeRemove class="btn btn-danger"}}
-            <a href="{{pathFor 'post.show'}}" class="btn btn-danger">Edit</a>
+  <div class="custom-container">
+    <div class="form-holder">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="shadow-box z-depth-1">  
+            {{#each list}} 
+              <div class="panel panel-default">
+                <div class="panel-body pb-25">
+                  <div class="form-group center">
+                    <img src="{{file_S3}}">
+                  </div>
+                  <ul class="center">
+                    <li><b>Title: </b><a href="{{pathFor 'postEdit' id=_id }}">{{title}}</a></li>
+                    <li><b>Source: </b> {{source}} </li>
+                    <li><b>Body: </b> {{body}} </li>
+                    <li><b>Comment: </b> {{comment}} </li>
+                    {{> quickRemoveButton collection="Posts" _id=this._id beforeRemove=beforeRemove class="btn btn-danger"}}
+                    <a href="{{pathFor 'postEdit' id=_id }}" class="btn btn-danger">Edit</a>
+                  </ul>
+                </div>
+              </div>    
+            {{/each}}
           </div>
-        </div>    
-      {{/each}}
-    </ul>
+        </div>
+      </div>
+    </div>        
   </div>  
 </template>

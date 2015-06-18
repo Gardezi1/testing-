@@ -8,7 +8,7 @@
             <li><a href="{{pathFor 'home'}}">Home</a></li>
             <li><a href="{{pathFor route='doctors'}}">Doctors</a></li>
             <li><a href="{{pathFor route='advocates'}}">Advocates</a></li>
-            {{#if isInRole 'admin'}}
+            {{#if isInRole 'admin, doctor'}}
               <li><a href="{{pathFor route='post/new'}}">Add Post</a></li>
               <li><a href="{{pathFor route='show'}}">Show Post</a></li>
             {{/if}}  

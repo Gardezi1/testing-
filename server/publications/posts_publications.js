@@ -5,5 +5,3 @@ Meteor.publish("Posts", function () {
 Meteor.publish('files', function() {
   return Files.find();
 });
-
-FS.debug = true;

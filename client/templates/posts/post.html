@@ -1,4 +1,4 @@
-<template name="post">
+<template name="postEdit">
   <h1>Edit Post</h1> 
   {{#autoForm collection="Posts" id="updatePostForm" type="update" doc=this}}
     <div class="custom-container">
@@ -23,39 +23,39 @@
                 <div class="col s12">
                   <div class="row">
                     <div class="input-field col s12">
-                      {{> afQuickField name='title'}}
+                      {{> afQuickField name='title' label-class="active"}}
                     </div>
                   </div>
                   <div class="row">
                     <div class="input-field col s12">
-                      {{> afQuickField name='source'}}
+                      {{> afQuickField name='source'  label-class="active"}}
                     </div>
                   </div>
                   <div class="row">
                     <div class="input-field col s12">
-                      {{> afQuickField name='url'}}
+                      {{> afQuickField name='url'  label-class="active"}}
                     </div>
                   </div>
                   <div class="row">
                     <div class="input-field col s12">
                       <div class="select-wrapper">
-                        {{> afQuickField name='articleType'}}
+                        {{> afQuickField name='articleType'  label-class="active"}}
                       </div> 
                     </div>
                   </div>
                   <div class="row">
                     <div class="input-field col s12">
-                      {{> afQuickField name='postTo'}}
+                      {{> afQuickField name='postTo'  label-class="active"}}
                     </div>
                   </div>
                   <div class="row">
                     <div class="input-field col s12">
-                      {{> afQuickField name='body'}}
+                      {{> afQuickField name='body' label-class="active"}}
                     </div>
                   </div>
                   <div class="row">
                     <div class="input-field col s12">
-                      {{> afQuickField name='comment'}}
+                      {{> afQuickField name='comment'  label-class="active"}}
                     </div>
                   </div>
                   <div class="row">
