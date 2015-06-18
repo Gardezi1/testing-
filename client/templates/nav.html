@@ -10,8 +10,8 @@
             <li><a href="{{pathFor route='advocates'}}">Advocates</a></li>
             {{#if isInRole 'admin'}}
               <li><a href="{{pathFor route='post/new'}}">Add Post</a></li>
-              <li><a href="{{pathFor route='show'}}">Show Post</a></li>
-            {{/if}}  
+              <li><a href="{{pathFor route='show'}}">Posts</a></li>
+            {{/if}}
             <li><a href="{{pathFor 'private'}}">Private</a></li>
             {{/if}}
           <li>{{> atNavButton }}</li>
