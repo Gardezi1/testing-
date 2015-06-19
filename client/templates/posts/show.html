@@ -13,6 +13,8 @@
                   <ul class="center">
                     <li><b>Title: </b><a href="{{pathFor 'postEdit' id=_id }}">{{title}}</a></li>
                     <li><b>Source: </b> {{source}} </li>
+                    <li><b>Article Type: </b> {{articleType}} </li>
+                    <li><b>Post To: </b> {{postTo}} </li>
                     <li><b>Body: </b> {{body}} </li>
                     <li><b>Comment: </b> {{comment}} </li>
                     {{> quickRemoveButton collection="Posts" _id=this._id beforeRemove=beforeRemove class="btn btn-danger"}}
