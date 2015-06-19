@@ -3,7 +3,7 @@
     <div class="container">
       <div class="nav-wrapper">
         <a href="#" class="brand-logo"><img src="/imgs/logo.jpg"></a>
-        <ul class="right hide-on-med-and-down">
+        <ul class="right hide-on-med-and-down"> 
           {{#if currentUser}}
             <li><a href="{{pathFor 'home'}}">Home</a></li>
             <li><a href="{{pathFor route='doctors'}}">Doctors</a></li>
@@ -13,6 +13,7 @@
               <li><a href="{{pathFor route='show'}}">Posts</a></li>
             {{/if}}
             <li><a href="{{pathFor 'private'}}">Private</a></li>
+            <li>| Hi, <b>{{currentUser.profile.name}} </b></li>
             {{/if}}
           <li>{{> atNavButton }}</li>
         </ul>

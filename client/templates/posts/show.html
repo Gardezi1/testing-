@@ -1,10 +1,11 @@
 <template name="show">
+  {{#each list}}
   <div class="custom-container">
     <div class="form-holder">
       <div class="row">
         <div class="col-md-12">
           <div class="shadow-box z-depth-1">  
-            {{#each list}} 
+             
               <div class="panel panel-default">
                 <div class="panel-body pb-25">
                   <div class="form-group center">
@@ -22,10 +23,11 @@
                   </ul>
                 </div>
               </div>    
-            {{/each}}
+            
           </div>
         </div>
       </div>
     </div>        
-  </div>  
+  </div>
+  {{/each}}  
 </template>
