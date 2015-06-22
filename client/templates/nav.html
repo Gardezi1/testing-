@@ -13,7 +13,7 @@
               <li><a href="{{pathFor route='show'}}">Posts</a></li>
             {{/if}}
             <li><a href="{{pathFor 'private'}}">Private</a></li>
-            <li>| Hi, <b>{{currentUser.profile.name}} </b></li>
+            <li class="admin"><a>Hi, <b>{{currentUser.profile.name}}</b></a></li>
             {{/if}}
           <li>{{> atNavButton }}</li>
         </ul>

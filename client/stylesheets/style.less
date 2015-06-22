@@ -112,12 +112,14 @@ nav{
 }
 
 .shadow-box{
-  padding:45px 45px 1px;
   background: #fff;
   .RoundBorders(4px);
 }
 .shadow-box.z-depth-1{
   .BoxShadow(0px, 2px);
+}
+.shadow-box .panel-default{
+  padding:45px 45px 1px;
 }
 
 .fileUpload {
@@ -201,4 +203,43 @@ select {
 }
 .pb-25{
   padding-bottom: 25px;
+}
+
+/*Shah Zaib*/
+.clearfix:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+img {
+  max-width: 100%;
+}
+.custom-panel-body{
+  h4 {
+    margin: 0px;
+    margin-bottom: 15px;
+  }
+  p {
+    margin: 0px;
+  }
+}
+.doctor-post {
+  border-top: 1px solid #c1c1c1;
+  text-transform: uppercase;
+  font-weight: bold;
+  span {
+    color: #f25d47;
+  }
+  .doc-name {
+    float: left;
+    padding: 10px 20px;
+  }
+  .reply {
+    float: right;
+    padding: 10px 20px;
+    border-left: 1px solid #c1c1c1;
+  }
+}
+li.admin {
+  border-left: 1px solid #ffffff;
 }

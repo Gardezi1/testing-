@@ -1,0 +1,16 @@
+<template name="postView">
+  {{#each list}}
+  <div class="custom-container">
+    <div class="form-holder">
+      <div class="row">
+        <div class="col-md-12">
+          <img src="{{file_S3}}">
+          <h4><a href="{{pathFor 'postEdit' id=_id }}">{{title}}</a></h4>
+          <b>{{articleType}}</b> 
+          <p><b></b> {{body}}</p>
+        </div>
+      </div>
+    </div>
+  </div>  
+  {{/each}}  
+</template>
