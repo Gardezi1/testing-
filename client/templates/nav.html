@@ -3,13 +3,13 @@
     <div class="container">
       <div class="nav-wrapper">
         <a href="#" class="brand-logo"><img src="/imgs/logo.jpg"></a>
-        <ul class="right hide-on-med-and-down"> 
+        <ul class="right hide-on-med-and-down">
           {{#if currentUser}}
             <li><a href="{{pathFor 'home'}}">Home</a></li>
             <li><a href="{{pathFor route='doctors'}}">Doctors</a></li>
             <li><a href="{{pathFor route='advocates'}}">Advocates</a></li>
             {{#if isInRole 'admin, doctor'}}
-              <li><a href="{{pathFor route='post/new'}}">Add Post</a></li>
+              <li><a href="{{pathFor route='posts/new'}}">Add Post</a></li>
               <li><a href="{{pathFor route='show'}}">Posts</a></li>
             {{/if}}
             <li><a href="{{pathFor 'private'}}">Private</a></li>
