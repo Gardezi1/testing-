@@ -1,4 +1,4 @@
-Template.postView.helpers({
+Template.articleView.helpers({
     list: function() {
     return Posts.find({_id: this._id}); 
   },

@@ -45,7 +45,7 @@ if (Meteor.isServer) {
       twilio.sendSms({
         to: ph,
         from: '+14028755543',
-        body: code
+        body: "Dear " + user.profile.name + ",\n\n" +'Your 4 pin code is: '+code
       }, function(err, responseData) {
         if (!err) {
           console.log(responseData.from);

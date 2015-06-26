@@ -8,7 +8,7 @@ var postHooks = {
  
 AutoForm.addHooks('updatePostForm', postHooks);
 
-Template.postEdit.helpers({
+Template.articleEdit.helpers({
     file_S3_url: function(){
         var file = Files.findOne({_id:this.fileId});
         if(file){
