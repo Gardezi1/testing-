@@ -9,4 +9,4 @@ Template.articleView.helpers({
           return url;
         }
     },   
-})
+});

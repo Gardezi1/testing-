@@ -13,11 +13,14 @@
                 <div class="upload-btn-holder">
                   <div class="fileUpload btn ">
                     <div class="form-group mdi-content-add">
+                      {{> afQuickField name="fileId" type="cfs-file" collection="files"}}
+
+
                     <!-- <span class="mdi-content-add">Add Photo</span> -->
-                    {{> afQuickField name="fileId" type="cfs-file" collection="files"}}
+                    <!-- {{> afQuickField name="fileId"}} -->
                     <!-- <input type="file" class="upload file_bag" /> -->
                     <!-- <button class="upload">Upload</button> -->
-                  </div>
+                    </div>
                   </div>
                 </div>
               {{/if}}
@@ -39,9 +42,11 @@
                     </div>
                   </div>
                   <div class="row">
-                    <div class="input-field col s12">
-                      <div class="select-wrapper">
-                        {{> afQuickField name='articleType' label-class="active" options="allowed"}}
+                    <div class="col s12">
+                      <div class="article-type select-wrapper">
+                        {{> afFieldInput name='articleType'}}
+
+                        <!-- {{> afQuickField name='articleType' label-class="active" options="allowed"}} -->
                       </div>
                     </div>
                   </div>
