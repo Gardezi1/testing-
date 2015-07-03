@@ -1,17 +1,25 @@
 var postHooks = {
   before: {
-    insert: function(doc) {
+    insert: function(doc, template) {
       if(Meteor.userId()){
         doc.userId = Meteor.userId();
       }
-      debugger
-      return doc;
+        // debugger
+        return doc;
+      
     }
   },
   after: {
-    insert: function(doc) {
-      debugger
-      Router.go('/show');
+    insert: function(error, result, template) {
+      // debugger
+      if(error){
+        console.log("after");
+        console.log(error);
+      }
+      else{
+        Router.go('/show');
+      }
+      
     }
   }
 }

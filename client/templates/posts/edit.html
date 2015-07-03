@@ -8,14 +8,14 @@
             <div class="shadow-box z-depth-1">
               {{# if fileId}}   
                 <div class="form-group center">
-                  <img src="{{file_S3_url}}">
-                  {{> afQuickField name="fileId" type="cfs-file" collection="files"}}
+                  <!-- <img src="{{file_S3_url}}"> -->
+                  {{> afQuickField name="fileId"}}
                 </div>
               {{ else }}
                 <div class="upload-btn-holder">
                   <div class="fileUpload btn ">
                     <!-- <span class="mdi-content-add">Add Photo</span> -->
-                    {{> afQuickField name="fileId" type="cfs-file" collection="files"}}
+                    {{> afQuickField name="fileId"}}
                   </div>
                 </div>
               {{/if}}  
@@ -38,14 +38,24 @@
                   </div>
                   <div class="row">
                     <div class="input-field col s12">
+                      {{> afQuickField name='articleTopic'  label-class="active"}}
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s12">
                       <div class="select-wrapper">
-                        {{> afQuickField name='articleType'  label-class="active" options="allowed"}}
+                        {{> afQuickField name='articleType'  label-class="active"}}
                       </div> 
                     </div>
                   </div>
                   <div class="row">
                     <div class="input-field col s12">
-                      {{> afQuickField name='postTo'  label-class="active" options="allowed"}}
+                      {{> afQuickField name='articleCategory'  label-class="active"}}
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s12">
+                      {{> afQuickField name='postTo'  label-class="active"}}
                     </div>
                   </div>
                   <div class="row">

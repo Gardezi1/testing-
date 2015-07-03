@@ -6,8 +6,15 @@
         <div class="col-md-12">
           <img src="{{file_S3}}">
           <h4><a href="{{pathFor 'articleEdit' id=_id }}">{{title}}</a></h4>
-          <b>{{articleType}}</b> 
-          <p><b></b> {{body}}</p>
+          <ul>
+            {{#each articleTopic}}
+              <li><b>{{this}}</b></li>
+            {{/each}}
+          </ul>
+          <!-- <b>{{articleTopic}}</b> -->
+          <b>{{articleType}}</b>
+          <b>{{articleCategory}}</b> 
+          <p>{{body}}</p>
         </div>
       </div>
     </div>

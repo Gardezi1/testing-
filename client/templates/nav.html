@@ -12,7 +12,9 @@
               <li><a href="{{pathFor route='article/new'}}">Add Article</a></li>
               <li><a href="{{pathFor route='show'}}">Articles</a></li>
             {{/if}}
-            <li><a href="{{pathFor 'profileView'}}">Profile</a></li>
+            {{#if isInRole 'doctor'}}
+              <li><a href="{{pathFor 'profileView'}}">Profile</a></li>
+            {{/if}}
             <li><a href="{{pathFor 'private'}}">Private</a></li>
             <li class="admin"><a>Hi, <b>{{currentUser.profile.name}}</b></a></li>
             {{/if}}

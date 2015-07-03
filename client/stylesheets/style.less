@@ -132,7 +132,7 @@ nav{
   background: transparent;
   border: 0;
   color: #4d4d4d;
-  height: 95px;
+  min-height: 95px;
   .noneBoxShadow(0px, 0px);
   input.upload {
     position: absolute;
@@ -259,6 +259,77 @@ li.admin {
   height: 100%;
   font-size: 0px;
 }
-.article-type [type="checkbox"]:not(:checked), [type="checkbox"]:checked{
-  position: inherit;
+.sub-head .title {
+  position: relative;
+  .edit-profile {
+    position: absolute;
+    right: 20px;
+    top: 0;
+    a {
+      font-size: 18px;
+    }
+  }
+}
+.profile-edit {
+  position: relative;
+  padding-top: 85px;
+  margin-top: 65px;
+  &.img-rel {
+    img {
+      position: relative;
+      top: 0;
+    }
+    a {
+      width: 152px;
+      margin: 0px auto;
+      display: block;
+    }
+    .file-field .btn {
+      float: none;
+      width: 167px;
+      text-align: center;
+      margin: 0px auto;
+      float: none;
+      display: block;
+      position: relative;
+      margin-bottom: 100px;
+    }
+    .input-field {
+      .file-path {
+        display: none;
+      }
+    }
+  }
+  img {
+    position: absolute;
+    height: 170px;
+    width: 170px;
+    top: -86px;
+    border-radius: 100%;
+    left: 50%;
+    margin-left: -85px;
+  }
+}
+.prof-con {
+  padding: 0px 65px;
+  padding-bottom: 30px;
+  .profile-name {
+    text-align: center;
+    border-bottom: 1px solid #dadada;
+    padding-bottom: 15px;
+  }
+  .profile-detail {
+    border-bottom: 1px solid #dadada;
+    padding: 5px 0; 
+    ul li {
+      display: inline;
+      margin-right: 15px;
+      &:last-child {
+        margin-right: 0px;
+      }
+      i {
+        color: #f25d47;
+      }
+    }
+  }
 }
