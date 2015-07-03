@@ -10,7 +10,7 @@
             <li><a href="{{pathFor route='advocates'}}">Advocates</a></li>
             {{#if isInRole 'admin, doctor'}}
               <li><a href="{{pathFor route='article/new'}}">Add Article</a></li>
-              <li><a href="{{pathFor route='show'}}">Articles</a></li>
+              <li><a href="{{pathFor route='articles'}}">Articles</a></li>
             {{/if}}
             {{#if isInRole 'doctor'}}
               <li><a href="{{pathFor 'profileView'}}">Profile</a></li>

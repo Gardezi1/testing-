@@ -1,7 +1,7 @@
 var postHooks = {
   after: {
     update: function(doc) {
-      Router.go('/show');
+      Router.go('/articles');
     }
   }
 }
