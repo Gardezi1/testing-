@@ -17,7 +17,7 @@ var postHooks = {
         console.log(error);
       }
       else{
-        Router.go('/show');
+        Router.go('/articles');
       }
       
     }

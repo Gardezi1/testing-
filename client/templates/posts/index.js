@@ -1,4 +1,4 @@
-Template.show.helpers({
+Template.articleList.helpers({
     beforeRemove: function () {
       return function (collection, id) {
         var doc = collection.findOne(id);
@@ -15,3 +15,7 @@ Template.show.helpers({
         }
     },
 })
+
+Template.articleList.rendered = function() {
+  $('ul.tabs').tabs();
+}

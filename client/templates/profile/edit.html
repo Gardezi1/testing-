@@ -1,6 +1,6 @@
 <template name="editProfile">
 
-{{#autoForm collection='Meteor.users' doc=currentUser type='update' id='editProfile'}}
+{{#autoForm collection='Meteor.users' doc=currentUser type='update' id='editProfile' omitFields="_id, profile.type, profile.code_verified,profile.dob, roles, services"}}
 <div class="custom-container">
   <div class="form-holder">  
     <div class="row">
@@ -9,8 +9,17 @@
           <div class="row">
             <div class="col-md-12">
               <div class="profile-edit img-rel">
-                  {{> afQuickField name='profile'}}
-                 <!--  {{> afQuickField name='email'}} -->
+                  {{> afQuickField name='profile.picture'}}
+                  {{> afQuickField name='profile.name'}}
+                  {{> afQuickField name='profile.speciality'}}
+                  {{> afQuickField name='emails'}}
+                  {{> afQuickField name='profile.phone'}}
+                  {{> afQuickField name='profile.addressOne'}}
+                  {{> afQuickField name='profile.addressTwo'}}
+                  {{> afQuickField name='profile.city'}}
+                  {{> afQuickField name='profile.state' options="allowed"}}
+                  {{> afQuickField name='profile.zipcode'}}
+                  {{> afQuickField name='profile.bio'}}
                 <button type='submit' class="btn btn-primary">Save profile</button>
               </div>
             </div>

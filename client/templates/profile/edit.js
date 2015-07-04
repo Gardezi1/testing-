@@ -1,8 +1,8 @@
 var userHooks = {
   after: {
-    update: function(doc) {
-      console.log(doc);
-      Router.go('/profile');
+    update: function(doc, error, result) {
+
+        Router.go('/profile');
     }
   }
 }
