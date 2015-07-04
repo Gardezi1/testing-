@@ -1,5 +1,5 @@
 <template name="articleNew">
-  {{#autoForm collection="Posts" id="insertPostForm" type="insert"}}
+  {{#autoForm collection="Posts" id="insertPostForm" type="insert" omitFields="providerId, createdAt, updatedAt"}}
     <div class="custom-container">
       <div class="form-holder">
         <div class="row">
@@ -13,13 +13,7 @@
                 <div class="upload-btn-holder">
                   <div class="fileUpload">
                     <div class="form-group mdi-content-add">
-                      <!-- {{> afQuickField name="fileId" type="fileUpload" collection="files"}} -->
-
-
-                    <!-- <span class="mdi-content-add">Add Photo</span> -->
                     {{> afQuickField name="fileId"}}
-                    <!-- <input type="file" class="upload file_bag" /> -->
-                    <!-- <button class="upload">Upload</button> -->
                     </div>
                   </div>
                 </div>

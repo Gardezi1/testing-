@@ -14,8 +14,11 @@ Template.articleList.helpers({
           return url;
         }
     },
+    getArticlesByCategory: function(type){
+      return Posts.find({articleCategory: type})
+    }
 })
 
-Template.articleList.rendered = function() {
+Template.articleList.onRendered(function() {
   $('ul.tabs').tabs();
-}
+});
