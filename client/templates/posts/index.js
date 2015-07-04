@@ -14,6 +14,9 @@ Template.articleList.helpers({
           return url;
         }
     },
+    getArticlesByCategory: function(type){
+      return Posts.find({articleCategory: type})
+    }
 })
 
 Template.articleList.onRendered(function() {

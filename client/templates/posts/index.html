@@ -12,7 +12,7 @@
             </div>
           </div>
           <div id="what" class="col s12">
-            {{#each posts}}
+            {{#each getArticlesByCategory 'what'}}
               <div class="custom-container">
                 <div class="form-holder">
                   <div class="row">
@@ -59,7 +59,7 @@
             {{/each}}
           </div>
           <div id="how" class="col s12">
-            {{#each posts}}
+            {{#each getArticlesByCategory 'how'}}
               <div class="custom-container">
                 <div class="form-holder">
                   <div class="row">
@@ -106,7 +106,7 @@
             {{/each}}
           </div>
           <div id="where" class="col s12">
-            {{#each posts}}
+            {{#each getArticlesByCategory 'where'}}
               <div class="custom-container">
                 <div class="form-holder">
                   <div class="row">
@@ -153,7 +153,7 @@
             {{/each}}
           </div>
           <div id="more" class="col s12">
-            {{#each posts}}
+            {{#each getArticlesByCategory 'more'}}
               <div class="custom-container">
                 <div class="form-holder">
                   <div class="row">
