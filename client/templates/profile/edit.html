@@ -1,6 +1,6 @@
 <template name="editProfile">
 
-{{#autoForm collection='Meteor.users' doc=currentUser type='update' id='editProfile' omitFields="_id, profile.type, profile.code_verified,profile.dob, roles, services"}}
+{{#autoForm collection='Meteor.users' doc=currentUser type='update' id='editProfile' omitFields="_id, profile.type, profile.code_verified,profile.dob, roles, services, profile.following"}}
 <div class="custom-container">
   <div class="form-holder">  
     <div class="row">

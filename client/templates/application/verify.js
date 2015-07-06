@@ -21,7 +21,7 @@ if (Meteor.isClient) {
             var dob = birthday_day +'-'+birthday_month+'-'+birthday_year
           
             Meteor.users.update(Meteor.userId(), {$set: {"profile.zipcode": [zipcode], "profile.dob": [dob], "profile.code_verified": [true]}});
-            Meteor.users.update(id, {$set: {"emails.$.verified" :true}});
+            Meteor.users.update(Meteor.userId(), {$set: {"emails.[0].verified" :true}});
             Router.go('/');
         }
     });
