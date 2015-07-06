@@ -2,32 +2,66 @@
     {{#contentFor "subnav"}}
       <h5>Find Doctors</h5>
     {{/contentFor}}
-    <div class="row">
+<div class="custom-container"> 
+  <div class="row">
     <div class="col-md-12">
-  <input type="text" id="search-box" placeholder="Search for Doctors" />
-  <div><span>Search for doctors to follow! Join their circle and see their latest updates.</span></div>
-  <div id='search-result'>
-    <div id="search-meta">
-      {{#if isLoading}}
-        searching ...
-      {{/if}}
-    </div>
-      <ul>
-        {{#each searchResults}}
-          <li>{{name}}</li>
-        {{/each}}
-      </ul>
-  </div>
-      <div class="page-header">
-        {{#each adminUsers}}
-          <img src="{{getImage pictureId}}" alt="{{title}}">
-          Name: {{name}}
-          City: {{city}}
-          State: {{state}}
-          <button>FOLLOW</button>
-        {{/each}}
+      <div class="doctors-listing">
+        <div class="prof-con">
+          <div class="top-search shadow-box z-depth-1">
+            <!-- <i class="fa fa-search"></i> -->
+            <input type="text" class="fa fa-search" id="search-box" placeholder="Search for Doctors" />
+            <div>
+              <span>Search for doctors to follow! Join their circle and see their latest updates.</span>
+            </div>
+          </div>
+          <div id='search-result'>
+            <div id="search-meta">
+              {{#if isLoading}}
+                searching ...
+              {{/if}}
+            </div>
+              <ul>
+                {{#each searchResults}}
+                  <div class="page-header">
+                    <div class="doc-detail">
+                      <img src="{{getImage profile.picture}}" alt="{{title}}">
+                      <div class="prof-data">
+                        <div class="name">
+                          {{profile.name}}
+                        </div>
+                        <div class="city">
+                         {{profile.city}}, {{profile.state}}
+                        </div>   
+                        <button class="btn btn-primary">FOLLOW</button>
+                      </div>
+                    </div>  
+                  </div>
+                {{/each}}
+              </ul>
+          </div>
+          <div class="page-header">
+            {{#unless searchResults}}
+              {{#each adminUsers}}
+                <div class="doc-detail">
+                  <img src="{{getImage pictureId}}" alt="{{title}}">
+                  <div class="prof-data">
+                    <div class="name">
+                      <h5>{{name}}</h5>
+                    </div>
+                    <div class="place">
+                      {{city}}, {{state}}
+                    </div> 
+                    <button class="btn btn-primary">FOLLOW</button>
+                  </div>
+                </div>
+              {{/each}}
+            {{/unless}}
+          </div>
+        </div>  
       </div>
     </div>
   </div>
+</div>    
+
 
 </template>

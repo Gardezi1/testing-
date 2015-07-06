@@ -8,7 +8,13 @@ Template.doctorsListing.helpers({
       url = "https://s3.amazonaws.com/medcircle/upload/data/"+file._id+"-"+file.name();
         return url;
     }
-  }
+  },
+  searchResults: function() {
+      if (Session.get("doctorSearchQuery")) {
+        var name = (Session.get("doctorSearchQuery"));
+        return Meteor.users.find({"profile.name": {$regex: new RegExp((Session.get("doctorSearchQuery")))}});
+      }
+    }
 });
 
 Template.doctorsListing.events({  
