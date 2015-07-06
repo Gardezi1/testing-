@@ -3,7 +3,7 @@
     <div class="container">
       <div class="nav-wrapper">
         <a href="#" class="brand-logo"><img src="/imgs/logo.jpg"></a>
-        <ul class="right hide-on-med-and-down">
+        <!-- <ul class="right hide-on-med-and-down">
           {{#if currentUser}}
             <li><a href="{{pathFor 'home'}}">Home</a></li>
             <li><a href="{{pathFor route='doctorsListing'}}">Doctors</a></li>
@@ -19,7 +19,27 @@
             <li class="admin"><a>Hi, <b>{{currentUser.profile.name}}</b></a></li>
             {{/if}}
           <li>{{> atNavButton }}</li>
+        </ul> -->
+
+        <ul class="right hide-on-med-and-down normal-nav">
+          {{#if currentUser}} 
+            <li class="admin"><a><img src="/imgs/image01.jpg"> Hi, <b>{{currentUser.profile.name}}</b></a></li>
+            <li><a href="#" class="fa fa-users"></a></li>
+            <li><a href="#" class="fa fa-envelope-o"></a></li>
+            <li><a href="#" class="fa fa-bell"></a></li>
+            <li>
+              <a href="#" class="fa fa-cog dropdown-button" data-activates="dropdown1"></a>
+              <!-- Dropdown Structure -->
+              <ul id='dropdown1' class='dropdown-content'>
+                <li><a href="#!">one</a></li>
+                <li><a href="#!">two</a></li>
+                <li class="divider"></li>
+                <li><a href="#!">three</a></li>
+              </ul>
+            </li>
+          {{/if}}
         </ul>
+
         <ul id="nav-mobile" class="side-nav">
           <li><a href="{{pathFor 'home'}}">Home</a></li>
           <li><a href="{{pathFor route='doctorsListing'}}">Doctors</a></li>
