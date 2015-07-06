@@ -19,7 +19,6 @@ Template.doctorsListing.helpers({
 
 Template.doctorsListing.events({  
   'keyup [type=text]': function(event, template) {
-    console.log(event.target.value);
     Session.set('doctorSearchQuery', event.target.value);
   }
 });
