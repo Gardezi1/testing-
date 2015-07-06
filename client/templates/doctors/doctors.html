@@ -1,11 +1,31 @@
-<template name="doctors">
+<template name="doctorsListing">
     {{#contentFor "subnav"}}
-      <h1>Doctors</h1>
+      <h5>Find Doctors</h5>
     {{/contentFor}}
     <div class="row">
     <div class="col-md-12">
+  <input type="text" id="search-box" placeholder="Search for Doctors" />
+  <div><span>Search for doctors to follow! Join their circle and see their latest updates.</span></div>
+  <div id='search-result'>
+    <div id="search-meta">
+      {{#if isLoading}}
+        searching ...
+      {{/if}}
+    </div>
+      <ul>
+        {{#each searchResults}}
+          <li>{{name}}</li>
+        {{/each}}
+      </ul>
+  </div>
       <div class="page-header">
-
+        {{#each adminUsers}}
+          <img src="{{getImage pictureId}}" alt="{{title}}">
+          Name: {{name}}
+          City: {{city}}
+          State: {{state}}
+          <button>FOLLOW</button>
+        {{/each}}
       </div>
     </div>
   </div>

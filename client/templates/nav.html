@@ -6,7 +6,7 @@
         <!-- <ul class="right hide-on-med-and-down">
           {{#if currentUser}}
             <li><a href="{{pathFor 'home'}}">Home</a></li>
-            <li><a href="{{pathFor route='doctors'}}">Doctors</a></li>
+            <li><a href="{{pathFor route='doctorsListing'}}">Doctors</a></li>
             <li><a href="{{pathFor route='advocates'}}">Advocates</a></li>
             {{#if isInRole 'admin, doctor'}}
               <li><a href="{{pathFor route='article/new'}}">Add Article</a></li>
@@ -42,7 +42,7 @@
 
         <ul id="nav-mobile" class="side-nav">
           <li><a href="{{pathFor 'home'}}">Home</a></li>
-          <li><a href="{{pathFor route='doctors'}}">Doctors</a></li>
+          <li><a href="{{pathFor route='doctorsListing'}}">Doctors</a></li>
           <li><a href="{{pathFor route='advocates'}}">Advocates</a></li>
           <li><a href="{{pathFor 'private'}}">Private</a></li>
           <li>{{> atNavButton }}</li>
