@@ -63,6 +63,21 @@ nav{
   background: #f25d47;
 }
 
+.normal-nav{
+  margin: 17px 0;
+  li{
+    line-height: 33px;
+  }
+  a{
+    &:before{
+      font-size: 18px;
+    }
+    &:hover{
+      color: #000;
+    }
+  }
+}
+
 /* Start sub header Styling */
 
 .sub-head{
@@ -132,7 +147,6 @@ nav{
   background: transparent;
   border: 0;
   color: #4d4d4d;
-  min-height: 95px;
   .noneBoxShadow(0px, 0px);
   input.upload {
     position: absolute;
@@ -163,13 +177,27 @@ nav{
   }
 }
 .upload-btn-holder{
-  margin: 0 0 30px;
-  border-bottom:1px solid #e6e6e6;
   text-align: center;
-  padding-bottom: 20px;
+  padding:45px 45px 0 45px; 
   .btn{
-    display: inline-block;
-    text-transform: uppercase;
+    display: none;
+  }
+  .form-group{
+    width: 100%;
+  }
+  .input-field{
+    label{
+      width: 100%;
+      text-align: center;
+    }
+  }
+  .file-field{
+    input.file-path{
+      border-bottom:1px solid #e6e6e6;
+    }
+  }
+  .fileUpload{
+    margin: 0;
   }
 }
 
@@ -244,11 +272,19 @@ img {
   }
 }
 li.admin {
-  border-left: 1px solid #ffffff;
+  border-right: 1px solid #dd4a40;
+  img{
+    height: 40px;
+    width: 40px;
+    vertical-align: middle;
+    margin: -5px 5px 0 0;
+  }
 }
 
-.upload-btn-holder .fileUpload {
-  position: relative;
+.upload-btn-holder{
+  .fileUpload {
+    position: relative;
+  }
 }
 
 .upload-btn-holder .md{
