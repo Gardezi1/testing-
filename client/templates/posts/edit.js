@@ -5,7 +5,7 @@ var postHooks = {
     }
   }
 }
- 
+
 AutoForm.addHooks('updatePostForm', postHooks);
 
 Template.articleEdit.helpers({
@@ -16,4 +16,15 @@ Template.articleEdit.helpers({
           return url;
         }
     },
+    setRadioButton: function(selector, value){
+        $("#"+selector+" input[value='"+value+"']").prop("checked", true)
+    }
 })
+
+Template.articleEdit.rendered = function(){
+
+    var post = Posts.findOne({_id: Router.current().params["id"] });
+    ["articleCategory", "articleType", "postTo" ].forEach(function(selector){
+      $("#"+selector+" input[value='"+post[selector]+"']").prop("checked", true)
+    })
+}
