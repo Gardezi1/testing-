@@ -27,18 +27,21 @@
             <li><a href="#" class="fa fa-users"></a></li>
             <li><a href="#" class="fa fa-envelope-o"></a></li>
             <li><a href="#" class="fa fa-bell"></a></li>
-            <li>
+          {{/if}}  
               <a href="#" class="fa fa-cog dropdown-button" data-activates="dropdown1"></a>
               <!-- Dropdown Structure -->
               <ul id='dropdown1' class='dropdown-content'>
-                <li><a href="#!">one</a></li>
-                <li><a href="#!">two</a></li>
-                <li class="divider"></li>
-                <li><a href="#!">three</a></li>
+                {{#if currentUser}}
+                  <li><a href="#!">Invite a Friend</a></li>
+                  <li><a href="#!">Settings</a></li>
+                  <li><a href="#!">Privacy Policy</a></li>
+                  <li><a href="#!">Terms of Use</a></li>
+                  <li class="divider"></li>
+                {{/if}}  
+                <li><a href="#!">{{> atNavButton }}</a></li>
               </ul>
-            </li>
-            <li>{{> atNavButton }}</li>
-          {{/if}}
+          
+          <!-- <li>{{> atNavButton }}</li> -->
         </ul>
 
         <ul id="nav-mobile" class="side-nav">
