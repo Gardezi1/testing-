@@ -9,8 +9,10 @@
         <div class="prof-con">
           <div class="top-search shadow-box z-depth-1">
             <!-- <i class="fa fa-search"></i> -->
-            <input type="text" class="fa fa-search" id="search-box" placeholder="Search for Doctors" />
-            <div>
+            <div class="search-holder fa fa-search"> 
+              <input type="text" id="search-box" placeholder="Search for Doctors" />
+            </div>
+            <div class="search-note">
               <span>Search for doctors to follow! Join their circle and see their latest updates.</span>
             </div>
           </div>
@@ -22,36 +24,38 @@
             </div>
               <ul>
                 {{#each searchResults}}
-                  <div class="page-header">
-                    <div class="doc-detail">
-                      <img src="{{getImage profile.picture}}" alt="{{title}}">
-                      <div class="prof-data">
-                        <div class="name">
-                          <h5>{{profile.name}}</h5>
+                  <div class="row">
+                    <div class="doc-detail col s12 m6 l3">
+                      <div class="shadow-box z-depth-1">
+                        <img src="{{getImage profile.picture}}" alt="{{title}}">
+                        <div class="prof-data">
+                          <div class="name">
+                            <h5>{{profile.name}}</h5>
+                          </div>
+                          <div class="city">
+                           {{profile.city}}, {{profile.state}}
+                          </div>   
+                          <button class="btn btn-primary small">FOLLOW</button>
                         </div>
-                        <div class="city">
-                         {{profile.city}}, {{profile.state}}
-                        </div>   
-                        <button class="btn btn-primary">FOLLOW</button>
                       </div>
                     </div>  
                   </div>
                 {{/each}}
               </ul>
           </div>
-          <div class="page-header">
+          <div class="row">
             {{#unless searchResults}}
               {{#each adminUsers}}
-                <div class="doc-detail">
-                  <img src="{{getImage pictureId}}" alt="{{title}}">
-                  <div class="prof-data">
-                    <div class="name">
+                <div class="doc-detail col s12 m6 l3">
+                  <div class="shadow-box z-depth-1">
+                    <img src="{{getImage pictureId}}" alt="{{title}}">
+                    <div class="prof-data">
                       <h5>{{name}}</h5>
+                      <address class="city">
+                        {{city}}, {{state}}
+                      </address> 
+                      <button class="btn btn-primary small">FOLLOW</button>
                     </div>
-                    <div class="city">
-                      {{city}}, {{state}}
-                    </div> 
-                    <button class="btn btn-primary">FOLLOW</button>
                   </div>
                 </div>
               {{/each}}

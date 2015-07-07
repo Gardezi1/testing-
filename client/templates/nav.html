@@ -28,7 +28,8 @@
             <li><a href="#" class="fa fa-envelope-o"></a></li>
             <li><a href="#" class="fa fa-bell"></a></li>
           {{/if}}  
-              <a href="#" class="fa fa-cog dropdown-button" data-activates="dropdown1"></a>
+          <div class="drop-holder">
+            <a href="#" class="fa fa-cog dropdown-button" data-activates="dropdown1"></a>
               <!-- Dropdown Structure -->
               <ul id='dropdown1' class='dropdown-content'>
                 {{#if currentUser}}
@@ -40,10 +41,10 @@
                 {{/if}}  
                 <li><a href="#!">{{> atNavButton }}</a></li>
               </ul>
-          
+          </div>
           <!-- <li>{{> atNavButton }}</li> -->
         </ul>
-
+        
         <ul id="nav-mobile" class="side-nav">
           <li><a href="{{pathFor 'home'}}">Home</a></li>
           <li><a href="{{pathFor route='doctorsListing'}}">Doctors</a></li>

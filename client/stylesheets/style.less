@@ -129,6 +129,14 @@ nav{
 .shadow-box{
   background: #fff;
   .RoundBorders(4px);
+  &:after{
+  	visibility: hidden;
+		display: block;
+		font-size: 0;
+		content: " ";
+		clear: both;
+		height: 0;
+  }
 }
 .shadow-box.z-depth-1{
   .BoxShadow(0px, 2px);
@@ -357,7 +365,7 @@ li.admin {
   }
 }
 .prof-con {
-  padding: 0px 65px;
+  padding: 0px 35px;
   padding-bottom: 30px;
   .profile-name {
     text-align: center;
@@ -380,12 +388,45 @@ li.admin {
   }
 }
 
+.drop-holder{
+	float: right;
+  line-height: 34px;
+  .dropdown-content{
+  	width: 150px !important;
+  	a{
+  		font-size: 14px;
+  	}
+  }
+}
+
 .profile-edit .collection-item button{
   display: none;
 }
 
 .top-search{
-  padding: 15px 0px;
+  padding: 0 0 15px;
+  margin: 0 0 40px;
+  .search-note{
+  	padding:0 20px; 
+  	color: #999;
+  	font-size: 14px;
+  }
+  .search-holder{
+  	border-bottom: 1px solid #999;
+  	padding:0 45px;
+  	margin: 0 0 20px;
+  	width: 100%;
+  	input[type=text]{
+  		margin: 0;
+  		border: 0;
+  	} 
+  	&:before{
+  		position: absolute;
+		  top: 15px;
+		  left: 15px;
+		  color: #007ccd;
+  	}
+  }
 }
 .top-search i{
   top: 35px;
@@ -393,20 +434,46 @@ li.admin {
   position: relative;
 }
 .doc-detail{
-  width: 50%;
-  float: left;
   img{
-    width: 200px;
+    width: 100%;
+    float: left;
+    min-height: 136px;
   }
 }
-.doc-detail .prof-data{
-    text-align: center;
-    width: 65%;
-    padding-bottom: 15px;
+.doc-detail{
+	margin: 0 0 30px;
+	.prof-data{
+    padding:15px;
+    float: left;
+    width: 100%;
     .place{
       margin-bottom: 15px;
     }
-  } 
+    h5{
+    	margin: 0;
+    	font-size: 14px;
+    	line-height: 16px;
+    	font-weight: 600;
+    }
+  }
+  address{
+  	margin: 0 0 25px;
+  	color: #999baf;
+  	font-size: 12px;
+  	font-style: normal;
+  	font-weight: 500;
+
+  }
+  .btn-primary{
+  	border-radius: 0;
+  	background: #ccc;
+  	color: #444;
+  	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0), 0 2px 10px 0 rgba(0, 0, 0, 0);
+  	padding: 0;
+  	width:100%;
+  	font-size: 15px;
+  }
+} 
 .page-header{
   padding: 0px 20px;
 }
