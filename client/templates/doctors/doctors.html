@@ -1,18 +1,19 @@
 <template name="doctorsListing">
-  {{#contentFor "subnav"}}
-    <h5>Find Doctors</h5>
-  {{/contentFor}}
-  <div class="custom-container"> 
-    <div class="row">
-      <div class="col-md-12">
-        <div class="doctors-listing">
-          <div class="prof-con">
-            <div class="top-search shadow-box z-depth-1">
-              <!-- <i class="fa fa-search"></i> -->
-              <input type="text" class="fa fa-search" id="search-box" placeholder="Search for Doctors" />
-              <div>
-                <span>Search for doctors to follow! Join their circle and see their latest updates.</span>
-              </div>
+    {{#contentFor "subnav"}}
+      <h5>Find Doctors</h5>
+    {{/contentFor}}
+<div class="custom-container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="doctors-listing">
+        <div class="prof-con">
+          <div class="top-search shadow-box z-depth-1">
+            <!-- <i class="fa fa-search"></i> -->
+            <div class="search-holder fa fa-search">
+              <input type="text" id="search-box" placeholder="Search for Doctors" />
+            </div>
+            <div class="search-note">
+              <span>Search for doctors to follow! Join their circle and see their latest updates.</span>
             </div>
             <div id='search-result'>
               <div id="search-meta">
@@ -36,15 +37,15 @@
                                 , {{profile.state}}
                               {{/if}}
                             </div>
-                            {{#if checkIfFollowing _id}}   
+                            {{#if checkIfFollowing _id}}
                               <button class="btn start-unfollow btn-primary red" id="{{_id}}">UNFOLLOW</button>
                             {{else}}
-                              <button class="btn start-follow btn-primary" id="{{_id}}">FOLLOW</button>  
-                            {{/if}}  
+                              <button class="btn start-follow btn-primary" id="{{_id}}">FOLLOW</button>
+                            {{/if}}
                           </div>
-                        </div>  
+                        </div>
                       </div>
-                    {{/unless}}  
+                    {{/unless}}
                   {{/each}}
                 </ul>
             </div>
@@ -63,8 +64,8 @@
                           {{#if state}}
                             , {{state}}
                           {{/if}}
-                        </div> 
-                        {{#if checkIfFollowing _id}} 
+                        </div>
+                        {{#if checkIfFollowing _id}}
                           <button class="btn start-unfollow btn-primary red" id="{{_id}}">UNFOLLOW</button>
                         {{else}}
                           <button class="btn start-follow btn-primary" id="{{_id}}">FOLLOW</button>
@@ -75,9 +76,9 @@
                 {{/each}}
               {{/unless}}
             </div>
-          </div>  
+          </div>
         </div>
       </div>
     </div>
-  </div>    
+  </div>
 </template>
