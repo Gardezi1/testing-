@@ -1,6 +1,8 @@
 <template name="articleList">
-  <div class="container">
+  
+    <div class="container">
     <div class="row">
+      {{#contentFor "subnav"}}
       <div class="col s12">
         <div class="sub-head">
           <ul class="tabs">
@@ -11,6 +13,7 @@
           </ul>
         </div>
       </div>
+      {{/contentFor}}
       <div id="what" class="col s12">
         {{#each getArticlesByCategory 'what'}}
           <div class="custom-container">
@@ -209,4 +212,5 @@
       </div>
     </div>
   </div>
+  
 </template>
