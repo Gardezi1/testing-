@@ -36,15 +36,17 @@
                               <p><b></b> {{body}} </p>
                             </div>
                           </div>
-                          <ul class="center">
-                            {{> quickRemoveButton collection="Posts" _id=this._id beforeRemove=beforeRemove class="btn btn-danger"}}
-                            <a href="{{pathFor 'articleEdit' id=_id }}" class="btn btn-danger">Edit</a>
-                          </ul>
+                          {{#if checkIfAuthor authorId}}
+                            <ul class="center">
+                              {{> quickRemoveButton collection="Posts" _id=this._id beforeRemove=beforeRemove class="btn btn-danger"}}
+                              <a href="{{pathFor 'articleEdit' id=_id }}" class="btn btn-danger">Edit</a>
+                            </ul>
+                          {{/if}}
                         </div>
                       </div>
                     <div class="doctor-post clearfix">
                       <div class="doc-name">
-                        {{currentUser.profile.name}}<!--  <span>depression</span> -->
+                        Dr. {{getAuthorName authorId }}<!--  <span>depression</span> -->
                       </div>
                       <div class="reply">
                         <a href="#"><i class="fa fa-share"></i></a>
@@ -83,15 +85,17 @@
                               <p><b></b> {{body}} </p>
                             </div>
                           </div>
-                          <ul class="center">
-                            {{> quickRemoveButton collection="Posts" _id=this._id beforeRemove=beforeRemove class="btn btn-danger"}}
-                            <a href="{{pathFor 'articleEdit' id=_id }}" class="btn btn-danger">Edit</a>
-                          </ul>
+                          {{#if checkIfAuthor authorId}}
+                            <ul class="center">
+                              {{> quickRemoveButton collection="Posts" _id=this._id beforeRemove=beforeRemove class="btn btn-danger"}}
+                              <a href="{{pathFor 'articleEdit' id=_id }}" class="btn btn-danger">Edit</a>
+                            </ul>
+                          {{/if}}  
                         </div>
                       </div>
                     <div class="doctor-post clearfix">
                       <div class="doc-name">
-                        {{currentUser.profile.name}}<!--  <span>depression</span> -->
+                        Dr. {{getAuthorName authorId }}<!--  <span>depression</span> -->
                       </div>
                       <div class="reply">
                         <a href="#"><i class="fa fa-share"></i></a>
@@ -130,15 +134,17 @@
                               <p><b></b> {{body}} </p>
                             </div>
                           </div>
-                          <ul class="center">
-                            {{> quickRemoveButton collection="Posts" _id=this._id beforeRemove=beforeRemove class="btn btn-danger"}}
-                            <a href="{{pathFor 'articleEdit' id=_id }}" class="btn btn-danger">Edit</a>
-                          </ul>
+                          {{#if checkIfAuthor authorId}}
+                            <ul class="center">
+                              {{> quickRemoveButton collection="Posts" _id=this._id beforeRemove=beforeRemove class="btn btn-danger"}}
+                              <a href="{{pathFor 'articleEdit' id=_id }}" class="btn btn-danger">Edit</a>
+                            </ul>
+                          {{/if}}
                         </div>
                       </div>
                     <div class="doctor-post clearfix">
                       <div class="doc-name">
-                        {{currentUser.profile.name}}<!--  <span>depression</span> -->
+                        Dr. {{getAuthorName authorId }}<!--  <span>depression</span> -->
                       </div>
                       <div class="reply">
                         <a href="#"><i class="fa fa-share"></i></a>
@@ -177,15 +183,17 @@
                               <p><b></b> {{body}} </p>
                             </div>
                           </div>
-                          <ul class="center">
-                            {{> quickRemoveButton collection="Posts" _id=this._id beforeRemove=beforeRemove class="btn btn-danger"}}
-                            <a href="{{pathFor 'articleEdit' id=_id }}" class="btn btn-danger">Edit</a>
-                          </ul>
+                          {{#if checkIfAuthor authorId}}
+                            <ul class="center">
+                              {{> quickRemoveButton collection="Posts" _id=this._id beforeRemove=beforeRemove class="btn btn-danger"}}
+                              <a href="{{pathFor 'articleEdit' id=_id }}" class="btn btn-danger">Edit</a>
+                            </ul>
+                          {{/if}}  
                         </div>
                       </div>
                     <div class="doctor-post clearfix">
                       <div class="doc-name">
-                        {{currentUser.profile.name}}<!--  <span>depression</span> -->
+                        Dr. {{getAuthorName authorId }}<!--  <span>depression</span> -->
                       </div>
                       <div class="reply">
                         <a href="#"><i class="fa fa-share"></i></a>

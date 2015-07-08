@@ -1,67 +1,83 @@
 <template name="doctorsListing">
-    {{#contentFor "subnav"}}
-      <h5>Find Doctors</h5>
-    {{/contentFor}}
-<div class="custom-container"> 
-  <div class="row">
-    <div class="col-md-12">
-      <div class="doctors-listing">
-        <div class="prof-con">
-          <div class="top-search shadow-box z-depth-1">
-            <!-- <i class="fa fa-search"></i> -->
-            <input type="text" class="fa fa-search" id="search-box" placeholder="Search for Doctors" />
-            <div>
-              <span>Search for doctors to follow! Join their circle and see their latest updates.</span>
+  {{#contentFor "subnav"}}
+    <h5>Find Doctors</h5>
+  {{/contentFor}}
+  <div class="custom-container"> 
+    <div class="row">
+      <div class="col-md-12">
+        <div class="doctors-listing">
+          <div class="prof-con">
+            <div class="top-search shadow-box z-depth-1">
+              <!-- <i class="fa fa-search"></i> -->
+              <input type="text" class="fa fa-search" id="search-box" placeholder="Search for Doctors" />
+              <div>
+                <span>Search for doctors to follow! Join their circle and see their latest updates.</span>
+              </div>
             </div>
-          </div>
-          <div id='search-result'>
-            <div id="search-meta">
-              {{#if isLoading}}
-                searching ...
-              {{/if}}
+            <div id='search-result'>
+              <div id="search-meta">
+                {{#if isLoading}}
+                  searching ...
+                {{/if}}
+              </div>
+                <ul>
+                  {{#each searchResults}}
+                    {{#unless checkIfloggedIn _id}}
+                      <div class="page-header">
+                        <div class="doc-detail">
+                          <img src="{{getImage profile.picture}}" alt="{{title}}">
+                          <div class="prof-data">
+                            <div class="name">
+                              <h5>{{profile.name}}</h5>
+                            </div>
+                            <div class="city">
+                              {{profile.city}}
+                              {{#if profile.state}}
+                                , {{profile.state}}
+                              {{/if}}
+                            </div>
+                            {{#if checkIfFollowing _id}}   
+                              <button class="btn start-unfollow btn-primary red" id="{{_id}}">UNFOLLOW</button>
+                            {{else}}
+                              <button class="btn start-follow btn-primary" id="{{_id}}">FOLLOW</button>  
+                            {{/if}}  
+                          </div>
+                        </div>  
+                      </div>
+                    {{/unless}}  
+                  {{/each}}
+                </ul>
             </div>
-              <ul>
-                {{#each searchResults}}
-                  <div class="page-header">
+            <div class="page-header">
+              {{#unless searchResults}}
+                {{#each adminUsers}}
+                  {{#unless checkIfloggedIn _id}}
                     <div class="doc-detail">
-                      <img src="{{getImage profile.picture}}" alt="{{title}}">
+                      <img src="{{getImage pictureId}}" alt="{{title}}">
                       <div class="prof-data">
                         <div class="name">
-                          <h5>{{profile.name}}</h5>
+                          <h5>{{name}}</h5>
                         </div>
                         <div class="city">
-                         {{profile.city}}, {{profile.state}}
-                        </div>   
-                        <button class="btn btn-primary">FOLLOW</button>
+                          {{city}}
+                          {{#if state}}
+                            , {{state}}
+                          {{/if}}
+                        </div> 
+                        {{#if checkIfFollowing _id}} 
+                          <button class="btn start-unfollow btn-primary red" id="{{_id}}">UNFOLLOW</button>
+                        {{else}}
+                          <button class="btn start-follow btn-primary" id="{{_id}}">FOLLOW</button>
+                        {{/if}}
                       </div>
-                    </div>  
-                  </div>
-                {{/each}}
-              </ul>
-          </div>
-          <div class="page-header">
-            {{#unless searchResults}}
-              {{#each adminUsers}}
-                <div class="doc-detail">
-                  <img src="{{getImage pictureId}}" alt="{{title}}">
-                  <div class="prof-data">
-                    <div class="name">
-                      <h5>{{name}}</h5>
                     </div>
-                    <div class="city">
-                      {{city}}, {{state}}
-                    </div> 
-                    <button class="btn btn-primary">FOLLOW</button>
-                  </div>
-                </div>
-              {{/each}}
-            {{/unless}}
-          </div>
-        </div>  
+                  {{/unless}}
+                {{/each}}
+              {{/unless}}
+            </div>
+          </div>  
+        </div>
       </div>
     </div>
-  </div>
-</div>    
-
-
+  </div>    
 </template>

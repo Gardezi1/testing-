@@ -1,6 +1,18 @@
 Meteor.publish('Posts', function(){
   var currentUserId = this.userId;
-  return Posts.find({authorId: currentUserId})
+  if(currentUserId){
+    following_list = Meteor.users.findOne({_id:this.userId}).profile.following;
+    if(following_list  == undefined || following_list.length < 0){
+      Meteor.users.update(this.userId, {$push: { "profile.following": currentUserId} });
+      following_list = Meteor.users.findOne({_id:this.userId}).profile.following;
+    }
+  return Posts.find({authorId: { $in: following_list}});
+  }
+  else{
+    return Posts.find({authorId: currentUserId});
+  }
+  
+  
 });
 
 Meteor.publish('files', function() {
@@ -13,7 +25,6 @@ Meteor.publish('data', function() {
 
 
 Meteor.methods({
-
   returnAdminUsers: function(){
     var results = [];
 
@@ -36,6 +47,12 @@ Meteor.methods({
     // console.log("all results - this needs to get returned: ", results);
 
     return results;
+  },
+  addToFollowing: function(userId) {
+    Meteor.users.update(Meteor.userId(), { $addToSet: { "profile.following": userId}});
+  },
+  removeFromFollowing: function(userId) {
+    Meteor.users.update(Meteor.userId(), { $pull: { "profile.following": userId}});
   }
 
-})
+});
