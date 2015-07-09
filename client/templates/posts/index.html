@@ -1,6 +1,5 @@
-<template name="articleList">
-  
-    <div class="container">
+<template name="articleList">  
+  <div class="container">
     <div class="row">
       {{#contentFor "subnav"}}
       <ul class="tabs">
@@ -53,11 +52,10 @@
                         </span>
                       </div>
                       <div class="reply">
-                        <a href="#"><i class="fa fa-share"></i></a>
+                        <a href="{{pathFor 'rePost' id=_id }}"><i class="fa fa-share" id="{{_id}}"></i></a>
                       </div>
                     </div>
                   </div>
-
                 </div>
               </div>
             </div>
@@ -107,11 +105,10 @@
                         </span>
                       </div>
                       <div class="reply">
-                        <a href="#"><i class="fa fa-share"></i></a>
+                        <a href="{{pathFor 'rePost' id=_id }}"><i class="fa fa-share" id="{{_id}}"></i></a>
                       </div>
                     </div>
                   </div>
-
                 </div>
               </div>
             </div>
@@ -161,11 +158,10 @@
                         </span>
                       </div>
                       <div class="reply">
-                        <a href="#"><i class="fa fa-share"></i></a>
+                        <a href="{{pathFor 'rePost' id=_id }}"><i class="fa fa-share" id="{{_id}}"></i></a>
                       </div>
                     </div>
                   </div>
-
                 </div>
               </div>
             </div>
@@ -215,11 +211,10 @@
                         </span>
                       </div>
                       <div class="reply">
-                        <a href="#"><i class="fa fa-share"></i></a>
+                        <a href="{{pathFor 'rePost' id=_id }}"><i class="fa fa-share" id="{{_id}}"></i></a>
                       </div>
                     </div>
                   </div>
-
                 </div>
               </div>
             </div>
@@ -227,6 +222,5 @@
         {{/each}}
       </div>
     </div>
-  </div>
-  
+  </div>  
 </template>

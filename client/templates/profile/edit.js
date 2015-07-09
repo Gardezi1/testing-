@@ -8,3 +8,7 @@ var userHooks = {
 }
  
 AutoForm.addHooks('editProfile', userHooks);
+
+Template.editProfile.onRendered(function() {
+  $('select').material_select();
+});

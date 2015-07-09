@@ -1,7 +1,7 @@
 <template name="profileView">
   {{#contentFor "subnav"}}
-    <p>Dr. {{currentUser.profile.name}} </p>
-    <div class="edit-profile"><a href="{{pathFor 'editProfile'}}">Edit Profile</a></div>
+    <h5 class="left">Dr. {{currentUser.profile.name}} </h5>
+    <div class="edit-profile right"><a href="{{pathFor 'editProfile'}}">Edit Profile</a></div>
   {{/contentFor}}
 <div class="custom-container">
   <div class="form-holder">  

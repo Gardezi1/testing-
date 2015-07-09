@@ -35,7 +35,7 @@ Template.doctorsListing.events({
       if(error){
         console.log("error from addToFollowing: ", error);
       } else {
-        console.log(id);
+        // console.log(id);
       } 
     });
   },
@@ -47,7 +47,7 @@ Template.doctorsListing.events({
       if(error){
         console.log("error from removeFromFollowing: ", error);
       } else {
-        console.log(id);
+        // console.log(id);
       } 
     });
   }

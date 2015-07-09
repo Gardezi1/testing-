@@ -23,9 +23,9 @@
                 {{/if}}
               </div>
                 <ul>
+                  <div class="row">
                   {{#each searchResults}}
                     {{#unless checkIfloggedIn _id}}
-                      <div class="row">
                         <div class="doc-detail col s12 m6 l3">
                           <div class="shadow-box z-depth-1">
                             <img src="{{getImage profile.picture}}" alt="{{title}}">
@@ -47,9 +47,9 @@
                               </div>
                           </div>
                         </div>  
-                      </div>
                     {{/unless}}  
                   {{/each}}
+                </div>  
                 </ul>
             </div>
             <div class="row">
