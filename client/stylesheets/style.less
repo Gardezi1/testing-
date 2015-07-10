@@ -338,8 +338,8 @@ li.admin {
 }
 .profile-edit {
   position: relative;
-  padding-top: 85px;
-  margin-top: 65px;
+  text-align: center;
+  padding-top: 30px;
   &.img-rel {
     img {
       position: relative;
@@ -367,15 +367,29 @@ li.admin {
     }
   }
   img {
-    position: absolute;
     height: 170px;
     width: 170px;
-    top: -86px;
     border-radius: 100%;
-    left: 50%;
-    margin-left: -85px;
+    display: inline-block;
   }
 }
+
+.prof-edit-head{
+  text-align: center;
+  .input-field{
+    margin:0;
+  }
+  .btn-flate{
+    display: inline-block;
+  }
+  label.active{
+    display: none;
+  }
+  label{
+    text-indent: -20px;
+  }
+}
+
 .prof-con {
   padding: 0px 35px;
   padding-bottom: 30px;
@@ -493,4 +507,11 @@ li.admin {
   height: auto;
   background-color: transparent;
   padding-left: 0px;
+}
+
+.org-color{
+  color: #f25d47;
+}
+.org-bg{
+  background: #f25d47;
 }
