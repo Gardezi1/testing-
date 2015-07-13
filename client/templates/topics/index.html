@@ -1,22 +1,21 @@
 <template name="topicsListing">
   {{#contentFor "subnav"}}
-    <h5>Manage my Topics</h5>
+    <h5 class="center-align">Manage my Topics</h5>
   {{/contentFor}}
   <div class="custom-container">
   <div class="form-holder">  
-    <div class="row">
-      {{#each getAllTopics}}
-      <div class="col-md-12">
-        <div class="page-header">
-          <div class="row">
-          <div class="col-md-12">
+    <div class="row center-align">
+      <div class="row topics-holder">
+        {{#each getAllTopics}}
+        <div class="col s12 m6 l6">
+          <div class="topics">
             <input type="checkbox" id="{{_id}}" {{isChecked}}/>
-            <label for="{{_id}}">{{name}}</label>
+            <label for="{{_id}}"></label>
+            <div>{{name}}</div>
           </div>
         </div>
-        </div>
+        {{/each}}
       </div>
-      {{/each}}
     </div>
   </div>
 </div>
