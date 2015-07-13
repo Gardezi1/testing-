@@ -13,12 +13,14 @@ Template.nav.helpers({
     topics_list = [];
     if (Meteor.user()){
       topics_list = Meteor.user().profile.topics;
-      console.log(topics_list);
       if(topics_list == undefined || topics_list.length <= 0){
         return topics_list;
       }
       return Topics.find({_id: { $in: topics_list}});
     }
+  },
+  ifDoctor: function(){
+    return Meteor.user().profile.type == "doctor";
   }  
 });
 

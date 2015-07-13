@@ -24,7 +24,7 @@
           <li><a class="dropdown-button-topic left" href="#!" data-activates="dropdown2">Topics<i class="material-icons right"></i></a></li>
           <ul id="dropdown2" class="dropdown-content">
           {{#each userTopics}}
-          <li><a href="#!">{{name}}</a></li>
+          <li><a href="{{pathFor route='articles'}}">{{name}}</a></li>
           {{/each}}
         </ul>
         </div>
@@ -38,9 +38,12 @@
         </ul>
         <ul class="right hide-on-med-and-down normal-nav">
           {{#if currentUser}} 
-            
-            <li class="admin"><a href="{{pathFor route='profileView'}}"><img src="{{file_S3}}"> Hi, <b>{{currentUser.profile.name}}</b></a></li>
-            <li><a href="#" class="fa fa-users"></a></li>
+            {{#if ifDoctor}}
+              <li class="admin"><a href="{{pathFor route='profileView'}}"><img src="{{file_S3}}"> Hi, <b>{{currentUser.profile.name}}</b></a></li>
+            {{else}}
+              <li class="admin"><a href="#"><img src="{{file_S3}}"> Hi, <b>{{currentUser.profile.name}}</b></a></li>
+            {{/if}}    
+            <li><a href="{{pathFor route='doctorsListing'}}" class="fa fa-users"></a></li>
             <li><a href="#" class="fa fa-envelope-o"></a></li>
             <li><a href="#" class="fa fa-bell"></a></li>
           {{/if}}  

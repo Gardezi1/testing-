@@ -16,3 +16,12 @@ Accounts.emailTemplates.resetPassword.text = function (user, url) {
     "Cheers,\n" +
     signature;
 };
+Accounts.emailTemplates.enrollAccount.subject = function (user) {
+    return "Hi, " + user.profile.name;
+};
+
+Accounts.emailTemplates.enrollAccount.text = function (user, url) {
+   return "Congratulations..! You just receive invitation request."
+     + " To accept invitation, simply click the link below:\n\n"
+     + url;
+};

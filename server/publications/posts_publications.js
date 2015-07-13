@@ -57,7 +57,12 @@ Meteor.methods({
   },
   removeFromFollowing: function(userId) {
     Meteor.users.update(Meteor.userId(), { $pull: { "profile.following": userId}});
-  }
+  },
+  sendEmail: function (userId, email) {
+        // if (this.userId == userId) {
+            Email.send(email);
+        // }
+    }
 
 });
 
