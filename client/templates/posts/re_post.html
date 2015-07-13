@@ -1,9 +1,10 @@
 <template name="rePost">
   {{#contentFor "subnav"}}
-    <h5>Re-post Article</h5>
+    <h5 class="center-align">Re-post Article</h5>
   {{/contentFor}}
   <div class="custom-container">
-    <div class="form-holder">
+    <div class="shadow-box z-depth-1">
+      <div class="form-holder">
       <div class="row">
         <form name="rePostForm" action="/articles" id="rePostForm" method="post" class="col s12">
           <input type="hidden" value="{{getThisPost._id}}" name="articleId">
@@ -37,10 +38,11 @@
           </div>
           <div class="row">
             <div class="col s12">
-              <button type="submit" class="waves-effect waves-light btn right re-post-btn">Post To Advocates</button>
+              <button type="submit" class="waves-effect waves-light btn right re-post-btn org-bg">Post To Advocates</button>
             </div>
           </div>
         </form>
+      </div>
       </div>
     </div>
   </div>  
