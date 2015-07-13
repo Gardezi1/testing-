@@ -13,6 +13,22 @@ Template.doctorsListing.helpers({
     if (Session.get("doctorSearchQuery")) {
       var name = (Session.get("doctorSearchQuery"));
       return Meteor.users.find({ $and:[{"profile.type": "doctor"},{"profile.name": {$regex: new RegExp((Session.get("doctorSearchQuery")))}}]});
+    
+    // return Meteor.users.find(
+    //    {
+    //      location:
+    //        { $near :
+    //           {
+    //             $geometry: { type: "Point",  coordinates: [ 31.55460609999999, 74.35715809999999 ] },
+    //             $minDistance: 1000,
+    //             $maxDistance: 5000
+    //           }
+    //        }
+    //    }
+    // )
+
+
+    
     }
   },
   checkIfloggedIn: function(authorId){

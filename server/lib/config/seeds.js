@@ -83,4 +83,14 @@ if (Meteor.isServer) {
     return user;
   });
 
+
+  Meteor.startup(function(){
+    if(Topics.find().count() == 0){
+      ["Topic1", "Topic2", "Topic3", "Topic4", "Topic5", "Topic6", "Topic7", "Topic8", "Topic9", "Topic10", "Topic11", "Topic12"].forEach(function(topic){
+      Topics.insert({name:topic})
+    });
+    }
+  });
+
+
 }

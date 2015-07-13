@@ -51,9 +51,11 @@
                           {{/each}}
                         </span>
                       </div>
-                      <div class="reply">
-                        <a href="{{pathFor 'rePost' id=_id }}"><i class="fa fa-share" id="{{_id}}"></i></a>
-                      </div>
+                      {{#unless checkIfAuthor authorId}}
+                        <div class="reply">
+                          <a href="{{pathFor 'rePost' id=_id }}"><i class="fa fa-share" id="{{_id}}"></i></a>
+                        </div>
+                      {{/unless}}  
                     </div>
                   </div>
                 </div>
@@ -104,9 +106,11 @@
                           {{/each}}
                         </span>
                       </div>
-                      <div class="reply">
-                        <a href="{{pathFor 'rePost' id=_id }}"><i class="fa fa-share" id="{{_id}}"></i></a>
-                      </div>
+                      {{#unless checkIfAuthor authorId}}
+                        <div class="reply">
+                          <a href="{{pathFor 'rePost' id=_id }}"><i class="fa fa-share" id="{{_id}}"></i></a>
+                        </div>
+                      {{/unless}}  
                     </div>
                   </div>
                 </div>
@@ -157,9 +161,11 @@
                           {{/each}}
                         </span>
                       </div>
-                      <div class="reply">
-                        <a href="{{pathFor 'rePost' id=_id }}"><i class="fa fa-share" id="{{_id}}"></i></a>
-                      </div>
+                      {{#unless checkIfAuthor authorId}}
+                        <div class="reply">
+                          <a href="{{pathFor 'rePost' id=_id }}"><i class="fa fa-share" id="{{_id}}"></i></a>
+                        </div>
+                      {{/unless}}  
                     </div>
                   </div>
                 </div>
@@ -210,9 +216,11 @@
                           {{/each}}
                         </span>
                       </div>
-                      <div class="reply">
-                        <a href="{{pathFor 'rePost' id=_id }}"><i class="fa fa-share" id="{{_id}}"></i></a>
-                      </div>
+                      {{#unless checkIfAuthor authorId}}
+                        <div class="reply">
+                          <a href="{{pathFor 'rePost' id=_id }}"><i class="fa fa-share" id="{{_id}}"></i></a>
+                        </div>
+                      {{/unless}}  
                     </div>
                   </div>
                 </div>

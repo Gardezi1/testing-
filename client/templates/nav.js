@@ -9,11 +9,8 @@ Template.nav.helpers({
     },
 });
 
-// Template.nav.onRendered = function () {
-//   $(".button-collapse").sideNav();
-// };
-
 Template.nav.onRendered(function() {
   $(".button-collapse").sideNav();
   $('.dropdown-button').dropdown();
+  $('.dropdown-button-topic').dropdown();
 });

@@ -23,6 +23,10 @@ Meteor.publish('data', function() {
   return Data.find();
 });
 
+Meteor.publish('Topics', function() {
+  return Topics.find();
+});
+
 
 Meteor.methods({
   returnAdminUsers: function(){
@@ -56,3 +60,5 @@ Meteor.methods({
   }
 
 });
+
+// Meteor.users._ensureIndex({ "addressOne": "2dsphere"});
