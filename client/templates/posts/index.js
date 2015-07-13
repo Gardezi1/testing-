@@ -22,7 +22,17 @@ Template.articleList.helpers({
   },
   checkIfAuthor: function(authorId){
     return authorId == Meteor.userId();
-  }
+  },
+  getArticleName: function(tid){
+    if(tid){
+      topic = Topics.findOne({_id: tid});
+      if(topic)
+        return topic.name;
+    }
+    else{
+      return [];
+    }
+  }  
 
 });
 

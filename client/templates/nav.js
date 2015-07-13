@@ -7,10 +7,23 @@ Template.nav.helpers({
           return url;
         }
     },
+  userTopics: function(){
+    // uid = Meteor.userId();
+    // user = Meteor.users.findOne(uid);
+    topics_list = [];
+    if (Meteor.user()){
+      topics_list = Meteor.user().profile.topics;
+      console.log(topics_list);
+      if(topics_list == undefined || topics_list.length <= 0){
+        return topics_list;
+      }
+      return Topics.find({_id: { $in: topics_list}});
+    }
+  }  
 });
 
 Template.nav.onRendered(function() {
+  $('.dropdown-button-topic').dropdown();
   $(".button-collapse").sideNav();
   $('.dropdown-button').dropdown();
-  $('.dropdown-button-topic').dropdown();
 });

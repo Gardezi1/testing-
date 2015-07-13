@@ -2,7 +2,7 @@
   {{#autoForm collection="Posts" id="insertPostForm" type="insert" omitFields="authorId, createdAt, updatedAt"}}
     <div class="custom-container">
       <div class="form-holder">
-        <div class="row">
+        <div class="row">{{getCheckBox}}
           <div class="col-md-12">
             <div class="shadow-box z-depth-1">
               {{#if fileId}}

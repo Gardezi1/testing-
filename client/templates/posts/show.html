@@ -8,7 +8,7 @@
           <h4><a href="{{pathFor 'articleEdit' id=_id }}">{{title}}</a></h4>
           <ul>
             {{#each articleTopic}}
-              <li><b>{{this}}</b></li>
+              <li><b>{{getArticleName this}}</b></li>
             {{/each}}
           </ul>
           <!-- <b>{{articleTopic}}</b> -->

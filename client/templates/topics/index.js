@@ -3,9 +3,18 @@ Template.topicsListing.helpers({
     return Topics.find();
   },
   isChecked: function(){
-    console.log("inn");
     var id = this._id;
-    return Session.get(id) ? "checked" : "";
+    // console.log(id);
+    topics_list = Meteor.users.findOne({_id:Meteor.userId()}).profile.topics;
+    if(topics_list == undefined || topics_list.length <= 0){
+      return "";
+    }
+    if(topics_list.indexOf(id) >= 0){
+      return "checked";
+    }
+    else{
+      return "";
+    }
   }
 });
 
@@ -14,9 +23,21 @@ Template.topicsListing.events({
     var id = $(e.target).attr('id');
     console.log(id);
     topics_list = Meteor.users.findOne({_id:Meteor.userId()}).profile.topics;
-    temp = Topics.find({_id: { $in: topics_list}}).fetch();
-    console.log(temp);
-    // Meteor.users.update(Meteor.userId(), {$push: { "profile.topics": id} });
-    console.log(topics_list);
+    if(topics_list == undefined || topics_list.length <= 0){
+      console.log("push")
+      Meteor.users.update(Meteor.userId(), {$push: { "profile.topics": id} });
+    }
+    else
+    if(topics_list.indexOf(id) >= 0){
+      console.log("pop");
+      Meteor.users.update(Meteor.userId(), {$pull: { "profile.topics": id}});
+    }
+    else{
+      Meteor.users.update(Meteor.userId(), {$push: { "profile.topics": id} });
+    }
+    // temp = Topics.find({_id: { $in: topics_list}}).fetch();
+    // console.log(temp);
+    // // Meteor.users.update(Meteor.userId(), {$push: { "profile.topics": id} });
+    // console.log(topics_list);
    }
 });
