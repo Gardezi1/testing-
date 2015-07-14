@@ -58,11 +58,54 @@ Meteor.methods({
   removeFromFollowing: function(userId) {
     Meteor.users.update(Meteor.userId(), { $pull: { "profile.following": userId}});
   },
-  sendEmail: function (userId, email) {
-        // if (this.userId == userId) {
-            Email.send(email);
-        // }
-    }
+  sendEmail: function (to, from, subject, text) {
+    check([to, from, subject, text], [String]);
+
+    // Let other method calls from the same client start running,
+    // without waiting for the email sending to complete.
+    this.unblock();
+
+    Email.send({
+      to: to,
+      from: from,
+      subject: subject,
+      text: text
+    });
+  },
+  sendTwilioMessage: function(user, phone, code){
+    twilio = Twilio('ACc4dc855ca070a1db07f086566f561a30', 'a6ded70636ffb413789396296b12e449');
+    twilio.sendSms({
+      to: phone,
+      from: '+14028755543',
+      body: "Dear " + user.profile.name + ",\n\n" +'Your 4 pin code is: '+code
+    }, function(err, responseData) {
+      if (!err) {
+        console.log(responseData.from);
+        console.log(responseData.body);
+
+      }
+      else{
+        console.log(err)
+      }
+    });
+  },
+  sendTwilioInvite: function(phone, body){
+    twilio = Twilio('ACc4dc855ca070a1db07f086566f561a30', 'a6ded70636ffb413789396296b12e449');
+    twilio.sendSms({
+      to: phone,
+      from: '+14028755543',
+      body: body
+    }, function(err, responseData) {
+      if (!err) {
+        console.log(responseData.from);
+        console.log(responseData.body);
+
+      }
+      else{
+        console.log(err)
+      }
+    });
+  }
 
 });
 
