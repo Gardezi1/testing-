@@ -54,9 +54,11 @@ Meteor.methods({
   },
   addToFollowing: function(userId) {
     Meteor.users.update(Meteor.userId(), { $addToSet: { "profile.following": userId}});
+    Meteor.users.update(userId, { $addToSet: { "profile.followers": Meteor.userId()}});
   },
   removeFromFollowing: function(userId) {
     Meteor.users.update(Meteor.userId(), { $pull: { "profile.following": userId}});
+    Meteor.users.update(userId, { $pull: { "profile.followers": Meteor.userId()}});
   },
   sendEmail: function (to, from, subject, text) {
     check([to, from, subject, text], [String]);
