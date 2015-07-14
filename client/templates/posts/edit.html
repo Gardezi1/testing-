@@ -1,5 +1,8 @@
 <template name="articleEdit">
-  <h1>Edit Post</h1>
+  {{#contentFor "subnav"}}
+    <h5 class="center-align">Edit Post</h5>
+  {{/contentFor}}
+
   {{#autoForm collection="Posts" id="updatePostForm" type="update" doc=this omitFields="authorId, createdAt, updatedAt"}}
     <div class="custom-container">
       <div class="form-holder">
