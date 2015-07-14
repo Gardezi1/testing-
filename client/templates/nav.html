@@ -2,7 +2,7 @@
   <nav role="navigation">
     <div class="container">
       <div class="nav-wrapper">
-        <a href="#" class="brand-logo"><img src="/imgs/logo.jpg"></a>
+        <a href="{{pathFor route='articles'}}" class="brand-logo"><img src="/imgs/logo.jpg"></a>
         <!-- <ul class="right hide-on-med-and-down">
           {{#if currentUser}}
             <li><a href="{{pathFor 'home'}}">Home</a></li>
@@ -26,16 +26,10 @@
           {{#each userTopics}}
           <li><a href="{{pathFor route='articles'}}">{{name}}</a></li>
           {{/each}}
+          <li class="divider"></li>
+          <li><a href="{{pathFor route='topicsListing'}}">MANAGE TOPICS</a></li>
         </ul>
         </div>
-        <ul id="dropdown2" class="dropdown-content">
-          {{#each userTopics}}
-          <li><a href="#!">{{name}}</a></li>
-          {{/each}}
-          <!-- <li><a href="#!">two</a></li>
-          <li class="divider"></li>
-          <li><a href="#!">three</a></li> -->
-        </ul>
         <ul class="right hide-on-med-and-down normal-nav">
           {{#if currentUser}} 
             {{#if ifDoctor}}
