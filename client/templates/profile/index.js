@@ -8,5 +8,8 @@ Template.profileView.helpers({
       url = "https://s3.amazonaws.com/medcircle/upload/data/"+file._id+"-"+file.name();
         return url;
     }
+  },
+  ifDoctor: function(){ 
+   return Meteor.user().profile.type == "doctor";
   }
 });
