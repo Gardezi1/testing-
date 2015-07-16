@@ -6,7 +6,13 @@ Meteor.publish('Posts', function(){
       Meteor.users.update(this.userId, {$push: { "profile.following": currentUserId} });
       following_list = Meteor.users.findOne({_id:this.userId}).profile.following;
     }
-  return Posts.find({authorId: { $in: following_list}});
+    if(Roles.userIsInRole(currentUserId, [ROLES.Advocate])){
+      my_circle = Meteor.users.findOne({_id:currentUserId}).profile.doctorCircle;
+      return Posts.find({$and: [{authorId: { $in: following_list}},{postTo: my_circle}] });
+    }
+    else{
+      return Posts.find({authorId: { $in: following_list}});
+    }
   }
   else{
     return Posts.find({authorId: currentUserId});

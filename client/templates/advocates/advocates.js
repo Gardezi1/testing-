@@ -32,9 +32,7 @@ Template.advocatesListing.helpers({
 
 Template.advocatesListing.events({  
   'click input': function(e) {
-    console.log("inn");
     var id = $(e.target).attr('id');
-    console.log(id);
     circle = Meteor.users.findOne({_id:id}).profile.doctorCircle;
     if(circle == undefined || circle.length <= 0){
       // console.log("push")

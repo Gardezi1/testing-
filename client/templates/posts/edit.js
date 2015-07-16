@@ -24,7 +24,7 @@ Template.articleEdit.helpers({
 Template.articleEdit.rendered = function(){
 
     var post = Posts.findOne({_id: Router.current().params["id"] });
-    ["articleCategory", "articleType", "postTo" ].forEach(function(selector){
+    ["articleCategory", "articleType", "postTo", "articleTopic" ].forEach(function(selector){
       $("#"+selector+" input[value='"+post[selector]+"']").prop("checked", true)
     })
 }

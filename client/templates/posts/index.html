@@ -52,11 +52,11 @@
                           {{/each}}
                         </span>
                       </div>
-                      {{#unless checkIfAuthor authorId}}
+                      {{#if isInRole 'doctor'}}
                         <div class="reply">
                           <a href="{{pathFor 'rePost' id=_id }}"><i class="fa fa-share" id="{{_id}}"></i></a>
                         </div>
-                      {{/unless}}  
+                      {{/if}}  
                     </div>
                   </div>
                 </div>
@@ -108,11 +108,11 @@
                           {{/each}}
                         </span>
                       </div>
-                      {{#unless checkIfAuthor authorId}}
+                      {{#if isInRole 'doctor'}}
                         <div class="reply">
                           <a href="{{pathFor 'rePost' id=_id }}"><i class="fa fa-share" id="{{_id}}"></i></a>
                         </div>
-                      {{/unless}}  
+                      {{/if}}  
                     </div>
                   </div>
                 </div>
@@ -164,11 +164,11 @@
                           {{/each}}
                         </span>
                       </div>
-                      {{#unless checkIfAuthor authorId}}
+                      {{#if isInRole 'doctor'}}
                         <div class="reply">
                           <a href="{{pathFor 'rePost' id=_id }}"><i class="fa fa-share" id="{{_id}}"></i></a>
                         </div>
-                      {{/unless}}  
+                      {{/if}}  
                     </div>
                   </div>
                 </div>
@@ -220,11 +220,11 @@
                           {{/each}}
                         </span>
                       </div>
-                      {{#unless checkIfAuthor authorId}}
+                      {{#if isInRole 'doctor'}}
                         <div class="reply">
                           <a href="{{pathFor 'rePost' id=_id }}"><i class="fa fa-share" id="{{_id}}"></i></a>
                         </div>
-                      {{/unless}}  
+                      {{/if}}  
                     </div>
                   </div>
                 </div>

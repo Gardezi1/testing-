@@ -9,7 +9,7 @@ var userHooks = {
  
 AutoForm.addHooks('editProfile', userHooks);
 
-Template.profileView.helpers({
+Template.editProfile.helpers({
   ifDoctor: function(){ 
    return Meteor.user().profile.type == "doctor";
   }

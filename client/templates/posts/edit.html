@@ -40,8 +40,8 @@
                     </div>
                   </div>
                   <div class="row">
-                    <div class="input-field col s12">
-                      {{> afQuickField name='articleTopic'  label-class="active"}}
+                    <div class="input-field col s12" id="articleTopic">
+                      {{> afQuickField name='articleTopic'}}
                     </div>
                   </div>
                   <div class="row">
@@ -53,7 +53,7 @@
                   </div>
                   <div class="row">
                     <div class="input-field col s12" id="articleCategory">
-                      {{setRadioButton 'articleCategory' articleCategory}}
+                      <!-- {{setRadioButton 'articleCategory' articleCategory}} -->
                       {{> afQuickField name='articleCategory'  label-class="active"}}
                     </div>
                   </div>
