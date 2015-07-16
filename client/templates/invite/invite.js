@@ -1,6 +1,5 @@
 Template.inviteAdvocate.events({
       'click #invite-advocate-by-email': function (e) {
-        var inviteForm = $(e.currentTarget);
         mail = $("#user-email").val();
         user = Meteor.users.findOne({"emails.address":mail});
         if(!user){
@@ -22,7 +21,6 @@ Template.inviteAdvocate.events({
         }
       },
       'click #invite-advocate-by-phone': function (e) {
-        var inviteForm = $(e.currentTarget);
         phone = $("#user-phone").val();
         user = Meteor.users.findOne({"profile.phone":phone})
         if(!user){

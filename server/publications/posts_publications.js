@@ -33,4 +33,7 @@ Meteor.publish('Topics', function() {
   return Topics.find();
 });
 
+Meteor.publish('Messages', function() {
+  return Messages.find();
+});
 // Meteor.users._ensureIndex({ "addressOne": "2dsphere"});

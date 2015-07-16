@@ -8,7 +8,7 @@ Posts.allow({
   remove:function(userId,project){
     return true;
   },
-})
+});
 
 Files.allow({
   insert:function(userId,doc){
@@ -20,7 +20,7 @@ Files.allow({
   download:function(userId){
    return true;
   }
-})
+});
 
 Data.allow({
   insert:function(userId,doc){
@@ -32,7 +32,7 @@ Data.allow({
   download:function(userId){
    return true;
   }
-})
+});
 
 Topics.allow({
   insert:function(userId,doc){
@@ -44,4 +44,16 @@ Topics.allow({
   remove:function(userId,project){
     return true;
   },
-})
+});
+
+Messages.allow({
+  insert:function(userId,doc){
+    return true;
+  },
+  update:function(userId,doc){
+    return true;
+  },
+  remove:function(userId,project){
+    return true;
+  },
+});

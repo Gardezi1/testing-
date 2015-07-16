@@ -6,6 +6,7 @@ if (Meteor.isClient) {
   Meteor.subscribe("data")
   Meteor.subscribe("doctor");
   Meteor.subscribe("Topics");
+  Meteor.subscribe("Messages");
 
   Meteor.call("returnAdminUsers", function(error, result){
     if(error){
