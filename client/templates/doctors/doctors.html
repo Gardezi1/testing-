@@ -1,6 +1,7 @@
 <template name="doctorsListing">
   {{#contentFor "subnav"}}
-    <h5>Find Doctors</h5>
+    <h6 class="left"><a href="{{pathFor route='articles'}}">Back</a></h6>
+    <h5 class="center-align">Find Doctors</h5>
   {{/contentFor}}
   <div class="custom-container"> 
     <div class="row">
@@ -31,7 +32,9 @@
                             <img src="{{getImage profile.picture}}" alt="{{title}}">
                             <div class="prof-data">
                                 <div class="name">
-                                  <h5>{{profile.name}}</h5>
+                                  <a href="{{pathFor 'doctorView' id=_id }}">
+                                    <h5>{{profile.name}}</h5>
+                                  </a>
                                 </div>
                                 <div class="city">
                                   {{profile.city}}
@@ -61,7 +64,9 @@
                         <img src="{{getImage pictureId}}" alt="{{title}}">
                         <div class="prof-data">
                             <div class="name">
-                              <h5>{{name}}</h5>
+                              <a href="{{pathFor 'doctorView' id=_id }}">
+                                <h5>{{name}}</h5>
+                              </a>
                             </div>
                             <div class="city">
                               {{city}}

@@ -15,7 +15,14 @@ Template.articleList.helpers({
     }
   },
   getArticlesByCategory: function(type){
-    return Posts.find({articleCategory: type})
+    tid = Session.get("feedTopicsId");
+    uid = Session.get("doctorTopicsId");
+    if(tid && uid){
+      // return Posts.find({$and: [{tid: { $in: articleTopic}},{articleCategory: type}] });
+      return Posts.find({$and: [{authorId: uid}, {articleCategory: type}, {articleTopic: tid} ]});
+    }
+    else
+      return Posts.find({articleCategory: type});
   },
   getAuthorName: function(authorId){
     return Meteor.users.findOne({_id: authorId}).profile.name;

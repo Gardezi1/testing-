@@ -5,7 +5,7 @@ Template.advocatesListing.helpers({
     return;
    }
    else
-    return Meteor.users.find({_id: { $in: follower_list}});
+    return Meteor.users.find({$and: [{_id: { $in: follower_list}}, {"profile.type": "advocate"}] });
   },
   getImage: function(pictureId){
     var file = Data.findOne({_id:pictureId});

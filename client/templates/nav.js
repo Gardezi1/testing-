@@ -21,6 +21,30 @@ Template.nav.helpers({
   },
   ifDoctor: function(){
     return Meteor.user().profile.type == "doctor";
+  },
+  getFollowing: function(){
+    if(Meteor.user()){
+      return Meteor.user().profile.following;
+    }
+  },
+  getDoctorName: function(uid){
+    if(uid){
+      return Meteor.users.findOne({_id: uid}).profile.name;
+    }
+  },
+  notCurrentUser: function(uid){
+    return Meteor.userId() != uid;
+  },
+  doctorTopics: function(){
+    uid = Session.get("doctorTopicsId");
+    if(uid){
+      return Meteor.users.findOne({_id: uid}).profile.topics;
+    }
+  },
+  getTopicName: function(tid){
+    if(tid){
+      return Topics.findOne({_id: tid}).name;
+    }
   }  
 });
 
@@ -28,4 +52,28 @@ Template.nav.onRendered(function() {
   $('.dropdown-button-topic').dropdown();
   $(".button-collapse").sideNav();
   $('.dropdown-button').dropdown();
+  $(".button-collapse-side").sideNav();
+  $('.dropdown-button-side').dropdown();
+  $('select').material_select();
+});
+
+Template.nav.events({  
+  'click .drop-side': function(event) {
+    var id = $(event.target).closest('li').attr('id');
+    if(id){
+      Session.set('doctorTopicsId', id);
+    }
+  },
+  'click .hide-nav': function(event) {
+    $('.button-collapse-side').sideNav('hide');
+  },
+  'click .article-feed': function(event) {
+    console.log("okkk");
+    $('.button-collapse-side').sideNav('hide');
+    var id = $(event.target).closest('li').attr('id');
+    console.log(id);
+    if(id){
+      Session.set('feedTopicsId', id);
+    }
+  }
 });

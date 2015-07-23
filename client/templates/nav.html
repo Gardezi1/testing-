@@ -2,24 +2,24 @@
   <nav role="navigation">
     <div class="container">
       <div class="nav-wrapper">
+        <div class="user-pro-holder">      
+          <a href="#" data-activates="slide-out" class="button-collapse-side"><img src="/imgs/image01.jpg"></a>
+          <ul id="slide-out" class="side-nav">
+            <a class='dropdown-button-side' href='#' data-activates='dropdown-side'>Select Doctor</a>
+            <ul id='dropdown-side' class='dropdown-content'>
+              {{#each getFollowing}}
+                {{#if notCurrentUser this}}
+                  <li class="drop-side" id="{{this}}"><a href="#!">{{getDoctorName this}}</a></li>
+                {{/if}}
+              {{/each}}
+              <li class="hide-nav"><a href="{{pathFor route='doctorsListing'}}">ADD DOCTOR</a></li>
+            </ul>
+            {{#each doctorTopics}}
+              <li class="article-feed" id="{{this}}"><a href="{{pathFor route='articles'}}">{{getTopicName this}}</a></li>
+            {{/each}}
+          </ul>
+        </div>
         <a href="{{pathFor route='articles'}}" class="brand-logo"><img src="/imgs/logo.jpg"></a>
-        <!-- <ul class="right hide-on-med-and-down">
-          {{#if currentUser}}
-            <li><a href="{{pathFor 'home'}}">Home</a></li>
-            <li><a href="{{pathFor route='doctorsListing'}}">Doctors</a></li>
-            <li><a href="{{pathFor route='advocates'}}">Advocates</a></li>
-            {{#if isInRole 'admin, doctor'}}
-              <li><a href="{{pathFor route='article/new'}}">Add Article</a></li>
-              <li><a href="{{pathFor route='articles'}}">Articles</a></li>
-            {{/if}}
-            {{#if isInRole 'doctor'}}
-              <li><a href="{{pathFor 'profileView'}}">Profile</a></li>
-            {{/if}}
-            <li><a href="{{pathFor 'private'}}">Private</a></li>
-            <li class="admin"><a>Hi, <b>{{currentUser.profile.name}}</b></a></li>
-            {{/if}}
-          <li>{{> atNavButton }}</li>
-        </ul> -->
         <div class="drop-topic right">
           <li><a class="dropdown-button-topic left" href="#!" data-activates="dropdown2">Topics<i class="material-icons right"></i></a></li>
           <ul id="dropdown2" class="dropdown-content">
@@ -38,8 +38,8 @@
             {{else}}
               <li><a href="{{pathFor route='doctorsListing'}}" class="fa fa-users"></a></li>
             {{/if}}  
-            <li><a href="#" class="fa fa-envelope-o"></a></li>
-            <li><a href="#" class="fa fa-bell"></a></li>
+            <li><a href="{{pathFor route='conversationView'}}" class="fa fa-envelope-o"></a></li>
+            <li><a href="{{pathFor route='notifications'}}" class="fa fa-bell"></a></li>
           {{/if}}  
           <div class="drop-holder">
             <a href="#" class="fa fa-cog dropdown-button" data-activates="dropdown1"></a>
