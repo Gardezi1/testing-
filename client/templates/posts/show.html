@@ -1,20 +1,42 @@
 <template name="articleView">
+{{#contentFor "subnav"}}
+  <div class="row">
+    <div class="col s12 m2 l2">  
+      <a href="#" class="back-btn left fa fa-chevron-left"> Back</a>
+    </div>
+    <div class="col s12 m8 l8">
+      <h5 class="center-align">Latest research suggest london is great for healt </h5>
+    </div>
+    <div class="col s12 m2 l2">
+      <a href="#" class="right forward-btn"> <i class="fa fa-mail-forward"></i> </a>
+    </div>
+  </div>
+{{/contentFor}}
   {{#each list}}
   <div class="custom-container">
     <div class="form-holder">
       <div class="row">
         <div class="col-md-12">
-          <img src="{{file_S3}}">
-          <h4><a href="{{pathFor 'articleEdit' id=_id }}">{{title}}</a></h4>
-          <ul>
-            {{#each articleTopic}}
-              <li><b>{{getArticleName this}}</b></li>
-            {{/each}}
-          </ul>
-          <!-- <b>{{articleTopic}}</b> -->
-          <b>{{articleType}}</b>
-          <b>{{articleCategory}}</b> 
-          <p>{{body}}</p>
+          <div class="post-img-holder">
+            <img src="{{file_S3}}">
+            <div class="post-head">
+              <img src="/imgs/image01.jpg">
+              <strong class="auhtor-name">DR. GUPTA <span>DEPRESSION</span></strong>
+            </div>
+          </div>
+          <div class="post-det-holder">
+            <h4><a href="{{pathFor 'articleEdit' id=_id }}">{{title}}</a></h4>
+            <h5 class="sub-title"></h5>
+            <ul>
+              {{#each articleTopic}}
+                <li><b>{{getArticleName this}}</b></li>
+              {{/each}}
+            </ul>
+            <!-- <b>{{articleTopic}}</b> -->
+            <b class="sub-title">{{articleType}}</b>
+            <b>{{articleCategory}}</b> 
+            <p>{{body}}</p>
+          </div>
         </div>
       </div>
     </div>
