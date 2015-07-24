@@ -1,5 +1,14 @@
 <template name="editProfile">
-
+  {{#contentFor "subnav"}}
+    <div class="row">
+      <div class="col s12 m2 l2">  
+        <a href="{{pathFor route='profileView'}}" class="back-btn left fa fa-chevron-left"> Cancel</a>
+      </div>
+      <div class="col s12 m8 l8">
+        <h5 class="center-align">Edit Profile </h5>
+      </div>
+    </div>
+  {{/contentFor}}
 {{#autoForm collection='Meteor.users' doc=currentUser type='update' id='editProfile' omitFields="_id, profile.type, profile.code_verified,profile.dob, roles, services, profile.following"}}
 <div class="custom-container">
   <div class="form-holder">  

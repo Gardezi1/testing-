@@ -2,14 +2,16 @@
 {{#contentFor "subnav"}}
   <div class="row">
     <div class="col s12 m2 l2">  
-      <a href="#" class="back-btn left fa fa-chevron-left"> Back</a>
+      <a href="{{pathFor route='articles'}}" class="back-btn left fa fa-chevron-left"> Back</a>
     </div>
     <div class="col s12 m8 l8">
-      <h5 class="center-align">Latest research suggest london is great for healt </h5>
+      <h5 class="center-align">{{title}} </h5>
     </div>
-    <div class="col s12 m2 l2">
-      <a href="#" class="right forward-btn"> <i class="fa fa-mail-forward"></i> </a>
-    </div>
+    {{#if isInRole 'doctor'}}
+      <div class="col s12 m2 l2">
+        <a href="{{pathFor 'rePost' id=_id }}" class="right forward-btn"> <i class="fa fa-mail-forward"></i> </a>
+      </div>
+    {{/if}}  
   </div>
 {{/contentFor}}
   {{#each list}}
@@ -20,21 +22,19 @@
           <div class="post-img-holder">
             <img src="{{file_S3}}">
             <div class="post-head">
-              <img src="/imgs/image01.jpg">
-              <strong class="auhtor-name">DR. GUPTA <span>DEPRESSION</span></strong>
+              <img src="{{getImage authorId}}">
+              <strong class="auhtor-name">DR. {{getDoctorName authorId}}
+                <span>
+                  {{#each articleTopic}}
+                    <b>{{getArticleName this}}</b>
+                  {{/each}}
+                </span>
+              </strong>
             </div>
           </div>
           <div class="post-det-holder">
-            <h4><a href="{{pathFor 'articleEdit' id=_id }}">{{title}}</a></h4>
-            <h5 class="sub-title"></h5>
-            <ul>
-              {{#each articleTopic}}
-                <li><b>{{getArticleName this}}</b></li>
-              {{/each}}
-            </ul>
-            <!-- <b>{{articleTopic}}</b> -->
-            <b class="sub-title">{{articleType}}</b>
-            <b>{{articleCategory}}</b> 
+            <h4>{{title}}</h4>
+            <b>{{source}}</b> 
             <p>{{body}}</p>
           </div>
         </div>

@@ -25,7 +25,9 @@ Template.articleList.helpers({
       return Posts.find({articleCategory: type});
   },
   getAuthorName: function(authorId){
-    return Meteor.users.findOne({_id: authorId}).profile.name;
+    if(authorId){
+      return Meteor.users.findOne({_id: authorId}).profile.name;
+    }
   },
   checkIfAuthor: function(authorId){
     return authorId == Meteor.userId();

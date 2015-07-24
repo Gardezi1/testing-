@@ -5,7 +5,7 @@
         <div class="user-pro-holder">      
           <a href="#" data-activates="slide-out" class="button-collapse-side"><img src="/imgs/image01.jpg"></a>
           <ul id="slide-out" class="side-nav doc-list">
-            <a class='dropdown-button-side fa fa-chevron-down' href='#' data-activates='dropdown-side'> <span><img src="/imgs/image01.jpg"></span> Select Doctor</a>
+            <a class='dropdown-button-side fa fa-chevron-down' href='#' data-activates='dropdown-side'> Select Doctor</a>
             <ul id='dropdown-side' class='collection dropdown-content'>
               {{#each getFollowing}}
                 {{#if notCurrentUser this}}
@@ -25,16 +25,6 @@
           </ul>
         </div>
         <a href="{{pathFor route='articles'}}" class="brand-logo"><img src="/imgs/logo.jpg"></a>
-        <div class="drop-topic right">
-          <li><a class="dropdown-button-topic left" href="#!" data-activates="dropdown2">Topics<i class="material-icons right"></i></a></li>
-          <ul id="dropdown2" class="dropdown-content">
-          {{#each userTopics}}
-          <li><a href="{{pathFor route='articles'}}">{{name}}</a></li>
-          {{/each}}
-          <li class="divider"></li>
-          <li><a href="{{pathFor route='topicsListing'}}">MANAGE TOPICS</a></li>
-        </ul>
-        </div>
         <ul class="right hide-on-med-and-down normal-nav">
           {{#if currentUser}} 
               <li class="admin"><a href="{{pathFor route='profileView'}}"><img src="{{file_S3}}"> Hi, <b>{{currentUser.profile.name}}</b></a></li>

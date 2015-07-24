@@ -11,5 +11,20 @@ Template.articleView.helpers({
   },
   getArticleName: function(tid){
     return Topics.findOne({_id: tid}).name;
-  }   
+  },
+  getDoctorName: function(uid){
+    if(uid){
+      return Meteor.users.findOne({_id: uid}).profile.name;
+    }
+  },
+  getImage: function(uid){
+    if(uid){
+      pid = Meteor.users.findOne({_id: uid}).profile.picture;
+    }
+    var file = Data.findOne({_id:pid});
+    if(file){
+      url = "https://s3.amazonaws.com/medcircle/upload/data/"+file._id+"-"+file.name();
+        return url;
+    }
+  }     
 });

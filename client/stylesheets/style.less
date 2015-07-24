@@ -693,6 +693,9 @@ li.admin {
 .post-img-holder{
   position: relative;
   margin-bottom: 60px;
+  img{
+    width:100%;
+  }
 }
 
 .post-head{
@@ -703,12 +706,16 @@ li.admin {
   .auhtor-name{
     color: #4d4d51;
     font-weight: 600;
+    text-transform: uppercase;
+    position: relative;
+    top: -10px;
     span{
       color: #f25d47;
+      margin: 0 8px;
     }
   }
   img{
-    margin-right: 20px;
+    margin-right: 10px;
     .RoundBorders (100%);
     max-width: 69px;
     max-height: 69px;
@@ -737,6 +744,8 @@ li.admin {
   position: fixed;
   bottom: 40px;
   right: 40px;
+  background: #fff;
+  border: 1px solid #00abd2;
 }
 
 /* Start Docs List Styling */
@@ -746,7 +755,7 @@ li.admin {
   li{
     padding: 0;
   }
-  img{
+  > img{
     .RoundBorders(4px);
     margin-right:10px;
     border:1px solid #ccc;
@@ -781,5 +790,23 @@ li.admin {
       line-height: 52px;
       min-height: 80px;
     }
+  }
+  .collection{
+    .collection-item.avatar{
+      min-height: 70px;
+      .circle{
+        width: 50px;
+        height: 50px;
+      }
+    }
+    .collection-item{
+      background: #ededed;
+      border-bottom: 0;
+      color: #4d4d4d;
+    }
+  }
+  .dropdown-content{
+    background: #ededed;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0), 0 2px 10px 0 rgba(0, 0, 0, 0) !important;
   }
 }

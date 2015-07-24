@@ -17,7 +17,7 @@ Template.rePost.events({
     var comment = event.target.articleComment.value;
     var id = event.target.articleId.value;
     var article = Posts.findOne({_id: id});
-    Posts.insert({'fileId':article.fileId ,'title':title,'source':source, 'url': article.url,'articleTopic': article.articleTopic, 'articleType': article.articleType, 'articleCategory': article.articleCategory,'postTo':article.postTo,'body': article.body});
+    Posts.insert({'fileId':article.fileId ,'title':title,'source':source, 'url': article.url,'articleTopic': article.articleTopic, 'articleType': article.articleType, 'articleCategory': article.articleCategory,'postTo':group,'body': article.body, 'comment': comment});
     Router.go('/articles');
   },
 });
