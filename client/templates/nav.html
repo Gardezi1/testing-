@@ -6,17 +6,22 @@
           <a href="#" data-activates="slide-out" class="button-collapse-side"><img src="/imgs/image01.jpg"></a>
           <ul id="slide-out" class="side-nav">
             <a class='dropdown-button-side' href='#' data-activates='dropdown-side'>Select Doctor</a>
-            <ul id='dropdown-side' class='dropdown-content'>
+            <ul id='dropdown-side' class="collection dropdown-content">
               {{#each getFollowing}}
                 {{#if notCurrentUser this}}
-                  <li class="drop-side" id="{{this}}"><a href="#!">{{getDoctorName this}}</a></li>
+                  <li class="collection-item avatar drop-side" id="{{this}}">
+                    <img src="{{getImage this}}" alt="" class="circle">
+                    <span class="title">{{getDoctorName this}}</span>
+                  </li>
                 {{/if}}
               {{/each}}
-              <li class="hide-nav"><a href="{{pathFor route='doctorsListing'}}">ADD DOCTOR</a></li>
-            </ul>
+              <li class="hide-nav"><a href="{{pathFor route='doctorsListing'}}">ADD DOCTOR</a></li>    
+            </ul>  
             {{#each doctorTopics}}
               <li class="article-feed" id="{{this}}"><a href="{{pathFor route='articles'}}">{{getTopicName this}}</a></li>
             {{/each}}
+              <li class="divider"></li>
+              <li class="hide-nav show-topic"><a href="{{pathFor route='topicsListing'}}">MANAGE TOPICS</a></li>
           </ul>
         </div>
         <a href="{{pathFor route='articles'}}" class="brand-logo"><img src="/imgs/logo.jpg"></a>

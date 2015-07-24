@@ -477,7 +477,7 @@ li.admin {
   img{
     width: 100%;
     float: left;
-    min-height: 136px;
+    min-height: 155px;
   }
 }
 .doc-detail{
@@ -512,6 +512,23 @@ li.admin {
   	padding: 0;
   	width:100%;
   	font-size: 15px;
+  }
+  .switch{
+    margin-top: 20px;
+    .lever{
+      float: right;
+      width: 20px;
+      height: 6px;
+      margin: 10px 0 0;
+      &:after{
+        top: -2px;
+        width: 10px;
+        height: 10px;
+      }
+    }
+    input[type=checkbox]:checked + .lever:after {
+      left: 11px;
+    }
   }
 } 
 .page-header{
@@ -641,5 +658,8 @@ li.admin {
   }
 }
 
+.show-topic{
+  visibility: hidden;
+}
 
 

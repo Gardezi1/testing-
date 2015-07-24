@@ -45,6 +45,16 @@ Template.nav.helpers({
     if(tid){
       return Topics.findOne({_id: tid}).name;
     }
+  },
+  getImage: function(uid){
+    if(uid){
+      pid = Meteor.users.findOne({_id: uid}).profile.picture;
+    }
+    var file = Data.findOne({_id:pid});
+    if(file){
+      url = "https://s3.amazonaws.com/medcircle/upload/data/"+file._id+"-"+file.name();
+        return url;
+    }
   }  
 });
 
@@ -63,6 +73,7 @@ Template.nav.events({
     if(id){
       Session.set('doctorTopicsId', id);
     }
+    $(".show-topic").css("visibility", "visible");
   },
   'click .hide-nav': function(event) {
     $('.button-collapse-side').sideNav('hide');
