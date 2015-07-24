@@ -4,9 +4,9 @@
       <div class="nav-wrapper">
         <div class="user-pro-holder">      
           <a href="#" data-activates="slide-out" class="button-collapse-side"><img src="/imgs/image01.jpg"></a>
-          <ul id="slide-out" class="side-nav">
-            <a class='dropdown-button-side' href='#' data-activates='dropdown-side'>Select Doctor</a>
-            <ul id='dropdown-side' class="collection dropdown-content">
+          <ul id="slide-out" class="side-nav doc-list">
+            <a class='dropdown-button-side fa fa-chevron-down' href='#' data-activates='dropdown-side'> <span><img src="/imgs/image01.jpg"></span> Select Doctor</a>
+            <ul id='dropdown-side' class='collection dropdown-content'>
               {{#each getFollowing}}
                 {{#if notCurrentUser this}}
                   <li class="collection-item avatar drop-side" id="{{this}}">
@@ -15,8 +15,8 @@
                   </li>
                 {{/if}}
               {{/each}}
-              <li class="hide-nav"><a href="{{pathFor route='doctorsListing'}}">ADD DOCTOR</a></li>    
-            </ul>  
+              <li class="hide-nav"><a href="{{pathFor route='doctorsListing'}}" class="mdi-content-add">ADD DOCTOR</a></li>
+            </ul>
             {{#each doctorTopics}}
               <li class="article-feed" id="{{this}}"><a href="{{pathFor route='articles'}}">{{getTopicName this}}</a></li>
             {{/each}}
@@ -39,15 +39,15 @@
           {{#if currentUser}} 
               <li class="admin"><a href="{{pathFor route='profileView'}}"><img src="{{file_S3}}"> Hi, <b>{{currentUser.profile.name}}</b></a></li>
             {{#if ifDoctor}}    
-              <li><a href="{{pathFor route='advocatesListing'}}" class="fa fa-users"></a></li>
+              <li><a href="{{pathFor route='advocatesListing'}}" class="fa fa-users tooltipped" data-position="bottom" data-delay="50" data-tooltip="ADVOCATES"></a></li>
             {{else}}
               <li><a href="{{pathFor route='doctorsListing'}}" class="fa fa-users"></a></li>
             {{/if}}  
-            <li><a href="{{pathFor route='conversationView'}}" class="fa fa-envelope-o"></a></li>
-            <li><a href="{{pathFor route='notifications'}}" class="fa fa-bell"></a></li>
+            <li><a href="{{pathFor route='conversationView'}}" class="fa fa-envelope-o tooltipped" data-position="bottom" data-delay="50" data-tooltip="Messages"></a></li>
+            <li><a href="{{pathFor route='notifications'}}" class="fa fa-bell tooltipped" data-position="bottom" data-delay="50" data-tooltip="NOTIFICATION"></a></li>
           {{/if}}  
           <div class="drop-holder">
-            <a href="#" class="fa fa-cog dropdown-button" data-activates="dropdown1"></a>
+            <a href="#" class="fa fa-envelope-o tooltipped fa fa-cog dropdown-button" data-position="bottom" data-delay="50" data-tooltip="Settings" data-activates="dropdown1"></a>
               <!-- Dropdown Structure -->
               <ul id='dropdown1' class='dropdown-content'>
                 {{#if currentUser}}
