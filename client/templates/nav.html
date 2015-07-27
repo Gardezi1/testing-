@@ -2,32 +2,38 @@
   <nav role="navigation">
     <div class="container">
       <div class="nav-wrapper">
-        <div class="user-pro-holder">      
-          <a href="#" data-activates="slide-out" class="button-collapse-side"><img src="/imgs/image01.jpg"></a>
-          <ul id="slide-out" class="side-nav doc-list">
-            <ul class="collapsible" data-collapsible="accordion">
-              <li>
-                <div class="collapsible-header dropdown-button-side fa fa-chevron-down">Select Doctor</div>
-                <div class="collapsible-body">
-                  {{#each getFollowing}}
-                    {{#if notCurrentUser this}}
-                      <li class="collection-item avatar drop-side" id="{{this}}">
-                        <img src="{{getImage this}}" alt="" class="circle">
-                        <span class="title">{{getDoctorName this}}</span>
-                      </li>
-                    {{/if}}
-                  {{/each}}
-                  <li class="add-holder"><a href="{{pathFor route='doctorsListing'}}" class="mdi-content-add">ADD DOCTOR</a></li>
-                </div>
-              </li>
+        {{#if currentUser}}
+          <div class="user-pro-holder">      
+            <a href="#" data-activates="slide-out" class="button-collapse-side"><img src="/imgs/image01.jpg"></a>
+            <ul id="slide-out" class="side-nav doc-list">
+              <ul class="collapsible" data-collapsible="accordion">
+                <li>
+                  <div class="collapsible-header dropdown-button-side fa fa-chevron-down">Select Doctor</div>
+                  <div class="collapsible-body doc-collapse">
+                    {{#each getFollowing}}
+                      {{#if notCurrentUser this}}
+                        <li class="collection-item avatar drop-side" id="{{this}}">
+                          <img src="{{getImage this}}" alt="" class="circle">
+                          <span class="title">{{getDoctorName this}}</span>
+                        </li>
+                      {{/if}}
+                    {{/each}}
+                    <li class="add-holder hide-nav"><a href="{{pathFor route='doctorsListing'}}" class="mdi-content-add">ADD DOCTOR</a></li>
+                  </div>
+                </li>
+              </ul>
+              {{#each doctorTopics}}
+                {{#if index}}
+                  <li class="article-feed" id="{{value}}"><a href="{{pathFor route='articles'}}">{{getTopicName value}}</a></li>
+                {{else}}
+                  <li class="article-feed active-topic" id="{{value}}"><a href="{{pathFor route='articles'}}">{{getTopicName value}}</a></li>
+                {{/if}}    
+              {{/each}}
+                <li class="divider"></li>
+                <li class="hide-nav show-topic"><a href="{{pathFor route='topicsListing'}}">MANAGE TOPICS</a></li>
             </ul>
-            {{#each doctorTopics}}
-              <li class="article-feed" id="{{this}}"><a href="{{pathFor route='articles'}}">{{getTopicName this}}</a></li>
-            {{/each}}
-              <li class="divider"></li>
-              <li class="hide-nav show-topic"><a href="{{pathFor route='topicsListing'}}">MANAGE TOPICS</a></li>
-          </ul>
-        </div>
+          </div>
+        {{/if}}
         <a href="{{pathFor route='articles'}}" class="brand-logo"><img src="/imgs/logo.jpg"></a>
         <ul class="right hide-on-med-and-down normal-nav">
           {{#if currentUser}} 
@@ -45,7 +51,7 @@
               <!-- Dropdown Structure -->
               <ul id='dropdown1' class='dropdown-content'>
                 {{#if currentUser}}
-                  <li><a href="#!">Invite a Friend</a></li>
+                  <li><a href="{{pathFor route='inviteAdvocate'}}">Invite a Friend</a></li>
                   <li><a href="#!">Settings</a></li>
                   <li><a href="#!">Privacy Policy</a></li>
                   <li><a href="#!">Terms of Use</a></li>

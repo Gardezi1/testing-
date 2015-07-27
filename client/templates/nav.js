@@ -26,7 +26,10 @@ Template.nav.helpers({
   doctorTopics: function(){
     uid = Session.get("doctorTopicsId");
     if(uid){
-      return Meteor.users.findOne({_id: uid}).profile.topics;
+      topics = Meteor.users.findOne({_id: uid}).profile.topics;
+      return _.map(topics, function(value, index){
+        return {value: value, index: index};
+      });
     }
   },
   getTopicName: function(tid){
@@ -71,6 +74,8 @@ Template.nav.events({
   'click .article-feed': function(event) {
     console.log("okkk");
     $('.button-collapse-side').sideNav('hide');
+    $('#slide-out li.active-topic').removeClass('active-topic');
+    $(event.target).closest('li').addClass('active-topic');
     var id = $(event.target).closest('li').attr('id');
     console.log(id);
     if(id){
