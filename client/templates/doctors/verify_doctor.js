@@ -7,3 +7,7 @@ Template.verify.helpers({
     }
   }
 });
+
+Template.verify.onRendered(function() {
+  $('select').material_select();
+});
