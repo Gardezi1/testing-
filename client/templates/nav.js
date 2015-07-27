@@ -54,6 +54,7 @@ Template.nav.onRendered(function() {
   $('.dropdown-button-side').dropdown();
   $('select').material_select();
   $('.tooltipped').tooltip({delay: 50});
+  $('.collapsible').collapsible({accordion : false});
 });
 
 Template.nav.events({  
