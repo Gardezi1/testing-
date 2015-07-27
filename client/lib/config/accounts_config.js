@@ -8,9 +8,9 @@ if (Meteor.isClient) {
   Meteor.subscribe("Topics");
   Meteor.subscribe("Messages");
 
-  Meteor.call("returnAdminUsers", function(error, result){
+  Meteor.call("returnDoctorUsers", function(error, result){
     if(error){
-      console.log("error from returnAdminUsers: ", error);
+      console.log("error from returnDoctorUsers: ", error);
     } else {
       Session.set("adminUsers", result);
     }

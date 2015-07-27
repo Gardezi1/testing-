@@ -2,7 +2,7 @@
   <nav role="navigation">
     <div class="container">
       <div class="nav-wrapper">
-        {{#if currentUser}}
+        <!-- {{#if currentUser}} -->
           <div class="user-pro-holder">      
             <a href="#" data-activates="slide-out" class="button-collapse-side"><img src="/imgs/image01.jpg"></a>
             <ul id="slide-out" class="side-nav doc-list">
@@ -33,7 +33,7 @@
                 <li class="hide-nav show-topic"><a href="{{pathFor route='topicsListing'}}">MANAGE TOPICS</a></li>
             </ul>
           </div>
-        {{/if}}
+        <!-- {{/if}} -->
         <a href="{{pathFor route='articles'}}" class="brand-logo"><img src="/imgs/logo.jpg"></a>
         <ul class="right hide-on-med-and-down normal-nav">
           {{#if currentUser}} 
