@@ -53,6 +53,7 @@ Template.nav.onRendered(function() {
   $(".button-collapse-side").sideNav();
   $('.dropdown-button-side').dropdown();
   $('select').material_select();
+  $('.tooltipped').tooltip({delay: 50});
 });
 
 Template.nav.events({  

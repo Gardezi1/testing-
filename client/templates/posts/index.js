@@ -47,5 +47,4 @@ Template.articleList.helpers({
 
 Template.articleList.onRendered(function() {
   $('ul.tabs').tabs();
-  $('.tooltipped').tooltip({delay: 50});
 });
