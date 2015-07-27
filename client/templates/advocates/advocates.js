@@ -27,12 +27,27 @@ Template.advocatesListing.helpers({
     else{
       return "";
     }
+  },
+  isActive: function(uid){
+    var id = this._id;
+    // console.log(id);
+    circle = Meteor.users.findOne({_id:uid}).profile.doctorCircle;
+    if(circle == undefined || circle.length <= 0){
+      return "";
+    }
+    if(circle.indexOf("1st") >= 0){
+      return "active";
+    }
+    else{
+      return "";
+    }
   }
 });
 
 Template.advocatesListing.events({  
   'click input': function(e) {
     var id = $(e.target).attr('id');
+    
     circle = Meteor.users.findOne({_id:id}).profile.doctorCircle;
     if(circle == undefined || circle.length <= 0){
       // console.log("push")

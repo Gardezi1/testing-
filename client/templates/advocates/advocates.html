@@ -2,7 +2,7 @@
   {{#contentFor "subnav"}}
     <div class="row">
     <div class="col s12 m2 l2">  
-      <a href="#" class="back-btn left fa fa-chevron-left"> Back</a>
+      <a href="{{pathFor route='articles'}}" class="back-btn left fa fa-chevron-left"> Back</a>
     </div>
     <div class="col s12 m8 l8">
       <h5 class="center-align">Advocates</h5>
@@ -10,8 +10,6 @@
     <div class="col s12 m2 l2">
     </div>
   </div>
-
-
   {{/contentFor}}
   <div class="custom-container"> 
     <div class="row">
@@ -27,8 +25,8 @@
                           <div class="name">
                             <h5>{{profile.name}}</h5>
                           </div>
-                          <div class="switch">
-                            <label>
+                          <div class="switch circle-{{_id}}">
+                            <label class="{{isActive _id}}">
                               1st Circle
                               <input type="checkbox" id="{{_id}}" {{isChecked _id}}>
                               <span class="lever"></span>

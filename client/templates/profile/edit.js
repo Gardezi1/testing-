@@ -18,3 +18,10 @@ Template.editProfile.helpers({
 Template.editProfile.onRendered(function() {
   $('select').material_select();
 });
+
+Template.editProfile.events({  
+  'click .save-my-profile': function(event) {
+    console.log("inn");
+    $(".save-profile").click();
+  }
+});

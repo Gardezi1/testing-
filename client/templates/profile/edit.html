@@ -1,4 +1,8 @@
 <template name="editProfile">
+  
+{{#autoForm collection='Meteor.users' doc=currentUser type='update' id='editProfile' omitFields="_id, profile.type, profile.code_verified,profile.dob, roles, services, profile.following"}}
+
+<div class="custom-container">
   {{#contentFor "subnav"}}
     <div class="row">
       <div class="col s12 m2 l2">  
@@ -7,10 +11,11 @@
       <div class="col s12 m8 l8">
         <h5 class="center-align">Edit Profile </h5>
       </div>
+      <div class="col s12 m8 l2 save-my-profile">
+        <a href="#" class="org-color right edite-btn">Save </a>
+      </div>
     </div>
   {{/contentFor}}
-{{#autoForm collection='Meteor.users' doc=currentUser type='update' id='editProfile' omitFields="_id, profile.type, profile.code_verified,profile.dob, roles, services, profile.following"}}
-<div class="custom-container">
   <div class="form-holder">  
     <div class="row">
       <div class="col-md-12">
@@ -77,7 +82,7 @@
                             {{> afQuickField name='profile.bio'}}
                           </div>
                         </div>
-                        <button type='submit' class="btn btn-primary">Save profile</button>
+                        <button type='submit' style="display: none;" class="btn btn-primary save-profile">Save profile</button>
                       {{else}}
                         <div class="row profile-edit upload-btn-holder fileUpload">
                           <div class="col s12 prof-edit-head mdi-content-add">
@@ -89,6 +94,7 @@
                             {{> afQuickField name='profile.name'}}
                           </div>
                         </div>
+                        <button type='submit' style="display: none;" class="btn btn-primary save-profile">Save profile</button>
                       {{/if}}  
                     </div>
                   </div>
