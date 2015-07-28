@@ -1,14 +1,10 @@
 if (Meteor.isServer) {
 
-  if (Meteor.users.find().count() === 0) {
+  if (!Meteor.users.findOne({"emails.address": "admin@medcircle.com"})) {
     var admins = [
-      { name: "Admin", email: "test@kwanso.com", password: "123456", phone: '12345678', roles: ['admin'] }
+      { name: "admin", email: "admin@medcircle.com", password: "medcircle123", phone: '92321434343', roles: ['admin'] }
     ];
-    Accounts.emailTemplates.verifyEmail.text = function(user, url) {
-      return "Dear " + user.profile.name + ",\n\n" +
-        'To verify your account email, simply click the link below. ' + url +
-        "\n\n" + "Thanks";
-    };
+    
     _.each(admins, function (user) {
       var id;
 
@@ -36,6 +32,9 @@ if (Meteor.isServer) {
     else{
     user.profile = options.profile || {};
     user.profile.code_verified = false;
+    var admin_user = Meteor.users.findOne({"emails.address": "admin@medcircle.com"})._id;
+    user.profile.following = [];
+    user.profile.following.push(admin_user);
 
     if(user.profile.type === 'advocate'){
       var ph = user.profile.phone

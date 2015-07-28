@@ -3,6 +3,12 @@ Accounts.emailTemplates.siteName = "Medcircle";
 
 Accounts.emailTemplates.from = "Medcircle <no-reply@medcircle.com>";
 
+Accounts.emailTemplates.verifyEmail.text = function(user, url) {
+  return "Dear " + user.profile.name + ",\n\n" +
+    'To verify your account email, simply click the link below. ' + url +
+    "\n\n" + "Thanks";
+};
+
 Accounts.emailTemplates.resetPassword.subject = function (user) {
     return "Message for " + user.profile.name;
 };

@@ -2,11 +2,19 @@
   <nav role="navigation">
     <div class="container">
       <div class="nav-wrapper">
-        <!-- {{#if currentUser}} -->
+        {{#if currentUser}}
           <div class="user-pro-holder">      
             <a href="#" data-activates="slide-out" class="button-collapse-side"><img src="/imgs/image01.jpg"></a>
             <ul id="slide-out" class="side-nav doc-list">
-              <ul class="collapsible" data-collapsible="accordion">
+              <select id="doc-select">
+                {{#each getFollowing}}
+                  {{#if notCurrentUser this}}
+                    <option value="{{this}}" data-imagesrc="{{getImage this}}">{{getDoctorName this}}</option>
+                  {{/if}}
+                {{/each}}
+                <option value="0" class="mdi-content-add">ADD DOCTOR</option>  
+              </select>
+              <!-- <ul class="collapsible" data-collapsible="accordion">
                 <li>
                   <div class="collapsible-header dropdown-button-side fa fa-chevron-down">Select Doctor</div>
                   <div class="collapsible-body doc-collapse">
@@ -21,7 +29,7 @@
                     <li class="add-holder hide-nav"><a href="{{pathFor route='doctorsListing'}}" class="mdi-content-add">ADD DOCTOR</a></li>
                   </div>
                 </li>
-              </ul>
+              </ul> -->
               {{#each doctorTopics}}
                 {{#if index}}
                   <li class="article-feed" id="{{value}}"><a href="{{pathFor route='articles'}}">{{getTopicName value}}</a></li>
@@ -33,7 +41,7 @@
                 <li class="hide-nav show-topic"><a href="{{pathFor route='topicsListing'}}">MANAGE TOPICS</a></li>
             </ul>
           </div>
-        <!-- {{/if}} -->
+        {{/if}}
         <a href="{{pathFor route='articles'}}" class="brand-logo"><img src="/imgs/logo.jpg"></a>
         <ul class="right hide-on-med-and-down normal-nav">
           {{#if currentUser}} 

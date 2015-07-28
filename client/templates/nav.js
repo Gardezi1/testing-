@@ -17,7 +17,8 @@ Template.nav.helpers({
   },
   getDoctorName: function(uid){
     if(uid){
-      return Meteor.users.findOne({_id: uid}).profile.name;
+      var user = Meteor.users.findOne({_id: uid});
+      return user && user.profile.name;
     }
   },
   notCurrentUser: function(uid){
@@ -39,13 +40,17 @@ Template.nav.helpers({
   },
   getImage: function(uid){
     if(uid){
-      pid = Meteor.users.findOne({_id: uid}).profile.picture;
+      var user = Meteor.users.findOne({_id: uid});
+      if(user && user.profile.picture){
+        pid = user.profile.picture;
+        var file = Data.findOne({_id:pid});
+        if(file){
+          url = "https://s3.amazonaws.com/medcircle/upload/data/"+file._id+"-"+file.name();
+            return url;
+        }
+      }
     }
-    var file = Data.findOne({_id:pid});
-    if(file){
-      url = "https://s3.amazonaws.com/medcircle/upload/data/"+file._id+"-"+file.name();
-        return url;
-    }
+
   }  
 });
 
@@ -58,9 +63,21 @@ Template.nav.onRendered(function() {
   $('select').material_select();
   $('.tooltipped').tooltip({delay: 50});
   $('.collapsible').collapsible({accordion : false});
+  $('#doc-select').ddslick();
+  $('#doc-select li').on("click", function(event){
+    var id = $(event.target).find('.dd-option-value').val();
+    if(id){
+      Session.set('doctorTopicsId', id);
+    }
+    $(".show-topic").css("visibility", "visible");
+  })
+
 });
 
-Template.nav.events({  
+Template.nav.events({
+  // 'change #doc-select': function(event) {
+  //   console.log("innnn");
+  // },  
   'click .drop-side': function(event) {
     var id = $(event.target).closest('li').attr('id');
     if(id){
@@ -72,7 +89,6 @@ Template.nav.events({
     $('.button-collapse-side').sideNav('hide');
   },
   'click .article-feed': function(event) {
-    console.log("okkk");
     $('.button-collapse-side').sideNav('hide');
     $('#slide-out li.active-topic').removeClass('active-topic');
     $(event.target).closest('li').addClass('active-topic');
