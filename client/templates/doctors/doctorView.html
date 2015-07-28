@@ -1,8 +1,18 @@
 <template name="doctorView">
   {{#contentFor "subnav"}}
-    <h6 class="left"><a href="{{pathFor route='doctorsListing'}}">Back</a></h6>
-    <h5 class="center-align">Dr. {{profile.name}} </h5>
-    <div class="edit-profile right"><a href="" class="org-color">Follow</a></div>
+    <a href="{{pathFor route='doctorsListing'}}" class="back-btn left fa fa-chevron-left">Back</a>
+    <div class="col s12 m8 l8">
+      <h5 class="center-align">Dr. {{profile.name}} </h5>
+    </div>
+    {{#if checkIfFollowing _id}}
+    <div class="col s12 m8 l2">
+     <div class="edit-profile right start-unfollow" id="{{_id}}"><a href="">UNFOLLOW</a></div>
+    </div> 
+    {{else}}
+      <div class="col s12 m8 l2">
+        <div class="edit-profile right start-follow" id="{{_id}}"><a href="" class="org-color">FOLLOW</a></div>
+      </div>
+    {{/if}} 
   {{/contentFor}}
 <div class="custom-container">
   <div class="form-holder">  
