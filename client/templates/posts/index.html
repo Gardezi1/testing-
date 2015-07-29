@@ -234,6 +234,8 @@
         {{/each}}
       </div>
     </div>
-  </div>  
+  </div> 
+  {{#if isInRole 'admin' 'doctor'}} 
   <a href="/article/new" class="btn-floating btn-large waves-effect waves-light tooltipped pluse-icon" data-position="top" data-delay="50" data-tooltip="New Media"> + </a>
+  {{/if}}
 </template>
