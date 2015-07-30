@@ -30,17 +30,29 @@ Meteor.methods({
     Meteor.users.update(Meteor.userId(), { $pull: { "profile.following": userId}});
     Meteor.users.update(userId, { $pull: { "profile.followers": Meteor.userId()}});
   },
-  sendEmail: function (to, from, subject, text) {
-    check([to, from, subject, text], [String]);
+  sendEmailInvite: function (invitee, from, subject, text, token, inviteId) {
+    check([invitee.email, from, subject, text, token, inviteId], [String]);
     // Let other method calls from the same client start running,
     // without waiting for the email sending to complete.
     this.unblock();
 
-    Email.send({
-      to: to,
-      from: from,
-      subject: subject,
-      text: text
+    Invites.update(inviteId, {
+      $set: {
+        token: token,
+        invited: true,
+        accountCreated: false
+      }
+    }, function(error) {
+      if (error) {
+        return console.log(error);
+      } else {
+        return Email.send({
+          to: invitee.email,
+          from: from,
+          subject: subject,
+          text: text
+        });
+      }
     });
   },
   sendTwilioMessage: function(user, phone, code){
@@ -76,6 +88,41 @@ Meteor.methods({
         console.log(err)
       }
     });
+  },
+  validateBetaToken: function(user) {
+    var id, testInvite;
+    check(user, {email: String, password: String, betaToken: String, name: String, phone: String, type: String});
+    testInvite = Invites.findOne({
+      email: user.email,
+      token: user.betaToken
+    }, {
+      fields: {
+        "_id": 1,
+        "email": 1,
+        "token": 1
+      }
+    });
+
+    if (!testInvite) {
+      throw new Meteor.Error("bad-match", "Hmm, this token doesn't match your email. Try again?");
+    } else {
+      id = Accounts.createUser({
+        email: user.email,
+        password: user.password,
+        profile: { name: user.name, phone: user.phone, type: user.type }
+      });
+      Roles.addUsersToRoles(id, [ROLES.Advocate]);
+      Meteor.users.update(id, {$set: {"emails.0.verified" :true}});
+      Invites.update(testInvite._id, {
+        $set: {
+          accountCreated: true
+        },
+        $unset: {
+          token: ""
+        }
+      });
+      return true;
+    }
   }
 
 });

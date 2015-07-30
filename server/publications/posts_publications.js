@@ -37,3 +37,16 @@ Meteor.publish('Messages', function() {
   return Messages.find();
 });
 // Meteor.users._ensureIndex({ "addressOne": "2dsphere"});
+
+Meteor.publish('invites', function() {
+  if(Roles.userIsInRole(this.userId, [ROLES.Admin, ROLES.Doctor])) {
+    return Invites.find({}, {
+      fields: {
+        "_id": 1,
+        "email": 1,
+        "token": 1,
+        "accountCreated": 1
+      }
+    });
+  }
+});

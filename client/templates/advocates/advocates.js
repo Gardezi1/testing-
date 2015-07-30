@@ -1,11 +1,18 @@
 Template.advocatesListing.helpers({
-  advocateUsers: function(){ 
-   follower_list = Meteor.user().profile.followers;
-   if(follower_list  == undefined || follower_list.length < 0){
-    return;
-   }
-   else
-    return Meteor.users.find({$and: [{_id: { $in: follower_list}}, {"profile.type": "advocate"}] });
+  advocateUsers: function(){
+    if(Roles.userIsInRole(Meteor.userId(), [ROLES.Admin])){
+      return Meteor.users.find({roles: [ROLES.Advocate]});
+    }
+    else{
+      if(Meteor.user()){
+        follower_list = Meteor.user().profile.followers;
+       if(follower_list  == undefined || follower_list.length < 0){
+        return;
+       }
+       else
+        return Meteor.users.find({$and: [{_id: { $in: follower_list}}, {"profile.type": "advocate"}] });
+      }     
+    } 
   },
   getImage: function(pictureId){
     var file = Data.findOne({_id:pictureId});

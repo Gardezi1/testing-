@@ -1,0 +1,42 @@
+<template name="signup">
+  <div class="row">
+    <form id="application-signup" class="signup col s6">
+      <div class="row">
+        <div class="input-field col s6">
+          <input placeholder="Email" id="emailAddress" type="email" required>
+          <label for="emailAddress">Email</label>
+        </div>
+      </div>
+      <div class="row">  
+        <div class="input-field col s6">
+          <input id="userPassword" type="password" required>
+          <label for="userPassword">Password</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s6">
+          <input id="userName" type="text" required>
+          <label for="userName">Name</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s6">
+          <input id="userPhone" type="text" required>
+          <label for="userPhone">Phone</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s6">
+          <select id="userType">
+            <option value="doctor">Doctor</option>
+            <option value="advocate">Advocate</option>
+          </select>
+          <label>Type</label>
+        </div>
+      </div>  
+      <div class="row">
+        <input type="submit" class="btn btn-success submit-user" value="Register">
+      </div>
+    </form>
+  </div>  
+</template>
