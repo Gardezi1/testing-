@@ -20,6 +20,13 @@ Template.signup.events({
             console.log(error);
             return alert(error.reason);
           } else {
+            inviteUid = Session.get('inviteOwnerId')
+            if(inviteUid){
+              Meteor.users.update(Meteor.userId(), { $addToSet: { "profile.following": inviteUid}});
+              if(user.type == "advocate"){
+                Meteor.users.update(Meteor.userId(), {$set: { "profile.doctorCircle": "2nd"}});
+              }
+            }   
             return Router.go('/');
           }
         });

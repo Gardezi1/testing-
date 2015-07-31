@@ -33,9 +33,6 @@ Meteor.publish('Topics', function() {
   return Topics.find();
 });
 
-Meteor.publish('Messages', function() {
-  return Messages.find();
-});
 // Meteor.users._ensureIndex({ "addressOne": "2dsphere"});
 
 Meteor.publish('invites', function() {
@@ -49,4 +46,12 @@ Meteor.publish('invites', function() {
       }
     });
   }
+});
+
+Meteor.publish("Messages", function () {
+  return Messages.find({ to: this.userId });
+});
+
+Meteor.publish("fromMessages", function () {
+  return Messages.find({ from: this.userId });
 });

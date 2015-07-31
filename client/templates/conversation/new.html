@@ -1,6 +1,15 @@
 <template name="startConversation">
   {{#contentFor "subnav"}}
-    <h5>New Conversation</h5>
+    <div class="row">
+      <div class="col s12 m2 l2">  
+        <a href="{{pathFor route='articles'}}" class="back-btn left fa fa-chevron-left"> Back</a>
+      </div>
+      <div class="col s12 m8 l8">
+        <h5 class="center-align">New Conversation</h5>
+      </div>
+      <div class="col s12 m2 l2">
+      </div>
+    </div>
   {{/contentFor}}
   <div class="custom-container"> 
     <div class="row">

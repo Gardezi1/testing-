@@ -111,7 +111,11 @@ Meteor.methods({
         password: user.password,
         profile: { name: user.name, phone: user.phone, type: user.type }
       });
-      Roles.addUsersToRoles(id, [ROLES.Advocate]);
+      if(user.type == "doctor"){
+        Roles.addUsersToRoles(id, [ROLES.Doctor]);
+      }else{
+        Roles.addUsersToRoles(id, [ROLES.Advocate]);
+      }
       Meteor.users.update(id, {$set: {"emails.0.verified" :true}});
       Invites.update(testInvite._id, {
         $set: {
@@ -123,6 +127,15 @@ Meteor.methods({
       });
       return true;
     }
+  },
+  addToMessageList: function(data){
+    id = Messages.insert({'name':data.name ,'from':data.fromId,'to':data.toId, 'body': data.message}, function(error) {
+      if (error) {
+        return console.log(error);
+      }
+    }); 
+    console.log(id);
+    // Messages.insert({'name':data.name ,'from':data.fromId,'to':data.toId, 'body': data.message});
   }
 
 });

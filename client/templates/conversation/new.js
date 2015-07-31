@@ -22,10 +22,27 @@ Template.startConversation.events({
     toUser = Meteor.users.findOne({"profile.name": name});
     toId = toUser._id;
     fromId = Meteor.userId();
+    console.log("id: "+fromId);
+
+    var data = {
+      name: name,
+      message: message,
+      toUser: toUser,
+      toId: toId,
+      fromId: fromId
+    }
+    
     console.log("to: " + toId);
     console.log("from: " + fromId);
     console.log(name);
     console.log(message);
-    Messages.insert({'name':name ,'from':fromId,'to':toId, 'body': message});
+    Meteor.call('addToMessageList', data, function(error) {
+      if (error) {
+        console.log(error);
+        return alert(error.reason);
+      }else{
+
+      }
+    });  
    }
 });
