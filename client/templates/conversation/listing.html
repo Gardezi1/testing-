@@ -5,7 +5,7 @@
       <a href="{{pathFor route='articles'}}" class="back-btn left fa fa-chevron-left"> Back</a>
     </div>
     <div class="col s12 m8 l8">
-      <h5 class="center-align">View Conversation</h5>
+      <h5 class="center-align">View Conversations</h5>
     </div>
     <div class="col s12 m2 l2">
       <a href="{{pathFor route='startConversation'}}" class="org-color right edite-btn"> New Conversation</a>
@@ -21,27 +21,46 @@
           </div>
           {{#each getMessages}}
             <div class="messages {{ifMyMessage from}}">
-              <a href="{{pathFor 'conversationView' id=to }}">
-                <div class="clearfix">
-                  <div class="col s2">
-                    <img src="{{gteUserImage from}}" alt="">    
-                  </div>
-                  <div class="col s10">
-                    <div class="clearfix header">
-                      <div class="left">{{getSenderName from}}</div> 
-                      <div class="right">5/03/15</div>
+              {{# if recipient to}}
+                <a href="{{pathFor 'conversationView' id=from }}">
+                  <div class="clearfix">
+                    <div class="col s2">
+                      <img src="{{gteUserImage from}}" alt="">    
                     </div>
-                    <div class="my-conversation" id="{{to}}">
-                      {{body}}
+                    <div class="col s10">
+                      <div class="clearfix header">
+                        <div class="left">{{getSenderName from}}</div> 
+                        <div class="right">5/03/15</div>
+                      </div>
+                      <div class="my-conversation" id="{{to}}">
+                        {{body}}
+                      </div>
                     </div>
                   </div>
-                </div>
-              </a>
+                </a>
+              {{else}}
+                <a href="{{pathFor 'conversationView' id=to }}">    
+                  <div class="clearfix">
+                    <div class="col s2">
+                      <img src="{{gteUserImage from}}" alt="">    
+                    </div>
+                    <div class="col s10">
+                      <div class="clearfix header">
+                        <div class="left">{{getSenderName from}}</div> 
+                        <div class="right">5/03/15</div>
+                      </div>
+                      <div class="my-conversation" id="{{to}}">
+                        {{body}}
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              {{/if}}  
             </div>
           {{/each}}    
-          <!-- <div class="messages">
+          <div class="messages">
             <a href="#" class="edite-btn org-color">view more</a>
-          </div> -->  
+          </div>  
         </div>   
       </div>
     </div>

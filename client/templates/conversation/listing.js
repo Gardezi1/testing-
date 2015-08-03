@@ -19,6 +19,9 @@ Template.conversationListing.helpers({
     else
       return "blue-dot";
   },
+  recipient: function(toId){
+    return toId == Meteor.userId();
+  },
   gteUserImage: function(id){
     if(id){
       user = Meteor.users.findOne({_id:id});

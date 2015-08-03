@@ -134,8 +134,6 @@ Meteor.methods({
         return console.log(error);
       }
     }); 
-    console.log(id);
-    // Messages.insert({'name':data.name ,'from':data.fromId,'to':data.toId, 'body': data.message});
   }
 
 });
