@@ -49,9 +49,5 @@ Meteor.publish('invites', function() {
 });
 
 Meteor.publish("Messages", function () {
-  return Messages.find({ to: this.userId });
-});
-
-Meteor.publish("fromMessages", function () {
-  return Messages.find({ from: this.userId });
+  return Messages.find();
 });

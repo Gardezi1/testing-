@@ -193,8 +193,82 @@ nav{
     height: 0;
   }
 }
+.mb-25 {
+  margin-bottom: 25px;
+}
 .shadow-box.z-depth-1{
   .BoxShadow(0px, 2px);
+  .header.grey {
+    background: #ededed !important;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 20px 25px;
+  }
+  .messages {
+    padding: 8px 0px;
+    border-bottom: 1px solid #e5e5e5;
+    &:hover {
+      background: #fafafa;
+    }
+    & > a.edite-btn.org-color {
+      text-transform: uppercase;
+      display: block;
+      text-align: center;
+      font-weight: bold;
+    }
+    .btn {
+      background: #f65b4d;
+      font-size: 12px;
+      padding: 0px 20px;
+      margin-bottom: 10px;
+    }
+    &.border-blue {
+      .col.s2 {
+        & > img {
+          border: 1px solid #039be5; 
+        }
+      }
+    }
+    &.blue-dot {
+      .col.s10 {
+        .header {
+          .left {
+            position: relative;
+            padding-right: 25px;
+            &:after {
+              content: "";
+              height: 8px;
+              width: 8px;
+              display: block;
+              background: #039be5;
+              border-radius: 100%;
+              position: absolute;
+              right: 0px;
+              top: 50%;
+              margin-top: -4px;
+            }
+          }
+        }
+      }  
+    }
+    .col.s2 {
+      text-align: center;
+      & > img {
+        height: 60px;
+        width: 60px;
+        border-radius: 100%;
+        border: 1px solid transparent;
+      }
+    }
+    .col.s10 {
+      .header {
+        color: #aaa;
+      }
+      .my-conversation {
+        color: #555555;
+      }
+    }
+  }
 }
 .shadow-box .panel-default{
   padding:20px 20px 1px;
@@ -591,6 +665,8 @@ li.admin {
       margin: 0;
       height: 65px;
       border-bottom:1px solid transparent;
+      box-sizing: border-box;
+      padding-right: 100px;
     }
     p{
       padding: 0;
@@ -879,4 +955,73 @@ li.admin {
 }
 #slide-out .mdi-navigation-arrow-drop-down{
   display: none;
+}
+
+
+// left side bar styling 
+.dd-container {
+  width: 100% !important;
+  .dd-select {
+    width: 100% !important;
+    cursor: pointer;
+  }
+  .dd-options {
+    width: 100% !important;
+    li:last-child {
+      .dd-option-text {
+        font-size: 14px;
+        font-weight: bold;
+      }
+    }
+  }
+  .dd-option-image, .dd-selected-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    margin-right: 13px;
+  }
+  label {
+    line-height: 50px !important;
+    display: block;
+    font-size: 16px;
+    color: #555555;
+    font-weight: normal;
+    text-transform: capitalize;
+  }
+  a {
+    height: auto;
+    cursor: pointer;
+    padding: 15px;
+  }
+  .dd-options {
+    a {
+      height: auto;
+      min-height: 10px;
+      line-height: 50px;
+      padding: 15px;
+    }
+  }
+}
+// notification 
+
+.notification {
+  max-width: 500px;
+  width: 100%;
+  margin: 0px auto;
+  margin-bottom: 15px;
+  img {
+    display: block;
+    float: left;
+    margin-right: 20px;
+    width: 50px;
+    height: 50px;
+  }
+  .text {
+    float: left;
+    color: #000000;
+    .name {
+      font-size: 16px;
+      color: #666666;
+    }
+  }
 }

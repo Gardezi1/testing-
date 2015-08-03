@@ -1,11 +1,11 @@
 Template.nav.helpers({
   file_S3: function(){
     var path = Meteor.user().profile.picture;
-        var file = Data.findOne({_id:path});
-        if(file){
-          url = "https://s3.amazonaws.com/medcircle/upload/data/"+file._id+"-"+file.name();
-          return url;
-        }
+      var file = Data.findOne({_id:path});
+      if(file){
+        url = "https://s3.amazonaws.com/medcircle/upload/data/"+file._id+"-"+file.name();
+        return url;
+      }
     },
   ifDoctor: function(){
     return Meteor.user().profile.type == "doctor";
@@ -99,8 +99,10 @@ Template.nav.events({
     }
   },
   'click .brand-logo': function(event) {
-
     Session.set('feedTopicsId', "");
-
+  },
+  'click .dd-options li:last-child': function(event) {
+    console.log("inn");
+    Router.go('/doctors')
   }
 });

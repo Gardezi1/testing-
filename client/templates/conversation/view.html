@@ -2,7 +2,7 @@
   {{#contentFor "subnav"}}
   <div class="row">
     <div class="col s12 m2 l2">  
-      <a href="{{pathFor route='articles'}}" class="back-btn left fa fa-chevron-left"> Back</a>
+      <a href="{{pathFor route='conversationListing'}}" class="back-btn left fa fa-chevron-left"> Back</a>
     </div>
     <div class="col s12 m8 l8">
       <h5 class="center-align">View Conversation</h5>
@@ -15,32 +15,56 @@
     <div class="row">
       <div class="col-md-12">
         <div class="shadow-box z-depth-1">
-          <div class="row">
-            <div class="col s12">
-              <div class="row">
-                <div class="input-field col s12">
-                  <textarea id="textarea1" class="materialize-textarea"></textarea>
-                  <label for="textarea1">Write a response</label>
-                </div>
+          <div class="messages">
+            <div class="clearfix">
+              <div class="col s2">
+                <img src="{{gteMyImage}}" alt="">
               </div>
-              <a id="message-reply" class="waves-effect waves-light btn">REPLY</a>
+              <div class="input-field col s10">
+                <textarea id="reply-textarea" class="materialize-textarea"></textarea>
+                <label for="reply-textarea">Write a response</label>
+              </div>
+            </div>
+            <div class="clearfix">
+              <div class="col s12 clearfix">
+                <a id="message-reply" class="waves-effect waves-light btn right">REPLY</a>
+              </div>
             </div>
           </div>
-        </div>  
-      </div>
-    </div> 
-    <div class="row">
-      <div class="col-md-12">
-        {{#each getMessages}}
-          <div class="shadow-box z-depth-1">
-            <div class="row">
-              <div class="col s12 myConversation" id="{{from}}">
-                {{body}}
-              </div>
-            </div>
-          </div>  
-        {{/each}} 
+        </div>
       </div>
     </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="shadow-box z-depth-1">
+          {{#each getMessages}}
+            <div class="messages {{ifMyMessage from}}">
+              <div class="clearfix">
+                <div class="col s2">
+                  <img src="{{gteUserImage from}}" alt="">    
+                </div>
+                <div class="col s10">
+                  <div class="clearfix header">
+                    {{# if fromMe from}}
+                      <div class="left">You Wrote</div>
+                    {{else}}
+                      <div class="left">{{getSenderName from}}</div>
+                    {{/if}}  
+                    <div class="right">{{messageTime createdAt}}</div>
+                  </div>
+                  <div class="my-conversation" id="{{from}}">
+                    {{body}}
+                  </div>
+                </div>
+              </div>
+            </div>  
+          {{/each}}
+          <!-- <div class="messages">
+            <a href="#" class="view-more edite-btn org-color">view more</a>
+          </div>  --> 
+        </div>
+      </div>
+    </div> 
+
   </div>      
 </template>

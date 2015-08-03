@@ -8,6 +8,7 @@ Template.startConversation.helpers({
           // token: '@',
           collection: Meteor.users,
           field: 'profile.name',
+          filter: {$or: [{$and: [{ 'profile.type': "advocate" }, {'profile.doctorCircle': '1st'} ]}, {'profile.type': "doctor"} ]},
           template: Template.userPill
         }
       ]
@@ -32,16 +33,16 @@ Template.startConversation.events({
       fromId: fromId
     }
     
-    console.log("to: " + toId);
-    console.log("from: " + fromId);
-    console.log(name);
-    console.log(message);
+    // console.log("to: " + toId);
+    // console.log("from: " + fromId);
+    // console.log(name);
+    // console.log(message);
     Meteor.call('addToMessageList', data, function(error) {
       if (error) {
         console.log(error);
         return alert(error.reason);
       }else{
-
+        Router.go('/conversation/' + toId);
       }
     });  
    }

@@ -8,22 +8,41 @@
       <h5 class="center-align">View Conversation</h5>
     </div>
     <div class="col s12 m2 l2">
+      <a href="{{pathFor route='startConversation'}}" class="org-color right edite-btn"> New Conversation</a>
     </div>
   </div>
   {{/contentFor}}
   <div class="custom-container"> 
     <div class="row">
       <div class="col-md-12">
-        {{#each getMessages}}
-          <div class="shadow-box z-depth-1">
-            <div class="row">
-              {{getSenderName from}}
-              <div class="col s12 myConversation" id="{{from}}">
-                <a href="{{pathFor 'conversationView' id=from }}">{{body}}</a>
-              </div>
+        <div class="shadow-box z-depth-1">
+          <div class="header grey">
+            All Messages
+          </div>
+          {{#each getMessages}}
+            <div class="messages {{ifMyMessage from}}">
+              <a href="{{pathFor 'conversationView' id=to }}">
+                <div class="clearfix">
+                  <div class="col s2">
+                    <img src="{{gteUserImage from}}" alt="">    
+                  </div>
+                  <div class="col s10">
+                    <div class="clearfix header">
+                      <div class="left">{{getSenderName from}}</div> 
+                      <div class="right">5/03/15</div>
+                    </div>
+                    <div class="my-conversation" id="{{to}}">
+                      {{body}}
+                    </div>
+                  </div>
+                </div>
+              </a>
             </div>
-          </div>  
-        {{/each}} 
+          {{/each}}    
+          <!-- <div class="messages">
+            <a href="#" class="edite-btn org-color">view more</a>
+          </div> -->  
+        </div>   
       </div>
     </div>
   </div>      

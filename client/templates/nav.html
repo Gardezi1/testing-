@@ -12,24 +12,8 @@
                     <option value="{{this}}" data-imagesrc="{{getImage this}}">{{getDoctorName this}}</option>
                   {{/if}}
                 {{/each}}
-                <option value="0" class="mdi-content-add">ADD DOCTOR</option>  
+                <option value="0" data-imagesrc="/imgs/add.png">ADD DOCTOR</option>  
               </select>
-              <!-- <ul class="collapsible" data-collapsible="accordion">
-                <li>
-                  <div class="collapsible-header dropdown-button-side fa fa-chevron-down">Select Doctor</div>
-                  <div class="collapsible-body doc-collapse">
-                    {{#each getFollowing}}
-                      {{#if notCurrentUser this}}
-                        <li class="collection-item avatar drop-side" id="{{this}}">
-                          <img src="{{getImage this}}" alt="" class="circle">
-                          <span class="title">{{getDoctorName this}}</span>
-                        </li>
-                      {{/if}}
-                    {{/each}}
-                    <li class="add-holder hide-nav"><a href="{{pathFor route='doctorsListing'}}" class="mdi-content-add">ADD DOCTOR</a></li>
-                  </div>
-                </li>
-              </ul> -->
               {{#each doctorTopics}}
                 {{#if index}}
                   <li class="article-feed" id="{{value}}"><a href="{{pathFor route='articles'}}">{{getTopicName value}}</a></li>
