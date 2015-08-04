@@ -12,7 +12,11 @@ Template.nav.helpers({
   },
   getFollowing: function(){
     if(Meteor.user()){
-      return Meteor.user().profile.following;
+      uid = Meteor.userId();
+      result = Meteor.user().profile.following;
+      var index = result.indexOf(uid);
+      result.splice(index, 1);;
+      return result;
     }
   },
   getDoctorName: function(uid){
@@ -27,10 +31,12 @@ Template.nav.helpers({
   doctorTopics: function(){
     uid = Session.get("doctorTopicsId");
     if(uid){
-      topics = Meteor.users.findOne({_id: uid}).profile.topics;
-      return _.map(topics, function(value, index){
-        return {value: value, index: index};
-      });
+      topics = Meteor.users.findOne({_id: uid});
+      if(topics && topics.profile.topics){
+        return _.map(topics.profile.topics, function(value, index){
+          return {value: value, index: index};
+        });
+      }
     }
   },
   getTopicName: function(tid){
@@ -64,27 +70,12 @@ Template.nav.onRendered(function() {
   $('.tooltipped').tooltip({delay: 50});
   $('.collapsible').collapsible({accordion : false});
   $('#doc-select').ddslick();
-  $('#doc-select li').on("click", function(event){
-    var id = $(event.target).find('.dd-option-value').val();
-    if(id){
-      Session.set('doctorTopicsId', id);
-    }
-    $(".show-topic").css("visibility", "visible");
-  })
-
 });
 
 Template.nav.events({
-  // 'change #doc-select': function(event) {
-  //   console.log("innnn");
-  // },  
-  'click .drop-side': function(event) {
-    var id = $(event.target).closest('li').attr('id');
-    if(id){
-      Session.set('doctorTopicsId', id);
-    }
-    $(".show-topic").css("visibility", "visible");
-  },
+  'change #doc-select': function(event) {
+    console.log("innnn");
+  },  
   'click .hide-nav': function(event) {
     $('.button-collapse-side').sideNav('hide');
   },

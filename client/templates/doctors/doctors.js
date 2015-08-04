@@ -43,7 +43,7 @@ Template.doctorsListing.events({
   'keyup [type=text]': function(event, template) {
     Session.set('doctorSearchQuery', event.target.value);
   },
-  'click .start-follow': function(e){
+  'click .start-follow-doc': function(e){
     var id = $(e.target).attr('id');
     console.log(id);
     e.preventDefault();
@@ -55,7 +55,7 @@ Template.doctorsListing.events({
       } 
     });
   },
-  'click .start-unfollow': function(e){
+  'click .start-unfollow-doc': function(e){
     var id = $(e.target).attr('id');
     console.log(id);
     e.preventDefault();
