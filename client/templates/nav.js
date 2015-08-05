@@ -11,12 +11,15 @@ Template.nav.helpers({
     return Meteor.user().profile.type == "doctor";
   },
   getFollowing: function(){
-    if(Meteor.user()){
-      uid = Meteor.userId();
-      result = Meteor.user().profile.following;
-      var index = result.indexOf(uid);
-      result.splice(index, 1);;
-      return result;
+    uid = Meteor.userId();
+    if(uid){
+      result = Meteor.users.findOne({_id: uid});
+      if(result){
+        following = result.profile.following;
+        var index = following.indexOf(uid);
+        following.splice(index, 1);
+        return following;
+      }
     }
   },
   getDoctorName: function(uid){
@@ -69,13 +72,27 @@ Template.nav.onRendered(function() {
   $('select').material_select();
   $('.tooltipped').tooltip({delay: 50});
   $('.collapsible').collapsible({accordion : false});
-  $('#doc-select').ddslick();
 });
 
 Template.nav.events({
-  'change #doc-select': function(event) {
+  'click .button-collapse-side img': function(event) {
     console.log("innnn");
-  },  
+    $(".button-collapse-side").sideNav();
+    $('#doc-select').ddslick();
+    $(".button-collapse-side").sideNav('show');
+    $('#doc-select li').on("click", function(event){
+      console.log("in Tpoic list");
+      var id = $(event.target).closest('.dd-option').find('.dd-option-value').val();
+      if(id){
+        if(id == 99){
+          $('.button-collapse-side').sideNav('hide');
+          Router.go('/doctors');
+        }
+        Session.set('doctorTopicsId', id);
+      }
+      $(".show-topic").css("visibility", "visible");
+    })
+  },
   'click .hide-nav': function(event) {
     $('.button-collapse-side').sideNav('hide');
   },

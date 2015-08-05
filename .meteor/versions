@@ -83,6 +83,8 @@ matb33:collection-hooks@0.7.13
 materialize:materialize@0.97.0
 meteor@1.1.6
 meteor-platform@1.2.2
+meteorhacks:aggregate@1.2.1
+meteorhacks:collection-utils@1.2.0
 minifiers@1.1.5
 minimongo@1.0.8
 mizzao:autocomplete@0.5.1

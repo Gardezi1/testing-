@@ -135,5 +135,4 @@ Meteor.methods({
       }
     }); 
   }
-
 });

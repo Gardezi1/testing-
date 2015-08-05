@@ -27,19 +27,3 @@ Template.masterLayout.events({
     });
   }
 });
-
-Template.masterLayout.onRendered(function() {
-
-  $('#doc-select li').on("click", function(event){
-    var id = $(event.target).closest('.dd-option').find('.dd-option-value').val();
-    if(id){
-      if(id == 99){
-        $('.button-collapse-side').sideNav('hide');
-        Router.go('/doctors');
-      }
-      Session.set('doctorTopicsId', id);
-    }
-    $(".show-topic").css("visibility", "visible");
-  })
-
-});
