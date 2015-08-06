@@ -16,9 +16,25 @@ Template.nav.helpers({
       result = Meteor.users.findOne({_id: uid});
       if(result){
         following = result.profile.following;
-        var index = following.indexOf(uid);
-        following.splice(index, 1);
         return following;
+      }
+    }
+  },
+  getAdminImage: function(){
+    uid = Session.get("docId");
+    if(uid){
+      user = Meteor.users.findOne({_id: uid});
+    }
+    else{
+      user = Meteor.users.findOne({roles: [ROLES.Admin]});
+    }
+    console.log(user);
+    if(user){
+      pic = user.profile.picture;
+      var file = Data.findOne({_id:pic});
+      if(file){
+        url = "https://s3.amazonaws.com/medcircle/upload/data/"+file._id+"-"+file.name();
+        return url;
       }
     }
   },
@@ -34,6 +50,7 @@ Template.nav.helpers({
   doctorTopics: function(){
     uid = Session.get("doctorTopicsId");
     if(uid){
+      Session.set("docId", uid);
       topics = Meteor.users.findOne({_id: uid});
       if(topics && topics.profile.topics){
         return _.map(topics.profile.topics, function(value, index){
@@ -72,16 +89,26 @@ Template.nav.onRendered(function() {
   $('select').material_select();
   $('.tooltipped').tooltip({delay: 50});
   $('.collapsible').collapsible({accordion : false});
+  $('#doc-select').ddslick();
+  $('#doc-select li').on("click", function(event){
+    var id = $(event.target).closest('.dd-option').find('.dd-option-value').val();
+    if(id){
+      if(id == 99){
+        $('.button-collapse-side').sideNav('hide');
+        Router.go('/doctors');
+      }
+      Session.set('doctorTopicsId', id);
+    }
+    $(".show-topic").css("visibility", "visible");
+  })
 });
 
 Template.nav.events({
   'click .button-collapse-side img': function(event) {
-    console.log("innnn");
     $(".button-collapse-side").sideNav();
     $('#doc-select').ddslick();
     $(".button-collapse-side").sideNav('show');
     $('#doc-select li').on("click", function(event){
-      console.log("in Tpoic list");
       var id = $(event.target).closest('.dd-option').find('.dd-option-value').val();
       if(id){
         if(id == 99){

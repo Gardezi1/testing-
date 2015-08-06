@@ -24,23 +24,21 @@
                               <img src="{{file_S3}}">
                             </div>
                             <div class="col s7">
-                              <ul>
+                              <!-- <ul>
                                 {{#each articleTopic}}
                                   <li><b>{{getArticleName this}}</b></li>
                                 {{/each}}
-                              </ul>
-                              <b>{{articleCategory}}</b>
-                              <b>{{postTo}} Cirlce</b>
-                              <b>{{articleType}}</b>
-                              <p><b></b> {{body}} </p>
+                              </ul> -->
+                              <a href="{{url}}"><b>{{source}}</b></a>
+                              <p> {{body}} </p>
                             </div>
                           </div>
-                          {{#if checkIfAuthor authorId}}
+<!--                           {{#if checkIfAuthor authorId}}
                             <ul class="center">
                               {{> quickRemoveButton collection="Posts" _id=this._id beforeRemove=beforeRemove class="btn btn-danger"}}
                               <a href="{{pathFor 'articleEdit' id=_id }}" class="btn btn-danger">Edit</a>
                             </ul>
-                          {{/if}}
+                          {{/if}} -->
                         </div>
                       </div>
                     <div class="doctor-post clearfix">
@@ -80,23 +78,10 @@
                               <img src="{{file_S3}}">
                             </div>
                             <div class="col s7">
-                              <ul>
-                                {{#each articleTopic}}
-                                  <li><b>{{getArticleName this}}</b></li>
-                                {{/each}}
-                              </ul>
-                              <b>{{articleCategory}}</b>
-                              <b>{{postTo}} Cirlce</b>
-                              <b>{{articleType}}</b>
-                              <p><b></b> {{body}} </p>
+                              <a href="{{url}}"><b>{{source}}</b></a>
+                              <p> {{body}} </p>
                             </div>
-                          </div>
-                          {{#if checkIfAuthor authorId}}
-                            <ul class="center">
-                              {{> quickRemoveButton collection="Posts" _id=this._id beforeRemove=beforeRemove class="btn btn-danger"}}
-                              <a href="{{pathFor 'articleEdit' id=_id }}" class="btn btn-danger">Edit</a>
-                            </ul>
-                          {{/if}}  
+                          </div> 
                         </div>
                       </div>
                     <div class="doctor-post clearfix">
@@ -136,23 +121,10 @@
                               <img src="{{file_S3}}">
                             </div>
                             <div class="col s7">
-                              <ul>
-                                {{#each articleTopic}}
-                                  <li><b>{{getArticleName this}}</b></li>
-                                {{/each}}
-                              </ul>
-                              <b>{{articleCategory}}</b>
-                              <b>{{postTo}} Cirlce</b>
-                              <b>{{articleType}}</b>
-                              <p><b></b> {{body}} </p>
+                              <a href="{{url}}"><b>{{source}}</b></a>
+                              <p> {{body}} </p>
                             </div>
                           </div>
-                          {{#if checkIfAuthor authorId}}
-                            <ul class="center">
-                              {{> quickRemoveButton collection="Posts" _id=this._id beforeRemove=beforeRemove class="btn btn-danger"}}
-                              <a href="{{pathFor 'articleEdit' id=_id }}" class="btn btn-danger">Edit</a>
-                            </ul>
-                          {{/if}}
                         </div>
                       </div>
                     <div class="doctor-post clearfix">
@@ -192,23 +164,10 @@
                               <img src="{{file_S3}}">
                             </div>
                             <div class="col s7">
-                              <ul>
-                                {{#each articleTopic}}
-                                  <li><b>{{getArticleName this}}</b></li>
-                                {{/each}}
-                              </ul>
-                              <b>{{articleCategory}}</b>
-                              <b>{{postTo}} Cirlce</b>
-                              <b>{{articleType}}</b>
-                              <p><b></b> {{body}} </p>
+                              <a href="{{url}}"><b>{{source}}</b></a>
+                              <p> {{body}} </p>
                             </div>
-                          </div>
-                          {{#if checkIfAuthor authorId}}
-                            <ul class="center">
-                              {{> quickRemoveButton collection="Posts" _id=this._id beforeRemove=beforeRemove class="btn btn-danger"}}
-                              <a href="{{pathFor 'articleEdit' id=_id }}" class="btn btn-danger">Edit</a>
-                            </ul>
-                          {{/if}}  
+                          </div>  
                         </div>
                       </div>
                     <div class="doctor-post clearfix">

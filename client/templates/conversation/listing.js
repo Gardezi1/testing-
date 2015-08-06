@@ -2,7 +2,25 @@ Template.conversationListing.helpers({
   getMessages: function(){
     uid = Meteor.userId();
     if(uid){
-      return Messages.find({$or: [{to: uid}, {from:uid} ]}, {sort: {createdAt: -1}});
+      // return Messages.find({$or: [{to: uid}, {from:uid} ]}, {sort: {createdAt: -1}});
+
+      // Meteor.call('groupMessages', id, function(error) {
+      //   if (error) {
+      //     console.log(error);
+      //     return alert(error.reason);
+      //   }else{
+          
+      //   }
+      // });
+
+      var messages = Messages.find({$or: [{to: uid}, {from:uid} ]}, {sort: {createdAt: -1}}).fetch();
+      console.log(messages);
+      var groupedDates = _.pluck(messages, 'to');
+      console.log(groupedDates);
+      _.each(_.values(groupedDates), function(dates) {
+        console.log({Date: dates[0], Total: dates.length});
+      });
+
     }
   },
   getSenderName: function(id){

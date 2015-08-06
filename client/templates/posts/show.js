@@ -10,7 +10,8 @@ Template.articleView.helpers({
     }
   },
   getArticleName: function(tid){
-    return Topics.findOne({_id: tid}).name;
+    topic = Topics.findOne({_id: tid});
+    return topic && topic.name;
   },
   getDoctorName: function(uid){
     if(uid){

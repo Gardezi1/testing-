@@ -8,15 +8,20 @@ Meteor.publish('Posts', function(){
     }
     if(Roles.userIsInRole(currentUserId, [ROLES.Advocate])){
       my_circle = Meteor.users.findOne({_id:currentUserId}).profile.doctorCircle;
-      return Posts.find({$and: [{authorId: { $in: following_list}},{postTo: my_circle}] });
+      if(my_circle  == undefined || my_circle.length < 0){
+        return Posts.find({$and: [{authorId: { $in: following_list}}] }, {sort: {createdAt: -1}});
+      }
+      else{
+        return Posts.find({$and: [{authorId: { $in: following_list}},{postTo: my_circle}] }, {sort: {createdAt: -1}});
+      }
     }
     else{
-      return Posts.find({authorId: { $in: following_list}});
+      return Posts.find({authorId: { $in: following_list}}, {sort: {createdAt: -1}});
     }
   }
-  else{
-    return Posts.find({authorId: currentUserId});
-  }
+  // else{
+  //   return Posts.find({authorId: currentUserId}, {sort: {createdAt: -1}});
+  // }
   
   
 });

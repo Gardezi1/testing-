@@ -20,9 +20,11 @@ if (Meteor.isClient) {
             var birthday_year = event.target.birthday_year.value;
             var dob = birthday_day +'-'+birthday_month+'-'+birthday_year
           
-            Meteor.users.update(Meteor.userId(), {$set: {"profile.zipcode": [zipcode], "profile.dob": [dob], "profile.code_verified": [true]}});
+            Meteor.users.update(Meteor.userId(), {$set: {"profile.zipcode": zipcode}});
+            Meteor.users.update(Meteor.userId(), {$set: {"profile.dob" :dob}});
+            Meteor.users.update(Meteor.userId(), {$set: {"profile.code_verified" :true}});
             Meteor.users.update(Meteor.userId(), {$set: {"emails.[0].verified" :true}});
-            Router.go('/');
+            Router.go('/articles');
         }
     });
 
@@ -34,8 +36,8 @@ if (Meteor.isClient) {
                 sAlert.error('Wrong Code.  :-/', {effect: 'genie', position: 'top-right', timeout: 'none', onRouteClose: false, stack: false, offset: '80px'});
             }
             else{
-                Meteor.users.update(Meteor.userId(), {$set: {"profile.code_verified": [true]}});
-                Router.go('/');
+                Meteor.users.update(Meteor.userId(), {$set: {"profile.code_verified": true}});
+                Router.go('/articles');
             }
         }
     });

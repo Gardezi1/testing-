@@ -2,7 +2,7 @@ if (Meteor.isServer) {
 
   if (!Meteor.users.findOne({"emails.address": "admin@medcircle.com"})) {
     var admins = [
-      { name: "admin", email: "admin@medcircle.com", password: "medcircle123", phone: '92321434343', roles: ['admin'] }
+      { name: "medcircle", email: "admin@medcircle.com", password: "medcircle123", phone: '92321434343', roles: ['admin'] }
     ];
     
     _.each(admins, function (user) {
@@ -78,7 +78,7 @@ if (Meteor.isServer) {
 
   Meteor.startup(function(){
     if(Topics.find().count() == 0){
-      ["Topic1", "Topic2", "Topic3", "Topic4", "Topic5", "Topic6", "Topic7", "Topic8", "Topic9", "Topic10", "Topic11", "Topic12"].forEach(function(topic){
+      ["Depression", "ADHD", "Bipolar Disorder"].forEach(function(topic){
         Topics.insert({name:topic})
       });
     }

@@ -63,8 +63,6 @@ Meteor.methods({
       body: "Dear " + user.profile.name + ",\n\n" +'Your 4 pin code is: '+code
     }, function(err, responseData) {
       if (!err) {
-        console.log(responseData.from);
-        console.log(responseData.body);
 
       }
       else{
@@ -134,5 +132,11 @@ Meteor.methods({
         return console.log(error);
       }
     }); 
-  }
+  },
+  // groupMessages: function(id){
+  //   var pipeline = [
+  //     {$group: {_id: "$to", resTime: {$sum: "$resTime"}}}
+  //   ];
+  //   var result = Messages.aggregate(pipeline);
+  // }
 });

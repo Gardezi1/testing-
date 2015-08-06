@@ -7,9 +7,11 @@
     <div class="col s12 m8 l8">
       <h5 class="center-align">View Conversations</h5>
     </div>
-    <div class="col s12 m2 l2">
-      <a href="{{pathFor route='startConversation'}}" class="org-color right edite-btn"> New Conversation</a>
-    </div>
+    {{#if isInRole 'admin , doctor'}} 
+      <div class="col s12 m2 l2">
+        <a href="{{pathFor route='startConversation'}}" class="org-color right edite-btn"> New Conversation</a>
+      </div>
+    {{/if}}  
   </div>
   {{/contentFor}}
   <div class="custom-container"> 
