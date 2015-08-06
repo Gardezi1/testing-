@@ -28,7 +28,7 @@ Template.nav.helpers({
     else{
       user = Meteor.users.findOne({roles: [ROLES.Admin]});
     }
-    console.log(user);
+
     if(user){
       pic = user.profile.picture;
       var file = Data.findOne({_id:pic});
