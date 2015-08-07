@@ -20,6 +20,7 @@ if (Meteor.isServer) {
         Roles.addUsersToRoles(id, user.roles);
       }
       Meteor.users.update(id, {$set: {"emails.0.verified" :true}});
+      Meteor.users.update(id, {$set: {"profile.code_verified" :true}});
     });
   }
 
