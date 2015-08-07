@@ -8,7 +8,7 @@ Template.startConversation.helpers({
           // token: '@',
           collection: Meteor.users,
           field: 'profile.name',
-          filter: {$or: [{$and: [{ 'profile.type': "advocate" }, {'profile.doctorCircle': '1st'} ]}, {'profile.type': "doctor"} ]},
+          filter: {$or: [{ 'profile.type': "advocate" }, {'profile.type': "doctor"} ]},
           template: Template.userPill
         }
       ]

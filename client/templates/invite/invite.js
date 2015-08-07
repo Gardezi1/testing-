@@ -49,18 +49,22 @@ Template.inviteAdvocate.events({
       console.log(phone_array[k]);
       phone_array[k] = phone_array[k].trim();
       user = Meteor.users.findOne({"profile.phone":phone_array[k]})
-      if(!user){
-        sAlert.error('Phone Number '+ phone_array[k] +' does not exist.  :-/', {effect: 'genie', position: 'top-right', timeout: 'none', onRouteClose: false, stack: false, offset: '80px'});
-      }
-      else{
-        url = Meteor.absoluteUrl();
-        url = url + "join-circle/" + Meteor.userId();
-        user = Meteor.user();
-        body = "Hi "+user.profile.name+", To join my circle, simply click the link below:\n\n"
-         + url;
 
-         Meteor.call('sendTwilioInvite', phone_array[k], body);
-      }
+      token = Random.hexString(10);
+      url = Meteor.absoluteUrl();
+      url = url + 'sign-up/' + token + "-" + uid;
+      body = "Hi there!  You've been invited to the MedCircle. To get started, click the link below to create your account.\n\n"
+       + url 
+       +"\n\n" + "Thanks";
+
+       Meteor.call("sendTwilioInvite", phone_array[k], body, function(error, result){
+        if(error){
+          sAlert.error(error.reason, {effect: 'genie', position: 'top-right', timeout: 'none', onRouteClose: false, stack: false, offset: '80px'});
+          console.log("error from sendTwilioInvite: ", error);
+        } else {
+          sAlert.error('Invitation has been sent successfully', {effect: 'genie', position: 'top-right', timeout: 'none', onRouteClose: false, stack: false, offset: '80px'});
+        }
+      });
     }
   }
 

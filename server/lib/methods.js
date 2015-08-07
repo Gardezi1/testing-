@@ -25,10 +25,17 @@ Meteor.methods({
   addToFollowing: function(userId) {
     Meteor.users.update(Meteor.userId(), { $addToSet: { "profile.following": userId}});
     Meteor.users.update(userId, { $addToSet: { "profile.followers": Meteor.userId()}});
+    if(Roles.userIsInRole(Meteor.userId(), [ROLES.Advocate])){
+      Meteor.users.update(Meteor.userId(), {$push: { "profile.secondCircle": userId} });
+    }
   },
   removeFromFollowing: function(userId) {
     Meteor.users.update(Meteor.userId(), { $pull: { "profile.following": userId}});
     Meteor.users.update(userId, { $pull: { "profile.followers": Meteor.userId()}});
+    if(Roles.userIsInRole(Meteor.userId(), [ROLES.Advocate])){
+      Meteor.users.update(Meteor.userId(), {$pull: { "profile.firstCircle": userId} });
+      Meteor.users.update(Meteor.userId(), {$pull: { "profile.secondCircle": userId} });
+    }
   },
   sendEmailInvite: function (invitee, from, subject, text, token, inviteId) {
     check([invitee.email, from, subject, text, token, inviteId], [String]);
