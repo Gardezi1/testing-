@@ -7,12 +7,21 @@ Meteor.publish('Posts', function(){
       following_list = Meteor.users.findOne({_id:this.userId}).profile.following;
     }
     if(Roles.userIsInRole(currentUserId, [ROLES.Advocate])){
-      my_circle = Meteor.users.findOne({_id:currentUserId}).profile.doctorCircle;
-      if(my_circle  == undefined || my_circle.length < 0){
+      first_circle = Meteor.users.findOne({_id:currentUserId}).profile.firstCircle;
+      second_circle = Meteor.users.findOne({_id:currentUserId}).profile.secondCircle;
+      if((first_circle  == undefined || first_circle.length < 0) && (second_circle  == undefined || second_circle.length < 0)){
         return Posts.find({$and: [{authorId: { $in: following_list}}] }, {sort: {createdAt: -1}});
       }
+      else
+        if(first_circle  == undefined || first_circle.length < 0){
+          return Posts.find({$and: [{authorId: { $in: second_circle}},{postTo: '2nd'}] }, {sort: {createdAt: -1}});
+      }
+      else
+        if(second_circle  == undefined || second_circle.length < 0){
+          return Posts.find({$or: [ {$and: [{authorId: { $in: first_circle}},{postTo: '1st'}] } ]}, {sort: {createdAt: -1}});
+      }
       else{
-        return Posts.find({$and: [{authorId: { $in: following_list}},{postTo: my_circle}] }, {sort: {createdAt: -1}});
+        return Posts.find({$or: [ {$and: [{authorId: { $in: first_circle}},{postTo: '1st'}] }, {$and: [{authorId: { $in: second_circle}},{postTo: '2nd'}] } ]}, {sort: {createdAt: -1}});
       }
     }
     else{

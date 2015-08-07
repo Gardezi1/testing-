@@ -21,54 +21,119 @@ Template.advocatesListing.helpers({
         return url;
     }
   },
-  isChecked: function(uid){
-    var id = this._id;
-    // console.log(id);
-    circle = Meteor.users.findOne({_id:uid}).profile.doctorCircle;
-    if(circle == undefined || circle.length <= 0){
-      return "";
+  isChecked: function(id){
+
+    currentUserId = Meteor.userId();
+    first_circle_list = Meteor.users.findOne({_id:id}).profile.firstCircle;
+    second_circle_list = Meteor.users.findOne({_id:id}).profile.secondCircle;
+
+    if(first_circle_list != undefined && first_circle_list.length > 0){
+      console.log("in first");
+
+      if(first_circle_list.indexOf(currentUserId) >= 0){
+        return "checked";
+      }
+      else{
+        return "";
+      }
     }
-    if(circle.indexOf("1st") >= 0){
-      return "checked";
-    }
-    else{
-      return "";
-    }
+    else
+      if(second_circle_list != undefined && second_circle_list.length > 0){
+        console.log("in second");
+
+        if(second_circle_list.indexOf(currentUserId) >= 0){
+          return "";
+        }
+        else{
+          return "checked";
+        }
+      }
+      else{
+        return "";
+      }
+
   },
-  isActive: function(uid){
-    var id = this._id;
-    // console.log(id);
-    circle = Meteor.users.findOne({_id:uid}).profile.doctorCircle;
-    if(circle == undefined || circle.length <= 0){
-      return "";
+  isActive: function(id){
+    currentUserId = Meteor.userId();
+    first_circle_list = Meteor.users.findOne({_id:id}).profile.firstCircle;
+    second_circle_list = Meteor.users.findOne({_id:id}).profile.secondCircle;
+
+    if(first_circle_list != undefined && first_circle_list.length > 0){
+
+      if(first_circle_list.indexOf(currentUserId) >= 0){
+        return "active";
+      }
+      else{
+        return "";
+      }
     }
-    if(circle.indexOf("1st") >= 0){
-      return "active";
-    }
-    else{
-      return "";
-    }
+    else
+      if(second_circle_list != undefined && second_circle_list.length > 0){
+
+        if(second_circle_list.indexOf(currentUserId) >= 0){
+          return "";
+        }
+        else{
+          return "active";
+        }
+      }
+      else{
+        return "";
+      }
+
   }
 });
 
 Template.advocatesListing.events({  
   'click input': function(e) {
     var id = $(e.target).attr('id');
+    currentUserId = Meteor.userId();
+    first_circle_list = Meteor.users.findOne({_id:id}).profile.firstCircle;
+    second_circle_list = Meteor.users.findOne({_id:id}).profile.secondCircle;
+
+    if(first_circle_list != undefined && first_circle_list.length > 0){
+
+      if(first_circle_list.indexOf(currentUserId) >= 0){
+        Meteor.users.update(id, { $pull: { "profile.firstCircle": currentUserId}});
+        Meteor.users.update(id, {$push: { "profile.secondCircle": currentUserId} });
+      }
+      else{
+        Meteor.users.update(id, { $push: { "profile.firstCircle": currentUserId}});
+        Meteor.users.update(id, {$pull: { "profile.secondCircle": currentUserId} });
+      }
+    }
+    else
+      if(second_circle_list != undefined && second_circle_list.length > 0){
+
+        if(second_circle_list.indexOf(currentUserId) >= 0){
+          Meteor.users.update(id, { $push: { "profile.firstCircle": currentUserId}});
+          Meteor.users.update(id, {$pull: { "profile.secondCircle": currentUserId} });
+        }
+        else{
+          Meteor.users.update(id, { $pull: { "profile.firstCircle": currentUserId}});
+          Meteor.users.update(id, {$push: { "profile.secondCircle": currentUserId} });
+        }
+      }
+      else{
+        Meteor.users.update(id, { $push: { "profile.firstCircle": currentUserId}});
+      }
+
+
     
-    circle = Meteor.users.findOne({_id:id}).profile.doctorCircle;
-    if(circle == undefined || circle.length <= 0){
-      // console.log("push")
-      Meteor.users.update(id, {$set: { "profile.doctorCircle": "1st"}});
-    }
-    else
-    if(circle.indexOf("1st") >= 0){
-      // console.log("pop");
-      Meteor.users.update(id, {$set: { "profile.doctorCircle": "2nd"}});
-    }
-    else
-    if(circle.indexOf("2nd") >= 0){
-      // console.log("pop");
-      Meteor.users.update(id, {$set: { "profile.doctorCircle": "1st"}});
-    }
-   }
+    // circle = Meteor.users.findOne({_id:id}).profile.doctorCircle;
+    // if(circle == undefined || circle.length <= 0){
+    //   // console.log("push")
+    //   Meteor.users.update(id, {$set: { "profile.doctorCircle": "1st"}});
+    // }
+    // else
+    // if(circle.indexOf("1st") >= 0){
+    //   // console.log("pop");
+    //   Meteor.users.update(id, {$set: { "profile.doctorCircle": "2nd"}});
+    // }
+    // else
+    // if(circle.indexOf("2nd") >= 0){
+    //   // console.log("pop");
+    //   Meteor.users.update(id, {$set: { "profile.doctorCircle": "1st"}});
+    // }
+  }
 });

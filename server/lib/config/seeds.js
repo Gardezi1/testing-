@@ -37,6 +37,10 @@ if (Meteor.isServer) {
     user.profile.following.push(admin_user);
 
     if(user.profile.type === 'advocate'){
+      user.profile.firstCircle = [];
+      user.profile.firstCircle.push(admin_user);
+      user.profile.secondCircle = [];
+      user.profile.secondCircle.push(admin_user);
       var ph = user.profile.phone
       var code = Math.floor(Math.random()*9000) + 1000;
       user.profile.code = code;
