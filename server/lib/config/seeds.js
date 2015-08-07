@@ -51,6 +51,11 @@ if (Meteor.isServer) {
          'Here is your 4 digit verification code: ' + code +'.  Click on the link to verify code: ' + url +
             "\n\n" + "Thanks";
       };
+      if(ServerSession.get("ifInvited")){
+         code_subject = "Hi " + user.profile.name + ",\n\n" + 'Here is your 4 digit verification code: ' + code +'.'+
+            "\n\n" + "Thanks";
+        Meteor.call('sendCodeToEmail',user, user.emails[0].address, code_subject, code);
+      }
 
       Meteor.call('sendTwilioMessage',user, ph, code);
     }

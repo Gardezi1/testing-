@@ -35,7 +35,7 @@ Meteor.methods({
     // Let other method calls from the same client start running,
     // without waiting for the email sending to complete.
     this.unblock();
-
+    ServerSession.set("ifInvited", true);
     Invites.update(inviteId, {
       $set: {
         token: token,
@@ -55,6 +55,14 @@ Meteor.methods({
       }
     });
   },
+  sendCodeToEmail: function(user, email, text ,code){
+    Email.send({
+      to: email,
+      from: "medcircle.staging@gmail.com",
+      subject: "Verification Code",
+      text: text
+    });
+},
   sendTwilioMessage: function(user, phone, code){
     twilio = Twilio('ACc4dc855ca070a1db07f086566f561a30', 'a6ded70636ffb413789396296b12e449');
     twilio.sendSms({

@@ -18,6 +18,9 @@ Template.inviteAdvocate.events({
           if (error) {
             return console.log(error);
           }
+          else{
+            sAlert.error('Invitation has been sent successfully', {effect: 'genie', position: 'top-right', timeout: 'none', onRouteClose: false, stack: false, offset: '80px'});
+          }
         });  
         token = Random.hexString(10);
         url = Meteor.absoluteUrl();
@@ -29,7 +32,7 @@ Template.inviteAdvocate.events({
 
         Meteor.call('sendEmailInvite',
           invitee,
-          'mistertestkwanso@gmail.com',
+          'medcircle.staging@gmail.com',
           subject,
           text,
           token,
