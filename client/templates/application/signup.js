@@ -24,7 +24,7 @@ Template.signup.events({
             if(inviteUid){
               Meteor.users.update(Meteor.userId(), { $addToSet: { "profile.following": inviteUid}});
               if(user.type == "advocate"){
-                Meteor.users.update(Meteor.userId(), {$set: { "profile.doctorCircle": "2nd"}});
+                Meteor.users.update(Meteor.userId(), {$push: { "profile.secondCircle": inviteUid} });
               }
             }   
             return Router.go('/');
