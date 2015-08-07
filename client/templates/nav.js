@@ -22,7 +22,7 @@ Template.nav.helpers({
   },
   getAdminImage: function(){
     uid = Session.get("docId");
-    if(uid){
+    if(uid && (uid != 99)){
       user = Meteor.users.findOne({_id: uid});
     }
     else{
@@ -136,8 +136,8 @@ Template.nav.events({
   'click .brand-logo': function(event) {
     Session.set('feedTopicsId', "");
   },
-  'click .dd-options li:last-child': function(event) {
-    console.log("inn");
-    Router.go('/doctors')
-  }
+  // 'click .dd-options li:last-child': function(event) {
+  //   console.log("inn");
+  //   Router.go('/doctors')
+  // }
 });
