@@ -65,3 +65,7 @@ Meteor.publish('invites', function() {
 Meteor.publish("Messages", function () {
   return Messages.find();
 });
+
+Meteor.publish('notifications', function() {
+  return Notifications.find({userId: this.userId});
+});

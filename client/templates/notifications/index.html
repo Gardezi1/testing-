@@ -14,15 +14,21 @@
   <div class="custom-container"> 
     <div class="row">
       <div class="col-md-12">
-        <div class="shadow-box z-depth-1 notification">
-          <div class="clearfix">
-            <img src="/imgs/image01.jpg" alt="">
-            <div class="text">
-              <div class="name">Rathan Haran</div>
-              Has started following you.
+        {{#each notifications}}
+          <div class="shadow-box z-depth-1 notification">
+            <div class="clearfix {{ifRead read}}">
+              <img src="{{getImage followerId}}" alt="">
+              <div class="text">
+                <div class="name">{{getName followerId}}</div>
+                  {{#if startedFollowing}}
+                    Has started following you.
+                  {{else}}
+                    unfollowed you.
+                  {{/if}}
+              </div>
             </div>
           </div>
-        </div>  
+        {{/each}}    
       </div>
     </div>
   </div>      

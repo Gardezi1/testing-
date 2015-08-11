@@ -29,14 +29,28 @@
         <a href="{{pathFor route='articles'}}" class="brand-logo"><img src="/imgs/logo.jpg"></a>
         <ul class="right hide-on-med-and-down normal-nav">
           {{#if currentUser}} 
-              <li class="admin"><a href="{{pathFor route='profileView'}}"><img src="{{file_S3}}"> Hi, <b>{{currentUser.profile.name}}</b></a></li>
+              <li class="admin">
+                <a href="{{pathFor route='profileView'}}"><img src="{{file_S3}}"> Hi, <b>{{currentUser.profile.name}}</b></a>
+              </li>
             {{#if ifDoctor}}    
-              <li><a href="{{pathFor route='advocatesListing'}}" class="fa fa-users tooltipped" data-position="bottom" data-delay="50" data-tooltip="ADVOCATES"></a></li>
+              <li>
+                <a href="{{pathFor route='advocatesListing'}}" class="fa fa-users tooltipped" data-position="bottom" data-delay="50" data-tooltip="ADVOCATES"></a>
+              </li>
             {{else}}
-              <li><a href="{{pathFor route='doctorsListing'}}" class="fa fa-users tooltipped" ata-position="bottom" data-delay="50" data-tooltip="DOCTORS"></a></li>
+              <li>
+                <a href="{{pathFor route='doctorsListing'}}" class="fa fa-users tooltipped" ata-position="bottom" data-delay="50" data-tooltip="DOCTORS"></a>
+              </li>
             {{/if}}  
-            <li><a href="{{pathFor route='conversationListing'}}" class="fa fa-envelope-o tooltipped" data-position="bottom" data-delay="50" data-tooltip="MESSAGES"></a></li>
-            <li><a href="{{pathFor route='notifications'}}" class="fa fa-bell tooltipped" data-position="bottom" data-delay="50" data-tooltip="NOTIFICATION"></a></li>
+            <li>
+              <a href="{{pathFor route='conversationListing'}}" class="fa fa-envelope-o tooltipped" data-position="bottom" data-delay="50" data-tooltip="MESSAGES"></a>
+            </li>
+            <li>
+              <a href="{{pathFor route='notifications'}}" class="fa fa-bell tooltipped" data-position="bottom" data-delay="50" data-tooltip="NOTIFICATION">
+                {{#if notificationCount}}
+                  <span class="badge">{{notificationCount}}</span>
+                {{/if}}
+              </a>
+            </li>
           {{/if}}  
           <div class="drop-holder">
             <a href="#" class="fa fa-envelope-o tooltipped fa fa-cog dropdown-button" data-position="bottom" data-delay="50" data-tooltip="SETTINGS" data-activates="dropdown1"></a>

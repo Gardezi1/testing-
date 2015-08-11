@@ -76,8 +76,10 @@ Template.nav.helpers({
         }
       }
     }
-
-  }  
+  },
+  notificationCount: function(){
+    return Notifications.find({userId: Meteor.userId(), read: false}).count();
+  }
 });
 
 Template.nav.onRendered(function() {
@@ -136,8 +138,4 @@ Template.nav.events({
   'click .brand-logo': function(event) {
     Session.set('feedTopicsId', "");
   },
-  // 'click .dd-options li:last-child': function(event) {
-  //   console.log("inn");
-  //   Router.go('/doctors')
-  // }
 });

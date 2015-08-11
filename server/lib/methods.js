@@ -24,7 +24,17 @@ Meteor.methods({
   },
   addToFollowing: function(userId) {
     Meteor.users.update(Meteor.userId(), { $addToSet: { "profile.following": userId}});
+    // Meteor.users.insert({ "profile.followingTopics.0.userId": userId});
+    // following_topics = Meteor.users.findOne({_id:this.userId}).profile.topics;
+    // var newArray = following_topics.slice();
+    // Meteor.users.update(Meteor.userId(), { $set: { "profile.followingTopics.0.topics": following_topics}});
     Meteor.users.update(userId, { $addToSet: { "profile.followers": Meteor.userId()}});
+    id = Notifications.insert({'userId':userId, 'startedFollowing': true, 'read': false, 'followerId': Meteor.userId()}, function(error) {
+      if (error) {
+        return console.log(error);
+      }
+    }); 
+
     if(Roles.userIsInRole(Meteor.userId(), [ROLES.Advocate])){
       Meteor.users.update(Meteor.userId(), {$push: { "profile.secondCircle": userId} });
     }
@@ -32,6 +42,11 @@ Meteor.methods({
   removeFromFollowing: function(userId) {
     Meteor.users.update(Meteor.userId(), { $pull: { "profile.following": userId}});
     Meteor.users.update(userId, { $pull: { "profile.followers": Meteor.userId()}});
+    id = Notifications.insert({'userId':userId, 'startedFollowing': false, 'read': false, 'followerId': Meteor.userId()}, function(error) {
+      if (error) {
+        return console.log(error);
+      }
+    }); 
     if(Roles.userIsInRole(Meteor.userId(), [ROLES.Advocate])){
       Meteor.users.update(Meteor.userId(), {$pull: { "profile.firstCircle": userId} });
       Meteor.users.update(Meteor.userId(), {$pull: { "profile.secondCircle": userId} });
