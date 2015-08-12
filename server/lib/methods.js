@@ -156,8 +156,9 @@ Meteor.methods({
       return true;
     }
   },
-  addToMessageList: function(data){
-    id = Messages.insert({'name':data.name ,'from':data.fromId,'to':data.toId, 'body': data.message}, function(error) {
+  addToMessageList: function(data, convId){
+
+    id = Messages.insert({'name':data.name ,'from':data.fromId,'to':data.toId, 'body': data.message, 'conversationId': convId, 'read': false}, function(error) {
       if (error) {
         return console.log(error);
       }

@@ -138,4 +138,7 @@ Template.nav.events({
   'click .brand-logo': function(event) {
     Session.set('feedTopicsId', "");
   },
+  'click .fa-envelope-o': function(event) {
+    Session.set("messageLimit", 5);
+  },
 });

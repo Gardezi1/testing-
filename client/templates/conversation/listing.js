@@ -1,27 +1,14 @@
 Template.conversationListing.helpers({
-  getMessages: function(){
+  messageList: function(){
     uid = Meteor.userId();
-    if(uid){
-      return Messages.find({$or: [{to: uid}, {from:uid} ]}, {sort: {createdAt: -1}});
-
-      // Meteor.call('groupMessages', id, function(error) {
-      //   if (error) {
-      //     console.log(error);
-      //     return alert(error.reason);
-      //   }else{
-          
-      //   }
-      // });
-
-      // var messages = Messages.find({$or: [{to: uid}, {from:uid} ]}, {sort: {createdAt: -1}}).fetch();
-      // console.log(messages);
-      // var groupedDates = _.pluck(messages, 'to');
-      // console.log(groupedDates);
-      // _.each(_.values(groupedDates), function(dates) {
-      //   console.log({Date: dates[0], Total: dates.length});
-      // });
-
-    }
+    var messages = Messages.find({$or: [{to: uid}, {from:uid} ]}, {sort: {createdAt: -1}}).fetch();
+    conversation_list = [];
+    var groupedDates = _.groupBy(_.pluck(messages, 'conversationId'));
+    _.each(_.values(groupedDates), function(conversation) {
+      result = Messages.findOne({conversationId: conversation[0]}, {sort: {createdAt: -1}});
+      conversation_list.push(result);
+    });
+    return conversation_list;
   },
   getSenderName: function(id){
     user = Meteor.users.findOne({_id:id});
@@ -30,12 +17,15 @@ Template.conversationListing.helpers({
   toUser: function(fromId){
     return fromId == Meteor.userId();
   },
-  ifMyMessage: function(fromId){
-    if(fromId == Meteor.userId()){
+  ifMyMessage: function(fromId, status){
+    if((fromId == Meteor.userId()) && !status){
       return "border-blue";
     }
     else
+      if((fromId != Meteor.userId()) && !status)
       return "blue-dot";
+    else
+      return "";
   },
   recipient: function(toId){
     return toId == Meteor.userId();
@@ -50,6 +40,18 @@ Template.conversationListing.helpers({
             return url;
         }
       }
+    }
+  },
+  messageTime: function(date){
+    return moment(date).format('MM/DD/YY');
+  }
+});
+
+Template.conversationListing.events({
+  'click .messages-view': function(e) {
+    msg = Messages.findOne({_id: this._id});
+    if(msg.from != Meteor.userId()){
+      Messages.update(this._id, {$set: {read: true}});
     }
   }
 });

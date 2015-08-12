@@ -32,12 +32,16 @@ Template.startConversation.events({
       toId: toId,
       fromId: fromId
     }
-    
+    convId = Random.hexString(10);
+    message = Messages.findOne({$or: [ {$and: [{from: data.fromId}, {to: data.toId} ]}, {$and: [{from: data.toId}, {to: data.fromId} ]} ]} , {sort: {createdAt: -1}});
+    if(message  != undefined || message.length > 0){
+      convId = message.conversationId;
+    }
     // console.log("to: " + toId);
     // console.log("from: " + fromId);
     // console.log(name);
     // console.log(message);
-    Meteor.call('addToMessageList', data, function(error) {
+    Meteor.call('addToMessageList', data, convId, function(error) {
       if (error) {
         console.log(error);
         return alert(error.reason);

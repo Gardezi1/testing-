@@ -1,8 +1,12 @@
 Template.conversationView.helpers({
   getMessages: function(){
+    if(!Session.get("messageLimit")){
+      Session.set("messageLimit", 5);
+    }
+    limit = Session.get("messageLimit");
     uid = Meteor.userId();
     if(uid){
-      return Messages.find({$or: [ {$and: [{from: uid}, {to: Router.current().params["id"]} ]}, {$and: [{from: Router.current().params["id"]}, {to: uid} ]} ]} , {sort: {createdAt: -1}});
+      return Messages.find({$or: [ {$and: [{from: uid}, {to: Router.current().params["id"]} ]}, {$and: [{from: Router.current().params["id"]}, {to: uid} ]} ]} , {sort: {createdAt: -1}, limit: limit});
     }
   },
   gteMyImage: function(){
@@ -12,13 +16,6 @@ Template.conversationView.helpers({
         url = "https://s3.amazonaws.com/medcircle/upload/data/"+file._id+"-"+file.name();
         return url;
       }
-  },
-  ifMyMessage: function(fromId){
-    if(fromId == Meteor.userId()){
-      return "border-blue";
-    }
-    else
-      return "blue-dot";
   },
   fromMe: function(fromId){
     return fromId == Meteor.userId();
@@ -58,12 +55,13 @@ Template.conversationView.events({
       toId: to,
       fromId: from
     }
-    
-    // console.log("to: " + to);
-    // console.log("from: " + from);
-    // console.log(name);
-    // console.log(text);
-    Meteor.call('addToMessageList', data, function(error) {
+
+    convId = Random.hexString(10);
+    message = Messages.findOne({$or: [ {$and: [{from: data.fromId}, {to: data.toId} ]}, {$and: [{from: data.toId}, {to: data.fromId} ]} ]} , {sort: {createdAt: -1}});
+    if(message  != undefined || message.length > 0){
+      convId = message.conversationId;
+    }
+    Meteor.call('addToMessageList', data, convId, function(error) {
       if (error) {
         console.log(error);
         return alert(error.reason);
@@ -71,5 +69,10 @@ Template.conversationView.events({
         $("#reply-textarea").val('');
       }
     });    
+   },
+   'click .more-messages a': function(e){
+      limit = Session.get("messageLimit");
+      limit+=5;
+      Session.set("messageLimit", limit);
    }
 });
