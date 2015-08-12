@@ -23,7 +23,6 @@ Template.startConversation.events({
     toUser = Meteor.users.findOne({"profile.name": name});
     toId = toUser._id;
     fromId = Meteor.userId();
-    console.log("id: "+fromId);
 
     var data = {
       name: name,
@@ -34,7 +33,7 @@ Template.startConversation.events({
     }
     convId = Random.hexString(10);
     message = Messages.findOne({$or: [ {$and: [{from: data.fromId}, {to: data.toId} ]}, {$and: [{from: data.toId}, {to: data.fromId} ]} ]} , {sort: {createdAt: -1}});
-    if(message  != undefined || message.length > 0){
+    if(message  != undefined){
       convId = message.conversationId;
     }
     // console.log("to: " + toId);
