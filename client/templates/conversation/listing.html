@@ -59,10 +59,16 @@
                 </a>
               {{/if}}  
             </div>
-          {{/each}}   
-          <div class="messages more-messages">
-            <a href="#" class="edite-btn org-color">view more</a>
-          </div>  
+          {{/each}} 
+          {{#if messageList}}  
+            <div class="messages more-messages">
+              <a href="#" class="edite-btn org-color">view more</a>
+            </div>
+          {{else}}
+            <div class="messages more-messages">
+              <p class="edite-btn org-color center"><b>No Conversations</b></p>
+            </div>
+          {{/if}}  
         </div>   
       </div>
     </div>
