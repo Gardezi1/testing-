@@ -16,14 +16,14 @@
       <div class="col-md-12">
         {{#each notifications}}
           <div class="shadow-box z-depth-1 notification">
-            <div class="clearfix {{ifRead read}}">
+            <div class="clearfix">
               <img src="{{getImage followerId}}" alt="">
               <div class="text">
-                <div class="name">{{getName followerId}}</div>
+                <div class="name {{ifRead read}}">{{getName followerId}}</div>
                   {{#if startedFollowing}}
-                    Has started following you.
+                    <p>Has started following you.</p>
                   {{else}}
-                    unfollowed you.
+                    <p>unfollowed you.</p>
                   {{/if}}
               </div>
             </div>

@@ -163,6 +163,9 @@ Meteor.methods({
       }
     }); 
   },
+  updateEmail: function(email){
+    Meteor.users.update(Meteor.userId(), {$set: {"emails.0.address" :email}});
+  }
   // groupMessages: function(id){
   //   var pipeline = [
   //     {$group: {_id: "$to", resTime: {$sum: "$resTime"}}}

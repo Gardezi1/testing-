@@ -278,7 +278,7 @@ nav{
 .shadow-box .panel-default{
   padding:20px 20px 1px;
 }
- 
+
 .fileUpload {
   position: relative;
   overflow: hidden;
@@ -440,7 +440,11 @@ li.admin {
     position: relative;
   }
 }
-
+.reset-pass {
+  border: none;
+  background: none;
+  padding: 0px;
+}
 .upload-btn-holder .md{
   position: absolute;
   top: 0;
@@ -513,7 +517,11 @@ li.admin {
     text-indent: -20px;
   }
 }
-
+#settings-form {
+  .prof-con {
+    padding-bottom: 0px;
+  }  
+}
 .prof-con {
   padding: 0px 35px;
   padding-bottom: 30px;
@@ -1039,18 +1047,32 @@ li.admin {
     width: 50px;
     height: 50px;
   }
-  .not-overly{
-    opacity: 0.7;
-  }
-  .not{
-    opacity: 1;   
-  }
   .text {
     float: left;
     color: #000000;
     .name {
       font-size: 16px;
       color: #666666;
+      display: inline-block;
+    }
+    p {
+      margin: 0px;
+    }
+  }
+  .blue-dot {
+    position: relative;
+    padding-right: 25px;
+    &:after {
+      content: "";
+      height: 8px;
+      width: 8px;
+      display: block;
+      background: #039be5;
+      border-radius: 100%;
+      position: absolute;
+      right: 0px;
+      top: 50%;
+      margin-top: -4px;
     }
   }
 }

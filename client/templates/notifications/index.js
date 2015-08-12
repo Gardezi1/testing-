@@ -19,9 +19,9 @@ Template.notifications.helpers({
   },
   ifRead: function(status){
     if(status)
-      return "not";
+      return "";
     else
-      return "not-overly";
+      return "blue-dot";
   }
 });
 
