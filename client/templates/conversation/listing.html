@@ -60,15 +60,16 @@
               {{/if}}  
             </div>
           {{/each}} 
-          {{#if messageList}}  
-            <div class="messages more-messages">
+          {{#if conversationListCount}}  
+            <div class="messages more-conversation">
               <a href="#" class="edite-btn org-color">view more</a>
             </div>
-          {{else}}
+          {{/if}}
+          {{#unless messageList}}
             <div class="messages more-messages">
               <p class="edite-btn org-color center"><b>No Conversations</b></p>
             </div>
-          {{/if}}  
+          {{/unless}}  
         </div>   
       </div>
     </div>

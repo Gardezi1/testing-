@@ -140,5 +140,6 @@ Template.nav.events({
   },
   'click .fa-envelope-o': function(event) {
     Session.set("messageLimit", 5);
+    Session.set("conversationLimit", 1);
   },
 });

@@ -1,5 +1,8 @@
 Template.conversationListing.helpers({
   messageList: function(){
+    if(!Session.get("conversationLimit")){
+      Session.set("conversationLimit", 1);
+    }
     uid = Meteor.userId();
     var messages = Messages.find({$or: [{to: uid}, {from:uid} ]}, {sort: {createdAt: -1}}).fetch();
     conversation_list = [];
@@ -8,7 +11,15 @@ Template.conversationListing.helpers({
       result = Messages.findOne({conversationId: conversation[0]}, {sort: {createdAt: -1}});
       conversation_list.push(result);
     });
-    return conversation_list;
+    Session.set("messageListCount", conversation_list.length);
+    return conversation_list.slice(0, Session.get("conversationLimit"));
+  },
+  conversationListCount: function(){
+    count =  Session.get("messageListCount");
+    if(count > Session.get("conversationLimit"))
+      return true;
+    else
+      return false;
   },
   getSenderName: function(id){
     user = Meteor.users.findOne({_id:id});
@@ -53,5 +64,10 @@ Template.conversationListing.events({
     if(msg.from != Meteor.userId()){
       Messages.update(this._id, {$set: {read: true}});
     }
+  },
+  'click .more-conversation': function(e){
+    limit = Session.get("conversationLimit");
+    limit+=5;
+    Session.set("conversationLimit", limit);
   }
 });

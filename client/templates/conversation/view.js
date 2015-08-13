@@ -9,6 +9,13 @@ Template.conversationView.helpers({
       return Messages.find({$or: [ {$and: [{from: uid}, {to: Router.current().params["id"]} ]}, {$and: [{from: Router.current().params["id"]}, {to: uid} ]} ]} , {sort: {createdAt: -1}, limit: limit});
     }
   },
+  chatCount: function(){
+    count = Messages.find({$or: [ {$and: [{from: uid}, {to: Router.current().params["id"]} ]}, {$and: [{from: Router.current().params["id"]}, {to: uid} ]} ]}).count();
+    if(count > Session.get("messageLimit"))
+      return true;
+    else
+      return false;
+  },
   gteMyImage: function(){
     var path = Meteor.user().profile.picture;
       var file = Data.findOne({_id:path});
@@ -44,31 +51,33 @@ Template.conversationView.helpers({
 Template.conversationView.events({  
   'click #message-reply': function(e) {
     text = $("#reply-textarea").val();
-    to = Router.current().params["id"];
-    from = Meteor.userId();
-    if(to){
-      name = Meteor.users.findOne({_id: to}).profile.name;
-    }
-    var data = {
-      name: name,
-      message: text,
-      toId: to,
-      fromId: from
-    }
-
-    convId = Random.hexString(10);
-    message = Messages.findOne({$or: [ {$and: [{from: data.fromId}, {to: data.toId} ]}, {$and: [{from: data.toId}, {to: data.fromId} ]} ]} , {sort: {createdAt: -1}});
-    if(message  != undefined || message.length > 0){
-      convId = message.conversationId;
-    }
-    Meteor.call('addToMessageList', data, convId, function(error) {
-      if (error) {
-        console.log(error);
-        return alert(error.reason);
-      }else{
-        $("#reply-textarea").val('');
+    if(text){
+      to = Router.current().params["id"];
+      from = Meteor.userId();
+      if(to){
+        name = Meteor.users.findOne({_id: to}).profile.name;
       }
-    });    
+      var data = {
+        name: name,
+        message: text,
+        toId: to,
+        fromId: from
+      }
+
+      convId = Random.hexString(10);
+      message = Messages.findOne({$or: [ {$and: [{from: data.fromId}, {to: data.toId} ]}, {$and: [{from: data.toId}, {to: data.fromId} ]} ]} , {sort: {createdAt: -1}});
+      if(message  != undefined || message.length > 0){
+        convId = message.conversationId;
+      }
+      Meteor.call('addToMessageList', data, convId, function(error) {
+        if (error) {
+          console.log(error);
+          return alert(error.reason);
+        }else{
+          $("#reply-textarea").val('');
+        }
+      });
+    }    
    },
    'click .more-messages a': function(e){
       limit = Session.get("messageLimit");
