@@ -67,6 +67,7 @@ if (Meteor.isServer) {
     else
       if(user.profile.type === 'doctor'){
         user.profile.approve = false;
+
         Accounts.emailTemplates.verifyEmail.text = function(user, url) {
           return "Dear " + user.profile.name + ",\n\n" +
             'To verify your account email, simply click the link below. ' + url +

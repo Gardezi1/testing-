@@ -78,7 +78,6 @@ Meteor.methods({
     });
   },
   sendCodeToEmail: function(user, email, text ,code){
-    console.log(user);
     Email.send({
       to: email,
       from: "medcircle.staging@gmail.com",
@@ -142,6 +141,9 @@ Meteor.methods({
       });
       if(user.type == "doctor"){
         Meteor.users.update(id, {$set: {"profile.approve": false}});
+        inviteUid = ServerSession.get("inviteId");
+        Meteor.users.update(id, { $addToSet: { "profile.following": inviteUid}});
+        Meteor.users.update(inviteUid, { $addToSet: { "profile.followers": id}});
         Roles.addUsersToRoles(id, [ROLES.Doctor]);
       }else{
         Roles.addUsersToRoles(id, [ROLES.Advocate]);

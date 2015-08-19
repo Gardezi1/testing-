@@ -25,9 +25,7 @@ Template.signup.events({
                 if(inviteUid){
                   Meteor.users.update(Meteor.userId(), { $addToSet: { "profile.following": inviteUid}});
                   Meteor.users.update(inviteUid, { $addToSet: { "profile.followers": Meteor.userId()}});
-                  if(user.type == "advocate"){
-                    Meteor.users.update(Meteor.userId(), {$push: { "profile.secondCircle": inviteUid} });
-                  }
+                  Meteor.users.update(Meteor.userId(), {$push: { "profile.secondCircle": inviteUid} });
                 }   
                 return Router.go('/');
               }
@@ -35,11 +33,6 @@ Template.signup.events({
           }
           else
             if(user.type == "doctor"){
-              inviteUid = Session.get('inviteOwnerId')
-                if(inviteUid){
-                  Meteor.users.update(Meteor.userId(), { $addToSet: { "profile.following": inviteUid}});
-                  Meteor.users.update(inviteUid, { $addToSet: { "profile.followers": Meteor.userId()}});
-                }
                 sAlert.error('Successful Registration! Please check your email and follow the instructions.', {effect: 'genie', position: 'top-right', timeout: 'none', onRouteClose: false, stack: false, offset: '80px'});
             }
       }
