@@ -90,7 +90,14 @@ if (Meteor.isServer) {
         attemptInfo.user.emails.forEach(function(value, index) {
             if (email == value.address && value.verified) verified = true;
         });
-        if (!verified) throw new Meteor.Error(403, 'Successful Registration! Please check your email and follow the instructions.');
+        if (!verified){
+          if(attemptInfo.user.profile.type == "doctor"){
+            throw new Meteor.Error(403, 'You will be sent a verification link to complete your registration process in you email after Medcircle administrator approves it.');  
+          }
+          else{
+            throw new Meteor.Error(403, 'Successful Registration! Please check your email and follow the instructions.');
+          }
+        } 
     }
 
     return true;
