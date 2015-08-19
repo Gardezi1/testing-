@@ -64,18 +64,18 @@
                     <div class="doc-detail col s12 m6 l3">
                       <div class="shadow-box z-depth-1">
                         <a href="{{pathFor 'doctorView' id=_id }}">
-                          <img src="{{getImage pictureId}}" alt="{{title}}">
+                          <img src="{{getImage profile.picture}}" alt="{{title}}">
                         </a>  
                         <div class="prof-data">
                             <div class="name">
                               <a href="{{pathFor 'doctorView' id=_id }}">
-                                <h5>{{name}}</h5>
+                                <h5>{{profile.name}}</h5>
                               </a>
                             </div>
                             <div class="city">
-                              {{city}}
-                              {{#if state}}
-                                , {{state}}
+                              {{profile.city}}
+                              {{#if profile.state}}
+                                , {{profile.state}}
                               {{/if}}
                             </div>
                             {{#if checkIfFollowing _id}}

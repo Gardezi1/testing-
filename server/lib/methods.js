@@ -78,6 +78,7 @@ Meteor.methods({
     });
   },
   sendCodeToEmail: function(user, email, text ,code){
+    console.log(user);
     Email.send({
       to: email,
       from: "medcircle.staging@gmail.com",
@@ -140,11 +141,13 @@ Meteor.methods({
         profile: { name: user.name, phone: user.phone, type: user.type }
       });
       if(user.type == "doctor"){
+        Meteor.users.update(id, {$set: {"profile.approve": false}});
         Roles.addUsersToRoles(id, [ROLES.Doctor]);
       }else{
         Roles.addUsersToRoles(id, [ROLES.Advocate]);
+        Meteor.users.update(id, {$set: {"emails.0.verified" :true}});
       }
-      Meteor.users.update(id, {$set: {"emails.0.verified" :true}});
+      
       Invites.update(testInvite._id, {
         $set: {
           accountCreated: true
@@ -166,11 +169,24 @@ Meteor.methods({
   },
   updateEmail: function(email){
     Meteor.users.update(Meteor.userId(), {$set: {"emails.0.address" :email}});
+  },
+  acceptUser: function(id, email){
+    Meteor.users.update(id, {$set: {"profile.approve" :true}});
+    Accounts.sendVerificationEmail(id, email);
+  },
+  rejectUser: function(id, email){
+    if(id){
+      Meteor.users.update(id, {$set: {"profile.approve": true}});
+      user = Meteor.users.findOne({_id: id});
+      Email.send({
+        to: email,
+        from: "medcircle.staging@gmail.com",
+        subject: "Request Rejected",
+        text: "Dear "+user.profile.name+",\n\n" +
+              'Sorry, you got rejected. ' +
+              "\n\n" + "Thanks"
+      });
+      Meteor.users.remove({_id:id});
+    }
   }
-  // groupMessages: function(id){
-  //   var pipeline = [
-  //     {$group: {_id: "$to", resTime: {$sum: "$resTime"}}}
-  //   ];
-  //   var result = Messages.aggregate(pipeline);
-  // }
 });

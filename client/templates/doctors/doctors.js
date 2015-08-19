@@ -1,6 +1,7 @@
 Template.doctorsListing.helpers({
   adminUsers: function(){ 
-    return Session.get("adminUsers") 
+    return Meteor.users.find({$and: [{"profile.type": "doctor"}, {"profile.approve": true} ]});
+    // return Session.get("adminUsers") 
   },
   getImage: function(pictureId){
     var file = Data.findOne({_id:pictureId});

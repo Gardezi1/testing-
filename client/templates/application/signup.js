@@ -15,24 +15,39 @@ Template.signup.events({
         console.log(error);
         return alert(error.reason);
       } else {
-        return Meteor.loginWithPassword(user.email, user.password, function(error) {
-          if (error) {
-            console.log(error);
-            return alert(error.reason);
-          } else {
-            inviteUid = Session.get('inviteOwnerId')
-            if(inviteUid){
-              Meteor.users.update(Meteor.userId(), { $addToSet: { "profile.following": inviteUid}});
-              Meteor.users.update(inviteUid, { $addToSet: { "profile.followers": Meteor.userId()}});
-              if(user.type == "advocate"){
-                Meteor.users.update(Meteor.userId(), {$push: { "profile.secondCircle": inviteUid} });
+          if(user.type == "advocate"){
+            return Meteor.loginWithPassword(user.email, user.password, function(error) {
+              if (error) {
+                console.log(error);
+                // return alert(error.reason);
+              } else {
+                inviteUid = Session.get('inviteOwnerId')
+                if(inviteUid){
+                  Meteor.users.update(Meteor.userId(), { $addToSet: { "profile.following": inviteUid}});
+                  Meteor.users.update(inviteUid, { $addToSet: { "profile.followers": Meteor.userId()}});
+                  if(user.type == "advocate"){
+                    Meteor.users.update(Meteor.userId(), {$push: { "profile.secondCircle": inviteUid} });
+                  }
+                }   
+                return Router.go('/');
               }
-            }   
-            return Router.go('/');
+            });
           }
-        });
+          else
+            if(user.type == "doctor"){
+              inviteUid = Session.get('inviteOwnerId')
+                if(inviteUid){
+                  Meteor.users.update(Meteor.userId(), { $addToSet: { "profile.following": inviteUid}});
+                  Meteor.users.update(inviteUid, { $addToSet: { "profile.followers": Meteor.userId()}});
+                }
+                sAlert.error('Successful Registration! Please check your email and follow the instructions.', {effect: 'genie', position: 'top-right', timeout: 'none', onRouteClose: false, stack: false, offset: '80px'});
+            }
       }
     });
 
   }
+});
+
+Template.signup.onRendered(function() {
+  $('select').material_select();
 });

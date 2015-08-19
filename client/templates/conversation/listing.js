@@ -1,7 +1,7 @@
 Template.conversationListing.helpers({
   messageList: function(){
     if(!Session.get("conversationLimit")){
-      Session.set("conversationLimit", 1);
+      Session.set("conversationLimit", 5);
     }
     uid = Meteor.userId();
     var messages = Messages.find({$or: [{to: uid}, {from:uid} ]}, {sort: {createdAt: -1}}).fetch();

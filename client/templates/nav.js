@@ -137,9 +137,13 @@ Template.nav.events({
   },
   'click .brand-logo': function(event) {
     Session.set('feedTopicsId', "");
+    user = Roles.getUsersInRole([ROLES.Admin]);
+    if(user){
+      Session.set('doctorTopicsId', user.fetch()[0]._id);
+    }
   },
   'click .fa-envelope-o': function(event) {
     Session.set("messageLimit", 5);
-    Session.set("conversationLimit", 1);
+    Session.set("conversationLimit", 5);
   },
 });
