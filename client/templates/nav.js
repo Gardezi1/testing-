@@ -59,6 +59,9 @@ Template.nav.helpers({
       }
     }
   },
+  getDocId: function(){
+    return Session.get("doctorTopicsId");
+  },
   getTopicName: function(tid){
     if(tid){
       return Topics.findOne({_id: tid}).name;
@@ -134,6 +137,9 @@ Template.nav.events({
     if(id){
       Session.set('feedTopicsId', id);
     }
+  },
+  'click .manageDocTopics': function(event){
+    $('.button-collapse-side').sideNav('hide');
   },
   'click .brand-logo': function(event) {
     Session.set('feedTopicsId', "");

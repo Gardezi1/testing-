@@ -22,7 +22,8 @@
                 {{/if}}    
               {{/each}}
                 <li class="divider"></li>
-                <li class="hide-nav show-topic"><a href="{{pathFor route='topicsListing'}}">MANAGE TOPICS</a></li>
+                <li class="manageDocTopics" id="{{getDocId}}"><a href="{{pathFor 'topicsView' id=getDocId}}">MANAGE TOPICS</a></li>
+                <!-- <li class="hide-nav show-topic"><a href="{{pathFor route='topicsListing'}}">MANAGE TOPICS</a></li> -->
             </ul>
           </div>
         {{/if}}
@@ -61,6 +62,9 @@
                   <li><a href="{{pathFor route='settings'}}">Settings</a></li>
                   <li><a href="#!">Privacy Policy</a></li>
                   <li><a href="#!">Terms of Use</a></li>
+                  {{#if isInRole 'admin'}}
+                    <li><a href="{{pathFor route='admin'}}">Admin</a></li>
+                  {{/if}}
                   <li class="divider"></li>
                 {{/if}}  
                 <li class="custom-btn">{{> atNavButton }}</li>

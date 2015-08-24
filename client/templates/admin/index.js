@@ -17,7 +17,6 @@ Template.admin.helpers({
 Template.admin.events({
   'click .accept-doctor': function(e) {
     var id = $(e.target).attr('id');
-    console.log(id);
     user = Meteor.users.findOne({_id:id});
     if(user){
       email = user.emails[0].address
@@ -28,17 +27,14 @@ Template.admin.events({
         } else {
           sAlert.error('User approved.', {effect: 'genie', position: 'top-right', timeout: 'none', onRouteClose: false, stack: false, offset: '80px'});
         }
-      });
-      console.log(id);    
+      });   
     }
   },
   'click .reject-doctor': function(e) {
     var id = $(e.target).attr('id');
-    console.log(id);
     user = Meteor.users.findOne({_id:id});
     if(user){
       email = user.emails[0].address;
-      console.log(id);
       Meteor.call("rejectUser", id, email, function(error, result){
         if(error){
           sAlert.error(error.reason, {effect: 'genie', position: 'top-right', timeout: 'none', onRouteClose: false, stack: false, offset: '80px'});

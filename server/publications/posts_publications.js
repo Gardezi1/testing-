@@ -10,7 +10,7 @@ Meteor.publish('Posts', function(){
       first_circle = Meteor.users.findOne({_id:currentUserId}).profile.firstCircle;
       second_circle = Meteor.users.findOne({_id:currentUserId}).profile.secondCircle;
       if((first_circle  == undefined || first_circle.length < 0) && (second_circle  == undefined || second_circle.length < 0)){
-        return Posts.find({$and: [{authorId: { $in: following_list}}] }, {sort: {createdAt: -1}});
+        return Posts.find({authorId: { $in: following_list}} , {sort: {createdAt: -1}});
       }
       else
         if(first_circle  == undefined || first_circle.length < 0){
@@ -68,4 +68,8 @@ Meteor.publish("Messages", function () {
 
 Meteor.publish('notifications', function() {
   return Notifications.find({userId: this.userId});
+});
+
+Meteor.publish('followerTopics', function() {
+  return FollowerTopics.find();
 });

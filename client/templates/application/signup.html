@@ -1,42 +1,43 @@
 <template name="signup">
-  <div class="row">
-    <form id="application-signup" class="signup col s6">
+  <main class="container">
+    <section class="section">
       <div class="row">
-        <div class="input-field col s6">
-          <input placeholder="Email" id="emailAddress" type="email" required>
-          <label for="emailAddress">Email</label>
+        <div class="col s12 m8 offset-m2 l4 offset-l4 z-depth-1">
+          <div class="row">
+            <form id="application-signup" class="signup at-form">
+              <div class="col s12">
+                <div class="at-title">
+                  <h3 class="header">Create an Account</h3>
+                </div>
+                <div class="input-field">
+                  <input id="emailAddress" type="email" required>
+                  <label for="emailAddress">Email</label>
+                </div>
+                <div class="input-field">
+                  <input id="userPassword" type="password" required>
+                  <label for="userPassword">Password</label>
+                </div>
+                <div class="input-field">
+                  <input id="userName" type="text" required>
+                  <label for="userName">Name</label>
+                </div>
+                <div class="input-field">
+                  <input id="userPhone" type="text" required>
+                  <label for="userPhone">Phone</label>
+                </div>
+                <div class="input-field">
+                  <select id="userType">
+                    <option value="doctor">Doctor</option>
+                    <option value="advocate">Advocate</option>
+                  </select>
+                  <label>Type</label>
+                </div>              
+                <input type="submit" class="at-btn submit btn btn-success submit-user" value="Register">
+              </div>
+            </form>
+          </div>  
         </div>
       </div>
-      <div class="row">  
-        <div class="input-field col s6">
-          <input id="userPassword" type="password" required>
-          <label for="userPassword">Password</label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s6">
-          <input id="userName" type="text" required>
-          <label for="userName">Name</label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s6">
-          <input id="userPhone" type="text" required>
-          <label for="userPhone">Phone</label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s6">
-          <select id="userType">
-            <option value="doctor">Doctor</option>
-            <option value="advocate">Advocate</option>
-          </select>
-          <label>Type</label>
-        </div>
-      </div>  
-      <div class="row">
-        <input type="submit" class="btn btn-success submit-user" value="Register">
-      </div>
-    </form>
-  </div>  
+    </section>
+  </main>
 </template>

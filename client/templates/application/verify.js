@@ -24,6 +24,13 @@ if (Meteor.isClient) {
             Meteor.users.update(Meteor.userId(), {$set: {"profile.dob" :dob}});
             Meteor.users.update(Meteor.userId(), {$set: {"profile.code_verified" :true}});
             Meteor.users.update(Meteor.userId(), {$set: {"emails.[0].verified" :true}});
+            topics = Topics.find().fetch();
+            topic_list = [];
+            var groupedDates = _.groupBy(_.pluck(topics, '_id'));
+            _.each(_.values(groupedDates), function(topic) {
+              topic_list.push(topic[0]);
+            });
+            Meteor.users.update(Meteor.userId(), {$addToSet: {"profile.topics" :{$each: topic_list}}});
             Router.go('/articles');
         }
     });
