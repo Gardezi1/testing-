@@ -19,15 +19,18 @@ Template.topicsView.helpers({
   },
   isChecked: function(id){
     // var id = this._id;
-    topics_list = FollowerTopics.findOne({topicOwnerId: Meteor.userId()}, {topicFollwerId: Router.current().params["id"]}).topics;
-    if(topics_list == undefined || topics_list.length <= 0){
-      return "";
-    }
-    if(topics_list.indexOf(id) >= 0){
-      return "checked";
-    }
-    else{
-      return "";
+    topics_list = FollowerTopics.findOne({topicOwnerId: Meteor.userId()}, {topicFollwerId: Router.current().params["id"]});
+    if(topics_list){
+      topic  = topics_list.topics;
+      if(topic == undefined || topic.length <= 0){
+        return "";
+      }
+      if(topic.indexOf(id) >= 0){
+        return "checked";
+      }
+      else{
+        return "";
+      }
     }
   }
 });
