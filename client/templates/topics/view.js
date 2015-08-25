@@ -5,7 +5,7 @@ Template.topicsView.helpers({
       return user._id;
     }
   },
-  getAllTopics: function(){
+  getMyTopics: function(){
     // return FollowerTopics.findOne({topicOwnerId: Meteor.userId()}, {topicFollwerId: Router.current().params["id"]}).topics;
     user =  Meteor.users.findOne({_id: Router.current().params["id"]});
     if(user){
@@ -19,9 +19,7 @@ Template.topicsView.helpers({
   },
   isChecked: function(id){
     // var id = this._id;
-    console.log(id);
     topics_list = FollowerTopics.findOne({topicOwnerId: Meteor.userId()}, {topicFollwerId: Router.current().params["id"]}).topics;
-    console.log(topics_list);
     if(topics_list == undefined || topics_list.length <= 0){
       return "";
     }
@@ -35,11 +33,10 @@ Template.topicsView.helpers({
 });
 
 Template.topicsView.events({  
-  'click input': function(e) {
-    tid = $(".topics").attr('id');
-    var id = $(e.target).attr('id');
+  'click .myTopics': function(e) {
+    tid = $(".topicsCollection").attr('id');
+    var id = $(e.target).closest('.myTopics').attr('id');
     if(id){
-      console.log(id);
       topics_list = FollowerTopics.findOne({topicOwnerId: Meteor.userId()}, {topicFollwerId: Router.current().params["id"]}).topics;
       if(topics_list == undefined || topics_list.length <= 0){
         // console.log("push")

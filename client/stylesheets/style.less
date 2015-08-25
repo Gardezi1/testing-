@@ -786,6 +786,53 @@ li.admin {
     }
 }
 
+.myTopics{
+  background: #ccc;
+  position: relative;
+  label{
+    width: 100%;
+    height: 35px;
+    position: relative;
+    z-index: 100;
+    padding: 0;
+    font-weight: 300;
+    &:before{
+      font-size: 0;
+      border:0 !important;
+    }
+  }
+  [type="checkbox"]:checked + &:before{
+    border:0; 
+  }
+  /* Checkbox Hack */
+
+    input[type=checkbox] {
+     position: absolute;
+     top: -9999px;
+     left: -9999px;
+    }
+
+    /* Default State */
+    div {
+     position: absolute;
+     background: #ccc;
+     width: 100%;
+     height: 100%;
+     color: white;
+     text-align: center;
+     top: 0;
+     left: 0;
+     z-index: 10;
+     color: #514d51;
+     line-height: 40px;
+    }
+
+    /* Toggled State */
+    input[type=checkbox]:checked ~ div {
+     background: #f55853;
+     color: #fff;
+    }
+}
 /* Start Article New Page Styling */
 
 .topic-list{
@@ -1115,5 +1162,14 @@ li.admin {
     i {
       padding: 0px 30px;
     }
+  }
+}
+
+.drop-select{
+  position: relative;
+  i{
+    position: absolute;
+    right: 0;
+    top: 16px;
   }
 }

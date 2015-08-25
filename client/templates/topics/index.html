@@ -17,7 +17,7 @@
       <div class="row topics-holder">
         {{#each getAllTopics}}
         <div class="col s12 m6 l6">
-          <div class="topics">
+          <div class="topics" id="{{_id}}">
             <input type="checkbox" id="{{_id}}" {{isChecked}}/>
             <label for="{{_id}}"></label>
             <div>{{name}}</div>

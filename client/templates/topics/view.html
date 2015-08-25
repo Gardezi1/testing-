@@ -15,9 +15,9 @@
   <div class="form-holder">  
     <div class="row center-align">
       <div class="row topics-holder">
-        {{#each getAllTopics}}
-        <div class="col s12 m6 l6">
-          <div class="topics" id="{{topicsCollectionId}}">
+        {{#each getMyTopics}}
+        <div class="col s12 m6 l6 topicsCollection" id="{{topicsCollectionId}}">
+          <div class="myTopics" id="{{this}}">
             <input type="checkbox" id="{{this}}" {{isChecked this}}/>
             <label for="{{this}}"></label>
             <div>{{getName this}}</div>
