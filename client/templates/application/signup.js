@@ -26,7 +26,7 @@ Template.signup.events({
                   Meteor.users.update(Meteor.userId(), { $addToSet: { "profile.following": inviteUid}});
                   Meteor.users.update(inviteUid, { $addToSet: { "profile.followers": Meteor.userId()}});
                   Meteor.users.update(Meteor.userId(), {$push: { "profile.secondCircle": inviteUid} });
-                }   
+                }
                 return Router.go('/');
               }
             });
@@ -44,3 +44,7 @@ Template.signup.events({
 Template.signup.onRendered(function() {
   $('select').material_select();
 });
+
+$(document).ready(function(){
+   $('ul.tabs').tabs('select_tab', 'tab_id');
+ });
