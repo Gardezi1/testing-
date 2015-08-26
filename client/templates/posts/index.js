@@ -19,9 +19,10 @@ Template.articleList.helpers({
     uid = Session.get("doctorTopicsId");
     if(tid && uid){
       post_lists = [];
-      console.log(type);
       post = Posts.find({$and: [{authorId: uid}, {articleCategory: type}, {articleTopic: tid} ]}).fetch();
-      console.log(post);
+      if(post.length != 0){
+        $('ul.article-tabs').tabs('select_tab', type);
+      }
       post_lists.push(post);
       return post_lists;
       // return Posts.find({$and: [{authorId: uid}, {articleCategory: type}, {articleTopic: tid} ]});

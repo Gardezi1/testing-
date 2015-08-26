@@ -134,7 +134,6 @@ Template.nav.events({
     $('#slide-out li.active-topic').removeClass('active-topic');
     $(event.target).closest('li').addClass('active-topic');
     var id = $(event.target).closest('li').attr('id');
-    console.log(id);
     if(id){
       Session.set('feedTopicsId', id);
     }
