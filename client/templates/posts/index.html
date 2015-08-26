@@ -11,185 +11,193 @@
       {{/contentFor}}
       <div id="what" class="col s12">
         {{#each getArticlesByCategory 'what'}}
-          <div class="custom-container">
-            <div class="form-holder">
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="shadow-box z-depth-1">
-                      <div class="panel panel-default">
-                        <div class="panel-body custom-panel-body">
-                          <h4><a href="{{pathFor 'articleView' id=_id }}">{{title}}</a></h4>
-                          <div class="row">
-                            <div class="col s5">
-                              <img src="{{file_S3}}">
+          {{#each this}}
+            <div class="custom-container">
+              <div class="form-holder">
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="shadow-box z-depth-1">
+                        <div class="panel panel-default">
+                          <div class="panel-body custom-panel-body">
+                            <h4><a href="{{pathFor 'articleView' id=_id }}">{{title}}</a></h4>
+                            <div class="row">
+                              <div class="col s5">
+                                <img src="{{file_S3}}">
+                              </div>
+                              <div class="col s7">
+                                <!-- <ul>
+                                  {{#each articleTopic}}
+                                    <li><b>{{getArticleName this}}</b></li>
+                                  {{/each}}
+                                </ul> -->
+                                <a href="{{url}}"><b>{{source}}</b></a>
+                                <p> {{body}} </p>
+                              </div>
                             </div>
-                            <div class="col s7">
-                              <!-- <ul>
-                                {{#each articleTopic}}
-                                  <li><b>{{getArticleName this}}</b></li>
-                                {{/each}}
-                              </ul> -->
-                              <a href="{{url}}"><b>{{source}}</b></a>
-                              <p> {{body}} </p>
-                            </div>
+  <!--                           {{#if checkIfAuthor authorId}}
+                              <ul class="center">
+                                {{> quickRemoveButton collection="Posts" _id=this._id beforeRemove=beforeRemove class="btn btn-danger"}}
+                                <a href="{{pathFor 'articleEdit' id=_id }}" class="btn btn-danger">Edit</a>
+                              </ul>
+                            {{/if}} -->
                           </div>
-<!--                           {{#if checkIfAuthor authorId}}
-                            <ul class="center">
-                              {{> quickRemoveButton collection="Posts" _id=this._id beforeRemove=beforeRemove class="btn btn-danger"}}
-                              <a href="{{pathFor 'articleEdit' id=_id }}" class="btn btn-danger">Edit</a>
-                            </ul>
-                          {{/if}} -->
                         </div>
-                      </div>
-                    <div class="doctor-post clearfix">
-                      <div class="doc-name">
-                        Dr. {{getAuthorName authorId }} 
-                        <span>
-                          {{#each articleTopic}}
-                            <b>{{getArticleName this}}</b>
-                          {{/each}}
-                        </span>
-                      </div>
-                      {{#if isInRole 'doctor'}}
-                        <div class="reply">
-                          <a href="{{pathFor 'rePost' id=_id }}"><i class="fa fa-share" id="{{_id}}"></i></a>
+                      <div class="doctor-post clearfix">
+                        <div class="doc-name">
+                          Dr. {{getAuthorName authorId }} 
+                          <span>
+                            {{#each articleTopic}}
+                              <b>{{getArticleName this}}</b>
+                            {{/each}}
+                          </span>
                         </div>
-                      {{/if}}  
+                        {{#if isInRole 'doctor'}}
+                          <div class="reply">
+                            <a href="{{pathFor 'rePost' id=_id }}"><i class="fa fa-share" id="{{_id}}"></i></a>
+                          </div>
+                        {{/if}}  
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
+          {{/each}}
         {{/each}}
       </div>
       <div id="how" class="col s12">
         {{#each getArticlesByCategory 'how'}}
-          <div class="custom-container">
-            <div class="form-holder">
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="shadow-box z-depth-1">
-                      <div class="panel panel-default">
-                        <div class="panel-body custom-panel-body">
-                          <h4><a href="{{pathFor 'articleView' id=_id }}">{{title}}</a></h4>
-                          <div class="row">
-                            <div class="col s5">
-                              <img src="{{file_S3}}">
-                            </div>
-                            <div class="col s7">
-                              <a href="{{url}}"><b>{{source}}</b></a>
-                              <p> {{body}} </p>
-                            </div>
-                          </div> 
+          {{#each this}}
+            <div class="custom-container">
+              <div class="form-holder">
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="shadow-box z-depth-1">
+                        <div class="panel panel-default">
+                          <div class="panel-body custom-panel-body">
+                            <h4><a href="{{pathFor 'articleView' id=_id }}">{{title}}</a></h4>
+                            <div class="row">
+                              <div class="col s5">
+                                <img src="{{file_S3}}">
+                              </div>
+                              <div class="col s7">
+                                <a href="{{url}}"><b>{{source}}</b></a>
+                                <p> {{body}} </p>
+                              </div>
+                            </div> 
+                          </div>
                         </div>
-                      </div>
-                    <div class="doctor-post clearfix">
-                      <div class="doc-name">
-                        Dr. {{getAuthorName authorId }}
-                        <span>
-                          {{#each articleTopic}}
-                            <b>{{getArticleName this}}</b>
-                          {{/each}}
-                        </span>
-                      </div>
-                      {{#if isInRole 'doctor'}}
-                        <div class="reply">
-                          <a href="{{pathFor 'rePost' id=_id }}"><i class="fa fa-share" id="{{_id}}"></i></a>
+                      <div class="doctor-post clearfix">
+                        <div class="doc-name">
+                          Dr. {{getAuthorName authorId }}
+                          <span>
+                            {{#each articleTopic}}
+                              <b>{{getArticleName this}}</b>
+                            {{/each}}
+                          </span>
                         </div>
-                      {{/if}}  
+                        {{#if isInRole 'doctor'}}
+                          <div class="reply">
+                            <a href="{{pathFor 'rePost' id=_id }}"><i class="fa fa-share" id="{{_id}}"></i></a>
+                          </div>
+                        {{/if}}  
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
+          {{/each}}
         {{/each}}
       </div>
       <div id="where" class="col s12">
         {{#each getArticlesByCategory 'where'}}
-          <div class="custom-container">
-            <div class="form-holder">
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="shadow-box z-depth-1">
-                      <div class="panel panel-default">
-                        <div class="panel-body custom-panel-body">
-                          <h4><a href="{{pathFor 'articleView' id=_id }}">{{title}}</a></h4>
-                          <div class="row">
-                            <div class="col s5">
-                              <img src="{{file_S3}}">
-                            </div>
-                            <div class="col s7">
-                              <a href="{{url}}"><b>{{source}}</b></a>
-                              <p> {{body}} </p>
+          {{#each this}}
+            <div class="custom-container">
+              <div class="form-holder">
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="shadow-box z-depth-1">
+                        <div class="panel panel-default">
+                          <div class="panel-body custom-panel-body">
+                            <h4><a href="{{pathFor 'articleView' id=_id }}">{{title}}</a></h4>
+                            <div class="row">
+                              <div class="col s5">
+                                <img src="{{file_S3}}">
+                              </div>
+                              <div class="col s7">
+                                <a href="{{url}}"><b>{{source}}</b></a>
+                                <p> {{body}} </p>
+                              </div>
                             </div>
                           </div>
                         </div>
-                      </div>
-                    <div class="doctor-post clearfix">
-                      <div class="doc-name">
-                        Dr. {{getAuthorName authorId }}
-                        <span>
-                          {{#each articleTopic}}
-                            <b>{{getArticleName this}}</b>
-                          {{/each}}
-                        </span>
-                      </div>
-                      {{#if isInRole 'doctor'}}
-                        <div class="reply">
-                          <a href="{{pathFor 'rePost' id=_id }}"><i class="fa fa-share" id="{{_id}}"></i></a>
+                      <div class="doctor-post clearfix">
+                        <div class="doc-name">
+                          Dr. {{getAuthorName authorId }}
+                          <span>
+                            {{#each articleTopic}}
+                              <b>{{getArticleName this}}</b>
+                            {{/each}}
+                          </span>
                         </div>
-                      {{/if}}  
+                        {{#if isInRole 'doctor'}}
+                          <div class="reply">
+                            <a href="{{pathFor 'rePost' id=_id }}"><i class="fa fa-share" id="{{_id}}"></i></a>
+                          </div>
+                        {{/if}}  
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
+          {{/each}}  
         {{/each}}
       </div>
       <div id="more" class="col s12">
         {{#each getArticlesByCategory 'more'}}
-          <div class="custom-container">
-            <div class="form-holder">
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="shadow-box z-depth-1">
-                      <div class="panel panel-default">
-                        <div class="panel-body custom-panel-body">
-                          <h4><a href="{{pathFor 'articleView' id=_id }}">{{title}}</a></h4>
-                          <div class="row">
-                            <div class="col s5">
-                              <img src="{{file_S3}}">
-                            </div>
-                            <div class="col s7">
-                              <a href="{{url}}"><b>{{source}}</b></a>
-                              <p> {{body}} </p>
-                            </div>
-                          </div>  
+          {{#each this}}
+            <div class="custom-container">
+              <div class="form-holder">
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="shadow-box z-depth-1">
+                        <div class="panel panel-default">
+                          <div class="panel-body custom-panel-body">
+                            <h4><a href="{{pathFor 'articleView' id=_id }}">{{title}}</a></h4>
+                            <div class="row">
+                              <div class="col s5">
+                                <img src="{{file_S3}}">
+                              </div>
+                              <div class="col s7">
+                                <a href="{{url}}"><b>{{source}}</b></a>
+                                <p> {{body}} </p>
+                              </div>
+                            </div>  
+                          </div>
                         </div>
-                      </div>
-                    <div class="doctor-post clearfix">
-                      <div class="doc-name">
-                        Dr. {{getAuthorName authorId }}
-                        <span>
-                          {{#each articleTopic}}
-                            <b>{{getArticleName this}}</b>
-                          {{/each}}
-                        </span>
-                      </div>
-                      {{#if isInRole 'doctor'}}
-                        <div class="reply">
-                          <a href="{{pathFor 'rePost' id=_id }}"><i class="fa fa-share" id="{{_id}}"></i></a>
+                      <div class="doctor-post clearfix">
+                        <div class="doc-name">
+                          Dr. {{getAuthorName authorId }}
+                          <span>
+                            {{#each articleTopic}}
+                              <b>{{getArticleName this}}</b>
+                            {{/each}}
+                          </span>
                         </div>
-                      {{/if}}  
+                        {{#if isInRole 'doctor'}}
+                          <div class="reply">
+                            <a href="{{pathFor 'rePost' id=_id }}"><i class="fa fa-share" id="{{_id}}"></i></a>
+                          </div>
+                        {{/if}}  
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
+          {{/each}}  
         {{/each}}
       </div>
     </div>

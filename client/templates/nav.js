@@ -51,9 +51,10 @@ Template.nav.helpers({
     uid = Session.get("doctorTopicsId");
     if(uid){
       Session.set("docId", uid);
-      topics = Meteor.users.findOne({_id: uid});
-      if(topics && topics.profile.topics){
-        return _.map(topics.profile.topics, function(value, index){
+      // topics = Meteor.users.findOne({_id: uid});
+      topics = FollowerTopics.findOne({$and: [{topicOwnerId: Meteor.userId()}, {topicFollowerId: uid}] });
+      if(topics && topics.topics){
+        return _.map(topics.topics, function(value, index){
           return {value: value, index: index};
         });
       }

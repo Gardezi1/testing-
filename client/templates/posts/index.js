@@ -18,11 +18,27 @@ Template.articleList.helpers({
     tid = Session.get("feedTopicsId");
     uid = Session.get("doctorTopicsId");
     if(tid && uid){
-      // return Posts.find({$and: [{tid: { $in: articleTopic}},{articleCategory: type}] });
-      return Posts.find({$and: [{authorId: uid}, {articleCategory: type}, {articleTopic: tid} ]});
+      post_lists = [];
+      post = Posts.find({$and: [{authorId: uid}, {articleCategory: type}, {articleTopic: tid} ]});
+      post_lists.push(post);
+      return post_lists;
+      // return Posts.find({$and: [{authorId: uid}, {articleCategory: type}, {articleTopic: tid} ]});
     }
-    else
-      return Posts.find({articleCategory: type});
+    else{
+      var topics_list = FollowerTopics.find({topicOwnerId: Meteor.userId()}).fetch();
+      post_list = [];
+      var groupedDates = _.groupBy(_.pluck(topics_list, 'topicFollowerId'));
+      _.each(_.values(groupedDates), function(followId) {
+        topics = FollowerTopics.findOne({topicFollowerId: followId[0]}).topics;
+        result = Posts.find({$and: [{authorId: followId[0]}, {articleTopic: {$in: topics}}, {articleCategory: type}]});
+        result.forEach(function(topic){
+          post_list.push(result);
+        });
+        
+      });
+      return post_list;
+    }
+      // return Posts.find({articleCategory: type});
   },
   getAuthorName: function(authorId){
     if(authorId){
