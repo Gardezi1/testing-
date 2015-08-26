@@ -34,10 +34,7 @@ Template.articleList.helpers({
       _.each(_.values(groupedDates), function(followId) {
         topics = FollowerTopics.findOne({topicFollowerId: followId[0]}).topics;
         result = Posts.find({$and: [{authorId: followId[0]}, {articleTopic: {$in: topics}}, {articleCategory: type}]});
-        result.forEach(function(topic){
-          post_list.push(result);
-        });
-        
+        post_list.push(result);
       });
       return post_list;
     }

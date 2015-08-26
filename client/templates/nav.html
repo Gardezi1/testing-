@@ -22,7 +22,9 @@
                 {{/if}}    
               {{/each}}
                 <li class="divider"></li>
+              {{#if getDocId}}  
                 <li class="manageDocTopics" id="{{getDocId}}"><a href="{{pathFor 'topicsView' id=getDocId}}">MANAGE TOPICS</a></li>
+              {{/if}}  
                 <!-- <li class="hide-nav show-topic"><a href="{{pathFor route='topicsListing'}}">MANAGE TOPICS</a></li> -->
             </ul>
           </div>
