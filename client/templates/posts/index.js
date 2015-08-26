@@ -32,7 +32,7 @@ Template.articleList.helpers({
       post_list = [];
       var groupedDates = _.groupBy(_.pluck(topics_list, 'topicFollowerId'));
       _.each(_.values(groupedDates), function(followId) {
-        topics = FollowerTopics.findOne({topicFollowerId: followId[0]}).topics;
+        topics = FollowerTopics.findOne({$and: [{topicOwnerId: Meteor.userId()}, {topicFollowerId: followId[0]}] }).topics;
         result = Posts.find({$and: [{authorId: followId[0]}, {articleTopic: {$in: topics}}, {articleCategory: type}]});
         post_list.push(result);
       });
