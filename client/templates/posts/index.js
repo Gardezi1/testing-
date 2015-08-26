@@ -19,7 +19,9 @@ Template.articleList.helpers({
     uid = Session.get("doctorTopicsId");
     if(tid && uid){
       post_lists = [];
-      post = Posts.find({$and: [{authorId: uid}, {articleCategory: type}, {articleTopic: tid} ]});
+      console.log(type);
+      post = Posts.find({$and: [{authorId: uid}, {articleCategory: type}, {articleTopic: tid} ]}).fetch();
+      console.log(post);
       post_lists.push(post);
       return post_lists;
       // return Posts.find({$and: [{authorId: uid}, {articleCategory: type}, {articleTopic: tid} ]});

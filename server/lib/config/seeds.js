@@ -33,15 +33,16 @@ if (Meteor.isServer) {
     else{
     user.profile = options.profile || {};
     user.profile.code_verified = false;
-    var admin_user = Meteor.users.findOne({"emails.address": "admin@medcircle.com"})._id;
+    var admin_user = Meteor.users.findOne({"emails.address": "admin@medcircle.com"});
     user.profile.following = [];
-    user.profile.following.push(admin_user);
+    user.profile.following.push(admin_user._id);
+    FollowerTopics.insert({'topicOwnerId': user._id, 'topicFollowerId': admin_user._id, 'topics': admin_user.profile.topics});
 
     if(user.profile.type === 'advocate'){
       user.profile.firstCircle = [];
-      user.profile.firstCircle.push(admin_user);
+      user.profile.firstCircle.push(admin_user._id);
       user.profile.secondCircle = [];
-      user.profile.secondCircle.push(admin_user);
+      user.profile.secondCircle.push(admin_user._id);
       var ph = user.profile.phone
       var code = Math.floor(Math.random()*9000) + 1000;
       user.profile.code = code;
