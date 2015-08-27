@@ -113,8 +113,8 @@ Meteor.methods({
       body: body
     }, function(err, responseData) {
       if (!err) {
-        console.log(responseData.from);
-        console.log(responseData.body);
+        // console.log(responseData.from);
+        // console.log(responseData.body);
 
       }
       else{

@@ -44,6 +44,7 @@ Template.inviteAdvocate.events({
   'click #invite-advocate-by-phone': function (e) {
     phone = $("#user-phone").val();
     phone_array = phone.split(',');
+    uid = Meteor.userId();
     console.log(phone_array);
     for(k=0; k < phone_array.length; k++){
       console.log(phone_array[k]);
@@ -53,7 +54,7 @@ Template.inviteAdvocate.events({
       token = Random.hexString(10);
       url = Meteor.absoluteUrl();
       url = url + 'sign-up/' + token + "-" + uid;
-      body = "Hi there!  You've been invited to the MedCircle. To get started, click the link below to create your account.\n\n"
+      body = "Hi there!  You've been invited to the MedCircle. To get started, click the link below:\n\n"
        + url 
        +"\n\n" + "Thanks";
 
