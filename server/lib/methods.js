@@ -118,7 +118,6 @@ Meteor.methods({
 
       }
       else{
-        alert(err);
         console.log(err)
       }
     });
