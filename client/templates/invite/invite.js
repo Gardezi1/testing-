@@ -52,14 +52,14 @@ Template.inviteAdvocate.events({
       user = Meteor.users.findOne({"profile.phone":phone_array[k]})
 
       if (user) {
-        sAlert.error('Phone '+ invitee.email +' already invited.  :-/', {effect: 'genie', position: 'top-right', timeout: 'none', onRouteClose: false, stack: false, offset: '80px'});
+        sAlert.error('Phone '+ phone_array[k] +' already invited.  :-/', {effect: 'genie', position: 'top-right', timeout: 'none', onRouteClose: false, stack: false, offset: '80px'});
       } else{
         token = Random.hexString(10);
         url = Meteor.absoluteUrl();
         url = url + 'sign-up/' + token + "-" + uid;
-        body = "Hi there!  You've been invited to the MedCircle. To get started, click the link below:\n\n"
+        body = "Hi,  You've been invited to the MedCircle. To get started, click the link below:\n\n"
          + url 
-         +"\n\n" + "Thanks";
+         +"\n\n";
 
          Meteor.call("sendTwilioInvite", phone_array[k], body, function(error, result){
           if(error){
