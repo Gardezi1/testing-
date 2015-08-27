@@ -371,7 +371,11 @@ nav{
 
 @media only screen and (min-width : 993px) {
   .container {
-    width: 98%; }
+    width: 98%;
+  }
+  .button-collapse{
+    float: right;
+  }
  }
 
 .upl-img img{
@@ -1202,4 +1206,59 @@ li.admin {
   right: 0;
   width: 550px;
   height: 450px;
+}
+
+.side-nav{
+  li{
+    a{
+      &:before{
+        margin-right: 10px;
+        font-size: 23px;
+      }
+    }
+  }
+}
+
+/* Large desktops and laptops */
+@media (min-width: 1200px) {
+
+}
+/* Portrait tablets and medium desktops */
+@media (min-width: 992px) and (max-width: 1199px) {}
+/* Portrait tablets and small desktops */
+@media (min-width: 768px) and (max-width: 800px) {
+  nav {
+    height: 65px;
+    line-height: 80px;
+    .button-collapse{
+      float: right;
+    }
+  }
+}
+@media (min-width: 640px) and (max-width: 767px) {
+  nav {
+    height: 65px;
+    line-height: 80px;
+    .button-collapse{
+      float: right;
+    }
+  }
+}
+@media (min-width: 480px) and (max-width: 639px) {
+  nav {
+    height: 65px;
+    line-height: 80px;
+    .button-collapse{
+      float: right;
+    }
+  }
+}
+@media (min-width: 320px) and (max-width: 479px) {
+  nav {
+    height: 65px;
+    line-height: 80px;
+    .button-collapse{
+      float: right;
+    }
+  }
 }

@@ -3,7 +3,7 @@
     <div class="container">
       <div class="nav-wrapper">
         {{#if currentUser}}
-          <div class="user-pro-holder">      
+          <div class="user-pro-holder">
             <a href="#" data-activates="slide-out" class="button-collapse-side"><img src="{{getAdminImage}}"></a>
             <ul id="slide-out" class="side-nav doc-list">
               <select id="doc-select">
@@ -12,14 +12,14 @@
                     <option value="{{this}}" data-imagesrc="{{getImage this}}">{{getDoctorName this}}</option>
                   {{/if}}
                 {{/each}}
-                <option value="99" data-imagesrc="/imgs/add.png">ADD DOCTOR</option>  
+                <option value="99" data-imagesrc="/imgs/add.png">ADD DOCTOR</option>
               </select>
               {{#each doctorTopics}}
                 {{#if index}}
                   <li class="article-feed" id="{{value}}"><a href="{{pathFor route='articles'}}">{{getTopicName value}}</a></li>
                 {{else}}
                   <li class="article-feed active-topic" id="{{value}}"><a href="{{pathFor route='articles'}}">{{getTopicName value}}</a></li>
-                {{/if}}    
+                {{/if}}
               {{/each}}
                 <li class="divider"></li>
                 <li class="manageDocTopics" id="{{getDocId}}"><a href="{{pathFor 'topicsView' id=getDocId}}">MANAGE TOPICS</a></li>
@@ -29,11 +29,11 @@
         {{/if}}
         <a href="{{pathFor route='articles'}}" class="brand-logo"><img src="/imgs/logo.jpg"></a>
         <ul class="right hide-on-med-and-down normal-nav">
-          {{#if currentUser}} 
+          {{#if currentUser}}
               <li class="admin">
                 <a href="{{pathFor route='profileView'}}"><img src="{{file_S3}}"> Hi, <b>{{currentUser.profile.name}}</b></a>
               </li>
-            {{#if ifDoctor}}    
+            {{#if ifDoctor}}
               <li>
                 <a href="{{pathFor route='advocatesListing'}}" class="fa fa-users tooltipped" data-position="bottom" data-delay="50" data-tooltip="ADVOCATES"></a>
               </li>
@@ -41,7 +41,7 @@
               <li>
                 <a href="{{pathFor route='doctorsListing'}}" class="fa fa-users tooltipped" ata-position="bottom" data-delay="50" data-tooltip="DOCTORS"></a>
               </li>
-            {{/if}}  
+            {{/if}}
             <li>
               <a href="{{pathFor route='conversationListing'}}" class="fa fa-envelope-o tooltipped" data-position="bottom" data-delay="50" data-tooltip="MESSAGES"></a>
             </li>
@@ -52,7 +52,7 @@
                 {{/if}}
               </a>
             </li>
-          {{/if}}  
+          {{/if}}
           <div class="drop-holder">
             <a href="#" class="fa fa-envelope-o tooltipped fa fa-cog dropdown-button" data-position="bottom" data-delay="50" data-tooltip="SETTINGS" data-activates="dropdown1"></a>
               <!-- Dropdown Structure -->
@@ -66,18 +66,18 @@
                     <li><a href="{{pathFor route='admin'}}">Admin</a></li>
                   {{/if}}
                   <li class="divider"></li>
-                {{/if}}  
+                {{/if}}
                 <li class="custom-btn">{{> atNavButton }}</li>
               </ul>
           </div>
           <!-- <li>{{> atNavButton }}</li> -->
         </ul>
-        
+
         <ul id="nav-mobile" class="side-nav">
-          <li><a href="{{pathFor 'home'}}">Home</a></li>
-          <li><a href="{{pathFor route='doctorsListing'}}">Doctors</a></li>
-          <li><a href="{{pathFor route='advocatesListing'}}">Advocates</a></li>
-          <li><a href="{{pathFor 'private'}}">Private</a></li>
+          <li><a href="{{pathFor 'home'}}" class="fa fa-home">Home</a></li>
+          <li><a href="{{pathFor route='doctorsListing'}}" class="fa fa-user-md">Doctors</a></li>
+          <li><a href="{{pathFor route='advocatesListing'}}" class="fa fa-user">Advocates</a></li>
+          <li><a href="{{pathFor 'private'}}" class="fa fa-lock">Private</a></li>
           <li>{{> atNavButton }}</li>
         </ul>
         <a class="button-collapse" href="#" data-activates="nav-mobile"><i class="mdi-navigation-menu"></i></a>
