@@ -62,7 +62,7 @@ Meteor.methods({
     // Let other method calls from the same client start running,
     // without waiting for the email sending to complete.
     this.unblock();
-    ServerSession.set("ifInvited", true);
+    ServerSession.set("ifInvited", "true");
     Invites.update(inviteId, {
       $set: {
         token: token,
@@ -91,10 +91,10 @@ Meteor.methods({
     });
 },
   sendTwilioMessage: function(user, phone, code){
-    twilio = Twilio('ACc4dc855ca070a1db07f086566f561a30', 'a6ded70636ffb413789396296b12e449');
+    twilio = Twilio('AC6bc5064c8ae8ad8cc215bea092304ade', '210dd15e83d373b9af0d732f62573012');
     twilio.sendSms({
       to: phone,
-      from: '+14028755543',
+      from: '+13235242360',
       body: "Dear " + user.profile.name + ",\n\n" +'Your 4 pin code is: '+code
     }, function(err, responseData) {
       if (!err) {
@@ -106,10 +106,10 @@ Meteor.methods({
     });
   },
   sendTwilioInvite: function(phone, body){
-    twilio = Twilio('ACc4dc855ca070a1db07f086566f561a30', 'a6ded70636ffb413789396296b12e449');
+    twilio = Twilio('AC6bc5064c8ae8ad8cc215bea092304ade', '210dd15e83d373b9af0d732f62573012');
     twilio.sendSms({
       to: phone,
-      from: '+14028755543',
+      from: '+13235242360',
       body: body
     }, function(err, responseData) {
       if (!err) {

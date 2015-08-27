@@ -33,16 +33,15 @@ if (Meteor.isServer) {
     else{
     user.profile = options.profile || {};
     user.profile.code_verified = false;
-    var admin_user = Meteor.users.findOne({"emails.address": "admin@medcircle.com"});
+    var admin_user = Meteor.users.findOne({"emails.address": "admin@medcircle.com"})._id;
     user.profile.following = [];
-    user.profile.following.push(admin_user._id);
-    FollowerTopics.insert({'topicOwnerId': user._id, 'topicFollowerId': admin_user._id, 'topics': admin_user.profile.topics});
+    user.profile.following.push(admin_user);
 
     if(user.profile.type === 'advocate'){
       user.profile.firstCircle = [];
-      user.profile.firstCircle.push(admin_user._id);
+      user.profile.firstCircle.push(admin_user);
       user.profile.secondCircle = [];
-      user.profile.secondCircle.push(admin_user._id);
+      user.profile.secondCircle.push(admin_user);
       var ph = user.profile.phone
       var code = Math.floor(Math.random()*9000) + 1000;
       user.profile.code = code;
@@ -55,9 +54,9 @@ if (Meteor.isServer) {
 
       Meteor.setTimeout(function() {
         Accounts.sendVerificationEmail(user._id);
-      }, 5 * 1000);
+      }, 10 * 1000);
 
-      if(ServerSession.get("ifInvited")){
+      if(ServerSession.get("ifInvited") === "true"){
          code_subject = "Hi " + user.profile.name + ",\n\n" + 'Here is your 4 digit verification code: ' + code +'.'+
             "\n\n" + "Thanks";
         Meteor.call('sendCodeToEmail',user, user.emails[0].address, code_subject, code);
