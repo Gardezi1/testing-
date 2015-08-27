@@ -51,21 +51,25 @@ Template.inviteAdvocate.events({
       phone_array[k] = phone_array[k].trim();
       user = Meteor.users.findOne({"profile.phone":phone_array[k]})
 
-      token = Random.hexString(10);
-      url = Meteor.absoluteUrl();
-      url = url + 'sign-up/' + token + "-" + uid;
-      body = "Hi there!  You've been invited to the MedCircle. To get started, click the link below:\n\n"
-       + url 
-       +"\n\n" + "Thanks";
+      if (user) {
+        sAlert.error('Phone '+ invitee.email +' already invited.  :-/', {effect: 'genie', position: 'top-right', timeout: 'none', onRouteClose: false, stack: false, offset: '80px'});
+      } else{
+        token = Random.hexString(10);
+        url = Meteor.absoluteUrl();
+        url = url + 'sign-up/' + token + "-" + uid;
+        body = "Hi there!  You've been invited to the MedCircle. To get started, click the link below:\n\n"
+         + url 
+         +"\n\n" + "Thanks";
 
-       Meteor.call("sendTwilioInvite", phone_array[k], body, function(error, result){
-        if(error){
-          sAlert.error(error.reason, {effect: 'genie', position: 'top-right', timeout: 'none', onRouteClose: false, stack: false, offset: '80px'});
-          console.log("error from sendTwilioInvite: ", error);
-        } else {
-          sAlert.error('Invitation has been sent successfully', {effect: 'genie', position: 'top-right', timeout: 'none', onRouteClose: false, stack: false, offset: '80px'});
-        }
-      });
+         Meteor.call("sendTwilioInvite", phone_array[k], body, function(error, result){
+          if(error){
+            sAlert.error(error.reason, {effect: 'genie', position: 'top-right', timeout: 'none', onRouteClose: false, stack: false, offset: '80px'});
+            console.log("error from sendTwilioInvite: ", error);
+          } else {
+            sAlert.error('Invitation has been sent successfully', {effect: 'genie', position: 'top-right', timeout: 'none', onRouteClose: false, stack: false, offset: '80px'});
+          }
+        });
+      }
     }
   }
 
