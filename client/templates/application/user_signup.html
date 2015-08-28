@@ -1,5 +1,6 @@
-<template name="home">
+<template name="userSignup">
     <div class="valign-wrapper">
+
       <div class="sign-holder">
         <div class="logo-bar">
           <img src="imgs/sign-up-logo.png" alt="MedCircle"/>
@@ -15,10 +16,22 @@
               </div>
               <div id="test1" class="col s12">
                 <div class="tabs-inner">
-                  <h5 class="center-align">Advocates Sign In</h5>
+                  <h5 class="center-align">Advocate Sign Up</h5>
                   <hr>
-                  <form class="advocate-sign-in-form">
+                  <form class="advocate-sign-up-form">
                     <div class="row">
+                     <div class="input-field col s6">
+                       <input id="advo-first-name" name="advo-first-name" type="text">
+                       <label for="advo-first-name" data-error="wrong" data-success="right">First Name</label>
+                     </div>
+                     <div class="input-field col s6">
+                       <input id="advo-last-name" name="advo-last-name" type="text">
+                       <label for="advo-last-name" data-error="wrong" data-success="right">Last Name</label>
+                     </div>
+                     <div class="input-field col s12">
+                       <input id="advocatePhone" name="advocatePhone" type="text">
+                       <label for="advocatePhone" data-error="wrong" data-success="right">Phone</label>
+                     </div>
                      <div class="input-field col s12">
                        <input id="advocateEmail" name="advocateEmail" type="email">
                        <label for="advocateEmail" data-error="wrong" data-success="right">Email</label>
@@ -31,10 +44,10 @@
                        <a href="/forgot-password" class="f-pass-link">Forgot Password ?</a>
                      </div>
                      <div class="input-field col s12">
-                       <input type="submit" class="advocateSignIn waves-light btn" value="Sign In">
+                       <input type="submit" class="advocateSignIn waves-light btn" value="Sign Up">
                      </div>
                      <div class="col s12">
-                       <a href="/sign-up" class="sign-bottom">Don't have an account? <span>Sign Up</span></a>
+                       <a href="/sign-in" class="sign-bottom">Already have an account? <span>Sign In</span></a>
                      </div>
                    </div>
                   </form>
@@ -42,10 +55,26 @@
               </div>
               <div id="test2" class="col s12">
                 <div class="tabs-inner">
-                  <h5 class="center-align">Doctors Sign In</h5>
+                  <h5 class="center-align">Doctor Sign Up</h5>
                   <hr>
-                  <form class="doctor-sign-in-form">
+                  <form class="doctor-sign-up-form">
                     <div class="row">
+                     <div class="input-field col s6">
+                       <input id="doc-first-name" name="doc-first-name" type="text">
+                       <label for="doc-first-name" data-error="wrong" data-success="right">First Name</label>
+                     </div>
+                     <div class="input-field col s6">
+                       <input id="doc-last-name" name="doc-last-name" type="text">
+                       <label for="doc-last-name" data-error="wrong" data-success="right">Last Name</label>
+                     </div>
+                     <div class="input-field col s12">
+                       <input id="doctorSpeciality" name="doctorSpeciality" type="text">
+                       <label for="doctorSpeciality" data-error="wrong" data-success="right">Speciality(s)</label>
+                     </div>
+                     <div class="input-field col s12">
+                       <input id="doctorPhone" name="doctorPhone" type="text">
+                       <label for="doctorPhone" data-error="wrong" data-success="right">Phone</label>
+                     </div>
                      <div class="input-field col s12">
                        <input id="doctorEmail" name="doctorEmail" type="email">
                        <label for="doctorEmail" data-error="wrong" data-success="right">Email</label>
@@ -58,10 +87,10 @@
                        <a href="/forgot-password" class="f-pass-link">Forgot Password ?</a>
                      </div>
                      <div class="input-field col s12">
-                       <input type="submit" class="doctorSignIn waves-light btn" value="Sign In">
+                       <input type="submit" class="doctorSignIn waves-light btn" value="Send Request">
                      </div>
                      <div class="col s12">
-                       <a href="/sign-up" class="sign-bottom">Don't have an account? <span>Request to Join</span></a>
+                       <a href="/sign-in" class="sign-bottom">Already have an account? <span>Sign In</span></a>
                      </div>
                    </div>
                   </form>

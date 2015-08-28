@@ -1,7 +1,7 @@
 Template.settings.helpers({
   userName: function(){
     user = Meteor.users.findOne({_id: Meteor.userId()});
-    return user && user.profile.name;
+    return user && user.profile.firstName;
   },
    userEmail: function(){
     user = Meteor.users.findOne({_id: Meteor.userId()});
@@ -21,7 +21,7 @@ Template.settings.events({
         console.log(oldPassword);
         console.log(newPassword);
         if(name){
-          Meteor.users.update({_id:Meteor.userId()}, {$set:{"profile.name":name}})
+          Meteor.users.update({_id:Meteor.userId()}, {$set:{"profile.firstName":name}})
         }
 
         if(email){

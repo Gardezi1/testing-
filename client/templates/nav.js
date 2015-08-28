@@ -41,7 +41,7 @@ Template.nav.helpers({
   getDoctorName: function(uid){
     if(uid){
       var user = Meteor.users.findOne({_id: uid});
-      return user && user.profile.name;
+      return user && user.profile.firstName;
     }
   },
   notCurrentUser: function(uid){

@@ -15,7 +15,7 @@ Template.articleView.helpers({
   },
   getDoctorName: function(uid){
     if(uid){
-      return Meteor.users.findOne({_id: uid}).profile.name;
+      return Meteor.users.findOne({_id: uid}).profile.firstName;
     }
   },
   getImage: function(uid){

@@ -22,6 +22,70 @@ Meteor.methods({
 
     return results;
   },
+  registerAdvocate: function(user){
+    check(user, {email: String, password: String, firstName: String, lastName: String, phone: String});
+    if (!user.firstName)
+       throw new Meteor.Error(422, 'Please include a first name.');
+
+    if (!user.lastName)
+      throw new Meteor.Error(422, 'Please include a last name.');
+
+    if (!user.email)
+      throw new Meteor.Error(422, 'Please include an email.');
+
+    if (!Meteor.users.findOne({"emails.address": user.email})) {
+      id  =  Accounts.createUser({
+              email: user.email,
+              password: user.password,
+              profile: { firstName: user.firstName, lastName: user.lastName, phone: user.phone, type: "advocate"}
+            });
+
+      Roles.addUsersToRoles(id, [ROLES.Advocate]);
+      
+      Accounts.emailTemplates.verifyEmail.text = function(user, url) {
+        return "Dear " + user.profile.firstName + ",\n\n" +
+         'Here is your 4 digit verification code: ' + user.profile.code +'.  Click on the link to verify code: ' + url +
+            "\n\n" + "Thanks";
+      };
+      Accounts.sendVerificationEmail(id);
+      u =  Meteor.users.findOne({_id: id});
+      Meteor.call('sendTwilioMessage',u, u.profile.phone, u.profile.code);
+    } 
+    else 
+    {
+      throw new Meteor.Error(403, "Email address is already registered");
+    }
+
+  },
+  registerDoctor: function(user){
+    check(user, {email: String, password: String, firstName: String, lastName: String, phone: String, speciality: String});
+    if (!user.firstName)
+       throw new Meteor.Error(422, 'Please include a first name.');
+
+    if (!user.lastName)
+      throw new Meteor.Error(422, 'Please include a last name.');
+
+    if (!user.email)
+      throw new Meteor.Error(422, 'Please include an email.');
+
+    if (!user.speciality)
+      throw new Meteor.Error(422, 'Please include your speciality.');
+
+    if (!Meteor.users.findOne({"emails.address": user.email})) {
+      id  =  Accounts.createUser({
+              email: user.email,
+              password: user.password,
+              profile: { firstName: user.firstName, lastName: user.lastName, phone: user.phone, speciality: user.speciality, type: "doctor"}
+            });
+
+      Roles.addUsersToRoles(id, [ROLES.Doctor]);
+    } 
+    else 
+    {
+      throw new Meteor.Error(403, "Email address is already registered");
+    }
+
+  },
   addToFollowing: function(userId) {
 
     Meteor.users.update(Meteor.userId(), { $addToSet: { "profile.following": userId}});
@@ -95,7 +159,7 @@ Meteor.methods({
     twilio.sendSms({
       to: phone,
       from: '+13235242360',
-      body: "Dear " + user.profile.name + ",\n\n" +'Your 4 pin code is: '+code
+      body: "Dear " + user.profile.firstName + ",\n\n" +'Your 4 pin code is: '+code
     }, function(err, responseData) {
       if (!err) {
 
@@ -124,7 +188,19 @@ Meteor.methods({
   },
   validateBetaToken: function(user) {
     var id, testInvite;
-    check(user, {email: String, password: String, betaToken: String, name: String, phone: String, type: String});
+    check(user, {email: String, password: String, betaToken: String, fName: String, lName: String, phone: String, type: String});
+    if (!user.fName)
+       throw new Meteor.Error(422, 'Please include a first name.');
+
+    if (!user.lName)
+      throw new Meteor.Error(422, 'Please include a last name.');
+
+    if (!user.email)
+      throw new Meteor.Error(422, 'Please include an email.');
+
+    if (!user.phone)
+      throw new Meteor.Error(422, 'Please include your phone');
+
     testInvite = Invites.findOne({
       email: user.email,
       token: user.betaToken
@@ -142,7 +218,7 @@ Meteor.methods({
       id = Accounts.createUser({
         email: user.email,
         password: user.password,
-        profile: { name: user.name, phone: user.phone, type: user.type }
+        profile: { firstName: user.fName, lastName: user.lName, phone: user.phone, type: user.type }
       });
       if(user.type == "doctor"){
         Meteor.users.update(id, {$set: {"profile.approve": false}});
@@ -153,6 +229,8 @@ Meteor.methods({
       }else{
         Roles.addUsersToRoles(id, [ROLES.Advocate]);
         Meteor.users.update(id, {$set: {"emails.0.verified" :true}});
+        u =  Meteor.users.findOne({_id: id});
+        Meteor.call('sendTwilioMessage',u, u.profile.phone, u.profile.code);
       }
       
       Invites.update(testInvite._id, {
@@ -189,7 +267,7 @@ Meteor.methods({
         to: email,
         from: "medcircle.staging@gmail.com",
         subject: "Request Rejected",
-        text: "Dear "+user.profile.name+",\n\n" +
+        text: "Dear "+user.profile.firstName+",\n\n" +
               'Sorry, you got rejected. ' +
               "\n\n" + "Thanks"
       });

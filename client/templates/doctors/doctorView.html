@@ -5,7 +5,7 @@
         <a href="{{pathFor route='doctorsListing'}}" class="back-btn left fa fa-chevron-left">Back</a>
       </div>
       <div class="col s12 m8 l8">
-        <h5 class="center-align">Dr. {{profile.name}}</h5>
+        <h5 class="center-align">Dr. {{profile.firstName}}</h5>
       </div>
       {{#if checkIfFollowing _id}}
         <div class="col s12 m2 l2">
@@ -29,7 +29,7 @@
               <img src="{{getImage profile.picture}}" alt="{{title}}" class="">
               <div class="prof-con">
                 <div class="profile-name">
-                  <h5>Dr. {{profile.name}}</h5>
+                  <h5>Dr. {{profile.firstName}}</h5>
                   <h6>{{profile.speciality}}</h6>
                 </div>
                 <div class="profile-detail">

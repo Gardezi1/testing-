@@ -1,8 +1,15 @@
 if (Meteor.isServer) {
+  Meteor.startup(function(){
+    if(Topics.find().count() == 0){
+      ["Depression", "ADHD", "Bipolar Disorder"].forEach(function(topic){
+        Topics.insert({name:topic})
+      });
+    }
+  });
 
   if (!Meteor.users.findOne({"emails.address": "admin@medcircle.com"})) {
     var admins = [
-      { name: "medcircle", email: "admin@medcircle.com", password: "medcircle123", phone: '92321434343', code_verified: true, roles: ['admin'] }
+      { firstName: "medcircle", email: "admin@medcircle.com", password: "medcircle123", phone: '92321434343', code_verified: true, code_verified: true, type: "admin", roles: ['admin'] }
     ];
     
     _.each(admins, function (user) {
@@ -11,7 +18,7 @@ if (Meteor.isServer) {
       id = Accounts.createUser({
         email: user.email,
         password: user.password,
-        profile: { name: user.name, phone: user.phone }
+        profile: { firstName: user.firstName, phone: user.phone, type: user.type, code_verified: user.code_verified }
       });
 
       if (user.roles.length > 0) {
@@ -19,8 +26,9 @@ if (Meteor.isServer) {
         // after `Accounts.createUser` or `Accounts.onCreate`
         Roles.addUsersToRoles(id, user.roles);
       }
+
       Meteor.users.update(id, {$set: {"emails.0.verified" :true}});
-      Meteor.users.update(id, {$set: {"profile.code_verified" :true}});
+      // Meteor.users.update(id, {$set: {"profile.code_verified" :true}});
     });
   }
 
@@ -46,30 +54,25 @@ if (Meteor.isServer) {
       var code = Math.floor(Math.random()*9000) + 1000;
       user.profile.code = code;
 
-      Accounts.emailTemplates.verifyEmail.text = function(user, url) {
-        return "Dear " + user.profile.name + ",\n\n" +
-         'Here is your 4 digit verification code: ' + code +'.  Click on the link to verify code: ' + url +
-            "\n\n" + "Thanks";
-      };
 
-      Meteor.setTimeout(function() {
-        Accounts.sendVerificationEmail(user._id);
-      }, 10 * 1000);
+      // Meteor.setTimeout(function() {
+      //   Accounts.sendVerificationEmail(user._id);
+      // }, 10 * 1000);
 
-      if(ServerSession.get("ifInvited") === "true"){
-         code_subject = "Hi " + user.profile.name + ",\n\n" + 'Here is your 4 digit verification code: ' + code +'.'+
-            "\n\n" + "Thanks";
-        Meteor.call('sendCodeToEmail',user, user.emails[0].address, code_subject, code);
-      }
+      // if(ServerSession.get("ifInvited") === "true"){
+      //    code_subject = "Hi " + user.profile.firstName + ",\n\n" + 'Here is your 4 digit verification code: ' + code +'.'+
+      //       "\n\n" + "Thanks";
+      //   Meteor.call('sendCodeToEmail',user, user.emails[0].address, code_subject, code);
+      // }
 
-      Meteor.call('sendTwilioMessage',user, ph, code);
+      // Meteor.call('sendTwilioMessage',user, ph, code);
     }
     else
       if(user.profile.type === 'doctor'){
         user.profile.approve = false;
 
         Accounts.emailTemplates.verifyEmail.text = function(user, url) {
-          return "Dear " + user.profile.name + ",\n\n" +
+          return "Dear " + user.profile.firstName + ",\n\n" +
             'To verify your account email, simply click the link below. ' + url +
             "\n\n" + "Thanks";
         };
@@ -106,23 +109,16 @@ if (Meteor.isServer) {
   Accounts.onLogin(function (info) {
     var user = info.user;
 
-    if(user.profile.type === "doctor"){
-      Roles.addUsersToRoles(user, [ROLES.Doctor])
-    }
-    else
-      if(user.profile.type === "advocate"){
-        Roles.addUsersToRoles(user, [ROLES.Advocate])
-        }
-    return user;
-  });
-
-
-  Meteor.startup(function(){
-    if(Topics.find().count() == 0){
-      ["Depression", "ADHD", "Bipolar Disorder"].forEach(function(topic){
-        Topics.insert({name:topic})
+    if(user.profile.type === "admin"){
+      topics = Topics.find().fetch();
+      topic_list = [];
+      var groupedDates = _.groupBy(_.pluck(topics, '_id'));
+      _.each(_.values(groupedDates), function(topic) {
+        topic_list.push(topic[0]);
       });
+      Meteor.users.update(user._id, {$addToSet: {"profile.topics" :{$each: topic_list}}});
     }
+    return user;
   });
 
 

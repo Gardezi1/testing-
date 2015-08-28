@@ -23,7 +23,7 @@ Template.conversationListing.helpers({
   },
   getSenderName: function(id){
     user = Meteor.users.findOne({_id:id});
-    return user && user.profile.name
+    return user && user.profile.firstName
   },
   toUser: function(fromId){
     return fromId == Meteor.userId();

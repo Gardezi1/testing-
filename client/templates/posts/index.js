@@ -42,7 +42,7 @@ Template.articleList.helpers({
   },
   getAuthorName: function(authorId){
     if(authorId){
-      return Meteor.users.findOne({_id: authorId}).profile.name;
+      return Meteor.users.findOne({_id: authorId}).profile.firstName;
     }
   },
   checkIfAuthor: function(authorId){

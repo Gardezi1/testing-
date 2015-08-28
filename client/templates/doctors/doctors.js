@@ -13,7 +13,7 @@ Template.doctorsListing.helpers({
   searchResults: function() {
     if (Session.get("doctorSearchQuery")) {
       var name = (Session.get("doctorSearchQuery"));
-      return Meteor.users.find({ $and:[{"profile.type": "doctor"},{"profile.name": {$regex: new RegExp((Session.get("doctorSearchQuery")), "i")}}]});
+      return Meteor.users.find({ $and:[{"profile.type": "doctor"},{"profile.firstName": {$regex: new RegExp((Session.get("doctorSearchQuery")), "i")}}]});
     
     // return Meteor.users.find(
     //    {

@@ -7,7 +7,7 @@ Template.startConversation.helpers({
         {
           // token: '@',
           collection: Meteor.users,
-          field: 'profile.name',
+          field: 'profile.firstName',
           filter: {$or: [{ 'profile.type': "advocate" }, {'profile.type': "doctor"} ]},
           template: Template.userPill
         }
@@ -21,7 +21,7 @@ Template.startConversation.events({
     name = $("#advocate_name").val();
     message = $("#advo_message").val();
     if(name && message){
-      toUser = Meteor.users.findOne({"profile.name": name});
+      toUser = Meteor.users.findOne({"profile.firstName": name});
       toId = toUser._id;
       fromId = Meteor.userId();
 

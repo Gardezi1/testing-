@@ -1,46 +1,62 @@
 Template.signup.events({
-  'submit form': function(e) {
+  'submit .advocate-sign-up-form': function(e) {
     e.preventDefault()
     var  user = {
-        email: $("#emailAddress").val().toLowerCase(),
-        password: $("#userPassword").val(),
-        name: $("#userName").val(),
-        phone: $("#userPhone").val(),
-        type: $( "#userType option:selected" ).val(),
-        betaToken: Session.get('betaToken')
-      };
+      fName: $("#advo-first-name").val(),
+      lName: $("#advo-last-name").val(),
+      email: $("#advocateEmail").val().toLowerCase(),
+      password: $("#advocatePassword").val(),
+      phone: $("#advocatePhone").val(),
+      type: "advocate",
+      betaToken: Session.get('betaToken')
+    };
 
     Meteor.call('validateBetaToken', user, function(error) {
       if (error) {
+        sAlert.error(error.reason, {effect: 'genie', position: 'top-right', timeout: 'none', onRouteClose: false, stack: false, offset: '80px'});
         console.log(error);
-        return alert(error.reason);
       } else {
-          if(user.type == "advocate"){
-            return Meteor.loginWithPassword(user.email, user.password, function(error) {
-              if (error) {
-                console.log(error);
-                // return alert(error.reason);
-              } else {
-                inviteUid = Session.get('inviteOwnerId')
-                if(inviteUid){
-                  Meteor.users.update(Meteor.userId(), { $addToSet: { "profile.following": inviteUid}});
-                  Meteor.users.update(inviteUid, { $addToSet: { "profile.followers": Meteor.userId()}});
-                  Meteor.users.update(Meteor.userId(), {$push: { "profile.secondCircle": inviteUid} });
-                }   
-                return Router.go('/');
-              }
-            });
-          }
-          else
-            if(user.type == "doctor"){
-                sAlert.error('Successful Registration! Please check your email and follow the instructions.', {effect: 'genie', position: 'top-right', timeout: 'none', onRouteClose: false, stack: false, offset: '80px'});
+          return Meteor.loginWithPassword(user.email, user.password, function(error) {
+            if (error) {
+              console.log(error);
+              // return alert(error.reason);
+            } else {
+              inviteUid = Session.get('inviteOwnerId')
+              if(inviteUid){
+                Meteor.users.update(Meteor.userId(), { $addToSet: { "profile.following": inviteUid}});
+                Meteor.users.update(inviteUid, { $addToSet: { "profile.followers": Meteor.userId()}});
+                Meteor.users.update(Meteor.userId(), {$push: { "profile.secondCircle": inviteUid} });
+              }   
+              return Router.go('/');
             }
+          });
       }
     });
+  },
+  'submit .doctor-sign-up-form': function(e) {
+    e.preventDefault()
+    var  user = {
+      fName: $("#doc-first-name").val(),
+      lName: $("#doc-last-name").val(),
+      email: $("#doctorEmail").val().toLowerCase(),
+      password: $("#doctorPassword").val(),
+      phone: $("#doctorPhone").val(),
+      type: "doctor",
+      betaToken: Session.get('betaToken')
+    };
 
+    Meteor.call('validateBetaToken', user, function(error) {
+      if (error) {
+        sAlert.error(error.reason, {effect: 'genie', position: 'top-right', timeout: 'none', onRouteClose: false, stack: false, offset: '80px'});
+        console.log(error);
+      } else {
+          sAlert.error('You will be sent a verification link to complete your registration process in your email after Medcircle administrator approves it.', {effect: 'genie', position: 'top-right', timeout: 'none', onRouteClose: false, stack: false, offset: '80px'});
+      }
+    });
   }
 });
 
 Template.signup.onRendered(function() {
   $('select').material_select();
+  $('ul.tabs').tabs();
 });

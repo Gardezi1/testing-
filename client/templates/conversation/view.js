@@ -29,7 +29,7 @@ Template.conversationView.helpers({
   },
   getSenderName: function(id){
     user = Meteor.users.findOne({_id:id});
-    return user && user.profile.name
+    return user && user.profile.firstName
   },
   gteUserImage: function(id){
     if(id){
@@ -55,7 +55,7 @@ Template.conversationView.events({
       to = Router.current().params["id"];
       from = Meteor.userId();
       if(to){
-        name = Meteor.users.findOne({_id: to}).profile.name;
+        name = Meteor.users.findOne({_id: to}).profile.firstName;
       }
       var data = {
         name: name,
