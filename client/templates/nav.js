@@ -90,7 +90,7 @@ Template.nav.onRendered(function() {
   $('.dropdown-button-topic').dropdown();
   $(".button-collapse").sideNav();
   $('.dropdown-button').dropdown();
-  $(".button-collapse-side").sideNav();
+  // $(".button-collapse-side").sideNav();
   $('.dropdown-button-side').dropdown();
   $('select').material_select();
   $('.tooltipped').tooltip({delay: 50});
