@@ -20,7 +20,7 @@ Template.doctorView.onRendered(function() {
       if(error){
         console.log("error from removeFromFollowing: ", error);
       } else {
-        // console.log(id);
+        location.reload();
       } 
     });
   });
@@ -32,7 +32,7 @@ Template.doctorView.onRendered(function() {
       if(error){
         console.log("error from addToFollowing: ", error);
       } else {
-        // console.log(id);
+        location.reload();
       } 
     });
   })

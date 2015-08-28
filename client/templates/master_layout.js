@@ -10,7 +10,7 @@ Template.masterLayout.events({
       if(error){
         console.log("error from addToFollowing: ", error);
       } else {
-        // console.log(id);
+        location.reload();
       } 
     });
   },
@@ -22,7 +22,7 @@ Template.masterLayout.events({
       if(error){
         console.log("error from removeFromFollowing: ", error);
       } else {
-        // console.log(id);
+        location.reload();
       } 
     });
   }
