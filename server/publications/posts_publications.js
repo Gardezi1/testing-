@@ -37,7 +37,7 @@ Meteor.publish('Posts', function(){
           return Posts.find({$or: [ {$and: [{authorId: { $in: first_circle}},{postTo: '1st'}] } ]}, {sort: {createdAt: -1}});
       }
       else{
-        return Posts.find({$or: [ {$and: [{authorId: { $in: first_circle}},{postTo: '1st'}] }, {$and: [{authorId: { $in: second_circle}},{postTo: '2nd'}] } ]}, {sort: {createdAt: -1}});
+        return Posts.find({$or: [ {$and: [{authorId: { $in: first_circle}},{postTo: '1st'}] }, {$and: [{authorId: { $in: second_circle}},{postTo: '2nd'}] }, {$and: [{authorId: { $in: following_list}},{postTo: 'all'}] } ]}, {sort: {createdAt: -1}});
       }
     }
     else{
