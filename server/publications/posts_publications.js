@@ -15,7 +15,6 @@ Meteor.publish('Posts', function(){
       }
       else
         if(first_circle  == undefined || first_circle.length < 0){
-          console.log("in first_circle");
           return Posts.find({$and: [{authorId: { $in: second_circle}},{postTo: '2nd'}] }, {sort: {createdAt: -1}});
       }
       else
@@ -23,7 +22,6 @@ Meteor.publish('Posts', function(){
           return Posts.find({$or: [ {$and: [{authorId: { $in: first_circle}},{postTo: '1st'}] } ]}, {sort: {createdAt: -1}});
       }
       else{
-        console.log("both");
         return Posts.find({$or: [ {$and: [{authorId: { $in: first_circle}},{postTo: '1st'}] }, {$and: [{authorId: { $in: second_circle}},{postTo: '2nd'}] }, {$and: [{authorId: { $in: following_list}},{postTo: 'all'}] } ]}, {sort: {createdAt: -1}});
       }
     }
