@@ -1,21 +1,6 @@
 Meteor.publish('Posts', function(){
   var currentUserId = this.userId;
 
-  // var topics_list = FollowerTopics.find({topicOwnerId: currentUserId}).fetch();
-  //   post_list = [];
-  //   var groupedDates = _.groupBy(_.pluck(topics_list, 'topicFollowerId'));
-  //   _.each(_.values(groupedDates), function(followId) {
-  //     console.log("followId: " + followId);
-  //     topics = FollowerTopics.findOne({topicFollowerId: followId[0]}).topics;
-  //     console.log("topics: " + topics);
-  //     result = Posts.find({$and: [{authorId: followId[0]}, {articleTopic: {$in: topics}}]}).fetch();
-  // //     result = Posts.findOne({$and: [{authorId: followId[0]}, {articleTopic: topics}]});
-  //     console.log("result: " + result);
-  //     post_list.push(result);
-  //   });
-
-  //   return post_list;
-
   if(currentUserId){
     following_list = Meteor.users.findOne({_id:this.userId}).profile.following;
     if(following_list  == undefined || following_list.length < 0){
@@ -30,6 +15,7 @@ Meteor.publish('Posts', function(){
       }
       else
         if(first_circle  == undefined || first_circle.length < 0){
+          console.log("in first_circle");
           return Posts.find({$and: [{authorId: { $in: second_circle}},{postTo: '2nd'}] }, {sort: {createdAt: -1}});
       }
       else
@@ -37,6 +23,7 @@ Meteor.publish('Posts', function(){
           return Posts.find({$or: [ {$and: [{authorId: { $in: first_circle}},{postTo: '1st'}] } ]}, {sort: {createdAt: -1}});
       }
       else{
+        console.log("both");
         return Posts.find({$or: [ {$and: [{authorId: { $in: first_circle}},{postTo: '1st'}] }, {$and: [{authorId: { $in: second_circle}},{postTo: '2nd'}] }, {$and: [{authorId: { $in: following_list}},{postTo: 'all'}] } ]}, {sort: {createdAt: -1}});
       }
     }

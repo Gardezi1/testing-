@@ -1,7 +1,11 @@
 Template.settings.helpers({
-  userName: function(){
+  firstName: function(){
     user = Meteor.users.findOne({_id: Meteor.userId()});
     return user && user.profile.firstName;
+  },
+  lastName: function(){
+    user = Meteor.users.findOne({_id: Meteor.userId()});
+    return user && user.profile.lastName;
   },
    userEmail: function(){
     user = Meteor.users.findOne({_id: Meteor.userId()});
@@ -15,13 +19,13 @@ Template.settings.events({
 
     var resetPasswordForm = $(e.currentTarget),
         name = resetPasswordForm.find('#first_name').val(),
+        last_name = resetPasswordForm.find('#last_name').val(),
         email = resetPasswordForm.find('#email').val(),
         oldPassword = resetPasswordForm.find('#resetPasswordPassword').val(),
         newPassword = resetPasswordForm.find('#resetPasswordPasswordConfirm').val();
-        console.log(oldPassword);
-        console.log(newPassword);
+
         if(name){
-          Meteor.users.update({_id:Meteor.userId()}, {$set:{"profile.firstName":name}})
+          Meteor.users.update({_id:Meteor.userId()}, {$set:{"profile.firstName":name, "profile.lastName": last_name}})
         }
 
         if(email){

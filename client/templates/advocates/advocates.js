@@ -117,23 +117,5 @@ Template.advocatesListing.events({
       else{
         Meteor.users.update(id, { $push: { "profile.firstCircle": currentUserId}});
       }
-
-
-    
-    // circle = Meteor.users.findOne({_id:id}).profile.doctorCircle;
-    // if(circle == undefined || circle.length <= 0){
-    //   // console.log("push")
-    //   Meteor.users.update(id, {$set: { "profile.doctorCircle": "1st"}});
-    // }
-    // else
-    // if(circle.indexOf("1st") >= 0){
-    //   // console.log("pop");
-    //   Meteor.users.update(id, {$set: { "profile.doctorCircle": "2nd"}});
-    // }
-    // else
-    // if(circle.indexOf("2nd") >= 0){
-    //   // console.log("pop");
-    //   Meteor.users.update(id, {$set: { "profile.doctorCircle": "1st"}});
-    // }
   }
 });
