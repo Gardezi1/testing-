@@ -56,18 +56,6 @@ if (Meteor.isServer) {
       var code = Math.floor(Math.random()*9000) + 1000;
       user.profile.code = code;
 
-
-      // Meteor.setTimeout(function() {
-      //   Accounts.sendVerificationEmail(user._id);
-      // }, 10 * 1000);
-
-      // if(ServerSession.get("ifInvited") === "true"){
-      //    code_subject = "Hi " + user.profile.firstName + ",\n\n" + 'Here is your 4 digit verification code: ' + code +'.'+
-      //       "\n\n" + "Thanks";
-      //   Meteor.call('sendCodeToEmail',user, user.emails[0].address, code_subject, code);
-      // }
-
-      // Meteor.call('sendTwilioMessage',user, ph, code);
     }
     else
       if(user.profile.type === 'doctor'){

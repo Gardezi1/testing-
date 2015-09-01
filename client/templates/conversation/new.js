@@ -1,5 +1,6 @@
 Template.startConversation.helpers({
   settings: function() {
+    users =  Meteor.users.findOne({_id: Meteor.userId()}).profile.followers;
     return {
       position: "top",
       limit: 3,
@@ -8,7 +9,8 @@ Template.startConversation.helpers({
           // token: '@',
           collection: Meteor.users,
           field: 'profile.firstName',
-          filter: {$or: [{ 'profile.type': "advocate" }, {'profile.type': "doctor"} ]},
+          // filter: {$or: [{ 'profile.type': "advocate" }, {'profile.type': "doctor"} ]},
+          filter: {_id: {$in: users}},
           template: Template.userPill
         }
       ]
