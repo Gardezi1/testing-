@@ -1,20 +1,38 @@
 Template.startConversation.helpers({
   settings: function() {
-    users =  Meteor.users.findOne({_id: Meteor.userId()}).profile.followers;
-    return {
-      position: "top",
-      limit: 3,
-      rules: [
-        {
-          // token: '@',
-          collection: Meteor.users,
-          field: 'profile.firstName',
-          // filter: {$or: [{ 'profile.type': "advocate" }, {'profile.type': "doctor"} ]},
-          filter: {_id: {$in: users}},
-          template: Template.userPill
-        }
-      ]
-    };
+    user =  Meteor.users.findOne({_id: Meteor.userId()});
+    if(Roles.userIsInRole(user._id, [ROLES.Admin])){
+      return {
+        position: "top",
+        limit: 3,
+        rules: [
+          {
+            // token: '@',
+            collection: Meteor.users,
+            field: 'profile.firstName',
+            filter: {$or: [{ 'profile.type': "advocate" }, {'profile.type': "doctor"} ]},
+            // filter: {_id: {$in: user.profile.followers}},
+            template: Template.userPill
+          }
+        ]
+      };
+    }
+    else{
+        return {
+        position: "top",
+        limit: 3,
+        rules: [
+          {
+            // token: '@',
+            collection: Meteor.users,
+            field: 'profile.firstName',
+            // filter: {$or: [{ 'profile.type': "advocate" }, {'profile.type': "doctor"} ]},
+            filter: {_id: {$in: user.profile.followers}},
+            template: Template.userPill
+          }
+        ]
+      };
+    }
   }
 });
 
