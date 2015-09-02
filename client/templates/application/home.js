@@ -8,7 +8,7 @@ Template.home.events({
     var emailVar = $("#advocateEmail").val();
     var passwordVar = $("#advocatePassword").val();
     user = Meteor.users.findOne({"emails.address": emailVar});
-    if(!Roles.userIsInRole(user._id, [ROLES.Advocate])){
+    if(Roles.userIsInRole(user._id, [ROLES.Doctor])){
       sAlert.error("Please use your appropriate tab to login.", {effect: 'genie', position: 'top-right', timeout: 'none', onRouteClose: false, stack: false, offset: '80px'});
     }
     else{
