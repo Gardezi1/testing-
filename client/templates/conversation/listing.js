@@ -59,7 +59,7 @@ Template.conversationListing.helpers({
 });
 
 Template.conversationListing.events({
-  'click .messages-view': function(e) {
+  'click .message-view': function(e) {
     msg = Messages.findOne({_id: this._id});
     if(msg.from != Meteor.userId()){
       Messages.update(this._id, {$set: {read: true}});
