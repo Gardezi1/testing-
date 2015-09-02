@@ -437,8 +437,13 @@ li.admin {
     vertical-align: middle;
     margin: -5px 5px 0 0;
   }
+  b{
+    text-transform: capitalize;
+  }
 }
-
+.name{
+  text-transform: capitalize;
+}
 .upload-btn-holder{
   .fileUpload {
     position: relative;
@@ -1270,9 +1275,20 @@ li.admin {
 
 .side-nav{
   a{
+    .badge{
+      float: right;
+      position: absolute;
+      top: 28px;
+      right: 10px;
+      background-color: #f25d47;
+      color: #fff;
+    }
     &:before{
       font-size: 25px;
       margin-right: 15px;
+    }
+    b{
+      text-transform: capitalize;
     }
   }
 }
@@ -1301,6 +1317,11 @@ li.admin {
       float: right;
     }
   }
+  .sub-head .edite-btn{
+    position: absolute;
+    right: 10px;
+    top: 90px;
+  }
 }
 @media (min-width: 480px) and (max-width: 639px) {
   nav {
@@ -1313,6 +1334,23 @@ li.admin {
   .tabs-holder {
     width: 470px;
     margin: 0 auto;
+  }
+  .doctors-listing{
+    max-width: 320px;
+    margin: 0 auto;
+  }
+  .sub-head h5 {
+    margin: 5px 0 0;
+  }
+  .sub-head .back-btn{
+    position: absolute;
+    left: 10px;
+    top: 81px;
+  }
+  .sub-head .edite-btn{
+    position: absolute;
+    right: 10px;
+    top: 85px;
   }
 }
 @media (min-width: 320px) and (max-width: 479px) {
@@ -1330,5 +1368,17 @@ li.admin {
   .sign-holder .tabs-inner {
     padding: 20px 20px 25px;
     background: #fff;
+  }
+  .doctors-listing{
+    max-width: 240px;
+    margin: 0 auto;
+  }
+  .sub-head h5 {
+    margin: 5px 0 0;
+  }
+  .sub-head .back-btn{
+    position: absolute;
+    left: 10px;
+    top: 81px;
   }
 }
