@@ -60,7 +60,9 @@
               <!-- Dropdown Structure -->
               <ul id='dropdown1' class='dropdown-content'>
                 {{#if currentUser}}
-                  <li><a href="{{pathFor route='inviteAdvocate'}}">Invite a Friend</a></li>
+                  {{#if isInRole 'admin, doctor'}}
+                    <li><a href="{{pathFor route='inviteAdvocate'}}">Invite a Friend</a></li>
+                  {{/if}}  
                   <li><a href="{{pathFor route='settings'}}">Settings</a></li>
                   <li><a href="#!">Privacy Policy</a></li>
                   <li><a href="#!">Terms of Use</a></li>
