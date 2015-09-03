@@ -1,3 +1,11 @@
+<template name="mianHome">
+  {{#if currentUser}}
+    {{> articleList}}
+  {{else}}
+    {{> home}} 
+  {{/if}}
+</template>
+
 <template name="home">
     <div class="valign-wrapper">
       <div class="sign-holder">
