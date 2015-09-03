@@ -13,7 +13,11 @@
               <select id="doc-select">
                 {{#each getFollowing}}
                   {{#if notCurrentUser this}}
-                    <option value="{{this}}" data-imagesrc="{{getImage this}}">{{getDoctorName this}}</option>
+                    {{#if getImage this}}
+                      <option value="{{this}}" data-imagesrc="{{getImage this}}">{{getDoctorName this}}</option>
+                    {{else}}
+                      <option value="{{this}}" data-imagesrc="/imgs/user.jpg">{{getDoctorName this}}</option>
+                    {{/if}}
                   {{/if}}
                 {{/each}}
                 <option value="99" data-imagesrc="/imgs/add.png">ADD DOCTOR</option>

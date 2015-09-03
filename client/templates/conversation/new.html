@@ -15,7 +15,7 @@
     <div class="row">
       <div class="col-md-12">
         <div class="shadow-box z-depth-1">
-          <div class="input-field col s12">
+          <div class="input-field col s12 auto-name">
             <!-- <input id="dvocate_name" type="text" class="validate"> -->
             {{> inputAutocomplete settings=settings id="advocate_name" class="advocate_name"}}
             <label for="advocate_name">Enter Name</label>
@@ -36,5 +36,9 @@
 </template>
 
 <template name="userPill">
-    <span class="label">{{profile.firstName}}</span>
+    {{#if getImage profile.picture}}
+      <span class="label"><img width="40" height="40" src="{{getImage profile.picture}}">{{profile.firstName}}</span>
+    {{else}}
+      <span class="label"><img width="40" height="40" src="/imgs/user.jpg">{{profile.firstName}}</span>
+    {{/if}}
 </template>
