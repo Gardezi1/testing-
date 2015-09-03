@@ -40,7 +40,7 @@ if (Meteor.isClient) {
             event.preventDefault();
             var phonecode = event.target.phonecode.value;
             if(phonecode != Meteor.user().profile.code){
-                sAlert.error('Wrong Code.  :-/', {effect: 'genie', position: 'top-right', timeout: 'none', onRouteClose: false, stack: false, offset: '80px'});
+                sAlert.error('Wrong Code.  :-/', {effect: 'genie', position: 'top-right', timeout: 5000, onRouteClose: false, stack: false, offset: '80px'});
             }
             else{
                 Meteor.users.update(Meteor.userId(), {$set: {"profile.code_verified": true}});

@@ -35,7 +35,11 @@
                     <ul class="clearfix">
                       <li><i class="fa fa-envelope-o"></i> {{currentUser.emails.[0].address}}</li>
                       <li><i class="fa fa-phone"></i> {{currentUser.profile.phone}}</li>
-                      <li><i class="fa fa-thumb-tack"></i> {{currentUser.profile.addressOne}}, {{currentUser.profile.addressTwo}}</li>
+                      <li><i class="fa fa-thumb-tack"></i> {{currentUser.profile.addressOne}}
+                        {{#if currentUser.profile.addressTwo}}
+                          , {{currentUser.profile.addressTwo}}
+                        {{/if}}
+                        </li>
                     </ul>
                   </div>
                   <div class="prof-bio">

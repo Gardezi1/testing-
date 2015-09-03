@@ -30,8 +30,14 @@ Meteor.methods({
     if (!user.lastName)
       throw new Meteor.Error(422, 'Please include a last name.');
 
+    if (!user.phone)
+      throw new Meteor.Error(422, 'Please include phone.');
+
     if (!user.email)
       throw new Meteor.Error(422, 'Please include an email.');
+
+    if (!user.password)
+      throw new Meteor.Error(422, 'Please include password.');
 
     if (!Meteor.users.findOne({"emails.address": user.email})) {
       id  =  Accounts.createUser({
@@ -65,11 +71,17 @@ Meteor.methods({
     if (!user.lastName)
       throw new Meteor.Error(422, 'Please include a last name.');
 
+    if (!user.phone)
+      throw new Meteor.Error(422, 'Please include phone.');
+
     if (!user.email)
       throw new Meteor.Error(422, 'Please include an email.');
 
     if (!user.speciality)
       throw new Meteor.Error(422, 'Please include your speciality.');
+
+    if (!user.password)
+      throw new Meteor.Error(422, 'Please include password.');
 
     if (!Meteor.users.findOne({"emails.address": user.email})) {
       id  =  Accounts.createUser({

@@ -12,14 +12,14 @@ Template.inviteAdvocate.events({
       var emailExists = Invites.findOne({"email": invitee.email});
 
       if (emailExists) {
-        sAlert.error('Email '+ invitee.email +' already invited.  :-/', {effect: 'genie', position: 'top-right', timeout: 'none', onRouteClose: false, stack: false, offset: '80px'});
+        sAlert.error('Email '+ invitee.email +' already invited.  :-/', {effect: 'genie', position: 'top-right', timeout: 5000, onRouteClose: false, stack: false, offset: '80px'});
       } else {
         id = Invites.insert(invitee, function(error) {
           if (error) {
             return console.log(error);
           }
           else{
-            sAlert.error('Invitation has been sent successfully', {effect: 'genie', position: 'top-right', timeout: 'none', onRouteClose: false, stack: false, offset: '80px'});
+            sAlert.error('Invitation has been sent successfully', {effect: 'genie', position: 'top-right', timeout: 5000, onRouteClose: false, stack: false, offset: '80px'});
           }
         });  
         token = Random.hexString(10);
@@ -52,7 +52,7 @@ Template.inviteAdvocate.events({
       user = Meteor.users.findOne({"profile.phone":phone_array[k]})
 
       if (user) {
-        sAlert.error('Phone '+ phone_array[k] +' already invited.  :-/', {effect: 'genie', position: 'top-right', timeout: 'none', onRouteClose: false, stack: false, offset: '80px'});
+        sAlert.error('Phone '+ phone_array[k] +' already invited.  :-/', {effect: 'genie', position: 'top-right', timeout: 5000, onRouteClose: false, stack: false, offset: '80px'});
       } else{
         token = Random.hexString(10);
         url = Meteor.absoluteUrl();
@@ -63,10 +63,10 @@ Template.inviteAdvocate.events({
 
          Meteor.call("sendTwilioInvite", phone_array[k], body, function(error, result){
           if(error){
-            sAlert.error(error.reason, {effect: 'genie', position: 'top-right', timeout: 'none', onRouteClose: false, stack: false, offset: '80px'});
+            sAlert.error(error.reason, {effect: 'genie', position: 'top-right', timeout: 5000, onRouteClose: false, stack: false, offset: '80px'});
             console.log("error from sendTwilioInvite: ", error);
           } else {
-            sAlert.error('Invitation has been sent successfully', {effect: 'genie', position: 'top-right', timeout: 'none', onRouteClose: false, stack: false, offset: '80px'});
+            sAlert.error('Invitation has been sent successfully', {effect: 'genie', position: 'top-right', timeout: 5000, onRouteClose: false, stack: false, offset: '80px'});
           }
         });
       }

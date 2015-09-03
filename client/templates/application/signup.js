@@ -13,7 +13,7 @@ Template.signup.events({
 
     Meteor.call('validateBetaToken', user, function(error) {
       if (error) {
-        sAlert.error(error.reason, {effect: 'genie', position: 'top-right', timeout: 'none', onRouteClose: false, stack: false, offset: '80px'});
+        sAlert.error(error.reason, {effect: 'genie', position: 'top-right', timeout: 5000, onRouteClose: false, stack: false, offset: '80px'});
         console.log(error);
       } else {
           return Meteor.loginWithPassword(user.email, user.password, function(error) {
@@ -47,10 +47,10 @@ Template.signup.events({
 
     Meteor.call('validateBetaToken', user, function(error) {
       if (error) {
-        sAlert.error(error.reason, {effect: 'genie', position: 'top-right', timeout: 'none', onRouteClose: false, stack: false, offset: '80px'});
+        sAlert.error(error.reason, {effect: 'genie', position: 'top-right', timeout: 5000, onRouteClose: false, stack: false, offset: '80px'});
         console.log(error);
       } else {
-          sAlert.error('You will be sent a verification link to complete your registration process in your email after Medcircle administrator approves it.', {effect: 'genie', position: 'top-right', timeout: 'none', onRouteClose: false, stack: false, offset: '80px'});
+          sAlert.error('You will be sent a verification link to complete your registration process in your email after Medcircle administrator approves it.', {effect: 'genie', position: 'top-right', timeout: 5000, onRouteClose: false, stack: false, offset: '80px'});
       }
     });
   }

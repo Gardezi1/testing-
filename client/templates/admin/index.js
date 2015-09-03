@@ -22,10 +22,10 @@ Template.admin.events({
       email = user.emails[0].address
       Meteor.call("acceptUser", id, email, function(error, result){
         if(error){
-          sAlert.error(error.reason, {effect: 'genie', position: 'top-right', timeout: 'none', onRouteClose: false, stack: false, offset: '80px'});
+          sAlert.error(error.reason, {effect: 'genie', position: 'top-right', timeout: 5000, onRouteClose: false, stack: false, offset: '80px'});
           console.log("error from acceptUser: ", error);
         } else {
-          sAlert.error('User approved.', {effect: 'genie', position: 'top-right', timeout: 'none', onRouteClose: false, stack: false, offset: '80px'});
+          sAlert.error('User approved.', {effect: 'genie', position: 'top-right', timeout: 5000, onRouteClose: false, stack: false, offset: '80px'});
         }
       });   
     }
@@ -37,10 +37,10 @@ Template.admin.events({
       email = user.emails[0].address;
       Meteor.call("rejectUser", id, email, function(error, result){
         if(error){
-          sAlert.error(error.reason, {effect: 'genie', position: 'top-right', timeout: 'none', onRouteClose: false, stack: false, offset: '80px'});
+          sAlert.error(error.reason, {effect: 'genie', position: 'top-right', timeout: 5000, onRouteClose: false, stack: false, offset: '80px'});
           console.log("error from rejectUser: ", error);
         } else {
-          sAlert.error('User rejected.', {effect: 'genie', position: 'top-right', timeout: 'none', onRouteClose: false, stack: false, offset: '80px'});
+          sAlert.error('User rejected.', {effect: 'genie', position: 'top-right', timeout: 5000, onRouteClose: false, stack: false, offset: '80px'});
         }
       });
     }

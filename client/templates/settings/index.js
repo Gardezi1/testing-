@@ -36,10 +36,10 @@ Template.settings.events({
           Accounts.changePassword(oldPassword, newPassword, function(err) {
             if (err) {
               console.log('We are sorry but something went wrong.');
-              sAlert.error(err.reason, {effect: 'genie', position: 'top-right', timeout: 'none', onRouteClose: false, stack: false, offset: '80px'});
+              sAlert.error(err.reason, {effect: 'genie', position: 'top-right', timeout: 5000, onRouteClose: false, stack: false, offset: '80px'});
             } else {
               console.log('Your password has been changed. Welcome back!');
-              sAlert.error('Your password has been changed.', {effect: 'genie', position: 'top-right', timeout: 'none', onRouteClose: false, stack: false, offset: '80px'});
+              sAlert.error('Your password has been changed.', {effect: 'genie', position: 'top-right', timeout: 5000, onRouteClose: false, stack: false, offset: '80px'});
             }
           }); 
         } 
