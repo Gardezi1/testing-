@@ -20,7 +20,11 @@
                 {{#each advocateUsers}}
                     <div class="doc-detail col s12 m6 l3">
                       <div class="shadow-box z-depth-1">
-                        <img src="{{getImage profile.picture}}" alt="{{title}}">
+                        {{#if getImage profile.picture}}
+                          <img src="{{getImage profile.picture}}" alt="{{title}}">
+                        {{else}}
+                          <img src="/imgs/user.jpg">
+                        {{/if}}
                         <div class="prof-data">
                           <div class="name">
                             <h5>{{profile.firstName}}</h5>

@@ -25,7 +25,11 @@
           <div class="col-md-12">
             <div class="shadow-box z-depth-1 profile-edit">
               {{#if ifDoctor}}
-                <img src="{{getImage picture}}" alt="{{title}}" class="">
+                {{#if getImage}}
+                  <img src="{{getImage picture}}" alt="{{title}}" class="">
+                {{else}}
+                    <img src="/imgs/user.jpg" alt="{{title}}" class="">
+                {{/if}}    
                 <div class="prof-con">
                   <div class="profile-name">
                     <h5 class="name">Dr. {{currentUser.profile.firstName}}</h5>
@@ -47,7 +51,11 @@
                   </div>
                 </div>
               {{else}}
-                <img src="{{getImage picture}}" alt="{{title}}" class="">
+                {{#if getImage}}
+                  <img src="{{getImage picture}}" alt="{{title}}" class="">
+                {{else}}
+                    <img src="/imgs/user.jpg" alt="{{title}}" class="">
+                {{/if}} 
                 <div class="prof-con">
                   <div class="profile-name">
                     <h5 class="name">{{currentUser.profile.firstName}}</h5>

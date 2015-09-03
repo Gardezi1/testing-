@@ -27,7 +27,11 @@
                 <a href="{{pathFor 'conversationView' id=from }}">
                   <div class="clearfix">
                     <div class="col s2">
-                      <img src="{{gteUserImage from}}" alt="">    
+                      {{#if gteUserImage from}}
+                        <img src="{{gteUserImage from}}" alt="{{title}}">
+                      {{else}}
+                        <img src="/imgs/user.jpg">
+                      {{/if}}    
                     </div>
                     <div class="col s10">
                       <div class="clearfix header">
@@ -44,7 +48,11 @@
                 <a href="{{pathFor 'conversationView' id=to }}">    
                   <div class="clearfix">
                     <div class="col s2">
-                      <img src="{{gteUserImage from}}" alt="">    
+                      {{#if gteUserImage from}}
+                        <img src="{{gteUserImage from}}" alt="{{title}}">
+                      {{else}}
+                        <img src="/imgs/user.jpg">
+                      {{/if}}   
                     </div>
                     <div class="col s10">
                       <div class="clearfix header">

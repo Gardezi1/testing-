@@ -18,7 +18,12 @@
           <div class="messages">
             <div class="clearfix">
               <div class="col s2">
-                <img src="{{gteMyImage}}" alt="">
+                {{#if gteUserImage from}}
+                  <img src="{{gteMyImage}}" alt="{{title}}">
+                {{else}}
+                  <img src="/imgs/user.jpg">
+                {{/if}}
+                <!-- <img src="{{gteMyImage}}" alt=""> -->
               </div>
               <div class="input-field col s10">
                 <textarea id="reply-textarea" class="materialize-textarea"></textarea>
@@ -41,7 +46,12 @@
             <div class="messages">
               <div class="clearfix">
                 <div class="col s2">
-                  <img src="{{gteUserImage from}}" alt="">    
+                  {{#if gteUserImage from}}
+                    <img src="{{gteUserImage from}}" alt="{{title}}">
+                  {{else}}
+                    <img src="/imgs/user.jpg">
+                  {{/if}}
+                  <!-- <img src="{{gteUserImage from}}" alt="">     -->
                 </div>
                 <div class="col s10">
                   <div class="clearfix header">

@@ -4,7 +4,11 @@
       <div class="nav-wrapper">
         {{#if currentUser}}
           <div class="user-pro-holder">
-            <a href="#" data-activates="slide-out" class="button-collapse-side"><img src="{{getAdminImage}}"></a>
+            {{#if getAdminImage}}
+              <a href="#" data-activates="slide-out" class="button-collapse-side"><img src="{{getAdminImage}}"></a>
+            {{else}}
+              <a href="#" data-activates="slide-out" class="button-collapse-side"><img src="/imgs/user.jpg"></a>
+            {{/if}}  
             <ul id="slide-out" class="side-nav doc-list">
               <select id="doc-select">
                 {{#each getFollowing}}
@@ -33,7 +37,11 @@
         <ul class="right hide-on-med-and-down normal-nav">
           {{#if currentUser}}
               <li class="admin">
-                <a href="{{pathFor route='profileView'}}"><img src="{{file_S3}}"> Hi, <b>{{currentUser.profile.firstName}}</b></a>
+                {{#if file_S3}}
+                  <a href="{{pathFor route='profileView'}}"><img src="{{file_S3}}"> Hi, <b>{{currentUser.profile.firstName}}</b></a>
+                {{else}}
+                  <a href="{{pathFor route='profileView'}}"><img src="/imgs/user.jpg"> Hi, <b>{{currentUser.profile.firstName}}</b></a>
+                {{/if}}  
               </li>
             {{#if isInRole 'doctor'}} 
               <li>

@@ -30,7 +30,11 @@
                         <div class="doc-detail col s12 m6 l3">
                           <div class="shadow-box z-depth-1">
                             <a href="{{pathFor 'doctorView' id=_id }}">
-                              <img src="{{getImage profile.picture}}" alt="{{title}}">
+                              {{#if getImage profile.picture}}
+                                <img src="{{getImage profile.picture}}" alt="{{title}}">
+                              {{else}}
+                                <img src="/imgs/user.jpg">
+                              {{/if}}
                             </a>  
                             <div class="prof-data">
                                 <div class="name">
@@ -64,7 +68,11 @@
                     <div class="doc-detail col s12 m6 l3">
                       <div class="shadow-box z-depth-1">
                         <a href="{{pathFor 'doctorView' id=_id }}">
-                          <img src="{{getImage profile.picture}}" alt="{{title}}">
+                          {{#if getImage profile.picture}}
+                            <img src="{{getImage profile.picture}}" alt="{{title}}">
+                          {{else}}
+                            <img src="/imgs/user.jpg">
+                          {{/if}}
                         </a>  
                         <div class="prof-data">
                             <div class="name">
