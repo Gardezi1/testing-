@@ -26,6 +26,7 @@
                 {{#if index}}
                   <li class="article-feed" id="{{value}}"><a href="{{pathFor route='articles'}}">{{getTopicName value}}</a></li>
                 {{else}}
+                  <li class="topic-grey">TOPICS</li>
                   <li class="article-feed active-topic" id="{{value}}"><a href="{{pathFor route='articles'}}">{{getTopicName value}}</a></li>
                 {{/if}}
               {{/each}}

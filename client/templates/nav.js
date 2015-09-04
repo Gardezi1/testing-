@@ -153,19 +153,13 @@ Template.nav.events({
     Session.set("messageLimit", 5);
     Session.set("conversationLimit", 5);
   },
-  // 'click .normal-nav li a': function(event){
-  //   var pgurl = window.location.href.substr(window.location.href.lastIndexOf("/")+1);
-  //   console.log(pgurl);
-  //        $("ul .normal-nav li a").each(function(){
-  //             if($(event.target).attr("href") == pgurl || $(event.target).attr("href") == '' )
-  //             $(event.target).addClass("active");
-  //    })
-  //   // $(event.target).parent().addClass('selected').siblings().removeClass('selected');
-  // },
-  // // 'click .normal-nav li a b, img': function(event){
-  // //   $(event.target).parent().parent().addClass('selected').siblings().removeClass('selected');
-  // // },
-  // // 'click .normal-nav li a img': function(event){
-  // //   $(event.target).parent().parent().addClass('selected').siblings().removeClass('selected');
-  // // }
+  'click .normal-nav li a': function(event){
+    $(event.target).parent().addClass('selected').siblings().removeClass('selected');
+  },
+  'click .normal-nav li a b, img': function(event){
+    $(event.target).parent().parent().addClass('selected').siblings().removeClass('selected');
+  },
+  'click .normal-nav li a img': function(event){
+    $(event.target).parent().parent().addClass('selected').siblings().removeClass('selected');
+  }
 });

@@ -1,7 +1,10 @@
 Template.masterLayout.events({  
   'click .save-my-profile': function(event) {
     $(".save-profile").click();
-  // },
+  },
+  'click .back-btn': function(e){
+    $('.normal-nav li').removeClass('selected');
+  }
   // 'click .start-follow': function(e){
   //   var id = $(".start-follow").attr('id');
   //   console.log(id);
@@ -25,5 +28,5 @@ Template.masterLayout.events({
   //       location.reload();
   //     } 
   //   });
-  }
+  // }
 });
