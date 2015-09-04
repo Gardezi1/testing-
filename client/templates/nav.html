@@ -42,9 +42,9 @@
           {{#if currentUser}}
               <li class="admin">
                 {{#if file_S3}}
-                  <a href="{{pathFor route='profileView'}}"><img src="{{file_S3}}"> Hi, <b>{{currentUser.profile.firstName}}</b></a>
+                  <a href="{{pathFor route='profileView'}}"><img src="{{file_S3}}"> <b>{{currentUser.profile.firstName}}</b></a>
                 {{else}}
-                  <a href="{{pathFor route='profileView'}}"><img src="/imgs/user.jpg"> Hi, <b>{{currentUser.profile.firstName}}</b></a>
+                  <a href="{{pathFor route='profileView'}}"><img src="/imgs/user.jpg"> <b>{{currentUser.profile.firstName}}</b></a>
                 {{/if}}  
               </li>
             {{#if isInRole 'doctor'}} 
