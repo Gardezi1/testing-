@@ -1,0 +1,100 @@
+<template name="articleNew">
+  {{#contentFor "subnav"}}
+    <div class="row">
+      <div class="col s12 m2 l2">  
+        <a href="{{pathFor route='articles'}}" class="back-btn left fa fa-chevron-left"> Back</a>
+      </div>
+      <div class="col s12 m8 l8">
+        <h5 class="center-align">New Article </h5>
+      </div>
+    </div>
+  {{/contentFor}}
+  {{#autoForm collection="Posts" id="insertPostForm" type="insert" omitFields="authorId, createdAt, updatedAt"}}
+    <div class="custom-container">
+      <div class="form-holder">
+        <div class="row">{{getCheckBox}}
+          <div class="col-md-12">
+            <div class="shadow-box z-depth-1">
+              {{#if fileId}}
+                <div class="form-group center">
+                  <span><img src="{{file_S3_url}}"></span>
+                </div>
+              {{ else }}
+                <div class="upload-btn-holder">
+                  <div class="fileUpload">
+                    <div class="form-group mdi-content-add upl-img">
+                    {{> afQuickField name="fileId"}}
+                    </div>
+                  </div>
+                </div>
+              {{/if}}
+              {{fileId}}
+              <div class="row">
+                <div class="col s12">
+                  <div class="row">
+                    <div class="col s12">
+                      <label for="article-type" class="article-label">Title</label>
+                      {{> afQuickField name='title'}}
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col s12">
+                      <label for="article-type" class="article-label">Article Source</label>
+                      {{> afQuickField name='source'}}
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col s12">
+                      <label for="article-type" class="article-label">Article Source Url</label>
+                      {{> afQuickField name='url'}}
+                    </div>
+                  </div>
+                  <div class="row topic-list">
+                    <div class="col s12">
+                      <label for="article-type" class="article-label">Article Topic</label>
+                      {{> afQuickField name='articleTopic'}}
+                      <!-- {{> afQuickField name='articleType' label-class="active" options="allowed"}} -->
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col s6">
+                      <label for="article-type" class="article-label">Article Type</label>
+                      {{> afQuickField name='articleType'}}
+                    </div>
+                    <div class="col s6">
+                      <label for="article-category" class="article-label">Article Category</label>
+                      {{> afQuickField name='articleCategory'}}
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col s12">
+                      <label for="post-to" class="article-label">Post To</label>
+                      {{> afQuickField name='postTo'}}
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col s12">
+                      <label for="article-type" class="article-label">Body</label>
+                      {{> afQuickField name='body'}}
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col s12">
+                      <label for="article-type" class="article-label">Add Comments</label>
+                      {{> afQuickField name='comment'}}
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col s12">
+                      <button type="submit" class="waves-effect waves-light btn right post-btn">Post To Advocates</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  {{/autoForm}}
+</template>

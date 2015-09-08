@@ -1,0 +1,61 @@
+<template name="doctorView">
+  {{#contentFor "subnav"}}
+    <div class="custom-container doctor">
+      <div class="row">
+        <div class="col s12 m2 l2">  
+          <a href="{{pathFor route='doctorsListing'}}" class="back-btn left fa fa-chevron-left">Back</a>
+        </div>
+        <div class="col s12 m8 l8">
+          <h5 class="center-align">Dr. {{profile.firstName}}</h5>
+        </div>
+        {{#if checkIfFollowing _id}}
+          <div class="col s12 m2 l2">
+            <a href="" class="right btn start-unfollow btn-primary red" id="{{_id}}">UNFOLLOW</a>
+          </div> 
+        {{else}}
+          <div class="col s12 m2 l2">
+            <a href="" class="right btn start-follow btn-primary grey" id="{{_id}}">FOLLOW</a>
+          </div>
+        {{/if}}  
+      </div>
+    </div>
+  {{/contentFor}}
+  
+<div class="custom-container">
+  <div class="form-holder">  
+    <div class="row">
+      <div class="col-md-12">
+        <div class="page-header">
+          <div class="row">
+          <div class="col-md-12">
+            <div class="shadow-box z-depth-1 profile-edit">
+              {{#if getImage profile.picture}}
+                <img src="{{getImage profile.picture}}" alt="{{title}}" class="">
+              {{else}}
+                <img src="/imgs/user.jpg">
+              {{/if}}
+              <div class="prof-con">
+                <div class="profile-name">
+                  <h5>Dr. {{profile.firstName}}</h5>
+                  <h6>{{profile.speciality}}</h6>
+                </div>
+                <div class="profile-detail">
+                  <ul class="clearfix">
+                    <li><i class="fa fa-envelope-o"></i> {{emails.[0].address}}</li>
+                    <li><i class="fa fa-phone"></i> {{profile.phone}}</li>
+                    <li><i class="fa fa-thumb-tack"></i> {{profile.addressOne}}, {{profile.addressTwo}}</li>
+                  </ul>
+                </div>
+                <div class="prof-bio">
+                  <p>{{profile.bio}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</template>

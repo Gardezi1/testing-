@@ -1,0 +1,737 @@
+{
+  "format": "javascript-image-pre1",
+  "arch": "os.linux.x86_64",
+  "load": [
+    {
+      "sourceMap": "packages/underscore.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/underscore.js"
+    },
+    {
+      "node_modules": "npm/meteor/node_modules",
+      "sourceMap": "packages/meteor.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/meteor.js"
+    },
+    {
+      "sourceMap": "packages/reload.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/reload.js"
+    },
+    {
+      "sourceMap": "packages/json.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/json.js"
+    },
+    {
+      "sourceMap": "packages/base64.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/base64.js"
+    },
+    {
+      "sourceMap": "packages/ejson.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/ejson.js"
+    },
+    {
+      "node_modules": "npm/logging/node_modules",
+      "sourceMap": "packages/logging.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/logging.js"
+    },
+    {
+      "sourceMap": "packages/routepolicy.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/routepolicy.js"
+    },
+    {
+      "sourceMap": "packages/tracker.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/tracker.js"
+    },
+    {
+      "sourceMap": "packages/deps.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/deps.js"
+    },
+    {
+      "sourceMap": "packages/htmljs.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/htmljs.js"
+    },
+    {
+      "sourceMap": "packages/html-tools.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/html-tools.js"
+    },
+    {
+      "sourceMap": "packages/blaze-tools.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/blaze-tools.js"
+    },
+    {
+      "sourceMap": "packages/spacebars-compiler.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/spacebars-compiler.js"
+    },
+    {
+      "sourceMap": "packages/jquery.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/jquery.js"
+    },
+    {
+      "sourceMap": "packages/id-map.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/id-map.js"
+    },
+    {
+      "sourceMap": "packages/ordered-dict.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/ordered-dict.js"
+    },
+    {
+      "sourceMap": "packages/random.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/random.js"
+    },
+    {
+      "sourceMap": "packages/geojson-utils.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/geojson-utils.js"
+    },
+    {
+      "sourceMap": "packages/minimongo.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/minimongo.js"
+    },
+    {
+      "sourceMap": "packages/observe-sequence.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/observe-sequence.js"
+    },
+    {
+      "sourceMap": "packages/reactive-var.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/reactive-var.js"
+    },
+    {
+      "sourceMap": "packages/blaze.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/blaze.js"
+    },
+    {
+      "sourceMap": "packages/templating.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/templating.js"
+    },
+    {
+      "sourceMap": "packages/spacebars.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/spacebars.js"
+    },
+    {
+      "sourceMap": "packages/ui.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/ui.js"
+    },
+    {
+      "sourceMap": "packages/boilerplate-generator.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/boilerplate-generator.js",
+      "assets": {
+        "boilerplate_web.browser.html": "assets/packages/boilerplate-generator/boilerplate_web.browser.html",
+        "boilerplate_web.cordova.html": "assets/packages/boilerplate-generator/boilerplate_web.cordova.html"
+      }
+    },
+    {
+      "sourceMap": "packages/webapp-hashing.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/webapp-hashing.js"
+    },
+    {
+      "node_modules": "npm/webapp/node_modules",
+      "sourceMap": "packages/webapp.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/webapp.js"
+    },
+    {
+      "sourceMap": "packages/check.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/check.js"
+    },
+    {
+      "sourceMap": "packages/retry.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/retry.js"
+    },
+    {
+      "sourceMap": "packages/callback-hook.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/callback-hook.js"
+    },
+    {
+      "node_modules": "npm/ddp/node_modules",
+      "sourceMap": "packages/ddp.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/ddp.js"
+    },
+    {
+      "sourceMap": "packages/binary-heap.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/binary-heap.js"
+    },
+    {
+      "node_modules": "npm/mongo/node_modules",
+      "sourceMap": "packages/mongo.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/mongo.js"
+    },
+    {
+      "sourceMap": "packages/autoupdate.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/autoupdate.js"
+    },
+    {
+      "sourceMap": "packages/meteor-platform.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/meteor-platform.js"
+    },
+    {
+      "node_modules": "npm/npm-bcrypt/node_modules",
+      "sourceMap": "packages/npm-bcrypt.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/npm-bcrypt.js"
+    },
+    {
+      "sourceMap": "packages/accounts-base.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/accounts-base.js"
+    },
+    {
+      "sourceMap": "packages/sha.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/sha.js"
+    },
+    {
+      "sourceMap": "packages/srp.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/srp.js"
+    },
+    {
+      "node_modules": "npm/email/node_modules",
+      "sourceMap": "packages/email.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/email.js"
+    },
+    {
+      "sourceMap": "packages/accounts-password.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/accounts-password.js"
+    },
+    {
+      "sourceMap": "packages/less.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/less.js"
+    },
+    {
+      "sourceMap": "packages/coffeescript.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/coffeescript.js"
+    },
+    {
+      "sourceMap": "packages/softwarerero_accounts-t9n.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/softwarerero_accounts-t9n.js"
+    },
+    {
+      "sourceMap": "packages/service-configuration.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/service-configuration.js"
+    },
+    {
+      "sourceMap": "packages/localstorage.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/localstorage.js"
+    },
+    {
+      "sourceMap": "packages/url.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/url.js"
+    },
+    {
+      "sourceMap": "packages/oauth.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/oauth.js",
+      "assets": {
+        "end_of_popup_response.html": "assets/packages/oauth/end_of_popup_response.html",
+        "end_of_redirect_response.html": "assets/packages/oauth/end_of_redirect_response.html"
+      }
+    },
+    {
+      "sourceMap": "packages/accounts-oauth.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/accounts-oauth.js"
+    },
+    {
+      "sourceMap": "packages/oauth2.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/oauth2.js"
+    },
+    {
+      "node_modules": "npm/http/node_modules",
+      "sourceMap": "packages/http.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/http.js"
+    },
+    {
+      "sourceMap": "packages/google.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/google.js"
+    },
+    {
+      "sourceMap": "packages/accounts-google.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/accounts-google.js"
+    },
+    {
+      "sourceMap": "packages/iron_core.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/iron_core.js"
+    },
+    {
+      "sourceMap": "packages/iron_dynamic-template.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/iron_dynamic-template.js",
+      "assets": {
+        "dynamic_template.html": "assets/packages/iron_dynamic-template/dynamic_template.html"
+      }
+    },
+    {
+      "sourceMap": "packages/iron_layout.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/iron_layout.js",
+      "assets": {
+        "default_layout.html": "assets/packages/iron_layout/default_layout.html"
+      }
+    },
+    {
+      "sourceMap": "packages/iron_url.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/iron_url.js"
+    },
+    {
+      "sourceMap": "packages/iron_middleware-stack.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/iron_middleware-stack.js"
+    },
+    {
+      "sourceMap": "packages/iron_location.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/iron_location.js"
+    },
+    {
+      "sourceMap": "packages/reactive-dict.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/reactive-dict.js"
+    },
+    {
+      "sourceMap": "packages/iron_controller.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/iron_controller.js"
+    },
+    {
+      "node_modules": "npm/iron_router/node_modules",
+      "sourceMap": "packages/iron_router.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/iron_router.js",
+      "assets": {
+        "lib/templates.html": "assets/packages/iron_router/lib/templates.html"
+      }
+    },
+    {
+      "sourceMap": "packages/useraccounts_core.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/useraccounts_core.js"
+    },
+    {
+      "sourceMap": "packages/useraccounts_materialize.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/useraccounts_materialize.js"
+    },
+    {
+      "sourceMap": "packages/github.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/github.js"
+    },
+    {
+      "sourceMap": "packages/accounts-github.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/accounts-github.js"
+    },
+    {
+      "sourceMap": "packages/fortawesome_fontawesome.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/fortawesome_fontawesome.js"
+    },
+    {
+      "sourceMap": "packages/alanning_roles.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/alanning_roles.js"
+    },
+    {
+      "node_modules": "npm/mrt_twilio-meteor/node_modules",
+      "sourceMap": "packages/mrt_twilio-meteor.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/mrt_twilio-meteor.js"
+    },
+    {
+      "sourceMap": "packages/juliancwirko_s-alert.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/juliancwirko_s-alert.js"
+    },
+    {
+      "node_modules": "npm/aldeed_simple-schema/node_modules",
+      "sourceMap": "packages/aldeed_simple-schema.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/aldeed_simple-schema.js"
+    },
+    {
+      "sourceMap": "packages/aldeed_autoform.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/aldeed_autoform.js"
+    },
+    {
+      "sourceMap": "packages/aldeed_collection2.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/aldeed_collection2.js"
+    },
+    {
+      "sourceMap": "packages/ongoworks_security.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/ongoworks_security.js"
+    },
+    {
+      "sourceMap": "packages/mongo-livedata.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/mongo-livedata.js"
+    },
+    {
+      "sourceMap": "packages/aldeed_delete-button.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/aldeed_delete-button.js"
+    },
+    {
+      "sourceMap": "packages/cfs_standard-packages.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/cfs_standard-packages.js"
+    },
+    {
+      "sourceMap": "packages/cfs_base-package.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/cfs_base-package.js"
+    },
+    {
+      "sourceMap": "packages/livedata.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/livedata.js"
+    },
+    {
+      "sourceMap": "packages/raix_eventemitter.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/raix_eventemitter.js"
+    },
+    {
+      "sourceMap": "packages/cfs_storage-adapter.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/cfs_storage-adapter.js"
+    },
+    {
+      "node_modules": "npm/cfs_data-man/node_modules",
+      "sourceMap": "packages/cfs_data-man.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/cfs_data-man.js"
+    },
+    {
+      "node_modules": "npm/cfs_file/node_modules",
+      "sourceMap": "packages/cfs_file.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/cfs_file.js"
+    },
+    {
+      "node_modules": "npm/cfs_filesystem/node_modules",
+      "sourceMap": "packages/cfs_filesystem.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/cfs_filesystem.js"
+    },
+    {
+      "node_modules": "npm/cfs_tempstore/node_modules",
+      "sourceMap": "packages/cfs_tempstore.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/cfs_tempstore.js"
+    },
+    {
+      "sourceMap": "packages/cfs_http-methods.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/cfs_http-methods.js"
+    },
+    {
+      "sourceMap": "packages/cfs_http-publish.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/cfs_http-publish.js"
+    },
+    {
+      "sourceMap": "packages/cfs_access-point.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/cfs_access-point.js"
+    },
+    {
+      "sourceMap": "packages/cfs_reactive-property.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/cfs_reactive-property.js"
+    },
+    {
+      "sourceMap": "packages/cfs_reactive-list.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/cfs_reactive-list.js"
+    },
+    {
+      "sourceMap": "packages/cfs_power-queue.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/cfs_power-queue.js"
+    },
+    {
+      "sourceMap": "packages/cfs_upload-http.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/cfs_upload-http.js"
+    },
+    {
+      "sourceMap": "packages/cfs_collection.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/cfs_collection.js"
+    },
+    {
+      "sourceMap": "packages/cfs_collection-filters.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/cfs_collection-filters.js"
+    },
+    {
+      "sourceMap": "packages/cfs_worker.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/cfs_worker.js"
+    },
+    {
+      "sourceMap": "packages/cfs_autoform.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/cfs_autoform.js"
+    },
+    {
+      "node_modules": "npm/cfs_s3/node_modules",
+      "sourceMap": "packages/cfs_s3.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/cfs_s3.js"
+    },
+    {
+      "sourceMap": "packages/matb33_collection-hooks.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/matb33_collection-hooks.js"
+    },
+    {
+      "sourceMap": "packages/jparker_crypto-core.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/jparker_crypto-core.js"
+    },
+    {
+      "sourceMap": "packages/jparker_crypto-base64.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/jparker_crypto-base64.js"
+    },
+    {
+      "sourceMap": "packages/jparker_crypto-md5.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/jparker_crypto-md5.js"
+    },
+    {
+      "sourceMap": "packages/jparker_crypto-evpkdf.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/jparker_crypto-evpkdf.js"
+    },
+    {
+      "sourceMap": "packages/jparker_crypto-cipher-core.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/jparker_crypto-cipher-core.js"
+    },
+    {
+      "sourceMap": "packages/jparker_crypto-padding.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/jparker_crypto-padding.js"
+    },
+    {
+      "sourceMap": "packages/jparker_crypto-mode.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/jparker_crypto-mode.js"
+    },
+    {
+      "sourceMap": "packages/jparker_crypto-aes.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/jparker_crypto-aes.js"
+    },
+    {
+      "sourceMap": "packages/gildaspk_autoform-materialize.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/gildaspk_autoform-materialize.js"
+    },
+    {
+      "sourceMap": "packages/gildaspk_autoform-file-materialize.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/gildaspk_autoform-file-materialize.js"
+    },
+    {
+      "sourceMap": "packages/materialize_materialize.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/materialize_materialize.js"
+    },
+    {
+      "sourceMap": "packages/sergeyt_typeahead.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/sergeyt_typeahead.js"
+    },
+    {
+      "sourceMap": "packages/societykit_relations.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/societykit_relations.js"
+    },
+    {
+      "sourceMap": "packages/yogiben_autoform-map.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/yogiben_autoform-map.js"
+    },
+    {
+      "sourceMap": "packages/juliancwirko_s-alert-genie.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/juliancwirko_s-alert-genie.js"
+    },
+    {
+      "sourceMap": "packages/mizzao_autocomplete.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/mizzao_autocomplete.js"
+    },
+    {
+      "sourceMap": "packages/momentjs_moment.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/momentjs_moment.js"
+    },
+    {
+      "sourceMap": "packages/meteorhacks_collection-utils.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/meteorhacks_collection-utils.js"
+    },
+    {
+      "sourceMap": "packages/meteorhacks_aggregate.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/meteorhacks_aggregate.js"
+    },
+    {
+      "sourceMap": "packages/matteodem_server-session.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/matteodem_server-session.js"
+    },
+    {
+      "sourceMap": "packages/session.js.map",
+      "sourceMapRoot": "packages",
+      "path": "packages/session.js"
+    },
+    {
+      "path": "packages/global-imports.js"
+    },
+    {
+      "path": "app/server/lib/config/accounts.js"
+    },
+    {
+      "path": "app/server/lib/config/email.js"
+    },
+    {
+      "path": "app/server/lib/config/seeds.js"
+    },
+    {
+      "path": "app/server/lib/config/smtp_config.js"
+    },
+    {
+      "path": "app/lib/collections/doctors.js"
+    },
+    {
+      "path": "app/lib/collections/followerTopics.js"
+    },
+    {
+      "path": "app/lib/collections/invites.js"
+    },
+    {
+      "path": "app/lib/collections/messages.js"
+    },
+    {
+      "path": "app/lib/collections/notifications.js"
+    },
+    {
+      "path": "app/lib/collections/posts.js"
+    },
+    {
+      "path": "app/lib/collections/topics.js"
+    },
+    {
+      "path": "app/lib/collections/users.js"
+    },
+    {
+      "path": "app/lib/config/accounts_t9n.js"
+    },
+    {
+      "path": "app/lib/config/at_config.js"
+    },
+    {
+      "path": "app/lib/router/admin_routes.js"
+    },
+    {
+      "path": "app/lib/router/advocates_routes.js"
+    },
+    {
+      "path": "app/lib/router/application_routes.js"
+    },
+    {
+      "path": "app/lib/router/conversation_routes.js"
+    },
+    {
+      "path": "app/lib/router/doctor_routes.js"
+    },
+    {
+      "path": "app/lib/router/invite_routes.js"
+    },
+    {
+      "path": "app/lib/router/notifications_routes.js"
+    },
+    {
+      "path": "app/lib/router/post_routes.js"
+    },
+    {
+      "path": "app/lib/router/profile_routes.js"
+    },
+    {
+      "path": "app/lib/router/settings_routes.js"
+    },
+    {
+      "path": "app/lib/router/topic_routes.js"
+    },
+    {
+      "path": "app/lib/util/roles.js"
+    },
+    {
+      "path": "app/server/lib/methods.js"
+    },
+    {
+      "path": "app/server/publications/posts_publications.js"
+    },
+    {
+      "path": "app/server/publications/users_publications.js"
+    },
+    {
+      "path": "app/server/security.js"
+    }
+  ]
+}
