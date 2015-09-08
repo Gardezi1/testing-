@@ -1,33 +1,10 @@
 # Meteor packages used by this project, one per line.
-<<<<<<< HEAD
-# Check this file (and the other files in this directory) into your repository.
-=======
->>>>>>> feature/sprint3
 #
 # 'meteor add' and 'meteor remove' will edit this file for you,
 # but you can also edit it by hand.
 
 meteor-platform
 accounts-password
-<<<<<<< HEAD
-aldeed:autoform
-aldeed:collection2
-alethes:pages
-audit-argument-checks
-dburles:collection-helpers
-fortawesome:fontawesome
-iron:router
-less
-matb33:collection-hooks
-meteorhacks:fast-render
-momentjs:moment
-msavin:mongol
-reywood:publish-composite
-service-configuration
-twbs:bootstrap
-underscore
-useraccounts:bootstrap
-=======
 less
 softwarerero:accounts-t9n
 accounts-google
@@ -63,4 +40,3 @@ random
 momentjs:moment
 meteorhacks:aggregate
 matteodem:server-session
->>>>>>> feature/sprint3
