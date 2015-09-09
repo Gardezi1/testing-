@@ -112,7 +112,10 @@ Template.nav.onRendered(function() {
 Template.nav.events({
   'click .button-collapse-side': function(event) {
     $(".button-collapse-side").sideNav();
-    $(".dd-option-selected").click();
+    user = Roles.getUsersInRole([ROLES.Admin]);
+    if(user.fetch()[0]._id != Meteor.userId()){
+      $(".dd-option-selected").click();
+    }
     $('#doc-select').ddslick();
     $(".button-collapse-side").sideNav('show');
     $('#doc-select li').on("click", function(event){
