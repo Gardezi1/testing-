@@ -28,9 +28,11 @@
                   <div class="clearfix">
                     <div class="col s2">
                       {{#if gteUserImage from}}
-                        <img src="{{gteUserImage from}}" alt="{{title}}">
+                        <div class="img" style="background: url('{{gteUserImage from}}') no-repeat;" alt="{{title}}"></div>
+                        <!-- <img src="{{gteUserImage from}}" alt="{{title}}"> -->
                       {{else}}
-                        <img src="/imgs/user.jpg">
+                        <div class="img" style="background: url('/imgs/user.jpg') no-repeat;" alt="{{title}}"></div>
+                        <!-- <img src="/imgs/user.jpg"> -->
                       {{/if}}    
                     </div>
                     <div class="col s10">
@@ -49,9 +51,11 @@
                   <div class="clearfix">
                     <div class="col s2">
                       {{#if gteUserImage from}}
-                        <img src="{{gteUserImage from}}" alt="{{title}}">
+                        <div class="img" style="background: url('{{gteUserImage from}}') no-repeat;" alt="{{title}}"></div>
+                        <!-- <img src="{{gteUserImage from}}" alt="{{title}}"> -->
                       {{else}}
-                        <img src="/imgs/user.jpg">
+                        <div class="img" style="background: url('/imgs/user.jpg') no-repeat;" alt="{{title}}"></div>
+                        <!-- <img src="/imgs/user.jpg"> -->
                       {{/if}}   
                     </div>
                     <div class="col s10">
