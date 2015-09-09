@@ -98,13 +98,17 @@ nav{
   width: 81px;
   height: 64px;
   a{
-    img{
+    img, .img {
       height: 40px;
       width: 40px;
       vertical-align: middle;
       border-radius: 4px;
       -moz-border-radius: 4px;
       -webkit-border-radius: 4px;
+    }
+    .img {
+      background-size: cover !important;
+      background-position: center !important; 
     }
   }
 }
@@ -239,7 +243,7 @@ nav{
     }
     &.border-blue {
       .col.s2 {
-        & > img {
+        & > img, .img {
           border: 1px solid #039be5;
         }
       }
@@ -268,11 +272,16 @@ nav{
     }
     .col.s2 {
       text-align: center;
-      & > img {
+      & > img, .img {
         height: 60px;
         width: 60px;
         border-radius: 100%;
         border: 1px solid transparent;
+      }
+      .img {
+        margin: 0px auto;
+        background-position: center !important;
+        background-size: cover !important; 
       }
     }
     .col.s10 {
@@ -460,6 +469,15 @@ li.admin {
     vertical-align: middle;
     margin: -5px 5px 0 0;
   }
+  .img {
+    height: 40px;
+    width: 40px;
+    display: inline-block;
+    background-color: black;
+    vertical-align: middle;
+    background-position: center !important;
+    background-size: cover !important; 
+  }
   b{
     text-transform: capitalize;
   }
@@ -534,6 +552,16 @@ li.admin {
     width: 170px;
     .RoundBorders (100%);
     display: inline-block;
+  }
+  .img {
+    height: 170px;
+    width: 170px;
+    .RoundBorders (100%);
+    background-position: center !important;
+    background-size: cover !important;
+    height: 170px;
+    width: 170px;
+    margin: 0px auto; 
   }
 }
 
@@ -629,11 +657,15 @@ li.admin {
   position: relative;
 }
 .doc-detail{
-  img{
+  img, .img {
     width: 100%;
     float: left;
     max-height: 136px;
     min-height: 136px;
+  }
+  .img {
+    background-position: center !important;
+    background-size: cover !important;
   }
 }
 .doc-detail{
@@ -1132,12 +1164,16 @@ li.admin {
   margin: 0px auto;
   margin-bottom: 15px;
   cursor: pointer;
-  img {
+  img, .img {
     display: block;
     float: left;
     margin-right: 20px;
     width: 50px;
     height: 50px;
+  }
+  .img {
+    background-size: cover !important;
+    background-position: center !important; 
   }
   .text {
     float: left;

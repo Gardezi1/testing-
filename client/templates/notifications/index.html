@@ -18,9 +18,11 @@
           <div class="shadow-box z-depth-1 notification">
             <div class="clearfix">
               {{#if getImage followerId}}
-                <img src="{{getImage followerId}}" alt="{{title}}">
+                <div class="img" style="background: url('{{getImage followerId}}') no-repeat;" alt="{{title}}"></div>
+                <!-- <img src="{{getImage followerId}}" alt="{{title}}"> -->
               {{else}}
-                <img src="/imgs/user.jpg">
+                <div class="img" style="background: url('/imgs/user.jpg') no-repeat;" alt="{{title}}"></div>
+                <!-- <img src="/imgs/user.jpg"> -->
               {{/if}}
               <div class="text">
                 <div class="name {{ifRead read}}">{{getName followerId}}</div>

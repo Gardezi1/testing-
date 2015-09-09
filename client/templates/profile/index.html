@@ -26,9 +26,10 @@
             <div class="shadow-box z-depth-1 profile-edit">
               {{#if ifDoctor}}
                 {{#if getImage}}
-                  <img src="{{getImage picture}}" alt="{{title}}" class="">
+                  <div class="img" style="background: url('{{getImage picture}}') no-repeat;" alt="{{title}}"></div>
+                  <!-- <img src="{{getImage picture}}" alt="{{title}}" class=""> -->
                 {{else}}
-                    <img src="/imgs/user.jpg" alt="{{title}}" class="">
+                  <div class="img" style="background: url('/imgs/user.jpg') no-repeat;" alt="{{title}}"></div>
                 {{/if}}    
                 <div class="prof-con">
                   <div class="profile-name">
@@ -52,9 +53,13 @@
                 </div>
               {{else}}
                 {{#if getImage}}
-                  <img src="{{getImage picture}}" alt="{{title}}" class="">
+                  <div class="img" style="background: url('{{getImage picture}}') no-repeat;" alt="{{title}}"></div>
+
+                  <!-- <img src="{{getImage picture}}" alt="{{title}}" class=""> -->
                 {{else}}
-                    <img src="/imgs/user.jpg" alt="{{title}}" class="">
+                  <div class="img" style="background: url('/imgs/user.jpg') no-repeat;" alt="{{title}}"></div>
+                  
+                    <!-- <img src="/imgs/user.jpg" alt="{{title}}" class=""> -->
                 {{/if}} 
                 <div class="prof-con">
                   <div class="profile-name">

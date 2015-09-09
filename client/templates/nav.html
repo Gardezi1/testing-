@@ -5,9 +5,9 @@
         {{#if currentUser}}
           <div class="user-pro-holder">
             {{#if getAdminImage}}
-              <a href="#" data-activates="slide-out" class="button-collapse-side"><img src="{{getAdminImage}}"></a>
+              <a href="#" data-activates="slide-out" class="button-collapse-side"><div class="img" style="background: url('{{getAdminImage}}') no-repeat; "></div><!-- <img src="{{getAdminImage}}"> --></a>
             {{else}}
-              <a href="#" data-activates="slide-out" class="button-collapse-side"><img src="/imgs/user.jpg"></a>
+              <a href="#" data-activates="slide-out" class="button-collapse-side"><div class="img" style="background: url('/imgs/user.jpg') no-repeat; "></div><!-- <img src="/imgs/user.jpg"> --></a>
             {{/if}}  
             <ul id="slide-out" class="side-nav doc-list">
               <select id="doc-select">
@@ -43,7 +43,7 @@
           {{#if currentUser}}
               <li class="admin">
                 {{#if file_S3}}
-                  <a href="{{pathFor route='profileView'}}"><img src="{{file_S3}}"> <b>{{currentUser.profile.firstName}}</b></a>
+                  <a href="{{pathFor route='profileView'}}"><div class="img" style="background: url('{{file_S3}}') no-repeat; "></div><!-- <img src="{{file_S3}}"> --> <b>{{currentUser.profile.firstName}}</b></a>
                 {{else}}
                   <a href="{{pathFor route='profileView'}}"><img src="/imgs/user.jpg"> <b>{{currentUser.profile.firstName}}</b></a>
                 {{/if}}  
