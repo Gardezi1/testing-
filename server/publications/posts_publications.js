@@ -4,8 +4,9 @@ Meteor.publish('Posts', function(){
   if(currentUserId){
     following_list = Meteor.users.findOne({_id:this.userId}).profile.following;
     if(following_list  == undefined || following_list.length < 0){
-      Meteor.users.update(this.userId, {$push: { "profile.following": currentUserId} });
-      following_list = Meteor.users.findOne({_id:this.userId}).profile.following;
+      following_list = [];
+      // Meteor.users.update(this.userId, {$push: { "profile.following": currentUserId} });
+      // following_list = Meteor.users.findOne({_id:this.userId}).profile.following;
     }
     if(Roles.userIsInRole(currentUserId, [ROLES.Advocate])){
       first_circle = Meteor.users.findOne({_id:currentUserId}).profile.firstCircle;
