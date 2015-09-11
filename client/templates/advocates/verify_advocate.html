@@ -1,0 +1,26 @@
+<template name="verifyAdvocate">
+  {{#contentFor "subnav"}}
+    <div class="row">
+      <div class="col s12 m12 l12">
+        <h5 class="center-align">Verify</h5>
+      </div>
+    </div>
+  {{/contentFor}} 
+  <div class="row">
+    <div class="custom-container">
+      <form>
+        {{> sAlert}}
+        <div class="row">
+          <div class="input-field col s6">
+            <input type="text" name="phonecode"  maxlength="4" placeholder="code" required>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s6">    
+            <input type="submit" class="waves-effect waves-light btn" value="Verify">
+          </div>
+        </div>    
+      </form>
+    </div>
+  </div>
+</template>

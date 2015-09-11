@@ -1,9 +1,110 @@
-<template name="doctors">
-  <div class="row">
-    <div class="col-md-12">
-      <div class="page-header">
-        <h1>Doctors </h1>
+<template name="doctorsListing">
+  {{#contentFor "subnav"}}
+    <a href="#" id="backToNavFromDrSearch" class="back-btn left fa fa-chevron-left">Back</a>
+    <h5 class="center-align">Find Healthcare Providers</h5>
+  {{/contentFor}}
+  <div class="custom-container"> 
+    <div class="row">
+      <div class="col-md-12">
+        <div class="doctors-listing">
+          <div class="prof-con">
+            <div class="top-search shadow-box z-depth-1">
+              <!-- <i class="fa fa-search"></i> -->
+              <div class="search-holder fa fa-search"> 
+                <input type="text" id="search-box" placeholder="Search for Healthcare Providers" />
+              </div>
+              <div class="search-note">
+                <span>Search for Healthcare Providers to follow! Join their circle and see their latest updates.</span>
+              </div>
+            </div>
+            <div id='search-result'>
+              <div id="search-meta">
+                {{#if isLoading}}
+                  searching ...
+                {{/if}}
+              </div>
+                <ul>
+                  <div class="row">
+                  {{#each searchResults}}
+                    {{#unless checkIfloggedIn _id}}
+                        <div class="doc-detail col s12 m6 l3">
+                          <div class="shadow-box z-depth-1">
+                            <a href="{{pathFor 'doctorView' id=_id }}">
+                              {{#if getImage profile.picture}}
+                                <div class="img" style="background: url('{{getImage profile.picture}}') no-repeat;" alt="{{title}}"></div>
+                                <!-- <img src="{{getImage profile.picture}}" alt="{{title}}"> -->
+                              {{else}}
+                                <div class="img" style="background: url('/imgs/user.jpg') no-repeat;" alt="{{title}}"></div>
+                                <!-- <img src="/imgs/user.jpg"> -->
+                              {{/if}}
+                            </a>  
+                            <div class="prof-data">
+                                <div class="name">
+                                  <a href="{{pathFor 'doctorView' id=_id }}">
+                                    <h5>{{profile.firstName}}</h5>
+                                  </a>
+                                </div>
+                                <div class="city">
+                                  {{profile.city}}
+                                  {{#if profile.state}}
+                                    , {{profile.state}}
+                                  {{/if}}
+                                </div>
+                                {{#if checkIfFollowing _id}}
+                                  <button class="btn start-unfollow-doc btn-primary red" id="{{_id}}">UNFOLLOW</button>
+                                {{else}}
+                                  <button class="btn start-follow-doc btn-primary" id="{{_id}}">FOLLOW</button>
+                                {{/if}}
+                              </div>
+                          </div>
+                        </div>  
+                    {{/unless}}  
+                  {{/each}}
+                </div>  
+                </ul>
+            </div>
+            <div class="row">
+              {{#unless searchResults}}
+                {{#each adminUsers}}
+                  {{#unless checkIfloggedIn _id}}
+                    <div class="doc-detail col s12 m6 l3">
+                      <div class="shadow-box z-depth-1">
+                        <a href="{{pathFor 'doctorView' id=_id }}">
+                          {{#if getImage profile.picture}}
+                            <div class="img" style="background: url('{{getImage profile.picture}}') no-repeat;" alt="{{title}}"></div>
+                            <!-- <img src="{{getImage profile.picture}}" alt="{{title}}"> -->
+                          {{else}}
+                            <div class="img" style="background: url('/imgs/user.jpg') no-repeat;" alt="{{title}}"></div>
+                            <!-- <img src="/imgs/user.jpg"> -->
+                          {{/if}}
+                        </a>  
+                        <div class="prof-data">
+                            <div class="name">
+                              <a href="{{pathFor 'doctorView' id=_id }}">
+                                <h5>{{profile.firstName}}</h5>
+                              </a>
+                            </div>
+                            <div class="city">
+                              {{profile.city}}
+                              {{#if profile.state}}
+                                , {{profile.state}}
+                              {{/if}}
+                            </div>
+                            {{#if checkIfFollowing _id}}
+                              <button class="btn start-unfollow-doc btn-primary red" id="{{_id}}">UNFOLLOW</button>
+                            {{else}}
+                              <button class="btn start-follow-doc btn-primary" id="{{_id}}">FOLLOW</button>
+                            {{/if}}
+                          </div>
+                      </div>
+                    </div>
+                  {{/unless}}  
+                {{/each}}
+              {{/unless}}
+            </div>
+          </div>  
+        </div>
       </div>
     </div>
-  </div>
+  </div>    
 </template>

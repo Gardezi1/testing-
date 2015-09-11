@@ -1,0 +1,22 @@
+<template name="masterLayout">
+  <div class="navbar-fixed">
+    {{> yield 'nav'}}
+  </div>
+  {{#if currentUser}}
+    <div class="sub-head">
+    	<div class="container">
+    		<div class="row">
+    			<div class="col12 s12 m4 l4">
+    				{{> yield 'subnav' }}
+    			</div>
+    		</div>
+    	</div>
+    </div>
+  {{/if}}
+
+  <main class="container">
+    <section class="section">
+    	{{> yield}}
+  	</section>
+   </main>
+</template>

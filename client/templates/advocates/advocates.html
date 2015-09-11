@@ -1,8 +1,50 @@
-<template name="advocates">
-  <div class="row">
-    <div class="col-md-12">
-      <div class="page-header">
-        <h1>Advocates</h1>
+<template name="advocatesListing">
+  {{#contentFor "subnav"}}
+    <div class="row">
+    <div class="col s12 m2 l2">  
+      <a href="{{pathFor route='articles'}}" class="back-btn left fa fa-chevron-left"> Back</a>
+    </div>
+    <div class="col s12 m8 l8">
+      <h5 class="center-align">Members</h5>
+    </div>
+    <div class="col s12 m2 l2">
+    </div>
+  </div>
+  {{/contentFor}}
+  <div class="custom-container"> 
+    <div class="row">
+      <div class="col-md-12">
+        <div class="doctors-listing">
+          <div class="prof-con">
+            <div class="row">
+                {{#each advocateUsers}}
+                    <div class="doc-detail col s12 m6 l3">
+                      <div class="shadow-box z-depth-1">
+                        {{#if getImage profile.picture}}
+                          <div class="img" style="background: url('{{getImage profile.picture}}') no-repeat;" alt="{{title}}"></div>
+                          <!-- <img src="{{getImage profile.picture}}" > -->
+                        {{else}}
+                          <div class="img" style="background: url('/imgs/user.jpg') no-repeat;" alt="{{title}}"></div>
+                          <!-- <img src="/imgs/user.jpg"> -->
+                        {{/if}}
+                        <div class="prof-data">
+                          <div class="name">
+                            <h5>{{profile.firstName}}</h5>
+                          </div>
+                          <div class="switch circle-{{_id}}">
+                            <label class="{{isActive _id}}">
+                              1st Circle
+                              <input type="checkbox" id="{{_id}}" {{isChecked _id}}>
+                              <span class="lever"></span>
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>  
+                {{/each}}
+            </div>
+          </div>  
+        </div>
       </div>
     </div>
   </div>

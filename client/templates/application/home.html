@@ -1,0 +1,76 @@
+<template name="home">
+    <div class="valign-wrapper">
+      <div class="sign-holder">
+        <div class="logo-bar">
+          <img src="/imgs/sign-up-logo.png" alt="MedCircle"/>
+        </div>
+        <div class="tabs-holder">
+          <div class="container sign-in-tabs">
+            <div class="row">
+              <div class="col s12">
+                <ul class="tabs">
+                  <li class="tab col s3"><a class="active" href="#test1">Members</a></li>
+                  <li class="tab col s3"><a href="#test2">Healthcare Providers</a></li>
+                </ul>
+              </div>
+              <div id="test1" class="col s12">
+                <div class="tabs-inner">
+                  <h5 class="center-align">Member Sign In</h5>
+                  <hr>
+                  <form class="advocate-sign-in-form">
+                    <div class="row">
+                     <div class="input-field col s12">
+                       <input id="advocateEmail" name="advocateEmail" type="email">
+                       <label for="advocateEmail" data-error="wrong" data-success="right">Email</label>
+                     </div>
+                     <div class="input-field col s12">
+                       <input id="advocatePassword" name="advocatePassword" type="password">
+                       <label for="advocatePassword" data-success="right">Password</label>
+                     </div>
+                     <div class="col s12">
+                       <a href="/forgot-password" class="f-pass-link">Forgot Password?</a>
+                     </div>
+                     <div class="input-field col s12">
+                       <input type="submit" class="advocateSignIn waves-light btn" value="Sign In">
+                     </div>
+                     <div class="col s12">
+                       <a href="/sign-up" class="sign-bottom">Don't have an account <span>Sign Up</span></a>
+                     </div>
+                   </div>
+                  </form>
+                </div>
+              </div>
+              <div id="test2" class="col s12">
+                <div class="tabs-inner">
+                  <h5 class="center-align">Healthcare Provider Sign In</h5>
+                  <hr>
+                  <form class="doctor-sign-in-form">
+                    <div class="row">
+                     <div class="input-field col s12">
+                       <input id="doctorEmail" name="doctorEmail" type="email">
+                       <label for="doctorEmail" data-error="wrong" data-success="right">Email</label>
+                     </div>
+                     <div class="input-field col s12">
+                       <input id="doctorPassword" name="doctorPassword" type="password">
+                       <label for="doctorPassword" data-success="right">Password</label>
+                     </div>
+                     <div class="col s12">
+                       <a href="/forgot-password" class="f-pass-link">Forgot Password?</a>
+                     </div>
+                     <div class="input-field col s12">
+                       <input type="submit" class="doctorSignIn waves-light btn" value="Sign In">
+                     </div>
+                     <div class="col s12">
+                       <a href="/sign-up" class="sign-bottom">Don't have an account <span>Request to Join</span></a>
+                     </div>
+                   </div>
+                  </form>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</template>

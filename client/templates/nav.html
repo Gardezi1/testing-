@@ -1,0 +1,123 @@
+<template name="nav">
+  <nav role="navigation">
+    <div class="container">
+      <div class="nav-wrapper">
+        {{#if currentUser}}
+          <div class="user-pro-holder">
+            {{#if getAdminImage}}
+              <a href="#" data-activates="slide-out" class="button-collapse-side"><div class="img" style="background: url('{{getAdminImage}}') no-repeat; "></div><!-- <img src="{{getAdminImage}}"> --></a>
+            {{else}}
+              <a href="#" data-activates="slide-out" class="button-collapse-side"><div class="img" style="background: url('/imgs/user.jpg') no-repeat; "></div><!-- <img src="/imgs/user.jpg"> --></a>
+            {{/if}}  
+            <ul id="slide-out" class="side-nav doc-list">
+              <select id="doc-select">
+                {{#each getFollowing}}
+                  {{#if notCurrentUser this}}
+                    {{#if getImage this}}
+                      <option value="{{this}}" data-imagesrc="{{getImage this}}">{{getDoctorName this}}</option>
+                    {{else}}
+                      <option value="{{this}}" data-imagesrc="/imgs/user.jpg">{{getDoctorName this}}</option>
+                    {{/if}}
+                  {{/if}}
+                {{/each}}
+                <option value="99" data-imagesrc="/imgs/add.png">ADD Healthcare Provider</option>
+              </select>
+              {{#each doctorTopics}}
+                {{#if index}}
+                  <li class="article-feed" id="{{value}}"><a href="{{pathFor route='articles'}}">{{getTopicName value}}</a></li>
+                {{else}}
+                  <li class="topic-grey">TOPICS</li>
+                  <li class="article-feed active-topic" id="{{value}}"><a href="{{pathFor route='articles'}}">{{getTopicName value}}</a></li>
+                {{/if}}
+              {{/each}}
+                <li class="divider"></li>
+              {{#if getDocId}}  
+                <li class="manageDocTopics" id="{{getDocId}}"><a href="{{pathFor 'topicsView' id=getDocId}}">MANAGE TOPICS</a></li>
+              {{/if}}  
+                <!-- <li class="hide-nav show-topic"><a href="{{pathFor route='topicsListing'}}">MANAGE TOPICS</a></li> -->
+            </ul>
+          </div>
+        {{/if}}
+        <a href="{{pathFor route='articles'}}" class="brand-logo"><img src="/imgs/logoo.png"></a>
+        <ul class="right hide-on-med-and-down normal-nav">
+          {{#if currentUser}}
+              <li class="admin">
+                {{#if file_S3}}
+                  <a href="{{pathFor route='profileView'}}"><div class="img" style="background: url('{{file_S3}}') no-repeat; "></div><!-- <img src="{{file_S3}}"> --> <b>{{currentUser.profile.firstName}}</b></a>
+                {{else}}
+                  <a href="{{pathFor route='profileView'}}"><img src="/imgs/user.jpg"> <b>{{currentUser.profile.firstName}}</b></a>
+                {{/if}}  
+              </li>
+            {{#if isInRole 'doctor'}} 
+              <li>
+                <a href="{{pathFor route='advocatesListing'}}" class="fa fa-users tooltipped" data-position="bottom" data-delay="50" data-tooltip="ADVOCATES"></a>
+              </li>
+            {{else}}
+              <li>
+                <a href="{{pathFor route='doctorsListing'}}" class="fa fa-users tooltipped" ata-position="bottom" data-delay="50" data-tooltip="DOCTORS"></a>
+              </li>
+            {{/if}}
+            <li>
+              <a href="{{pathFor route='conversationListing'}}" class="fa fa-envelope-o tooltipped" data-position="bottom" data-delay="50" data-tooltip="MESSAGES"></a>
+            </li>
+            <li>
+              <a href="{{pathFor route='notifications'}}" class="fa fa-bell tooltipped" data-position="bottom" data-delay="50" data-tooltip="NOTIFICATION">
+                {{#if notificationCount}}
+                  <span class="badge">{{notificationCount}}</span>
+                {{/if}}
+              </a>
+            </li>
+          {{/if}}
+          <div class="drop-holder">
+            <a href="#" class="fa fa-envelope-o tooltipped fa fa-cog dropdown-button" data-position="bottom" data-delay="50" data-tooltip="SETTINGS" data-activates="dropdown1"></a>
+              <!-- Dropdown Structure -->
+              <ul id='dropdown1' class='dropdown-content'>
+                {{#if currentUser}}
+                  {{#if isInRole 'admin, doctor'}}
+                    <li><a href="{{pathFor route='inviteAdvocate'}}">Invite a Friend</a></li>
+                  {{/if}}  
+                  <li><a href="{{pathFor route='settings'}}">Settings</a></li>
+                  <li><a href="#!">Privacy Policy</a></li>
+                  <li><a href="#!">Terms of Use</a></li>
+                  {{#if isInRole 'admin'}}
+                    <li><a href="{{pathFor route='admin'}}">Admin</a></li>
+                  {{/if}}
+                  <li class="divider"></li>
+                {{/if}}
+                <li class="custom-btn">{{> atNavButton }}</li>
+              </ul>
+          </div>
+          <!-- <li>{{> atNavButton }}</li> -->
+        </ul>
+
+        <ul id="nav-mobile" class="side-nav">
+          <li class="admin">
+            <a href="{{pathFor route='profileView'}}"><img src="{{file_S3}}"> Hi, <b>{{currentUser.profile.firstName}}</b></a>
+          </li>
+          {{#if isInRole 'doctor'}} 
+            <li>
+              <a href="{{pathFor route='advocatesListing'}}" class="fa fa-users">Members</a>
+            </li>
+          {{else}}
+            <li>
+              <a href="{{pathFor route='doctorsListing'}}" class="fa fa-users">Healthcare Providers</a>
+            </li>
+          {{/if}}
+          <li>
+            <a href="{{pathFor route='conversationListing'}}" class="fa fa-envelope-o">Messages</a>
+          </li>
+          <li>
+            <a href="{{pathFor route='notifications'}}" class="fa fa-bell">
+              Notifications
+              {{#if notificationCount}}
+                <span class="badge">{{notificationCount}}</span>
+              {{/if}}
+            </a>
+          </li>
+          <li>{{> atNavButton }}</li>
+        </ul>
+        <a class="button-collapse" href="#" data-activates="nav-mobile"><i class="mdi-navigation-menu"></i></a>
+      </div>
+    </div>
+  </nav>
+</template>
