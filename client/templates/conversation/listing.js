@@ -55,6 +55,20 @@ Template.conversationListing.helpers({
   },
   messageTime: function(date){
     return moment(date).format('MM/DD/YY');
+  },
+  getFirstCircle: function(){
+    if(Meteor.user().roles == 'advocate'){
+      if(Meteor.user().profile.firstCircle !== "")
+      {
+        return true;
+      }
+      else{
+        return false;
+      }
+    }
+    else{
+      return false;
+    }
   }
 });
 

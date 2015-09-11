@@ -4,6 +4,12 @@ Template.masterLayout.events({
   },
   'click .back-btn': function(e){
     $('.normal-nav li').removeClass('selected');
+  },
+  'click #backToNav': function(){
+   $(".button-collapse-side").sideNav('show');
+  },
+  'click #backToNavFromDrSearch': function(){
+   $(".button-collapse-side").sideNav('show');
   }
   // 'click .start-follow': function(e){
   //   var id = $(".start-follow").attr('id');

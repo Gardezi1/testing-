@@ -1,7 +1,7 @@
 <template name="doctorsListing">
   {{#contentFor "subnav"}}
-    <a href="{{pathFor route='articles'}}" class="back-btn left fa fa-chevron-left">Back</a>
-    <h5 class="center-align">Find Doctors</h5>
+    <a href="#" id="backToNavFromDrSearch" class="back-btn left fa fa-chevron-left">Back</a>
+    <h5 class="center-align">Find Healthcare Providers</h5>
   {{/contentFor}}
   <div class="custom-container"> 
     <div class="row">
@@ -11,10 +11,10 @@
             <div class="top-search shadow-box z-depth-1">
               <!-- <i class="fa fa-search"></i> -->
               <div class="search-holder fa fa-search"> 
-                <input type="text" id="search-box" placeholder="Search for Doctors" />
+                <input type="text" id="search-box" placeholder="Search for Healthcare Providers" />
               </div>
               <div class="search-note">
-                <span>Search for doctors to follow! Join their circle and see their latest updates.</span>
+                <span>Search for Healthcare Providers to follow! Join their circle and see their latest updates.</span>
               </div>
             </div>
             <div id='search-result'>

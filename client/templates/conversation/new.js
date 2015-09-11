@@ -16,6 +16,21 @@ Template.startConversation.helpers({
           }
         ]
       };
+    }else if(Roles.userIsInRole(user._id, [ROLES.Advocate])){
+      return {
+        position: "top",
+        limit: 3,
+        rules: [
+          {
+            // token: '@',
+            collection: Meteor.users,
+            field: 'profile.firstName',
+            filter: {_id: {$in: user.profile.firstCircle}},
+            // filter: {_id: {$in: user.profile.followers}},
+            template: Template.userPill
+          }
+        ]
+      };
     }
     else{
         return {

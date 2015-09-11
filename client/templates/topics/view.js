@@ -36,6 +36,10 @@ Template.topicsView.helpers({
 });
 
 Template.topicsView.events({  
+  // 'click #backToNav': function(){
+  //   console.log("inn");
+  //  $(".button-collapse-side").sideNav('show');
+  // },
   'click .myTopics': function(e) {
     tid = $(".topicsCollection").attr('id');
     console.log("tid: " + tid);
