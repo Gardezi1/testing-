@@ -61,7 +61,11 @@ Template.nav.helpers({
     }
   },
   getDocId: function(){
-    return Session.get("doctorTopicsId");
+    if(Session.get("doctorTopicsId") != 99){
+      return Session.get("doctorTopicsId");
+    }
+    else
+      return null;
   },
   getTopicName: function(tid){
     if(tid){
@@ -117,7 +121,7 @@ Template.nav.events({
     //   $(".dd-option-selected").click();
     // }
     // else{
-    if(Meteor.user().profile.following != ""){
+    if(Meteor.user().profile.following != undefined){
       $(".dd-option-selected").click();
       //$(".dd-option-selected").val( Meteor.users.findOne({_id: Meteor.user().profile.following[0]}).profile.topics);
     }
