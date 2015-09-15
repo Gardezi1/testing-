@@ -1,5 +1,11 @@
 Template.userSignup.onRendered(function() {
   $('ul.tabs').tabs();
+   if(Session.get("clicker") == "member"){
+     $('#member1').click();
+   }
+   if(Session.get("clicker") == "healthCare"){
+      $('#healthCare1').click();
+   }
 });
 
 Template.userSignup.events({
