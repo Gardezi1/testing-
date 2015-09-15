@@ -92,7 +92,7 @@ Template.nav.helpers({
 
 Template.nav.onRendered(function() {
   $('.dropdown-button-topic').dropdown();
-  $(".button-collapse").sideNav();
+  $(".button-collapse").sideNav({edge: 'right',closeOnClick: true});
   $('.dropdown-button').dropdown();
   // $(".button-collapse-side").sideNav();
   $('.dropdown-button-side').dropdown();
