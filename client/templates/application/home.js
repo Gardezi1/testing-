@@ -60,5 +60,13 @@ Template.home.events({
         }
       });
     }
+  }, 'click #member':function(){
+     Session.set("clicker","member");
+    //$('#member1').click();
+  },
+  'click #healthCare':function(){
+     Session.set("clicker","healthCare");
   }
+
 });
+
