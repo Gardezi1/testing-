@@ -58,5 +58,5 @@ Template.signup.events({
 
 Template.signup.onRendered(function() {
   $('select').material_select();
-  $('ul.tabs').tabs();
+  //$('ul.tabs').tabs();
 });

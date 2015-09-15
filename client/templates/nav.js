@@ -61,7 +61,11 @@ Template.nav.helpers({
     }
   },
   getDocId: function(){
-    return Session.get("doctorTopicsId");
+    if(Session.get("doctorTopicsId") != 99){
+      return Session.get("doctorTopicsId");
+    }
+    else
+      return null;
   },
   getTopicName: function(tid){
     if(tid){
@@ -88,7 +92,7 @@ Template.nav.helpers({
 
 Template.nav.onRendered(function() {
   $('.dropdown-button-topic').dropdown();
-  $(".button-collapse").sideNav();
+  $(".button-collapse").sideNav({edge: 'right',closeOnClick: true});
   $('.dropdown-button').dropdown();
   // $(".button-collapse-side").sideNav();
   $('.dropdown-button-side').dropdown();
@@ -112,9 +116,14 @@ Template.nav.onRendered(function() {
 Template.nav.events({
   'click .button-collapse-side': function(event) {
     $(".button-collapse-side").sideNav();
-    user = Roles.getUsersInRole([ROLES.Admin]);
-    if(user.fetch()[0]._id != Meteor.userId()){
+    // user = Roles.getUsersInRole([ROLES.Admin]);
+    // if(user.fetch()[0]._id != Meteor.userId()){
+    //   $(".dd-option-selected").click();
+    // }
+    // else{
+    if(Meteor.user().profile.following != undefined){
       $(".dd-option-selected").click();
+      //$(".dd-option-selected").val( Meteor.users.findOne({_id: Meteor.user().profile.following[0]}).profile.topics);
     }
     $('#doc-select').ddslick();
     $(".button-collapse-side").sideNav('show');

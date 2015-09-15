@@ -9,7 +9,7 @@ if (Meteor.isServer) {
 
   if (!Meteor.users.findOne({"emails.address": "admin@medcircle.com"})) {
     var admins = [
-      { firstName: "medcircle", email: "admin@medcircle.com", password: "medcircle123", phone: '92321434343', code_verified: true, code_verified: true, type: "admin", roles: ['admin'] }
+      { firstName: "MedCircle", email: "admin@medcircle.com", password: "medcircle123", phone: '92321434343', code_verified: true, code_verified: true, type: "admin", roles: ['admin'] }
     ];
     
     _.each(admins, function (user) {
