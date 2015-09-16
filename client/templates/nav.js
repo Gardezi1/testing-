@@ -117,7 +117,7 @@ Template.nav.events({
     //   $(".dd-option-selected").click();
     // }
     // else{
-    if(Meteor.user().profile.following != ""){
+    if(Meteor.user().profile.following != undefined){
       $(".dd-option-selected").click();
       //$(".dd-option-selected").val( Meteor.users.findOne({_id: Meteor.user().profile.following[0]}).profile.topics);
     }
