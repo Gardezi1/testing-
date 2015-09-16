@@ -1,5 +1,11 @@
 Template.home.onRendered(function() {
   $('ul.tabs').tabs();
+   if(Session.get("SignIn") == "member"){
+     $('#SignMember').click();
+   }
+   if(Session.get("SignIn") == "healthCare"){
+      $('#SignHealthCare').click();
+   }
 });
 
 Template.home.events({
