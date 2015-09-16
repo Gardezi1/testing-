@@ -50,11 +50,11 @@
               </li>
             {{#if isInRole 'doctor'}} 
               <li>
-                <a href="{{pathFor route='advocatesListing'}}" class="fa fa-users tooltipped" data-position="bottom" data-delay="50" data-tooltip="ADVOCATES"></a>
+                <a href="{{pathFor route='advocatesListing'}}" class="fa fa-users tooltipped" data-position="bottom" data-delay="50" data-tooltip="Members"></a>
               </li>
             {{else}}
               <li>
-                <a href="{{pathFor route='doctorsListing'}}" class="fa fa-users tooltipped" ata-position="bottom" data-delay="50" data-tooltip="DOCTORS"></a>
+                <a href="{{pathFor route='doctorsListing'}}" class="fa fa-users tooltipped" ata-position="bottom" data-delay="50" data-tooltip="Healthcare Providers"></a>
               </li>
             {{/if}}
             <li>
@@ -92,9 +92,13 @@
 
         <ul id="nav-mobile" class="side-nav">
           <li class="admin">
-            <a href="{{pathFor route='profileView'}}"><img src="{{file_S3}}"> Hi, <b>{{currentUser.profile.firstName}}</b></a>
+            {{#if file_S3}}
+              <a href="{{pathFor route='profileView'}}"><img src="{{file_S3}}"><b>{{currentUser.profile.firstName}}</b></a>
+            {{else}}
+              <a href="{{pathFor route='profileView'}}"><img src="/imgs/user.jpg"> <b>{{currentUser.profile.firstName}}</b></a>
+            {{/if}}    
           </li>
-          <li><a href="{{pathFor route='settings'}}">Settings</a></li>
+          <li><a href="{{pathFor route='settings'}}" class="fa fa-cog">Settings</a></li>
           {{#if isInRole 'doctor'}} 
             <li>
               <a href="{{pathFor route='advocatesListing'}}" class="fa fa-users">Members</a>
