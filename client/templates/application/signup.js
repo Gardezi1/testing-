@@ -60,3 +60,7 @@ Template.signup.onRendered(function() {
   $('select').material_select();
   //$('ul.tabs').tabs();
 });
+
+Template.signup.onRendered(function() {
+  $('ul.tabs').tabs();
+});
