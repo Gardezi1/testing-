@@ -111,19 +111,11 @@ Template.nav.onRendered(function() {
     }
     $(".show-topic").css("visibility", "visible");
   });
-  // $('.button-collapse-side').on("click", function(event){
-  //   if(Meteor.user().profile.following != undefined){
-  //     $(".dd-option-selected").click();
-  //   }
-  // });
 });
 
 Template.nav.events({
   'click .button-collapse-side img': function(event) {
     $(".button-collapse-side").sideNav();
-    if(Meteor.user().profile.following != undefined){
-      $(".dd-option-selected").click();
-    }
     $('#doc-select').ddslick();
     $(".button-collapse-side").sideNav('show');
     $('#doc-select li').on("click", function(event){
@@ -137,6 +129,10 @@ Template.nav.events({
       }
       $(".show-topic").css("visibility", "visible");
     })
+    following = Meteor.users.find({_id: Meteor.userId()});
+    if(following != undefined){
+      $(".dd-option-selected").click();
+    }
   },
   'click .hide-nav': function(event) {
     $('.button-collapse-side').sideNav('hide');
