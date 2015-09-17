@@ -31,7 +31,7 @@ if (Meteor.isClient) {
               topic_list.push(topic[0]);
             });
             Meteor.users.update(Meteor.userId(), {$addToSet: {"profile.topics" :{$each: topic_list}}});
-            Router.go('/articles');
+            Router.go('/doctors');
         }
     });
 
@@ -44,7 +44,7 @@ if (Meteor.isClient) {
             }
             else{
                 Meteor.users.update(Meteor.userId(), {$set: {"profile.code_verified": true}});
-                Router.go('/articles');
+                Router.go('/doctors');
             }
         }
     });
