@@ -110,20 +110,19 @@ Template.nav.onRendered(function() {
       Session.set('doctorTopicsId', id);
     }
     $(".show-topic").css("visibility", "visible");
-  })
+  });
+  // $('.button-collapse-side').on("click", function(event){
+  //   if(Meteor.user().profile.following != undefined){
+  //     $(".dd-option-selected").click();
+  //   }
+  // });
 });
 
 Template.nav.events({
-  'click .button-collapse-side': function(event) {
+  'click .button-collapse-side img': function(event) {
     $(".button-collapse-side").sideNav();
-    // user = Roles.getUsersInRole([ROLES.Admin]);
-    // if(user.fetch()[0]._id != Meteor.userId()){
-    //   $(".dd-option-selected").click();
-    // }
-    // else{
     if(Meteor.user().profile.following != undefined){
       $(".dd-option-selected").click();
-      //$(".dd-option-selected").val( Meteor.users.findOne({_id: Meteor.user().profile.following[0]}).profile.topics);
     }
     $('#doc-select').ddslick();
     $(".button-collapse-side").sideNav('show');
