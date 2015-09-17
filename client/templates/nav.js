@@ -111,12 +111,24 @@ Template.nav.onRendered(function() {
     }
     $(".show-topic").css("visibility", "visible");
   });
+  // $('.button-collapse-side img').on("click", function(event){
+  //   console.log("inside click");
+  //   following = Meteor.users.find({_id: Meteor.userId()});
+  //   if(following != undefined){
+  //     console.log("inside render");
+  //     $(".dd-option-selected").click();
+  //   }
+  // });
 });
 
 Template.nav.events({
   'click .button-collapse-side img': function(event) {
     $(".button-collapse-side").sideNav();
     $('#doc-select').ddslick();
+    following = Meteor.users.find({_id: Meteor.userId()});
+    if(following != undefined){
+      $(".dd-option-selected").click();
+    }
     $(".button-collapse-side").sideNav('show');
     $('#doc-select li').on("click", function(event){
       var id = $(event.target).closest('.dd-option').find('.dd-option-value').val();
@@ -129,10 +141,6 @@ Template.nav.events({
       }
       $(".show-topic").css("visibility", "visible");
     })
-    following = Meteor.users.find({_id: Meteor.userId()});
-    if(following != undefined){
-      $(".dd-option-selected").click();
-    }
   },
   'click .hide-nav': function(event) {
     $('.button-collapse-side').sideNav('hide');
