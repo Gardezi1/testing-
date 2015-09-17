@@ -25,6 +25,7 @@ Template.userSignup.events({
       }
       else{
         sAlert.error("Successful Registration! Please check your email and follow the instructions.", {effect: 'genie', position: 'top-right', timeout: 5000, onRouteClose: false, stack: false, offset: '80px'});        
+        Router.go('/thankyou');
       }
     });
   },
@@ -45,6 +46,7 @@ Template.userSignup.events({
       }
       else{
         sAlert.error("You will be sent a verification link to complete your registration process in your email after Medcircle administrator approves it.", {effect: 'genie', position: 'top-right', timeout: 5000, onRouteClose: false, stack: false, offset: '80px'});
+        Router.go('/thankyou');
       }
     });
   },
@@ -55,3 +57,6 @@ Template.userSignup.events({
     Session.set("SignIn","healthCare");
   }
 });
+
+
+   
