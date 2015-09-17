@@ -25,7 +25,7 @@ Template.signup.events({
               if(inviteUid){
                 Meteor.users.update(Meteor.userId(), { $addToSet: { "profile.following": inviteUid}});
                 Meteor.users.update(inviteUid, { $addToSet: { "profile.followers": Meteor.userId()}});
-                Meteor.users.update(Meteor.userId(), {$push: { "profile.secondCircle": inviteUid} });
+                Meteor.users.update(Meteor.userId(), {$push: { "profile.firstCircle": inviteUid} });
               }   
               return Router.go('/');
             }
