@@ -1,7 +1,16 @@
 <template name="doctorsListing">
   {{#contentFor "subnav"}}
-    <a href="#" id="backToNavFromDrSearch" class="back-btn left fa fa-chevron-left">Back</a>
-    <h5 class="center-align">Find Healthcare Providers</h5>
+   <div class="row">
+      <div class="col s12 m2 l2">  
+        <a href="#" id="backToNavFromDrSearch" class="back-btn left fa fa-chevron-left">Back</a>
+      </div>
+      <div class="col s12 m6 l6">
+        <h5 class="center-align prof-pl">Find Healthcare Providers</h5>
+      </div>
+      <div class="col s12 m4 l4">
+        <a href="{{pathFor 'articles'}}" class="org-color right edite-btn profile-text">FINISH, TAKE ME TO MedCircle</a>
+      </div>
+    </div>
   {{/contentFor}}
   <div class="custom-container"> 
     <div class="row">
