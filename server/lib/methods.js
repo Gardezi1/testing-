@@ -235,8 +235,10 @@ Meteor.methods({
       if(user.type == "doctor"){
         Meteor.users.update(id, {$set: {"profile.approve": false}});
         inviteUid = ServerSession.get("inviteId");
-        Meteor.users.update(id, { $addToSet: { "profile.following": inviteUid}});
-        Meteor.users.update(inviteUid, { $addToSet: { "profile.followers": id}});
+        if(Meteor.users.findOne({_id: inviteUid}).profile.type != "advocate"){
+          Meteor.users.update(id, { $addToSet: { "profile.following": inviteUid}});
+          Meteor.users.update(inviteUid, { $addToSet: { "profile.followers": id}});
+        }
         Roles.addUsersToRoles(id, [ROLES.Doctor]);
       }else{
         Roles.addUsersToRoles(id, [ROLES.Advocate]);
