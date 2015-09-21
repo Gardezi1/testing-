@@ -49,7 +49,7 @@ Meteor.publish('Topics', function() {
 // Meteor.users._ensureIndex({ "addressOne": "2dsphere"});
 
 Meteor.publish('invites', function() {
-  if(Roles.userIsInRole(this.userId, [ROLES.Admin, ROLES.Doctor])) {
+  if(Roles.userIsInRole(this.userId, [ROLES.Admin, ROLES.Doctor, ROLES.Advocate])) {
     return Invites.find({}, {
       fields: {
         "_id": 1,
@@ -59,6 +59,7 @@ Meteor.publish('invites', function() {
       }
     });
   }
+   
 });
 
 Meteor.publish("Messages", function () {
