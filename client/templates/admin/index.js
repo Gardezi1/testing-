@@ -19,7 +19,7 @@ Template.admin.events({
     var id = $(event.target).attr('id');
     user = Meteor.users.findOne({_id:id});
     if(user){
-      email = user.emails[0].address
+      email = user.emails[0].address;
       Meteor.call("acceptUser", id, email, function(error, result){
         if(error){
           sAlert.error(error.reason, {effect: 'genie', position: 'top-right', timeout: 5000, onRouteClose: false, stack: false, offset: '80px'});

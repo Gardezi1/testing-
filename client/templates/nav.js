@@ -111,6 +111,7 @@ Template.nav.onRendered(function() {
     }
     $(".show-topic").css("visibility", "visible");
   });
+  
   // $('.button-collapse-side img').on("click", function(event){
   //   console.log("inside click");
   //   following = Meteor.users.find({_id: Meteor.userId()});
@@ -123,8 +124,9 @@ Template.nav.onRendered(function() {
 
 Template.nav.events({
   'click .button-collapse-side img': function(event) {
+    console.log("inside event");
     $(".button-collapse-side").sideNav();
-   // $('#doc-select').ddslick();
+   $('#doc-select').ddslick();
     following = Meteor.users.find({_id: Meteor.userId()});
     if(following != undefined){
       $(".dd-option-selected").click();
