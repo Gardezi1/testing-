@@ -1409,6 +1409,14 @@ li.admin {
   }
 }
 
+input:focus:not([readonly]) {
+  border-bottom: 1px solid #039be5 !important;
+  box-shadow:  0 1px 0 0 #039be5 !important;
+}
+input:focus:not([readonly]) + label {
+  color: #039be5 !important;
+}
+
 /* Large desktops and laptops */
 @media (min-width: 1200px) {
 

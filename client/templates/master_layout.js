@@ -12,6 +12,7 @@ Template.masterLayout.events({
    $(".button-collapse-side").sideNav('show');
   },
   'click .button-collapse-side img': function(event) {
+    console.log("inside master");
     // $(".button-collapse-side").sideNav();
    $('#doc-select').ddslick();
     following = Meteor.users.find({_id: Meteor.userId()});
@@ -56,3 +57,8 @@ Template.masterLayout.events({
   //   });
   // }
 });
+
+
+// Template.masterLayout.onRendered(function() {
+//   $(".button-collapse-side").sideNav({closeOnClick: true});
+// })
