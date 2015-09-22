@@ -9,7 +9,8 @@ Template.masterLayout.events({
    $(".button-collapse-side").sideNav('show');
   },
   'click #backToNavFromDrSearch': function(){
-   $(".button-collapse-side").sideNav('show');
+     $(".button-collapse-side img").click();
+   // $(".button-collapse-side").sideNav('show');
   },
   'click .button-collapse-side img': function(event) {
     console.log("inside master");
@@ -57,8 +58,3 @@ Template.masterLayout.events({
   //   });
   // }
 });
-
-
-// Template.masterLayout.onRendered(function() {
-//   $(".button-collapse-side").sideNav({closeOnClick: true});
-// })
