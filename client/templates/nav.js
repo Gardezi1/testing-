@@ -117,7 +117,6 @@ Template.nav.onRendered(function() {
 
 Template.nav.events({
   'click .button-collapse-side img': function(event) {
-    console.log("inside event");
     $(".button-collapse-side").sideNav();
    $('#doc-select').ddslick();
     following = Meteor.users.find({_id: Meteor.userId()});
@@ -150,7 +149,6 @@ Template.nav.events({
     }
   },
   'click .manageDocTopics': function(event){
-    console.log("inside manage");
     $('.button-collapse-side').sideNav('hide');
   },
   'click .brand-logo': function(event) {
