@@ -15,8 +15,8 @@ Template.admin.helpers({
 });
 
 Template.admin.events({
-  'click .accept-doctor': function(e) {
-    var id = $(e.target).attr('id');
+  'click .accept-doctor': function(event) {
+    var id = $(event.target).attr('id');
     user = Meteor.users.findOne({_id:id});
     if(user){
       email = user.emails[0].address

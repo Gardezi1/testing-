@@ -121,6 +121,10 @@
               {{/if}}
             </a>
           </li>
+          {{#if isInRole 'admin'}}
+            <li><a href="{{pathFor route='admin'}}" class="fa fa-user">Admin</a></li>
+          {{/if}}
+          <li class="divider"></li>
           <li>{{> atNavButton }}</li>
         </ul>
         <a class="button-collapse" href="#" data-activates="nav-mobile"><i class="mdi-navigation-menu"></i></a>
