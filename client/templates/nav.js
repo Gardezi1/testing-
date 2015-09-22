@@ -1,12 +1,14 @@
 Template.nav.helpers({
   file_S3: function(){
-    var path = Meteor.user().profile.picture;
+    if(Meteor.user()){
+      var path = Meteor.user().profile.picture;
       var file = Data.findOne({_id:path});
       if(file){
         url = "https://s3.amazonaws.com/medcircle/upload/data/"+file._id+"-"+file.name();
         return url;
       }
-    },
+    }
+  },
   ifDoctor: function(){
     return Meteor.user().profile.type == "doctor";
   },
@@ -111,15 +113,6 @@ Template.nav.onRendered(function() {
     }
     $(".show-topic").css("visibility", "visible");
   });
-  
-  // $('.button-collapse-side img').on("click", function(event){
-  //   console.log("inside click");
-  //   following = Meteor.users.find({_id: Meteor.userId()});
-  //   if(following != undefined){
-  //     console.log("inside render");
-  //     $(".dd-option-selected").click();
-  //   }
-  // });
 });
 
 Template.nav.events({
@@ -157,6 +150,7 @@ Template.nav.events({
     }
   },
   'click .manageDocTopics': function(event){
+    console.log("inside manage");
     $('.button-collapse-side').sideNav('hide');
   },
   'click .brand-logo': function(event) {
