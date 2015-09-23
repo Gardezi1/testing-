@@ -1457,8 +1457,11 @@ input:focus:not([readonly]) + label {
       float: right;
     }
   }
+  .container.sign-in-tabs{
+    padding: 0;
+  }
   .tabs-holder {
-    width: 470px;
+    width: 100%;
     margin: 0 auto;
   }
   .doctors-listing{
@@ -1487,13 +1490,24 @@ input:focus:not([readonly]) + label {
       float: right;
     }
   }
+  .container.sign-in-tabs{
+    padding: 0;
+  }
   .tabs-holder {
-    width: 300px;
+    width: 100%;
     margin: 0 auto;
+    .tabs{
+     a{
+       font-size: 10px;
+     } 
+    }
   }
   .sign-holder .tabs-inner {
     padding: 20px 20px 25px;
     background: #fff;
+    h5{
+      margin: 0 5px;
+    }
   }
   .doctors-listing{
     max-width: 240px;
@@ -1511,7 +1525,7 @@ input:focus:not([readonly]) + label {
     }
     h5{
       font-size: 17px;
-        line-height: 37px;
+      line-height: 37px;
     }
   }
 }
