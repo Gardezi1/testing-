@@ -3,10 +3,18 @@
     <div class="row">
       {{#contentFor "subnav"}}
       <ul class="tabs bottom-p0 article-tabs">
-        <li class="tab"><a class="active" href="#what">What</a></li>
-        <li class="tab"><a href="#how">How</a></li>
-        <li class="tab"><a href="#where">Where</a></li>
-        <li class="tab"><a href="#more">More</a></li>
+        <li class="tab what"><a class="active tooltipped" href="#what" data-position="bottom" data-delay="50" data-tooltip="Is the condition">What</a>
+          <!-- <div class="sub-tab">Is the condition</div> -->
+        </li>
+        <li class="tab how"><a class="tooltipped" href="#how" data-position="bottom" data-delay="50" data-tooltip="Do I get better">How</a>
+          <!-- <div class="sub-tab">Do I get better</div> -->
+        </li>
+        <li class="tab where"><a class="tooltipped" href="#where" data-position="bottom" data-delay="50" data-tooltip="Do I get help">Where</a>
+          <!-- <div class="sub-tab">Do I get help</div> -->
+        </li>
+        <li class="tab more"><a class="tooltipped" href="#more" data-position="bottom" data-delay="50" data-tooltip="Resources">More</a>
+          <!-- <div class="sub-tab">Resources</div> -->
+        </li>
       </ul>
       {{/contentFor}}
       <div id="what" class="col s12">
@@ -19,7 +27,7 @@
                     <div class="shadow-box z-depth-1">
                         <div class="panel panel-default">
                           <div class="panel-body custom-panel-body">
-                            <h4><a href="{{pathFor 'articleView' id=_id }}">{{title}}</a></h4>
+                            <h4><a href="{{pathFor 'articleView' id=_id }}" target="_blank">{{title}}</a></h4>
                             <div class="row">
                               <div class="col s5">
                                 <img src="{{file_S3}}">
@@ -75,7 +83,7 @@
                     <div class="shadow-box z-depth-1">
                         <div class="panel panel-default">
                           <div class="panel-body custom-panel-body">
-                            <h4><a href="{{pathFor 'articleView' id=_id }}">{{title}}</a></h4>
+                            <h4><a href="{{pathFor 'articleView' id=_id }}" target="_blank">{{title}}</a></h4>
                             <div class="row">
                               <div class="col s5">
                                 <img src="{{file_S3}}">
@@ -120,7 +128,7 @@
                     <div class="shadow-box z-depth-1">
                         <div class="panel panel-default">
                           <div class="panel-body custom-panel-body">
-                            <h4><a href="{{pathFor 'articleView' id=_id }}">{{title}}</a></h4>
+                            <h4><a href="{{pathFor 'articleView' id=_id }}" target="_blank">{{title}}</a></h4>
                             <div class="row">
                               <div class="col s5">
                                 <img src="{{file_S3}}">
@@ -165,7 +173,7 @@
                     <div class="shadow-box z-depth-1">
                         <div class="panel panel-default">
                           <div class="panel-body custom-panel-body">
-                            <h4><a href="{{pathFor 'articleView' id=_id }}">{{title}}</a></h4>
+                            <h4><a href="{{pathFor 'articleView' id=_id }}" target="_blank">{{title}}</a></h4>
                             <div class="row">
                               <div class="col s5">
                                 <img src="{{file_S3}}">
