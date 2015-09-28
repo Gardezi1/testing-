@@ -6,9 +6,9 @@
       </div>
       <div class="col s12 m8 l8">
         {{#if isInRole 'doctor'}} 
-          <h5 class="center-align name">Dr. {{currentUser.profile.firstName}} </h5>
+          <h5 class="center-align name">Dr. {{currentUser.profile.firstName}} {{currentUser.profile.lastName}} </h5>
         {{else}}
-          <h5 class="center-align name">{{currentUser.profile.firstName}} </h5>
+          <h5 class="center-align name">{{currentUser.profile.firstName}} {{currentUser.profile.lastName}}</h5>
         {{/if}}  
       </div>
       <div class="col s12 m2 l2">
@@ -33,7 +33,7 @@
                 {{/if}}    
                 <div class="prof-con">
                   <div class="profile-name">
-                    <h5 class="name">Dr. {{currentUser.profile.firstName}}</h5>
+                    <h5 class="name">Dr. {{currentUser.profile.firstName}} {{currentUser.profile.lastName}}</h5>
                     <h6>{{currentUser.profile.speciality}}</h6>
                   </div>
                   <div class="profile-detail">
@@ -63,7 +63,7 @@
                 {{/if}} 
                 <div class="prof-con">
                   <div class="profile-name">
-                    <h5 class="name">{{currentUser.profile.firstName}}</h5>
+                    <h5 class="name">{{currentUser.profile.firstName}} {{currentUser.profile.lastName}}</h5>
                   </div>
                 </div>
               {{/if}}  

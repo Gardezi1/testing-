@@ -39,9 +39,9 @@
     {{#if getImage profile.picture}}
 
       <span class="label">
-        <div class="img" style="background: url('{{getImage profile.picture}}') no-repeat; background-size: cover !important; background-position: center !important; height: 40px; width: 40px; display: inline-block; vertical-align: middle; margin-right: 10px;" alt="{{title}}"></div><!-- <img width="40" height="40" src="{{getImage profile.picture}}"> -->{{profile.firstName}}</span>
+        <div class="img" style="background: url('{{getImage profile.picture}}') no-repeat; background-size: cover !important; background-position: center !important; height: 40px; width: 40px; display: inline-block; vertical-align: middle; margin-right: 10px;" alt="{{title}}"></div><!-- <img width="40" height="40" src="{{getImage profile.picture}}"> -->{{profile.firstName}} {{profile.lastName}}</span>
     {{else}}
       <span class="label">
-        <div class="img" style="background: url('/imgs/user.jpg') no-repeat; background-size: cover !important; background-position: center !important; height: 40px; width: 40px; display: inline-block; vertical-align: middle; margin-right: 10px;" alt="{{title}}"></div><!-- <img width="40" height="40" src="/imgs/user.jpg"> -->{{profile.firstName}}</span>
+        <div class="img" style="background: url('/imgs/user.jpg') no-repeat; background-size: cover !important; background-position: center !important; height: 40px; width: 40px; display: inline-block; vertical-align: middle; margin-right: 10px;" alt="{{title}}"></div><!-- <img width="40" height="40" src="/imgs/user.jpg"> -->{{profile.firstName}} {{profile.lastName}}</span>
     {{/if}}
 </template>

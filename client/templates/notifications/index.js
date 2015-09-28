@@ -15,6 +15,8 @@ Template.notifications.helpers({
   },
   getName: function(uid){
     user = Meteor.users.findOne({_id: uid});
+    if(user.profile.lastName != undefined)
+      return user && user.profile.firstName+" "+user.profile.lastName;
     return user && user.profile.firstName;
   },
   ifRead: function(status){
