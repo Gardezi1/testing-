@@ -68,3 +68,9 @@ Template.articleList.onRendered(function() {
   $('ul.tabs').tabs();
   $('.tooltipped').tooltip({delay: 50});
 });
+
+Template.articleList.events({
+  'click .pluse-icon': function(event) {
+    $('.pluse-icon').tooltip( "close");
+  },
+});
