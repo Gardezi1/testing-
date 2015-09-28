@@ -29,7 +29,9 @@ Template.conversationView.helpers({
   },
   getSenderName: function(id){
     user = Meteor.users.findOne({_id:id});
-    return user && user.profile.firstName
+    if(user.profile.lastName != undefined)
+      return user && user.profile.firstName+" "+user.profile.lastName;
+    return user && user.profile.firstName;
   },
   gteUserImage: function(id){
     if(id){

@@ -43,9 +43,9 @@
           {{#if currentUser}}
               <li class="admin">
                 {{#if file_S3}}
-                  <a href="{{pathFor route='profileView'}}"><!-- <div class="img" style="background: url('{{file_S3}}') no-repeat; "></div> --><img src="{{file_S3}}"> <b>{{currentUser.profile.firstName}}</b></a>
+                  <a href="{{pathFor route='profileView'}}"><!-- <div class="img" style="background: url('{{file_S3}}') no-repeat; "></div> --><img src="{{file_S3}}"> <b>{{currentUser.profile.firstName}} {{currentUser.profile.lastName}}</b></a>
                 {{else}}
-                  <a href="{{pathFor route='profileView'}}"><img src="/imgs/user.jpg"> <b>{{currentUser.profile.firstName}}</b></a>
+                  <a href="{{pathFor route='profileView'}}"><img src="/imgs/user.jpg"> <b>{{currentUser.profile.firstName}} {{currentUser.profile.lastName}}</b></a>
                 {{/if}}  
               </li>
             {{#if isInRole 'doctor'}} 
@@ -94,9 +94,9 @@
         <ul id="nav-mobile" class="side-nav">
           <li class="admin">
             {{#if file_S3}}
-              <a href="{{pathFor route='profileView'}}"><img src="{{file_S3}}"><b>{{currentUser.profile.firstName}}</b></a>
+              <a href="{{pathFor route='profileView'}}"><img src="{{file_S3}}"><b>{{currentUser.profile.firstName}} {{currentUser.profile.lastName}}</b></a>
             {{else}}
-              <a href="{{pathFor route='profileView'}}"><img src="/imgs/user.jpg"> <b>{{currentUser.profile.firstName}}</b></a>
+              <a href="{{pathFor route='profileView'}}"><img src="/imgs/user.jpg"> <b>{{currentUser.profile.firstName}} {{currentUser.profile.lastName}}</b></a>
             {{/if}}    
           </li>
           <li><a href="{{pathFor route='settings'}}" class="fa fa-cog">Settings</a></li>

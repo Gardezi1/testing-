@@ -6,7 +6,7 @@
           <a href="{{pathFor route='doctorsListing'}}" class="back-btn left fa fa-chevron-left"> Back</a>
         </div>
         <div class="col s12 m8 l8">
-          <h5 class="center-align">Dr. {{profile.firstName}}</h5>
+          <h5 class="center-align">Dr. {{profile.firstName }} {{profile.lastName}}</h5>
         </div>
         {{#if checkIfFollowing _id}}
           <div class="col s12 m2 l2">
@@ -40,7 +40,7 @@
               {{/if}}
               <div class="prof-con">
                 <div class="profile-name">
-                  <h5>Dr. {{profile.firstName}}</h5>
+                  <h5>Dr. {{profile.firstName}} {{profile.lastName}}</h5>
                   <h6>{{profile.speciality}}</h6>
                 </div>
                 <div class="profile-detail">
