@@ -87,7 +87,6 @@ Template.startConversation.events({
 
 Template.userPill.helpers({
   getImage: function(pid){
-    console.log(pid);
     var file = Data.findOne({_id:pid});
     if(file){
       url = "https://s3.amazonaws.com/medcircle/upload/data/"+file._id+"-"+file.name();

@@ -19,3 +19,8 @@ Template.editProfile.events({
     $(".save-profile").click();
   }
 });
+
+Template.editProfile.rendered = function(){
+  var user = Meteor.users.findOne({_id: Meteor.userId() });
+  $("#gender input[value='"+user.profile.gender+"']").prop("checked", true)
+}

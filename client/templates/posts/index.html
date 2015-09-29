@@ -119,6 +119,9 @@
         {{/each}}
       </div>
       <div id="where" class="col s12">
+        <div class="map-container">
+          {{> googleMap name="exampleMap" options=exampleMapOptions}}
+        </div>
         {{#each getArticlesByCategory 'where'}}
           {{#each this}}
             <div class="custom-container">

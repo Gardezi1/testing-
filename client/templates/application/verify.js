@@ -15,10 +15,11 @@ if (Meteor.isClient) {
         'submit form': function(event) {
             event.preventDefault();
             var zipcode = event.target.zipcode.value;
-            var birthday_month = event.target.birthday.value;
-            var birthday_day = event.target.birthday_day.value;
-            var birthday_year = event.target.birthday_year.value;
-            var dob = birthday_day +'-'+birthday_month+'-'+birthday_year
+            // var birthday_month = event.target.birthday.value;
+            // var birthday_day = event.target.birthday_day.value;
+            // var birthday_year = event.target.birthday_year.value;
+            // var dob = birthday_day +'-'+birthday_month+'-'+birthday_year
+            var dob = event.target.birthDate.value;
           
             Meteor.users.update(Meteor.userId(), {$set: {"profile.zipcode": zipcode}});
             Meteor.users.update(Meteor.userId(), {$set: {"profile.dob" :dob}});
@@ -47,11 +48,13 @@ if (Meteor.isClient) {
             else{
                 Meteor.users.update(Meteor.userId(), {$set: {"profile.code_verified": true}});       
                 var zipcode = event.target.zipcode.value;
-                var birthday_month = event.target.birthday.value;
-                var birthday_day = event.target.birthday_day.value;
-                var birthday_year = event.target.birthday_year.value;
+                // var birthday_month = event.target.birthday.value;
+                // var birthday_day = event.target.birthday_day.value;
+                // var birthday_year = event.target.birthday_year.value;
                 var gender = event.target.gender.value;
-                var dob = birthday_day +'-'+birthday_month+'-'+birthday_year
+                // var dob = birthday_day +'-'+birthday_month+'-'+birthday_year
+                var dob = event.target.birthDate.value;
+
                 Meteor.users.update(Meteor.userId(), {$set: {"profile.zipcode": zipcode}});
                 Meteor.users.update(Meteor.userId(), {$set: {"profile.dob" :dob}});
                 Meteor.users.update(Meteor.userId(), {$set: {"profile.gender" :gender}});

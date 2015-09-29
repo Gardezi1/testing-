@@ -40,3 +40,5 @@ random
 momentjs:moment
 meteorhacks:aggregate
 matteodem:server-session
+dburles:google-maps
+mdg:geolocation

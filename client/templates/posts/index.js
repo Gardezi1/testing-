@@ -60,8 +60,19 @@ Template.articleList.helpers({
     else{
       return [];
     }
-  }  
-
+  },  
+  exampleMapOptions: function() {
+    // Make sure the maps API has loaded
+    if (GoogleMaps.loaded()) {
+      // Map initialization options
+      lat = Session.get('lat');
+      lon = Session.get('lon');
+      return {
+        center: new google.maps.LatLng(lat, lon),
+        zoom: 15
+      };
+    }
+  }
 });
 
 Template.articleList.onRendered(function() {
@@ -73,4 +84,15 @@ Template.articleList.events({
   'click .pluse-icon': function(event) {
     $('.pluse-icon').tooltip( "close");
   },
+});
+
+Template.articleList.onCreated(function() {
+  // We can use the `ready` callback to interact with the map API once the map is ready.
+  GoogleMaps.ready('exampleMap', function(map) {
+    // Add a marker to the map once it's ready
+    var marker = new google.maps.Marker({
+      position: map.options.center,
+      map: map.instance
+    });
+  });
 });
