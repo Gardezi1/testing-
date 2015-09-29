@@ -15,21 +15,14 @@ if (Meteor.isClient) {
         'submit form': function(event) {
             event.preventDefault();
             var zipcode = event.target.zipcode.value;
-<<<<<<< HEAD
             // var birthday_month = event.target.birthday.value;
             // var birthday_day = event.target.birthday_day.value;
             // var birthday_year = event.target.birthday_year.value;
             // var dob = birthday_day +'-'+birthday_month+'-'+birthday_year
             var dob = event.target.birthDate.value;
           
-=======
-            var birthday_month = event.target.birthday.value;
-            var birthday_day = event.target.birthday_day.value;
-            var birthday_year = event.target.birthday_year.value;
-            var dob = birthday_day +'-'+birthday_month+'-'+birthday_year;
             var v = Meteor.call('locationSpecification', event.target.geomap.value);
 
->>>>>>> ae963ed9f88eda58d4b0dabebe00fa32c44b972a
             Meteor.users.update(Meteor.userId(), {$set: {"profile.zipcode": zipcode}});
             Meteor.users.update(Meteor.userId(), {$set: {"profile.dob" :dob}});
             Meteor.users.update(Meteor.userId(), {$set: {"profile.code_verified" :true}});

@@ -40,10 +40,7 @@ random
 momentjs:moment
 meteorhacks:aggregate
 matteodem:server-session
-<<<<<<< HEAD
 dburles:google-maps
 mdg:geolocation
-=======
 jeremy:geocomplete
 aldeed:geocoder
->>>>>>> ae963ed9f88eda58d4b0dabebe00fa32c44b972a
