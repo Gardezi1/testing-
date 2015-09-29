@@ -10,4 +10,13 @@ Template.verify.helpers({
 
 Template.verify.onRendered(function() {
   $('select').material_select();
+  this.autorun(function () {
+    if (GoogleMaps.loaded()) {
+      $("#geomap").geocomplete();
+    }
+  });
 });
+
+
+
+  

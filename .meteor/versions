@@ -7,6 +7,7 @@ alanning:roles@1.2.13
 aldeed:autoform@5.3.0
 aldeed:collection2@2.3.1
 aldeed:delete-button@1.0.0
+aldeed:geocoder@0.3.6
 aldeed:simple-schema@1.3.0
 autoupdate@1.2.1
 base64@1.0.3
@@ -62,6 +63,7 @@ iron:location@1.0.7
 iron:middleware-stack@1.0.7
 iron:router@1.0.7
 iron:url@1.0.7
+jeremy:geocomplete@1.6.5_7
 jparker:crypto-aes@0.1.0
 jparker:crypto-base64@0.1.0
 jparker:crypto-cipher-core@0.1.1

@@ -273,6 +273,15 @@ Meteor.methods({
     Meteor.users.update(id, {$set: {"profile.approve" :true}});
     Accounts.sendVerificationEmail(id, email);
   },
+  locationSpecification :function(address)
+  {
+    var geo = new GeoCoder();
+    var result = geo.geocode(address);
+   // Meteor.users.update(Meteor.userId(), {$set: {"profile.state": result[0].state}});
+    Meteor.users.update(Meteor.userId(), {$set: {"profile.city": result[0].city}});
+    Meteor.users.update(Meteor.userId(), {$set: {"profile.country": result[0].country}});
+    return result;
+  },
   rejectUser: function(id, email){
     if(id){
       Meteor.users.update(id, {$set: {"profile.approve": true}});
