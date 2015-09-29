@@ -40,3 +40,5 @@ random
 momentjs:moment
 meteorhacks:aggregate
 matteodem:server-session
+jeremy:geocomplete
+aldeed:geocoder

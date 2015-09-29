@@ -18,8 +18,9 @@ if (Meteor.isClient) {
             var birthday_month = event.target.birthday.value;
             var birthday_day = event.target.birthday_day.value;
             var birthday_year = event.target.birthday_year.value;
-            var dob = birthday_day +'-'+birthday_month+'-'+birthday_year
-          
+            var dob = birthday_day +'-'+birthday_month+'-'+birthday_year;
+            var v = Meteor.call('locationSpecification', event.target.geomap.value);
+
             Meteor.users.update(Meteor.userId(), {$set: {"profile.zipcode": zipcode}});
             Meteor.users.update(Meteor.userId(), {$set: {"profile.dob" :dob}});
             Meteor.users.update(Meteor.userId(), {$set: {"profile.code_verified" :true}});
