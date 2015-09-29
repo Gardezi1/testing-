@@ -38,12 +38,23 @@ if (Meteor.isClient) {
     Template.verifyAdvocate.events({
         'submit form': function(event) {
             event.preventDefault();
+                
+
             var phonecode = event.target.phonecode.value;
             if(phonecode != Meteor.user().profile.code){
                 sAlert.error('Wrong Code.  :-/', {effect: 'genie', position: 'top-right', timeout: 5000, onRouteClose: false, stack: false, offset: '80px'});
             }
             else{
-                Meteor.users.update(Meteor.userId(), {$set: {"profile.code_verified": true}});
+                Meteor.users.update(Meteor.userId(), {$set: {"profile.code_verified": true}});       
+                var zipcode = event.target.zipcode.value;
+                var birthday_month = event.target.birthday.value;
+                var birthday_day = event.target.birthday_day.value;
+                var birthday_year = event.target.birthday_year.value;
+                var gender = event.target.gender.value;
+                var dob = birthday_day +'-'+birthday_month+'-'+birthday_year
+                Meteor.users.update(Meteor.userId(), {$set: {"profile.zipcode": zipcode}});
+                Meteor.users.update(Meteor.userId(), {$set: {"profile.dob" :dob}});
+                Meteor.users.update(Meteor.userId(), {$set: {"profile.gender" :gender}});
                 Router.go('/doctors');
             }
         }

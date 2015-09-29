@@ -3,3 +3,5 @@ Template.verifyAdvocate.helpers({
     return Meteor.user().profile.code;
   }
 });
+
+
