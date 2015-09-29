@@ -67,13 +67,16 @@
                 {{/if}}
               </a>
             </li>
+            <li>
+              <a href="{{pathFor route='inviteAdvocate'}}" class="fa fa-user-plus tooltipped" data-position="bottom" data-delay="50" data-tooltip="Invite a Member"></a>
+            </li>
           {{/if}}
           <div class="drop-holder">
             <a href="#" class="fa fa-envelope-o tooltipped fa fa-cog dropdown-button" data-position="bottom" data-delay="50" data-tooltip="SETTINGS" data-activates="dropdown1"></a>
               <!-- Dropdown Structure -->
               <ul id='dropdown1' class='dropdown-content'>
                 {{#if currentUser}}
-                  <li><a href="{{pathFor route='inviteAdvocate'}}">Invite a Member</a></li> 
+                  <!-- <li><a href="{{pathFor route='inviteAdvocate'}}">Invite a Member</a></li>  -->
                   <li><a href="{{pathFor route='settings'}}">Settings</a></li>
                   <li><a href="#!">Privacy Policy</a></li>
                   <li><a href="#!">Terms of Use</a></li>
@@ -121,6 +124,9 @@
               {{/if}}
             </a>
           </li>
+          <li>
+              <a href="{{pathFor route='inviteAdvocate'}}" class="fa fa-user-plus">Invite a Member</a>
+            </li>
           {{#if isInRole 'admin'}}
             <li><a href="{{pathFor route='admin'}}" class="fa fa-user">Admin</a></li>
           {{/if}}

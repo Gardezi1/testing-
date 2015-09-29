@@ -6,7 +6,7 @@ Template.masterLayout.events({
     $('.normal-nav li').removeClass('selected');
   },
   'click #backToNav': function(){
-   $(".button-collapse-side").sideNav('show');
+   $(".button-collapse-side img").sideNav('show');
   },
   'click #backToNavFromDrSearch': function(){
      $(".button-collapse-side img").click();
