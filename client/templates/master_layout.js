@@ -6,13 +6,13 @@ Template.masterLayout.events({
     $('.normal-nav li').removeClass('selected');
   },
   'click #backToNav': function(){
-   $(".button-collapse-side img").sideNav('show');
+   $(".button-collapse-side").sideNav('show');
   },
   'click #backToNavFromDrSearch': function(){
-     $(".button-collapse-side img").click();
+     $(".button-collapse-side").click();
    // $(".button-collapse-side").sideNav('show');
   },
-  'click .button-collapse-side img': function(event) {
+  'click .button-collapse-side': function(event) {
     console.log("inside master");
     // $(".button-collapse-side").sideNav();
    $('#doc-select').ddslick();

@@ -119,7 +119,7 @@ Template.nav.onRendered(function() {
 });
 
 Template.nav.events({
-  'click .button-collapse-side img': function(event) {
+  'click .button-collapse-side': function(event) {
     $(".button-collapse-side").sideNav();
    $('#doc-select').ddslick();
     following = Meteor.users.find({_id: Meteor.userId()});

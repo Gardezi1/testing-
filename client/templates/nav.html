@@ -4,11 +4,12 @@
       <div class="nav-wrapper">
         {{#if currentUser}}
           <div class="user-pro-holder">
-            {{#if getAdminImage}}
-              <a href="#" data-activates="slide-out" class="button-collapse-side"><!-- <div class="img" style="background: url('{{getAdminImage}}') no-repeat; "> </div> --><img src="{{getAdminImage}}"></a>
-            {{else}}
-              <a href="#" data-activates="slide-out" class="button-collapse-side"><!-- <div class="img" style="background: url('/imgs/user.jpg') no-repeat; "></div> --><img src="/imgs/user.jpg"></a>
-            {{/if}}  
+           <!--  {{#if getAdminImage}}
+             <a href="#" data-activates="slide-out" class="button-collapse-side"><div class="img" style="background: url('{{getAdminImage}}') no-repeat; "> </div><img src="{{getAdminImage}}"></a>
+           {{else}}
+             <a href="#" data-activates="slide-out" class="button-collapse-side"><div class="img" style="background: url('/imgs/user.jpg') no-repeat; "></div><img src="/imgs/user.jpg"></a>
+           {{/if}}   -->
+           <a href="#" data-activates="slide-out" class="button-collapse-side"><b>Topics</b></a>
             <ul id="slide-out" class="side-nav doc-list">
               <select id="doc-select">
                 {{#each getFollowing}}
@@ -38,7 +39,7 @@
             </ul>
           </div>
         {{/if}}
-        <a href="{{pathFor route='articles'}}" class="brand-logo"><img src="/imgs/logoo.png"></a>
+        <a href="{{pathFor route='articles'}}" class="brand-logo"><img src="/imgs/logoo.png" title="Home"></a>
         <ul class="right hide-on-med-and-down normal-nav">
           {{#if currentUser}}
               <li class="admin">
