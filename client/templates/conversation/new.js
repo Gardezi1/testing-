@@ -56,10 +56,15 @@ Template.startConversation.events({
     name = $("#advocate_name").val();
     message = $("#advo_message").val();
     if(name && message){
-      toUser = Meteor.users.findOne({"profile.firstName": name});
-      toId = toUser._id;
+      if(Session.get('startConversationForNotificationUserId') != undefined){
+        toUser =  Session.get('startConversationForNotificationUserId');
+        toId = toUser;
+      }
+      else{
+        toUser = Meteor.users.findOne({"profile.firstName": name});
+        toId = toUser._id;
+      }
       fromId = Meteor.userId();
-
       var data = {
         name: name,
         message: message,
@@ -78,6 +83,8 @@ Template.startConversation.events({
           console.log(error);
           return alert(error.reason);
         }else{
+          Session.set('startConversationForNotificationUserId',"");
+          Session.set('startConversationForNotificationName',"");
           Router.go('/conversation/' + toId);
         }
       }); 
@@ -92,5 +99,17 @@ Template.userPill.helpers({
       url = "https://s3.amazonaws.com/medcircle/upload/data/"+file._id+"-"+file.name();
         return url;
     }
+  }
+});
+
+
+
+
+Template.startConversation.onRendered(function() {
+  if((Session.get('startConversationForNotificationUserId') != undefined) && Session.get('startConversationForNotificationUserId') != "")
+  {
+      $("#advocate_name").val(Session.get('startConversationForNotificationName'));
+      $("#newConversationFromNotification label").addClass("active");
+     // $("#advo_message").focus();
   }
 });
