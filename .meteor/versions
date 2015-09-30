@@ -84,7 +84,6 @@ logging@1.0.7
 matb33:collection-hooks@0.7.13
 materialize:materialize@0.97.0
 matteodem:server-session@0.4.2
-mdg:geolocation@1.0.3
 meteor@1.1.6
 meteor-platform@1.2.2
 meteorhacks:aggregate@1.2.1
