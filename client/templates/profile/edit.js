@@ -11,12 +11,12 @@ AutoForm.addHooks('editProfile', userHooks);
 
 Template.editProfile.onRendered(function() {
   $('select').material_select();
-   this.autorun(function () {
-    if (GoogleMaps.loaded()) {
-      $("#geomap").geocomplete();
-      $('#geomap').removeAttr('placeholder');
-    }
-  });
+  //  this.autorun(function () {
+  //   if (GoogleMaps.loaded()) {
+  //     $("#geomap").geocomplete();
+  //     $('#geomap').removeAttr('placeholder');
+  //   }
+  // });
 });
 
 Template.editProfile.events({  
