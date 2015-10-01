@@ -120,13 +120,29 @@
       </div>
       <div id="where" class="col s12">
         {{#autoForm id="myLocation" collection="Meteor.users" type="insert"}}
-          <div class="custom-container">
+        <div class="custom-container" id="mapContent">
+          <div class="form-holder">  
             <div class="row">
-              <div class="col s12">
-                {{> afQuickField name="profile.myLocation"}}
+              <div class="col-md-12">
+                <div class="page-header">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="shadow-box z-depth-1">
+                        <div class="row">
+                          <div class="col s12">
+                            <div class="img-rel">
+                              {{> afQuickField name='profile.myLocation'}}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>   
-          </div>     
+            </div>
+          </div>
+        </div>      
         {{/autoForm}}
         {{#each getArticlesByCategory 'where'}}
           {{#each this}}

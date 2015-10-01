@@ -71,5 +71,5 @@ Template.articleList.onRendered(function() {
 Template.articleList.events({
   'click .pluse-icon': function(event) {
     $('.pluse-icon').tooltip( "close");
-  },
+  }
 });
