@@ -280,6 +280,9 @@ Meteor.methods({
    // Meteor.users.update(Meteor.userId(), {$set: {"profile.state": result[0].state}});
     Meteor.users.update(Meteor.userId(), {$set: {"profile.city": result[0].city}});
     Meteor.users.update(Meteor.userId(), {$set: {"profile.country": result[0].country}});
+    Meteor.users.update(Meteor.userId(), {$set: {"profile.longitude": result[0].longitude}});
+    Meteor.users.update(Meteor.userId(), {$set: {"profile.latitude": result[0].latitude}});
+    Meteor.users.update(Meteor.userId(), {$set: {"profile.state": result[0].state}});
     return result;
   },
   rejectUser: function(id, email){
