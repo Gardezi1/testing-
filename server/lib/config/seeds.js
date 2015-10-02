@@ -1,5 +1,6 @@
 if (Meteor.isServer) {
   Meteor.startup(function(){
+     Meteor.users._ensureIndex({ "profile.location": "2dsphere"});
     if(Topics.find().count() == 0){
       ["Depression", "ADHD", "Bipolar Disorder"].forEach(function(topic){
         Topics.insert({name:topic})

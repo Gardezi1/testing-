@@ -1,7 +1,6 @@
 Template.doctorsListing.helpers({
   adminUsers: function(){ 
-    return Meteor.users.find({$and: [{"profile.type": "doctor"}, {"profile.approve": true} ]});
-    // return Session.get("adminUsers") 
+    return Meteor.users.find({$and: [{"profile.type": "doctor"}, {"profile.approve": true} ]}); 
   },
   getImage: function(pictureId){
     var file = Data.findOne({_id:pictureId});
@@ -13,22 +12,13 @@ Template.doctorsListing.helpers({
   searchResults: function() {
     if (Session.get("doctorSearchQuery")) {
       var name = (Session.get("doctorSearchQuery"));
-      return Meteor.users.find({ $and:[{"profile.type": "doctor"},{"profile.firstName": {$regex: new RegExp((Session.get("doctorSearchQuery")), "i")}}]});
-    
-    // return Meteor.users.find(
-    //    {
-    //      location:
-    //        { $near :
-    //           {
-    //             $geometry: { type: "Point",  coordinates: [ 31.55460609999999, 74.35715809999999 ] },
-    //             $minDistance: 1000,
-    //             $maxDistance: 5000
-    //           }
-    //        }
-    //    }
-    // )
-
-
+      results = new Mongo.Collection(null);
+      r = Meteor.users.find( { 'profile.location' : { $near : { $geometry: { type: 'Point', coordinates: Meteor.user().profile.location.coordinates } } } } ).fetch();  
+      for(var i =0 ; i<r.length; i++)
+      {
+          results.insert(r[i]);
+      }
+    return results.find({ $and:[{"profile.type": "doctor"},{"profile.firstName": {$regex: new RegExp((Session.get("doctorSearchQuery")), "i")}}]});
     
     }
   },
