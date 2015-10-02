@@ -280,8 +280,29 @@ Meteor.methods({
    // Meteor.users.update(Meteor.userId(), {$set: {"profile.state": result[0].state}});
     Meteor.users.update(Meteor.userId(), {$set: {"profile.city": result[0].city}});
     Meteor.users.update(Meteor.userId(), {$set: {"profile.country": result[0].country}});
-    Meteor.users.update(Meteor.userId(), {$set: {"profile.longitude": result[0].longitude}});
-    Meteor.users.update(Meteor.userId(), {$set: {"profile.latitude": result[0].latitude}});
+    var lat =  parseFloat(result[0].latitude);
+    var lon =  parseFloat(result[0].longitude);
+    
+     var obj =  {};
+     obj.type = "Point";
+     obj.coordinates = [ lon, lat ]
+     console.log(obj);
+
+       //Meteor.users.update(Meteor.userId(), {$set: {"profile.location.type": "Point" }});
+    //Meteor.users.update(Meteor.userId(), {$set: {"profile.location.coordinates": [lon,lat] }});
+
+     Meteor.users.update(Meteor.userId(), {$set: {"profile.location": obj}});
+
+  
+   // Meteor.users.update(Meteor.userId(), {$set: {"profile.location": [lon,lat] }});
+
+   // Meteor.users.update(Meteor.userId(), {$set: {"profile.location[1]": lat }});
+    //var { }
+    //Meteor.users.update(Meteor.userId(), {$set: {"profile.latitude":lat}});
+
+
+    //Meteor.users.update(Meteor.userId(), {$set: {"profile.longitude": parseFloat(result[0].longitude)}});
+
     Meteor.users.update(Meteor.userId(), {$set: {"profile.state": result[0].state}});
     return result;
   },
