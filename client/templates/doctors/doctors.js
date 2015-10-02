@@ -11,11 +11,23 @@ Template.doctorsListing.helpers({
   },
   searchResults: function() {
     if (Session.get("doctorSearchQuery")) {
+      
+      if(Meteor.user().profile.type == "admin")
+      {
+        lat = Session.get('lat');
+        lon = Session.get('lon');
+        var cor = [lon,lat];
+      }
+      else
+      {
+        cor =Meteor.user().profile.location.coordinates;
+      }
+
       var name = (Session.get("doctorSearchQuery"));
       results = new Mongo.Collection(null);
-      r = Meteor.users.find( { 'profile.location' : { $near : { $geometry: { type: 'Point', coordinates: Meteor.user().profile.location.coordinates } } } } ).fetch();  
+      r = Meteor.users.find( { 'profile.location' : { $near : { $geometry: { type: 'Point', coordinates: cor } } } } ).fetch();  
       for(var i =0 ; i<r.length; i++)
-      {
+      {  
           results.insert(r[i]);
       }
     return results.find({ $and:[{"profile.type": "doctor"},{"profile.firstName": {$regex: new RegExp((Session.get("doctorSearchQuery")), "i")}}]});
@@ -59,3 +71,10 @@ Template.doctorsListing.events({
     });
   }
 });
+
+Template.nav.onRendered(function(){
+navigator.geolocation.getCurrentPosition(function(position) {
+      Session.set('lat', position.coords.latitude);
+      Session.set('lon', position.coords.longitude);
+  });
+})

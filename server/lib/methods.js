@@ -286,22 +286,8 @@ Meteor.methods({
      var obj =  {};
      obj.type = "Point";
      obj.coordinates = [ lon, lat ]
-     console.log(obj);
-
-       //Meteor.users.update(Meteor.userId(), {$set: {"profile.location.type": "Point" }});
-    //Meteor.users.update(Meteor.userId(), {$set: {"profile.location.coordinates": [lon,lat] }});
 
      Meteor.users.update(Meteor.userId(), {$set: {"profile.location": obj}});
-
-  
-   // Meteor.users.update(Meteor.userId(), {$set: {"profile.location": [lon,lat] }});
-
-   // Meteor.users.update(Meteor.userId(), {$set: {"profile.location[1]": lat }});
-    //var { }
-    //Meteor.users.update(Meteor.userId(), {$set: {"profile.latitude":lat}});
-
-
-    //Meteor.users.update(Meteor.userId(), {$set: {"profile.longitude": parseFloat(result[0].longitude)}});
 
     Meteor.users.update(Meteor.userId(), {$set: {"profile.state": result[0].state}});
     return result;

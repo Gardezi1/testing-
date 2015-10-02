@@ -43,7 +43,7 @@ Template.nav.helpers({
   getDoctorName: function(uid){
     if(uid){
       var user = Meteor.users.findOne({_id: uid});
-       if(user.profile.lastName != undefined)
+       if(user && user.profile.lastName != undefined)
       return user && user.profile.firstName+" "+user.profile.lastName;
     return user && user.profile.firstName;
       //return user && user.profile.firstName;
