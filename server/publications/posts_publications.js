@@ -1,8 +1,9 @@
 Meteor.publish('Posts', function(){
   var currentUserId = this.userId;
 
-  if(currentUserId){
+  if(currentUserId){  
     following_list = Meteor.users.findOne({_id:this.userId}).profile.following;
+    following_list = following_list.splice(1,(following_list.length-1) );
     if(following_list  == undefined || following_list.length < 0){
       following_list = [];
       // Meteor.users.update(this.userId, {$push: { "profile.following": currentUserId} });
@@ -15,22 +16,32 @@ Meteor.publish('Posts', function(){
         return Posts.find({authorId: { $in: following_list}} , {sort: {createdAt: -1}});
       }
       else
-        if(first_circle  == undefined || first_circle.length < 0){
-          return Posts.find({$and: [{authorId: { $in: second_circle}},{postTo: '2nd'}] }, {sort: {createdAt: -1}});
-      }
-      else
+      //   if(first_circle  == undefined || first_circle.length < 0){
+      //     return Posts.find({$and: [{authorId: { $in: second_circle}},{postTo: '2nd'}] }, {sort: {createdAt: -1}});
+      // }
+      // else
         if(second_circle  == undefined || second_circle.length < 0){
-          return Posts.find({$or: [ {$and: [{authorId: { $in: first_circle}},{postTo: '1st'}] } ]}, {sort: {createdAt: -1}});
+          return Posts.find({ $or: [ {$or: [ {$and: [{authorId: { $in: first_circle}},{postTo: '1st'}] } ]  },{postTo: 'member'},{postTo:'hcpmember'}] }, {sort: {createdAt: -1}})
+          //return Posts.find({$or: [ {$and: [{authorId: { $in: first_circle}},{postTo: '1st'}] } ]}, {sort: {createdAt: -1}});
       }
       else{
-        return Posts.find({$or: [ {$and: [{authorId: { $in: first_circle}},{postTo: '1st'}] }, {$and: [{authorId: { $in: second_circle}},{postTo: '2nd'}] }, {$and: [{authorId: { $in: following_list}},{postTo: 'all'}] } ]}, {sort: {createdAt: -1}});
+
+        return Posts.find({ $or: [ { $or: [ {$and: [{authorId: { $in: first_circle}},{postTo: '1st'}] }, {$and: [{authorId: { $in: second_circle}},{postTo: '2nd'}] }, {$and: [{authorId: { $in: following_list}},{postTo: 'all'}] } ] },{postTo: 'member'},{postTo:'hcpmember'}] }, {sort: {createdAt: -1}})
+       // return Posts.find({$or: [ {$and: [{authorId: { $in: first_circle}},{postTo: '1st'}] }, {$and: [{authorId: { $in: second_circle}},{postTo: '2nd'}] }, {$and: [{authorId: { $in: following_list}},{postTo: 'all'}] } ]}, {sort: {createdAt: -1}});
       }
     }
     else{
-      return Posts.find({authorId: { $in: following_list}}, {sort: {createdAt: -1}});
+
+        if(Roles.userIsInRole(currentUserId, [ROLES.Doctor])){
+           return Posts.find({$or: [{authorId: { $in: following_list}},{postTo: 'hcp'},{postTo:'hcpmember'}] }, {sort: {createdAt: -1}});   
+        }
+        else
+        {
+          return Posts.find({authorId: { $in: following_list}}, {sort: {createdAt: -1}});
+        }
     }
   }
-  
+
   
 });
 
