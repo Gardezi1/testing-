@@ -59,10 +59,18 @@
                   <div class="row">
                     <div class="col s6">
                       <label for="article-type" class="article-label">Article Type</label>
-                      {{> afQuickField name='articleType' id="articleCategory"}}
-                      <!-- {{#if afFieldValueIs name='articleType' value='video' }}
-                          {{> afQuickField name="videoId"}}
-                      {{/if}} -->
+                      {{> afQuickField name='articleType'}}
+                      <!-- {{#if afFieldValueIs name='articleType' value='video' }} -->
+                        <div class="videoUpload">
+                          <div class="upload-btn-holder vedio">
+                            <div class="fileUpload">
+                              <div class="form-group mdi-content-add upl-img">
+                                {{> afQuickField name="videoId"}}
+                              </div>
+                            </div>
+                          </div>
+                        </div>  
+                      <!-- {{/if}} -->
                     </div>
                     <div class="col s6">
                       <label for="article-category" class="article-label">Article Category</label>
@@ -75,6 +83,8 @@
                       {{> afQuickField name='postTo'}}
                     </div>
                   </div>
+
+                  
                   <div class="row">
                   
                     <div class="col s12">

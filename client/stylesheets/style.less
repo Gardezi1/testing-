@@ -355,9 +355,37 @@ nav{
     }
   }
 }
+.videoUpload{
+  display:none;
+}
 .upload-btn-holder{
   text-align: center;
   padding:45px 45px 0 45px;
+  &.vedio {
+    padding: 0px;
+    .fileUpload .mdi-content-add:before {
+      display: none;
+    }
+    .file-field {
+      min-height: 0;
+      padding: 14px;
+    }
+    .input-field {
+      margin-top: 0px;
+    }
+    .form-group {
+      width: 100px;
+      background: #039be5;
+      float: left;
+      margin-left: 15px;
+      margin-top: 15px;
+      border-radius: 4px;
+      font-size: 13px;
+      label {
+        color: #ffffff;
+      }
+    }
+  }
   .btn{
     display: none;
   }
@@ -1479,7 +1507,7 @@ input .valid {
 
 
 
-/*.custom-file-btn{
+.custom-file-btn{
   background-color: #337ab7;
   border-color: #2e6da4;
   border-radius: 5px;
@@ -1493,7 +1521,7 @@ input .valid {
   &:hover{
     background:#286090;
   }
-}*/
+}
 
 /* Large desktops and laptops */
 @media (min-width: 1200px) {
