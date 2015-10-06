@@ -1,7 +1,7 @@
 <template name="articleNew">
   {{#contentFor "subnav"}}
     <div class="row">
-      <div class="col s12 m2 l2">  
+      <div class="col s12 m2 l2">
         <a href="{{pathFor route='articles'}}" class="back-btn left fa fa-chevron-left"> Back</a>
       </div>
       <div class="col s12 m8 l8">
@@ -52,14 +52,17 @@
                   <div class="row topic-list">
                     <div class="col s12">
                       <label for="article-type" class="article-label">Article Topic</label>
-                      {{> afQuickField name='articleTopic'}}
+                      {{> afQuickField name='articleTopic' }}
                       <!-- {{> afQuickField name='articleType' label-class="active" options="allowed"}} -->
                     </div>
                   </div>
                   <div class="row">
                     <div class="col s6">
                       <label for="article-type" class="article-label">Article Type</label>
-                      {{> afQuickField name='articleType'}}
+                      {{> afQuickField name='articleType' id="articleCategory"}}
+                      <!-- {{#if afFieldValueIs name='articleType' value='video' }}
+                          {{> afQuickField name="videoId"}}
+                      {{/if}} -->
                     </div>
                     <div class="col s6">
                       <label for="article-category" class="article-label">Article Category</label>
@@ -73,6 +76,7 @@
                     </div>
                   </div>
                   <div class="row">
+                  
                     <div class="col s12">
                       <label for="article-type" class="article-label">Body</label>
                       {{> afQuickField name='body'}}

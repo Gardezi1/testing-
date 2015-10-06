@@ -14,7 +14,26 @@ Template.articleList.helpers({
       return url;
     }
   },
+  video_S3: function(){
+    var file = VideoFiles.findOne({_id:this.videoId});
+    if(file){
+      url = "https://s3.amazonaws.com/medcircle/upload/Videofiles/"+file._id+"-"+file.name();
+      return url;
+    }
+  },
+  exampleMapOptions: function() {
+    // Make sure the maps API has loaded
+    if (GoogleMaps.loaded()) {
+      // Map initialization options
+      return {
+        center: new google.maps.LatLng(Meteor.user().profile.latitude, Meteor.user().profile.longitude),
+        zoom: 13
+      };
+    }
+  },
+
   getArticlesByCategory: function(type){
+    // console.log(type + "type was called")
     tid = Session.get("feedTopicsId");
     uid = Session.get("doctorTopicsId");
     if(tid && uid){
@@ -24,10 +43,12 @@ Template.articleList.helpers({
         $('ul.article-tabs').tabs('select_tab', type);
       }
       post_lists.push(post);
+
       return post_lists;
       // return Posts.find({$and: [{authorId: uid}, {articleCategory: type}, {articleTopic: tid} ]});
     }
     else{
+
       var topics_list = FollowerTopics.find({topicOwnerId: Meteor.userId()}).fetch();
       post_list = [];
       var groupedDates = _.groupBy(_.pluck(topics_list, 'topicFollowerId'));
@@ -38,6 +59,8 @@ Template.articleList.helpers({
       });
       return post_list;
     }
+
+
       // return Posts.find({articleCategory: type});
   },
   getAuthorName: function(authorId){
@@ -61,6 +84,17 @@ Template.articleList.helpers({
       return [];
     }
   }
+});
+
+Template.articleList.onCreated(function() {
+  // We can use the `ready` callback to interact with the map API once the map is ready.
+  GoogleMaps.ready('exampleMap', function(map) {
+    // Add a marker to the map once it's ready
+    var marker = new google.maps.Marker({
+      position: map.options.center,
+      map: map.instance
+    });
+  });
 });
 
 Template.articleList.onRendered(function() {
