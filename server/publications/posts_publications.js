@@ -3,12 +3,15 @@ Meteor.publish('Posts', function(){
 
   if(currentUserId){  
     following_list = Meteor.users.findOne({_id:this.userId}).profile.following;
-    following_list = following_list.splice(1,(following_list.length-1) );
     if(following_list  == undefined || following_list.length < 0){
       following_list = [];
       // Meteor.users.update(this.userId, {$push: { "profile.following": currentUserId} });
       // following_list = Meteor.users.findOne({_id:this.userId}).profile.following;
     }
+    else{
+      following_list = following_list.splice(1,(following_list.length-1) );
+    }
+    
     if(Roles.userIsInRole(currentUserId, [ROLES.Advocate])){
       first_circle = Meteor.users.findOne({_id:currentUserId}).profile.firstCircle;
       second_circle = Meteor.users.findOne({_id:currentUserId}).profile.secondCircle;
