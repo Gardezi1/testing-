@@ -1,15 +1,15 @@
 <template name="articleView">
 {{#contentFor "subnav"}}
-  <div class="row">
-    <div class="col s12 m2 l2">  
+  <div class="row posts-listing">
+    <div class="col s3 m2 l2">  
       <a href="{{pathFor route='articles'}}" class="back-btn left fa fa-chevron-left"> Back</a>
     </div>
-    <div class="col s12 m8 l8">
+    <div class="col s6 m8 l8">
       <h5 class="center-align">{{title}} </h5>
     </div>
     {{#if isInRole 'doctor'}}
-      <div class="col s12 m2 l2">
-        <a href="{{pathFor 'rePost' id=_id }}" class="left forward-btn"> <i class="fa fa-mail-forward"></i> </a>
+      <div class="col s3 m2 l2">
+        <a href="{{pathFor 'rePost' id=_id }}" class="right forward-btn"> <i class="fa fa-mail-forward"></i> </a>
       </div>
     {{/if}}  
   </div>
