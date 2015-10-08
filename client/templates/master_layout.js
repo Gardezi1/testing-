@@ -34,7 +34,6 @@ Template.masterLayout.events({
     })
   },
   'click .where': function(){
-    console.log('ini');
     google.maps.event.trigger(GoogleMaps.maps.exampleMap.instance , 'resize');
     GoogleMaps.maps.exampleMap.instance.setCenter(GoogleMaps.maps.exampleMap.options.center);
   }
