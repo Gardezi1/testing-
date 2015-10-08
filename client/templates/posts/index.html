@@ -1,4 +1,4 @@
-<template name="articleList">  
+<template name="articleList">
   <div class="container">
     <div class="row">
       {{#contentFor "subnav"}}
@@ -38,8 +38,14 @@
                                     <li><b>{{getArticleName this}}</b></li>
                                   {{/each}}
                                 </ul> -->
-                                <a href="{{url}}"><b>{{source}}</b></a>
+                                <a href="{{url}}" target="_blank"><b>{{source}}</b></a>
                                 <p> {{body}} </p>
+                                {{#if videoId}}
+                                 <video width="320" height="240" controls>
+                                  <source src="{{video_S3}}" type="video/mp4">
+                                </video> 
+                                {{/if}}
+
                               </div>
                             </div>
   <!--                           {{#if checkIfAuthor authorId}}
@@ -52,7 +58,7 @@
                         </div>
                       <div class="doctor-post clearfix">
                         <div class="doc-name">
-                          Dr. {{getAuthorName authorId }} 
+                          Dr. {{getAuthorName authorId }}
                           <span>
                             {{#each articleTopic}}
                               <b>{{getArticleName this}}</b>
@@ -63,7 +69,7 @@
                           <div class="reply">
                             <a href="{{pathFor 'rePost' id=_id }}"><i class="fa fa-share" id="{{_id}}"></i></a>
                           </div>
-                        {{/if}}  
+                        {{/if}}
                       </div>
                     </div>
                   </div>
@@ -89,10 +95,15 @@
                                 <img src="{{file_S3}}">
                               </div>
                               <div class="col s7">
-                                <a href="{{url}}"><b>{{source}}</b></a>
+                                <a href="{{url}}" target="_blank"><b>{{source}}</b></a>
                                 <p> {{body}} </p>
+                                {{#if videoId}}
+                                 <video width="320" height="240" controls>
+                                  <source src="{{video_S3}}" type="video/mp4">
+                                </video> 
+                                {{/if}}
                               </div>
-                            </div> 
+                            </div>
                           </div>
                         </div>
                       <div class="doctor-post clearfix">
@@ -108,7 +119,7 @@
                           <div class="reply">
                             <a href="{{pathFor 'rePost' id=_id }}"><i class="fa fa-share" id="{{_id}}"></i></a>
                           </div>
-                        {{/if}}  
+                        {{/if}}
                       </div>
                     </div>
                   </div>
@@ -118,10 +129,11 @@
           {{/each}}
         {{/each}}
       </div>
-      <div id="where" class="col s12">
-        {{#autoForm id="myLocation" collection="Meteor.users" type="insert"}}
+      <div id="where" class="col s12 where-class">
+        <!-- {{#autoForm id="myLocation" collection="Meteor.users" type="insert"}} -->
+
         <div class="custom-container" id="mapContent">
-          <div class="form-holder">  
+          <div class="form-holder">
             <div class="row">
               <div class="col-md-12">
                 <div class="page-header">
@@ -131,7 +143,10 @@
                         <div class="row">
                           <div class="col s12">
                             <div class="img-rel">
-                              {{> afQuickField name='profile.myLocation'}}
+                               <div class="map-container">
+                              {{> googleMap name="exampleMap" options=exampleMapOptions}}
+                              <!-- {{> afQuickField name='profile.myLocation'}} -->
+                            </div>
                             </div>
                           </div>
                         </div>
@@ -142,8 +157,8 @@
               </div>
             </div>
           </div>
-        </div>      
-        {{/autoForm}}
+        </div>
+        <!-- {{/autoForm}} -->
         {{#each getArticlesByCategory 'where'}}
           {{#each this}}
             <div class="custom-container">
@@ -159,8 +174,13 @@
                                 <img src="{{file_S3}}">
                               </div>
                               <div class="col s7">
-                                <a href="{{url}}"><b>{{source}}</b></a>
+                                <a href="{{url}}" target="_blank"><b>{{source}}</b></a>
                                 <p> {{body}} </p>
+                                {{#if videoId}}
+                                 <video width="320" height="240" controls>
+                                  <source src="{{video_S3}}" type="video/mp4">
+                                </video> 
+                                {{/if}}
                               </div>
                             </div>
                           </div>
@@ -178,14 +198,14 @@
                           <div class="reply">
                             <a href="{{pathFor 'rePost' id=_id }}"><i class="fa fa-share" id="{{_id}}"></i></a>
                           </div>
-                        {{/if}}  
+                        {{/if}}
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          {{/each}}  
+          {{/each}}
         {{/each}}
       </div>
       <div id="more" class="col s12">
@@ -204,10 +224,15 @@
                                 <img src="{{file_S3}}">
                               </div>
                               <div class="col s7">
-                                <a href="{{url}}"><b>{{source}}</b></a>
+                                <a href="{{url}}" target="_blank"><b>{{source}}</b></a>
                                 <p> {{body}} </p>
+                                {{#if videoId}}
+                                 <video width="320" height="240" controls>
+                                  <source src="{{video_S3}}" type="video/mp4">
+                                </video> 
+                                {{/if}}
                               </div>
-                            </div>  
+                            </div>
                           </div>
                         </div>
                       <div class="doctor-post clearfix">
@@ -223,19 +248,19 @@
                           <div class="reply">
                             <a href="{{pathFor 'rePost' id=_id }}"><i class="fa fa-share" id="{{_id}}"></i></a>
                           </div>
-                        {{/if}}  
+                        {{/if}}
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          {{/each}}  
+          {{/each}}
         {{/each}}
       </div>
     </div>
-  </div> 
-  {{#if isInRole 'admin , doctor'}} 
+  </div>
+  {{#if isInRole 'admin , doctor'}}
   <a href="/article/new" class="btn-floating btn-large waves-effect waves-light tooltipped pluse-icon" data-position="top" data-delay="50" data-tooltip="New Media"> + </a>
   {{/if}}
 </template>

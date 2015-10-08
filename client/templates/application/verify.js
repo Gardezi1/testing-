@@ -56,6 +56,7 @@ if (Meteor.isClient) {
                 var gender = event.target.gender.value;
                 // var dob = birthday_day +'-'+birthday_month+'-'+birthday_year
                 var dob = event.target.birthDate.value;
+                var v = Meteor.call('locationSpecification', event.target.geomaping.value);
 
                 Meteor.users.update(Meteor.userId(), {$set: {"profile.zipcode": zipcode}});
                 Meteor.users.update(Meteor.userId(), {$set: {"profile.dob" :dob}});
