@@ -1,4 +1,4 @@
-Template.admin.helpers({
+Template.adminApproval.helpers({
   users: function() {
     return Meteor.users.find({$and: [{"profile.type": "doctor"}, {"profile.approve": false} ]});
   },
@@ -14,7 +14,7 @@ Template.admin.helpers({
   },
 });
 
-Template.admin.events({
+Template.adminApproval.events({
   'click .accept-doctor': function(event) {
     var id = $(event.target).attr('id');
     user = Meteor.users.findOne({_id:id});

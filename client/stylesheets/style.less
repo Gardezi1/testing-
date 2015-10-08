@@ -1474,6 +1474,10 @@ li.admin {
   a{
     font-size: 13px;
   }
+  .btn{
+    background-color: #039be5;
+    color: #fff;
+  }
 }
 
 input:focus:not([readonly]) {
@@ -1551,6 +1555,11 @@ input .valid {
       float: right;
     }
   }
+  .doc-sub-head{
+    .prof-pl{
+      text-align: right;
+    }
+  }
 }
 @media (min-width: 640px) and (max-width: 767px) {
   nav {
@@ -1567,6 +1576,12 @@ input .valid {
       top: 85px;
     }
   }
+  .doc-sub-head{
+    .prof-pl{
+      text-align: right;
+    }
+  }
+
 }
 @media (min-width: 480px) and (max-width: 639px) {
   nav {
@@ -1584,7 +1599,7 @@ input .valid {
     margin: 0 auto;
   }
   .doctors-listing{
-    max-width: 320px;
+    max-width: 450px;
     margin: 0 auto;
   }
   .sub-head h5 {
@@ -1594,11 +1609,45 @@ input .valid {
     position: absolute;
     left: 10px;
     top: 82px;
+    font-size: 13px;
   }
   .sub-head .edite-btn{
     position: absolute;
     right: 10px;
     top: 82px;
+  }
+  .sub-head{
+    .edite-btn{
+      position: absolute;
+      right: 10px;
+      top: 85px;
+    }
+  }
+  .prof-con{
+    .profile-detail{
+      .user-det-list{
+        width: 100%;
+        li{
+          display: block;
+          text-align: center;
+          margin: 0 0 10px;
+        }
+      }
+    }
+  }
+  .sub-head{
+    .tabs{
+      .indicator{
+        max-width: 100%;
+        margin:0 20px;
+      }
+    }
+  }
+  .posts-listing{
+    .back-btn{
+      position: relative;
+      top: 5px;
+    }
   }
 }
 @media (min-width: 320px) and (max-width: 479px) {
@@ -1636,7 +1685,7 @@ input .valid {
     }
   }
   .doctors-listing{
-    max-width: 240px;
+    max-width: 100%;
     margin: 0 auto;
   }
   .sub-head{
@@ -1644,7 +1693,7 @@ input .valid {
     .back-btn{
       position: absolute;
       top: 82px;
-      font-size: 12px;
+      font-size: 10px;
     }
     .edite-btn{
       right: 10px;
@@ -1652,6 +1701,57 @@ input .valid {
     h5{
       font-size: 17px;
       line-height: 37px;
+      padding: 0;
+    }
+  }
+  .doc-sub-head{
+    .prof-pl{
+      text-align: center;
+      padding: 0;
+    }
+    .back-btn{
+      top: auto;
+      position: relative;
+      display: block;
+      width: 100%;
+      text-align: center;
+    }
+    .profile-text{
+      text-align: center;
+      display: block;
+      width: 100%;
+    }
+  }
+  .prof-con{
+    padding: 0 20px;
+  }
+  .prof-con{
+    .profile-detail{
+      .user-det-list{
+        width: 100%;
+        li{
+          display: block;
+          text-align: center;
+          margin: 0 0 10px;
+        }
+      }
+    }
+  }
+  .sub-head{
+    .tabs{
+      .indicator{
+        max-width: 100%;
+        margin:0 20px;
+      }
+    }
+    .forward-btn{
+      margin:5px 0 0;
+    }
+  }
+  .posts-listing{
+    .back-btn{
+      position: relative;
+      top: 5px;
     }
   }
 }
