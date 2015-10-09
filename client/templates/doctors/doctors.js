@@ -20,7 +20,9 @@ Template.doctorsListing.helpers({
       }
       else
       {
-        cor =Meteor.user().profile.location.coordinates;
+         lat = Session.get('lat');
+        lon = Session.get('lon');
+        var cor = [lon,lat];
       }
 
       var name = (Session.get("doctorSearchQuery"));

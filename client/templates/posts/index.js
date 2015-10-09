@@ -26,7 +26,7 @@ Template.articleList.helpers({
     if (GoogleMaps.loaded()) {
       // Map initialization options
       return {
-        center: new google.maps.LatLng(Meteor.user().profile.latitude, Meteor.user().profile.longitude),
+        center: new google.maps.LatLng(Session.get("lat"), Session.get("lon")),
         zoom: 13
       };
     }
@@ -89,6 +89,7 @@ Template.articleList.helpers({
 Template.articleList.onCreated(function() {
   // We can use the `ready` callback to interact with the map API once the map is ready.
   GoogleMaps.ready('exampleMap', function(map) {
+    console.log(map);
     // Add a marker to the map once it's ready
     var marker = new google.maps.Marker({
       position: map.options.center,
@@ -100,6 +101,10 @@ Template.articleList.onCreated(function() {
 Template.articleList.onRendered(function() {
   $('ul.tabs').tabs();
   $('.tooltipped').tooltip({delay: 50});
+  navigator.geolocation.getCurrentPosition(function(position) {
+      Session.set('lat', position.coords.latitude);
+      Session.set('lon', position.coords.longitude);
+  });
 });
 
 Template.articleList.events({
