@@ -19,6 +19,31 @@
   -webkit-box-shadow: @arguments;
 }
 
+.play {
+    background: url('http://cdn1.iconfinder.com/data/icons/iconslandplayer/PNG/64x64/CircleBlue/Play1Pressed.png') center center no-repeat;
+    position: absolute;
+    z-index: 10;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+}
+/*#playVideo {
+    background: url('http://cdn1.iconfinder.com/data/icons/iconslandplayer/PNG/64x64/CircleBlue/Play1Pressed.png') center center no-repeat;
+    position: absolute;
+    z-index: 10;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+}*/
+
+video{
+   display: inline-block;
+   vertical-align: baseline;
+   width: 250px;
+}
+
 .noneBoxShadow(@x: 0, @y: 0, @blur: 0, @color: #c1c1c1) {
   box-shadow: @arguments;
   -moz-box-shadow: @arguments;
@@ -1537,6 +1562,15 @@ input .valid {
   text-transform: capitalize;
   &:hover{
     background:#286090;
+  }
+}
+
+.video-holder{
+  position: relative;
+  overflow: hidden;
+  img{
+    float: left;
+    opacity: 0.55;
   }
 }
 
