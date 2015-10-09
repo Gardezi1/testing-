@@ -10,7 +10,7 @@ if (Meteor.isServer) {
 
   if (!Meteor.users.findOne({"emails.address": "admin@medcircle.com"})) {
     var admins = [
-      { firstName: "MedCircle", email: "admin@medcircle.com", password: "medcircle123", phone: '92321434343', code_verified: true, code_verified: true, type: "admin", roles: ['admin'] }
+      { firstName: "MedCircle", lastName:"Admin" ,email: "admin@medcircle.com", password: "medcircle123", phone: '92321434343', code_verified: true, code_verified: true, type: "admin", roles: ['admin'] }
     ];
     
     _.each(admins, function (user) {
@@ -19,7 +19,7 @@ if (Meteor.isServer) {
       id = Accounts.createUser({
         email: user.email,
         password: user.password,
-        profile: { firstName: user.firstName, phone: user.phone, type: user.type, code_verified: user.code_verified }
+        profile: { firstName: user.firstName, lastName: user.lastName, phone: user.phone, type: user.type, code_verified: user.code_verified }
       });
 
       if (user.roles.length > 0) {

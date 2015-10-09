@@ -36,19 +36,10 @@ AccountController = RouteController.extend({
 });
 
 Router.route('/', {
-  name: 'home',
+  // name: 'home',
   // layoutTemplate: "home",
   action: function() {
-    if (Meteor.settings && Meteor.settings.public.comingSoon)
-      this.layout('comingSoon');
-    else if (!Meteor.user()) {
-      this.layout('home');
-      // Router.go("/sign-in");
-      this.next();
-    }
-    else{
-      Router.go("/articles");
-    }
+      Router.go("/sign-in");
   }
 
 });
@@ -90,15 +81,4 @@ Router.plugin('ensureSignedIn', {
 Router.route("/thankyou",{
   name: 'thankyou',
   layoutTemplate: 'thankyou'
-});
-
-
-Router.onAfterAction(function(){
-    var routeName = Router.current().route.getName();
-    if ( routeName.indexOf("adminDashboard") == 0 ) {
-        $("head #injectedBootstrap").remove(); //removes duplicates
-        $("head").append($("<link rel='stylesheet' id='injectedBootstrap' href='/css/bootstrap.min.css' type='text/css' media='screen' />"));
-        $("head #injectedBootstrapJs").remove(); //removes duplicates
-        $("head").append($("<script type='text/javascript' src='/js/bootstrap.min.js'></script>"));
-    }
 });

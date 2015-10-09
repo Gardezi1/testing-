@@ -3,8 +3,8 @@ AccountsTemplates.configureRoute('changePwd');
 AccountsTemplates.configureRoute('enrollAccount');
 AccountsTemplates.configureRoute('forgotPwd');
 AccountsTemplates.configureRoute('resetPwd');
-AccountsTemplates.configureRoute('signIn', {redirect: '/articles', layoutTemplate: "home",});
-AccountsTemplates.configureRoute('signUp', {layoutTemplate: "userSignup"});
+AccountsTemplates.configureRoute('signIn', {redirect: '/admin'});
+AccountsTemplates.configureRoute('signUp');
 AccountsTemplates.configureRoute('verifyEmail');
 // AccountsTemplates.configureRoute('verifyEmail', {redirect: '/verify',});
 

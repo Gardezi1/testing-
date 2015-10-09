@@ -84,7 +84,6 @@ livedata@1.0.13
 localstorage@1.0.3
 logging@1.0.7
 matb33:collection-hooks@0.7.13
-materialize:materialize@0.97.0
 matteodem:server-session@0.4.2
 meteor@1.1.6
 meteor-platform@1.2.2
@@ -127,11 +126,12 @@ spacebars-compiler@1.0.6
 srp@1.0.3
 templating@1.1.1
 tracker@1.0.7
+twbs:bootstrap@3.3.5
 ui@1.0.6
 underscore@1.0.3
 url@1.0.4
+useraccounts:bootstrap@1.9.1
 useraccounts:core@1.9.1
-useraccounts:materialize@1.9.1
 webapp@1.2.0
 webapp-hashing@1.0.3
 yogiben:admin@1.2.0

@@ -16,11 +16,11 @@
        { label: 'Posted At', name: 'createdAt' }
       ],
       showEditColumn: true,
-      showDelColumn: true,
-      templates: {
-        new: {
-          name: "articleNew"
-        }
+      showDelColumn: true
+      // templates: {
+      //   new: {
+      //     name: "articleNew"
+      //   }
         // ,edit:
         // {
         //   name: "articleEdit",
@@ -29,11 +29,11 @@
         //   }
 
         // }
-      }
+     // }
     },
   },
   autoForm: {
-    omitFields: ["createdAt", "updatedAt", "authorId"]
+    omitFields: ["createdAt", "updatedAt", "authorId","videoId"]
   },
 
 }
