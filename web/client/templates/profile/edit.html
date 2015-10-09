@@ -1,0 +1,148 @@
+<template name="editProfile">
+  
+{{#autoForm collection='Meteor.users' doc=currentUser type='update' id='editProfile' omitFields="_id, profile.type, profile.code_verified,profile.dob, roles, services, profile.following"}}
+
+<div class="custom-container">
+  {{#contentFor "subnav"}}
+    <div class="row">
+      <div class="col s12 m2 l2">  
+        <a href="{{pathFor route='profileView'}}" class="back-btn left fa fa-chevron-left"> Cancel</a>
+      </div>
+      <div class="col s12 m8 l8">
+        <h5 class="center-align">Edit Profile </h5>
+      </div>
+      <div class="col s12 m8 l2 save-my-profile">
+        <a href="#" class="org-color right edite-btn">Save </a>
+      </div>
+    </div>
+  {{/contentFor}}
+  <div class="form-holder">  
+    <div class="row">
+      <div class="col-md-12">
+        <div class="page-header">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="shadow-box z-depth-1">
+                <div class="row">
+                  <div class="col s12">
+                    <div class="img-rel">
+                      {{#if isInRole 'doctor'}}
+                        
+                        <div class="upload-btn-holder">
+                          <div class="fileUpload">
+                            <div class="form-group mdi-content-add upl-img prof-img-circle">
+                            {{> afQuickField name='profile.picture'}}
+                            </div>
+                          </div>
+                        </div>
+
+
+                        <div class="row">
+                          <div class="col s12">
+                            {{> afQuickField name='profile.firstName'}}
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col s12">
+                            {{> afQuickField name='profile.lastName'}}
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col s12">
+                            {{> afQuickField name='profile.speciality'}}
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col s12">
+                            {{> afQuickField name='emails.0.address'}}
+                          </div>
+                        </div>
+                        <div class="row u-email-verified">
+                          <div class="col s12">
+                            {{> afQuickField name='emails.0.verified'}}
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col s12">
+                            {{> afQuickField name='profile.phone'}}
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col s12">
+                            {{> afQuickField name='profile.addressOne'}}
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col s12">
+                            {{> afQuickField name='profile.addressTwo'}}
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col s12">
+                            {{> afQuickField name='profile.city'}}
+                          </div>
+                        </div>
+                        <div class="row select-list">
+                          <div class="col s6">
+                            {{> afQuickField name='profile.state' label-class="active" id="geomap"}}
+                          </div>
+                          <div class="col s6">
+                            {{> afQuickField name='profile.zipcode'}}
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col s12">
+                            <label for="user-bio" class="">Bio</label>
+                            {{> afQuickField name='profile.bio'}}
+                          </div>
+                        </div>
+                        <button type='submit' style="display: none;" class="btn btn-primary save-profile">Save profile</button>
+                      {{else}}
+                        <div class="upload-btn-holder prof-img-circle">
+                          <div class="fileUpload">
+                            <div class="form-group mdi-content-add upl-img">
+                              {{> afQuickField name='profile.picture'}}
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col s6">
+                            {{> afQuickField name='profile.firstName'}}
+                          </div>
+                          <div class="col s6">
+                            {{> afQuickField name='profile.lastName'}}
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col s12">
+                            {{> afQuickField name='profile.zipcode'}}
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="input-field col s12" id="gender">
+                            <label for="gender" class="gender">Gender</label>
+                            {{> afQuickField name='profile.gender'}}
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="input-field col s12" id="dob">
+                            <label for="gender" class="gender">Date of Birth</label>
+                            {{> afQuickField name='profile.dob'}}
+                          </div>
+                        </div>
+                        <button type='submit' style="display: none;" class="btn btn-primary save-profile">Save profile</button>
+                      {{/if}}  
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{{/autoForm}}
+
+</template>

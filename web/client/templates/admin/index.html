@@ -1,0 +1,41 @@
+<template name="adminApproval">
+  {{#contentFor "subnav"}}
+    <div class="row">
+      <div class="col s12 m2 l2">  
+        <a href="{{pathFor route='articles'}}" class="back-btn left fa fa-chevron-left">Back</a>
+      </div>
+      <div class="col s12 m8 l8">
+        <h5 class="center-align">Admin</h5>
+      </div>
+      <div class="col s12 m2 l2">
+      </div>
+    </div>
+  {{/contentFor}}
+  <div class="custom-container"> 
+    <div class="row">
+      <div class="col-md-12">
+        {{#if usersCount}}
+          {{#each users}}
+            <div class="shadow-box z-depth-1 approve-doctor">
+              <div class="clearfix">
+                <div class="text left">
+                  <h5 class="name">{{profile.firstName}} {{profile.lastName}}</h5>
+                  <h6 class="phone">(Ph: {{profile.phone}})</h6>
+                  <h6 class="email">(Email: {{emails.[0].address}})</h6>
+                </div>
+                <div class="accept-doc right">
+                  <button class="btn waves-light pd-0 accept-doctor" id="{{_id}}"><i class="fa fa-check" id="{{_id}}"></i></button>
+                  <button class="btn waves-light red pd-0 reject-doctor" id="{{_id}}"><i class="fa fa-times" id="{{_id}}"></i></button>
+                </div>
+              </div>
+            </div>
+          {{/each}}
+        {{else}}
+          <div class="shadow-box z-depth-1 approve-doctor">
+            No user to approve.
+          </div>  
+        {{/if}}        
+      </div>
+    </div>
+  </div>      
+</template>  

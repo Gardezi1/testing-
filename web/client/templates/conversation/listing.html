@@ -1,0 +1,94 @@
+<template name="conversationListing">
+  {{#contentFor "subnav"}}
+  <div class="row">
+    <div class="col s12 m2 l2">  
+      <a href="{{pathFor route='articles'}}" class="back-btn left fa fa-chevron-left"> Back</a>
+    </div>
+    <div class="col s10 m7 l8">
+      <h5 class="center-align">Conversations</h5>
+    </div>
+    {{#if isInRole 'admin , doctor'}} 
+      <div class="col s12 m3 l2">
+        <a href="{{pathFor route='startConversation'}}" class="org-color right edite-btn"> New Conversation</a>
+      </div>
+    {{/if}}  
+    {{#if getFirstCircle}}
+      <div class="col s12 m3 l2">
+          <a href="{{pathFor route='startConversation'}}" class="org-color right edite-btn"> New Conversation</a>
+        </div>
+    {{/if}}
+  </div>
+  {{/contentFor}}
+  <div class="custom-container"> 
+    <div class="row">
+      <div class="col-md-12">
+        <div class="shadow-box z-depth-1">
+          <div class="header grey">
+            All Messages
+          </div>
+          {{#each messageList}}
+            <div class="messages message-view {{ifMyMessage from read}}">
+              {{# if recipient to}}
+                <a href="{{pathFor 'conversationView' id=from }}">
+                  <div class="clearfix">
+                    <div class="col s2">
+                      {{#if gteUserImage from}}
+                        <div class="img" style="background: url('{{gteUserImage from}}') no-repeat;" alt="{{title}}"></div>
+                        <!-- <img src="{{gteUserImage from}}" alt="{{title}}"> -->
+                      {{else}}
+                        <div class="img" style="background: url('/imgs/user.jpg') no-repeat;" alt="{{title}}"></div>
+                        <!-- <img src="/imgs/user.jpg"> -->
+                      {{/if}}    
+                    </div>
+                    <div class="col s10">
+                      <div class="clearfix header">
+                        <div class="left">{{getSenderName from}}</div> 
+                        <div class="right">{{messageTime createdAt}}</div>
+                      </div>
+                      <div class="my-conversation" id="{{to}}">
+                        {{body}}
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              {{else}}
+                <a href="{{pathFor 'conversationView' id=to }}">    
+                  <div class="clearfix">
+                    <div class="col s2">
+                      {{#if gteUserImage from}}
+                        <div class="img" style="background: url('{{gteUserImage from}}') no-repeat;" alt="{{title}}"></div>
+                        <!-- <img src="{{gteUserImage from}}" alt="{{title}}"> -->
+                      {{else}}
+                        <div class="img" style="background: url('/imgs/user.jpg') no-repeat;" alt="{{title}}"></div>
+                        <!-- <img src="/imgs/user.jpg"> -->
+                      {{/if}}   
+                    </div>
+                    <div class="col s10">
+                      <div class="clearfix header">
+                        <div class="left">{{getSenderName from}}</div> 
+                        <div class="right">{{messageTime createdAt}}</div>
+                      </div>
+                      <div class="my-conversation" id="{{to}}">
+                        {{body}}
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              {{/if}}  
+            </div>
+          {{/each}} 
+          {{#if conversationListCount}}  
+            <div class="messages more-conversation">
+              <a href="#" class="edite-btn org-color">view more</a>
+            </div>
+          {{/if}}
+          {{#unless messageList}}
+            <div class="messages more-messages">
+              <p class="edite-btn org-color center"><b>No Conversations</b></p>
+            </div>
+          {{/unless}}  
+        </div>   
+      </div>
+    </div>
+  </div>      
+</template>

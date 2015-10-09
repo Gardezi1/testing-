@@ -1,0 +1,57 @@
+<template name="rePost">
+  {{#contentFor "subnav"}}
+    <div class="row">
+    <div class="col s12 m2 l2">  
+      <a href="{{pathFor route='articles'}}" class="back-btn left fa fa-chevron-left"> Back</a>
+    </div>
+    <div class="col s12 m8 l8">
+      <h5 class="center-align">Re-post Article</h5>
+    </div> 
+  </div>
+  {{/contentFor}}
+  <div class="custom-container">
+    <div class="shadow-box z-depth-1">
+      <div class="form-holder">
+      <div class="row">
+        <form name="rePostForm" action="/articles" id="rePostForm" method="post" class="col s12">
+          <input type="hidden" value="{{getThisPost._id}}" name="articleId">
+          <div class="row">
+            <div class="input-field col s12">
+              <input placeholder="Article Title" value="{{getThisPost.title}}" name="articleTitle" id="article-title" type="text" class="validate" required>
+              <label for="article-title" class="active">Article Title</label>
+            </div>
+          </div>
+          <div class="row">  
+            <div class="input-field col s12">
+              <input id="article-source" name="articleSource" value="{{getThisPost.source}}" type="text" class="validate" required>
+              <label for="article-source" class="active">Article Source</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <select class="article-group" name="articleGroup">
+                <option value="" disabled selected>Choose Member Group (e.g., 1st or 2nd circle)</option>
+                <option value="1st">1st Circle</option>
+                <option value="all">1st & 2nd Circle</option>
+                <!-- <option value="all">All</option> -->
+              </select>
+              <label>Post To</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <input placeholder="Add Comments (optional)" name="articleComment" id="article-comment" type="text" class="validate">
+              <label for="article-comment" class="active">Add Comments</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col s12">
+              <button type="submit" class="waves-effect waves-light btn right re-post-btn org-bg">POST</button>
+            </div>
+          </div>
+        </form>
+      </div>
+      </div>
+    </div>
+  </div>  
+</template>
