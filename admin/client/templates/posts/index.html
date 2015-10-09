@@ -1,0 +1,266 @@
+<template name="articleList">
+  <div class="container">
+    <div class="row">
+      {{#contentFor "subnav"}}
+      <ul class="tabs bottom-p0 article-tabs">
+        <li class="tab what"><a class="active tooltipped" href="#what" data-position="bottom" data-delay="50" data-tooltip="Is the condition">What</a>
+          <!-- <div class="sub-tab">Is the condition</div> -->
+        </li>
+        <li class="tab how"><a class="tooltipped" href="#how" data-position="bottom" data-delay="50" data-tooltip="Do I get better">How</a>
+          <!-- <div class="sub-tab">Do I get better</div> -->
+        </li>
+        <li class="tab where"><a class="tooltipped" href="#where" data-position="bottom" data-delay="50" data-tooltip="Do I get help">Where</a>
+          <!-- <div class="sub-tab">Do I get help</div> -->
+        </li>
+        <li class="tab more"><a class="tooltipped" href="#more" data-position="bottom" data-delay="50" data-tooltip="Resources">More</a>
+          <!-- <div class="sub-tab">Resources</div> -->
+        </li>
+      </ul>
+      {{/contentFor}}
+      <div id="what" class="col s12">
+        {{#each getArticlesByCategory 'what'}}
+          {{#each this}}
+            <div class="custom-container">
+              <div class="form-holder">
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="shadow-box z-depth-1">
+                        <div class="panel panel-default">
+                          <div class="panel-body custom-panel-body">
+                            <h4><a href="{{pathFor 'articleView' id=_id }}" target="_blank">{{title}}</a></h4>
+                            <div class="row">
+                              <div class="col s5">
+                                <img src="{{file_S3}}">
+                              </div>
+                              <div class="col s7">
+                                <!-- <ul>
+                                  {{#each articleTopic}}
+                                    <li><b>{{getArticleName this}}</b></li>
+                                  {{/each}}
+                                </ul> -->
+                                <a href="{{url}}" target="_blank"><b>{{source}}</b></a>
+                                <p> {{body}} </p>
+                                <!-- {{#if videoId}}
+                                 <video width="320" height="240" controls>
+                                  <source src="{{video_S3}}" type="video/mp4">
+                                </video> 
+                                {{/if}} -->
+
+                              </div>
+                            </div>
+  <!--                           {{#if checkIfAuthor authorId}}
+                              <ul class="center">
+                                {{> quickRemoveButton collection="Posts" _id=this._id beforeRemove=beforeRemove class="btn btn-danger"}}
+                                <a href="{{pathFor 'articleEdit' id=_id }}" class="btn btn-danger">Edit</a>
+                              </ul>
+                            {{/if}} -->
+                          </div>
+                        </div>
+                      <div class="doctor-post clearfix">
+                        <div class="doc-name">
+                          Dr. {{getAuthorName authorId }}
+                          <span>
+                            {{#each articleTopic}}
+                              <b>{{getArticleName this}}</b>
+                            {{/each}}
+                          </span>
+                        </div>
+                        {{#if isInRole 'doctor'}}
+                          <div class="reply">
+                            <a href="{{pathFor 'rePost' id=_id }}"><i class="fa fa-share" id="{{_id}}"></i></a>
+                          </div>
+                        {{/if}}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          {{/each}}
+        {{/each}}
+      </div>
+      <div id="how" class="col s12">
+        {{#each getArticlesByCategory 'how'}}
+          {{#each this}}
+            <div class="custom-container">
+              <div class="form-holder">
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="shadow-box z-depth-1">
+                        <div class="panel panel-default">
+                          <div class="panel-body custom-panel-body">
+                            <h4><a href="{{pathFor 'articleView' id=_id }}" target="_blank">{{title}}</a></h4>
+                            <div class="row">
+                              <div class="col s5">
+                                <img src="{{file_S3}}">
+                              </div>
+                              <div class="col s7">
+                                <a href="{{url}}" target="_blank"><b>{{source}}</b></a>
+                                <p> {{body}} </p>
+                                <!-- {{#if videoId}}
+                                 <video width="320" height="240" controls>
+                                  <source src="{{video_S3}}" type="video/mp4">
+                                </video> 
+                                {{/if}} -->
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      <div class="doctor-post clearfix">
+                        <div class="doc-name">
+                          Dr. {{getAuthorName authorId }}
+                          <span>
+                            {{#each articleTopic}}
+                              <b>{{getArticleName this}}</b>
+                            {{/each}}
+                          </span>
+                        </div>
+                        {{#if isInRole 'doctor'}}
+                          <div class="reply">
+                            <a href="{{pathFor 'rePost' id=_id }}"><i class="fa fa-share" id="{{_id}}"></i></a>
+                          </div>
+                        {{/if}}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          {{/each}}
+        {{/each}}
+      </div>
+      <div id="where" class="col s12 where-class">
+        <!-- {{#autoForm id="myLocation" collection="Meteor.users" type="insert"}} -->
+
+        <div class="custom-container" id="mapContent">
+          <div class="form-holder">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="page-header">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="shadow-box z-depth-1">
+                        <div class="row">
+                          <div class="col s12">
+                            <div class="img-rel">
+                               <div class="map-container">
+                              {{> googleMap name="exampleMap" options=exampleMapOptions}}
+                              <!-- {{> afQuickField name='profile.myLocation'}} -->
+                            </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- {{/autoForm}} -->
+        {{#each getArticlesByCategory 'where'}}
+          {{#each this}}
+            <div class="custom-container">
+              <div class="form-holder">
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="shadow-box z-depth-1">
+                        <div class="panel panel-default">
+                          <div class="panel-body custom-panel-body">
+                            <h4><a href="{{pathFor 'articleView' id=_id }}" target="_blank">{{title}}</a></h4>
+                            <div class="row">
+                              <div class="col s5">
+                                <img src="{{file_S3}}">
+                              </div>
+                              <div class="col s7">
+                                <a href="{{url}}" target="_blank"><b>{{source}}</b></a>
+                                <p> {{body}} </p>
+                                <!-- {{#if videoId}}
+                                 <video width="320" height="240" controls>
+                                  <source src="{{video_S3}}" type="video/mp4">
+                                </video> 
+                                {{/if}} -->
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      <div class="doctor-post clearfix">
+                        <div class="doc-name">
+                          Dr. {{getAuthorName authorId }}
+                          <span>
+                            {{#each articleTopic}}
+                              <b>{{getArticleName this}}</b>
+                            {{/each}}
+                          </span>
+                        </div>
+                        {{#if isInRole 'doctor'}}
+                          <div class="reply">
+                            <a href="{{pathFor 'rePost' id=_id }}"><i class="fa fa-share" id="{{_id}}"></i></a>
+                          </div>
+                        {{/if}}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          {{/each}}
+        {{/each}}
+      </div>
+      <div id="more" class="col s12">
+        {{#each getArticlesByCategory 'more'}}
+          {{#each this}}
+            <div class="custom-container">
+              <div class="form-holder">
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="shadow-box z-depth-1">
+                        <div class="panel panel-default">
+                          <div class="panel-body custom-panel-body">
+                            <h4><a href="{{pathFor 'articleView' id=_id }}" target="_blank">{{title}}</a></h4>
+                            <div class="row">
+                              <div class="col s5">
+                                <img src="{{file_S3}}">
+                              </div>
+                              <div class="col s7">
+                                <a href="{{url}}" target="_blank"><b>{{source}}</b></a>
+                                <p> {{body}} </p>
+                                <!-- {{#if videoId}}
+                                 <video width="320" height="240" controls>
+                                  <source src="{{video_S3}}" type="video/mp4">
+                                </video> 
+                                {{/if}} -->
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      <div class="doctor-post clearfix">
+                        <div class="doc-name">
+                          Dr. {{getAuthorName authorId }}
+                          <span>
+                            {{#each articleTopic}}
+                              <b>{{getArticleName this}}</b>
+                            {{/each}}
+                          </span>
+                        </div>
+                        {{#if isInRole 'doctor'}}
+                          <div class="reply">
+                            <a href="{{pathFor 'rePost' id=_id }}"><i class="fa fa-share" id="{{_id}}"></i></a>
+                          </div>
+                        {{/if}}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          {{/each}}
+        {{/each}}
+      </div>
+    </div>
+  </div>
+  {{#if isInRole 'admin , doctor'}}
+  <a href="/article/new" class="btn-floating btn-large waves-effect waves-light tooltipped pluse-icon" data-position="top" data-delay="50" data-tooltip="New Media"> + </a>
+  {{/if}}
+</template>
