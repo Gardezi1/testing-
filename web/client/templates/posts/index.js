@@ -100,6 +100,7 @@ Template.articleList.onCreated(function() {
 Template.articleList.onRendered(function() {
   $('ul.tabs').tabs();
   $('.tooltipped').tooltip({delay: 50});
+  $('.playVideo').css("display","none");
 });
 
 Template.articleList.events({
