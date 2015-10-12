@@ -49,8 +49,8 @@ Posts.attachSchema(new SimpleSchema({
     }
   },
   articleTopic: {
-    // label: "Article Topic",
-    type: [String],
+    label: "Article Topic",
+    type: String,
     autoform: {
       label: false,
       type: "select-radio",
