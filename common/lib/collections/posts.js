@@ -122,17 +122,36 @@ Posts.attachSchema(new SimpleSchema({
       label: true,
       type: "select-radio",
       options: function () {
-        if(Meteor.user().profile.type == "admin"){
-            return[{label: "All", value: "hcpmember"},
-            {label: "HCP", value: "hcp"},
-            {label: "Members", value: "member"}
+        var temp = window.location.pathname.toString();
+        if(temp.indexOf("/admin/Posts/") > -1){
+          var pid = temp.substr(13,17);
+          var aid = Posts.findOne({"_id":pid}).authorId;
+          if(Meteor.users.findOne({"_id":aid}).profile.type == "admin")
+          {
+              return[{label: "All", value: "hcpmember"},
+              {label: "HCP", value: "hcp"},
+              {label: "Members", value: "member"}
+              ];
+          }else
+          {
+              return[
+              {label: "1st Circle", value: "1st"},
+              {label: "1st & 2nd Circle", value: "all"}
+              ]; 
+          }
+        }else{   
+          if(Meteor.user().profile.type == "admin"){
+              return[{label: "All", value: "hcpmember"},
+              {label: "HCP", value: "hcp"},
+              {label: "Members", value: "member"}
+              ];
+          }else{
+            return [
+              {label: "1st Circle", value: "1st"},
+              {label: "1st & 2nd Circle", value: "all"}
+              // {label: "2nd Circle", value: "2nd"}
             ];
-        }else{
-          return [
-            {label: "1st Circle", value: "1st"},
-            {label: "1st & 2nd Circle", value: "all"}
-            // {label: "2nd Circle", value: "2nd"}
-          ];
+          }
         }
       }
     }
