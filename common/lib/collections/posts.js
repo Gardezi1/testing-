@@ -53,7 +53,7 @@ Posts.attachSchema(new SimpleSchema({
     type: [String],
     autoform: {
       label: false,
-      type: "select-checkbox",
+      type: "select-radio",
       options: function () {
         uid = Meteor.userId();
         user = Meteor.users.findOne(uid)
