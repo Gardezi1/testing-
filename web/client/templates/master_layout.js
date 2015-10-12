@@ -36,5 +36,14 @@ Template.masterLayout.events({
   'click .where': function(){
     google.maps.event.trigger(GoogleMaps.maps.exampleMap.instance , 'resize');
     GoogleMaps.maps.exampleMap.instance.setCenter(GoogleMaps.maps.exampleMap.options.center);
+  },
+  'click .video-holder':function(e){
+    if(e.target.tagName == "DIV"){
+      $('#'+e.target.id).css("display","none")
+      $(".video-holder #"+ e.target.id).siblings().first().css("display" , "none");
+      $('#playVideo-'+ e.target.id.split("-")[1]).css("display","block");
+      var vid = document.getElementById('playVideo-'+ e.target.id.split("-")[1]); 
+      vid.play();
+    }
   }
 });

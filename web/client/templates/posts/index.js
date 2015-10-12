@@ -83,6 +83,18 @@ Template.articleList.helpers({
     else{
       return [];
     }
+  },
+  checkIfVideo: function(id){
+    if(id)
+      return "myVideo";
+    else
+      return "";
+  },
+  imageOpacity: function(id){
+    if(id)
+      return "image-opacity";
+    else
+      return "";
   }
 });
 
@@ -100,7 +112,6 @@ Template.articleList.onCreated(function() {
 Template.articleList.onRendered(function() {
   $('ul.tabs').tabs();
   $('.tooltipped').tooltip({delay: 50});
-  $('.playVideo').css("display","none");
 });
 
 Template.articleList.events({
