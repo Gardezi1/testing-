@@ -34,8 +34,10 @@ Template.masterLayout.events({
     })
   },
   'click .where': function(){
+    var lat = Meteor.user().profile.lat;
+    var lon = Meteor.user().profile.lon;
     google.maps.event.trigger(GoogleMaps.maps.exampleMap.instance , 'resize');
-    GoogleMaps.maps.exampleMap.instance.setCenter(GoogleMaps.maps.exampleMap.options.center);
+    GoogleMaps.maps.exampleMap.instance.setCenter({lat:lat , lng:lon});
   },
   'click .video-holder':function(e){
     if(e.target.tagName == "DIV"){

@@ -109,6 +109,14 @@ if (Meteor.isServer) {
       });
       Meteor.users.update(user._id, {$addToSet: {"profile.topics" :{$each: topic_list}}});
     }
+    var lat = ServerSession.get('latt');
+    lat = parseFloat(lat);
+    var lon = ServerSession.get('lonn');
+    lon = parseFloat(lon);
+    if((lat != undefined) && (lon != undefined)){
+      Meteor.users.update(user._id, {$set: {"profile.lat": lat}});
+      Meteor.users.update(user._id, {$set: {"profile.lon": lon}});
+    }
     return user;
   });
 

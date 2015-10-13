@@ -26,7 +26,7 @@ Template.articleList.helpers({
     if (GoogleMaps.loaded()) {
       // Map initialization options
       return {
-        center: new google.maps.LatLng(Meteor.user().profile.latitude, Meteor.user().profile.longitude),
+        // center: new google.maps.LatLng(Session.get('lat') , Session.get('lon')),
         zoom: 13
       };
     }
@@ -103,7 +103,7 @@ Template.articleList.onCreated(function() {
   GoogleMaps.ready('exampleMap', function(map) {
     // Add a marker to the map once it's ready
     var marker = new google.maps.Marker({
-      position: map.options.center,
+      position: {lat:Meteor.user().profile.lat , lng:Meteor.user().profile.lon},
       map: map.instance
     });
   });
