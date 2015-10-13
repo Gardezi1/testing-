@@ -152,6 +152,16 @@ Schema.UserProfile = new SimpleSchema({
   approve: {
     type: Boolean,
     optional: true
+  },
+  lat: {
+    type: Number,
+    decimal: true,
+    optional: true
+  },
+  lon: {
+    type: Number,
+    decimal: true,
+    optional: true
   }
 });
 
