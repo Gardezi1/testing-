@@ -112,7 +112,7 @@ Template.nav.onRendered(function() {
       //   $('.button-collapse-side').sideNav();
         
       // }
-      Router.go('/doctors');
+      // Router.go('/doctors');
       Session.set('doctorTopicsId', id);
     }
     $(".show-topic").css("visibility", "visible");
@@ -135,7 +135,7 @@ Template.nav.events({
         //   $('.button-collapse-side').sideNav();
           
         // }
-        Router.go('/doctors');
+        // Router.go('/doctors');
         Session.set('doctorTopicsId', id);
       }
       $(".show-topic").css("visibility", "visible");
