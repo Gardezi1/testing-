@@ -111,7 +111,9 @@ Template.articleList.onCreated(function() {
 
 Template.articleList.onRendered(function() {
   $('ul.tabs').tabs();
-  $('.tooltipped').tooltip({delay: 50});
+  if (!Meteor.isCordova){
+    $('.tooltipped').tooltip({delay: 50});
+  }
 });
 
 Template.articleList.events({
