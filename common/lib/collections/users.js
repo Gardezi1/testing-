@@ -234,6 +234,13 @@ Meteor.users.allow({
   }
 });
 
+ Meteor.users.before.remove(function (userId, doc) {
+  Posts.remove({"authorId":userId});
+  Notifications.remove({"userId":userId});
+  Notifications.remove({"followerId":userId});
+  Messages.remove({"from":userId});
+  Messages.remove({"to":userId});
+});
 
 var imageStore = new FS.Store.S3("profileImages", {
   accessKeyId: "AKIAI5HRPLEJZQ5LOG4Q", //required if environment variables are not set

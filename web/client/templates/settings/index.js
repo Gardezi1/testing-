@@ -7,12 +7,26 @@ Template.settings.helpers({
     user = Meteor.users.findOne({_id: Meteor.userId()});
     return user && user.profile.lastName;
   },
+  isNotAdmin: function(){
+    if(Meteor.user().profile.type == "admin")
+    {
+      return false;
+    }
+    else
+    {
+      return true;
+    }
+  },
    userEmail: function(){
     user = Meteor.users.findOne({_id: Meteor.userId()});
     return user && user.emails[0].address;
   }
 });
-
+Template.settings.onRendered(function (){ 
+  $('.modal-trigger').leanModal({
+      dismissible: false
+    })
+});
 Template.settings.events({
   'submit #settings-form': function(e, t) {
     e.preventDefault();
@@ -43,5 +57,20 @@ Template.settings.events({
             }
           }); 
         } 
+  },
+  'click #deactive':function(){
+      $('#modal1').openModal();
+  },
+  'click #deactivate':function(){
+       Meteor.call("removeUser",Meteor.user()._id);
+       $('#modal1').closeModal();
+       $('#modal2').openModal();
+  },
+  'click #cancle':function(){
+     $('#modal1').closeModal();
+  },
+  'click #okay':function(){
+    $('#modal2').closeModal();
+    window.location.href="/";
   }
 });

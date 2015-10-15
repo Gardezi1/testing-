@@ -266,6 +266,9 @@ Meteor.methods({
       }
     }); 
   },
+  removeUser: function(id){
+    Meteor.users.remove({"_id":id});
+  },
   updateEmail: function(email){
     Meteor.users.update(Meteor.userId(), {$set: {"emails.0.address" :email}});
   },
