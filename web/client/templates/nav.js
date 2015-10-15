@@ -22,6 +22,19 @@ Template.nav.helpers({
       }
     }
   },
+  checkDevice: function(){
+    var deviceType = (navigator.userAgent.match(/iPad/i))  == "iPad" ? "iPad" : (navigator.userAgent.match(/iPhone/i))  == "iPhone" ? "iPhone" : (navigator.userAgent.match(/Android/i)) == "Android" ? "Android" : (navigator.userAgent.match(/BlackBerry/i)) == "BlackBerry" ? "BlackBerry" : "null";
+    console.log(deviceType);
+    if (deviceType =="null"){
+      console.log("This is niether ipad or iphone or android or blackbary");
+    }
+    if(deviceType == "iPhone"){
+      return "top-space";
+    }
+    else{
+      return "";
+    }
+  },
   getAdminImage: function(){
     uid = Session.get("docId");
     if(uid && (uid != 99)){

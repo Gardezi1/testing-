@@ -70,6 +70,10 @@ nav{
   background: #f25d47;
 }
 
+.navbar-fixed{
+  height: 65px;
+}
+
 .normal-nav{
   margin: 17px 0;
   li{
@@ -121,11 +125,10 @@ nav{
 
 .logo-title{
   display: block;
-  text-align: right;
   color: #fff;
   font-size: 18px;
   margin-top: -25px;
-  padding-right: 48px;
+  padding-left: 97px;
 }
 
 /* Start sub header Styling */
@@ -135,6 +138,7 @@ nav{
   padding: 20px 0;
   background: #fff;
   margin: 0 0 30px;
+  position: relative;
   .row{
     margin-bottom: 0;
   }
@@ -1498,11 +1502,10 @@ li.admin {
   a{
     .badge{
       float: right;
-      position: absolute;
-      top: 28px;
-      right: 10px;
+      margin-top: 43px;
       background-color: #f25d47;
       color: #fff;
+      position: relative;
     }
     &:before{
       font-size: 25px;
@@ -1513,6 +1516,16 @@ li.admin {
     }
   }
 }
+
+.top-space{
+  height: 85px;
+  padding-top: 20px;
+}
+
+.sub-head-space{
+  margin-top:20px;
+}
+
 #nav-mobile{
   a{
     font-size: 13px;
@@ -1596,6 +1609,7 @@ input .valid {
   nav {
     height: 65px;
     line-height: 80px;
+
     .button-collapse{
       float: right;
     }
@@ -1618,7 +1632,6 @@ input .valid {
     .edite-btn{
       position: absolute;
       right: 10px;
-      top: 85px;
     }
   }
   .doc-sub-head{
@@ -1647,25 +1660,19 @@ input .valid {
     max-width: 450px;
     margin: 0 auto;
   }
-  .sub-head h5 {
-    margin: 5px 0 0;
-  }
-  .sub-head .back-btn{
-    position: absolute;
-    left: 10px;
-    top: 82px;
-    font-size: 13px;
-  }
-  .sub-head .edite-btn{
-    position: absolute;
-    right: 10px;
-    top: 82px;
-  }
   .sub-head{
+    .back-btn{
+      position: absolute;
+      left: 10px;
+      font-size: 13px;
+    }
     .edite-btn{
       position: absolute;
       right: 10px;
-      top: 85px;
+      top: 21px;
+    }
+    h5{
+      font-size: 19px;
     }
   }
   .prof-con{
@@ -1745,7 +1752,7 @@ input .valid {
     .edite-btn,
     .back-btn{
       position: absolute;
-      top: 82px;
+      top: 18px;
       font-size: 10px;
     }
     .edite-btn{
@@ -1753,7 +1760,7 @@ input .valid {
     }
     h5{
       font-size: 17px;
-      line-height: 37px;
+      line-height: 17px;
       padding: 0;
     }
   }
@@ -1806,6 +1813,9 @@ input .valid {
       position: relative;
       top: 5px;
     }
+  }
+  .logo-title{
+    padding-left: 82px;
   }
 }
 
