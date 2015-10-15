@@ -27,7 +27,7 @@ Template.articleList.helpers({
       // Map initialization options
       return {
         // center: new google.maps.LatLng(Session.get('lat') , Session.get('lon')),
-        zoom: 13
+        zoom: 10
       };
     }
   },
@@ -102,10 +102,25 @@ Template.articleList.onCreated(function() {
   // We can use the `ready` callback to interact with the map API once the map is ready.
   GoogleMaps.ready('exampleMap', function(map) {
     // Add a marker to the map once it's ready
+    var image ='imgs/pin2.png';
+    var markers = [];
     var marker = new google.maps.Marker({
       position: {lat:Meteor.user().profile.lat , lng:Meteor.user().profile.lon},
       map: map.instance
     });
+    var temp = Meteor.users.find({"profile.type":"doctor"}).fetch();
+    for(var i = 0 ; i <temp.length ; i++)
+    {
+      var obj = {};
+      obj.lat = temp[i].profile.location.coordinates[1];
+      obj.lng = temp[i].profile.location.coordinates[0];
+      markers.push(new google.maps.Marker({
+        position: obj,
+        map:  map.instance,
+        animation: google.maps.Animation.DROP,
+        icon: image
+      }));
+    }
   });
 });
 

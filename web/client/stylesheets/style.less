@@ -746,25 +746,15 @@ li.admin {
     padding:0 45px;
     margin: 0 0 20px;
     width: 100%;
-    position: relative;
-    min-height: 46px;
     input[type=text]{
       margin: 0;
       border: 0;
-      position: absolute;
-      left: 0;
-      top: 0;
-      padding: 0 45px;  
     }
     &:before{
       position: absolute;
       top: 15px;
       left: 15px;
       color: #007ccd;
-    }
-    *{
-      -moz-box-sizing: border-box;
-      box-sizing: border-box;
     }
   }
 }
@@ -773,7 +763,6 @@ li.admin {
   left: -14px;
   position: relative;
 }
-
 .doc-detail{
   img, .img {
     width: 100%;
@@ -894,15 +883,13 @@ li.admin {
       border-bottom:1px solid transparent;
       box-sizing: border-box;
       padding-right: 100px;
-      padding-left: 20px;
-      margin:0; 
     }
     p{
       padding: 0;
       font-size:13px;
       color: #666;
-      padding: 0 20px;
     }
+    padding:0 18px;
     .btn{
       position: absolute;
       top: 18px;
@@ -1349,9 +1336,6 @@ li.admin {
   }
   .accept-doc {
     padding-top: 9px;
-    .btn{
-      background-color: #039be5;
-    }
   }
   h5 {
     float: left;
@@ -1565,9 +1549,7 @@ input .valid {
   border-bottom: 2px solid #f55853 !important;
 }
 
-.blue-btn{
-  background-color: #039be5;
-}
+
 
 .custom-file-btn{
   background-color: #337ab7;
@@ -1584,6 +1566,23 @@ input .valid {
     background:#286090;
   }
 }
+
+.d-active-modal{
+  top: 35% !important;
+  text-align: center;
+  width: 40%;
+  h5{
+    font-size: 20px;
+  }
+  .btn{
+    display: inline-block;
+    float:none !important;
+  }
+  .blue{
+    background: #039be5;
+  }
+}
+
 
 /* Large desktops and laptops */
 @media (min-width: 1200px) {
@@ -1604,6 +1603,9 @@ input .valid {
     .prof-pl{
       text-align: right;
     }
+  }
+  .d-active-modal {
+    width: 80%;
   }
 }
 @media (min-width: 640px) and (max-width: 767px) {
@@ -1626,7 +1628,9 @@ input .valid {
       text-align: right;
     }
   }
-
+  .d-active-modal {
+    width: 80%;
+  }
 }
 @media (min-width: 480px) and (max-width: 639px) {
   nav {
@@ -1694,16 +1698,11 @@ input .valid {
       top: 5px;
     }
   }
+  .d-active-modal {
+    width: 90%;
+  }
 }
 @media (min-width: 320px) and (max-width: 479px) {
-  .post-head {
-    & > img {
-      float: left;
-    } 
-    & > .auhtor-name {
-      top: 30px;
-    }
-  }
   nav {
     height: 65px;
     line-height: 80px;
@@ -1807,6 +1806,14 @@ input .valid {
       top: 5px;
     }
   }
+  .d-active-modal {
+    top: 25% !important;
+    text-align: center;
+    width: 80%;
+    h5{
+      font-size: 18px;
+    }
+  }
 }
 
 .select-list{
@@ -1817,12 +1824,6 @@ input .valid {
       right: 0;
       top: 13px;
     }
-  }
-}
-
-#gender{
-  .input-field{
-    margin-left: -1rem;
   }
 }
 
@@ -1884,7 +1885,6 @@ input .valid {
     }
   }
 }
-
 
 @media only screen and (max-width : 992px) {
   .doc-detail img, .doc-detail .img {
