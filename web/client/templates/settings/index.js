@@ -7,6 +7,16 @@ Template.settings.helpers({
     user = Meteor.users.findOne({_id: Meteor.userId()});
     return user && user.profile.lastName;
   },
+  isNotAdmin: function(){
+    if(Meteor.user().profile.type == "admin")
+    {
+      return false;
+    }
+    else
+    {
+      return true;
+    }
+  },
    userEmail: function(){
     user = Meteor.users.findOne({_id: Meteor.userId()});
     return user && user.emails[0].address;

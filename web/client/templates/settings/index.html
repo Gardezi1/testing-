@@ -56,11 +56,13 @@
     </div>      
   </div>
 
+  {{#if isNotAdmin}}
   <div class="custom-container">
     <div class="col s12">
      <input type="submit" id ="deactive" class="org-color reset-pass" value="Deactivate Account"> 
     </div>
   </div>
+  {{/if}}
   <div id="modal1" class="modal d-active-modal">
     <div class="modal-content">
       <h5>Are you sure you want to deactivate your account?</h5>
