@@ -1,3 +1,4 @@
+
 Template.nav.helpers({
   file_S3: function(){
     if(Meteor.user()){
@@ -105,6 +106,19 @@ Template.nav.helpers({
   },
   notificationCount: function(){
     return Notifications.find({userId: Meteor.userId(), read: false}).count();
+  },
+  messageCount: function(){
+    //console.log("count"+Messages.find({to: Meteor.user()._id, read: false}).count())
+    // var temp = Messages.find({to: Meteor.user()._id, read: false}).fetch();
+    // for(var i = 0; i <temp.length ; i ++)
+    // {
+    //   for(var j = 0; j< temp.length; j++)
+    //   {
+    //     temp[i].from
+    //   }
+    // }
+
+    return Messages.find({to: Meteor.user()._id, read: false}).count();
   }
 });
 

@@ -34,6 +34,13 @@ Template.masterLayout.events({
     })
   },
   'click .where': function(){
+    navigator.geolocation.getCurrentPosition(function(position) {
+      Session.set('lat', position.coords.latitude);
+      Session.set('lon', position.coords.longitude);
+      ServerSession.set('latt', position.coords.latitude);
+      ServerSession.set('lonn', position.coords.longitude);
+  });
+    Meteor.call("storeCoordinates",Meteor.user()._id);
     var lat = Meteor.user().profile.lat;
     var lon = Meteor.user().profile.lon;
     google.maps.event.trigger(GoogleMaps.maps.exampleMap.instance , 'resize');

@@ -58,10 +58,14 @@
                 <a href="{{pathFor route='doctorsListing'}}" class="fa fa-users tooltipped" ata-position="bottom" data-delay="50" data-tooltip="Healthcare Providers"></a>
               </li>
             {{/if}}
-            <li>
-              <a href="{{pathFor route='conversationListing'}}" class="fa fa-envelope-o tooltipped" data-position="bottom" data-delay="50" data-tooltip="MESSAGES"></a>
+            <li class="badge-s">
+              <a href="{{pathFor route='conversationListing'}}" class="fa fa-envelope-o tooltipped" data-position="bottom" data-delay="50" data-tooltip="MESSAGES">
+                {{#if messageCount}}
+                  <span class="badge">{{messageCount}}</span>
+                {{/if}}
+              </a>
             </li>
-            <li>
+            <li class="badge-s">
               <a href="{{pathFor route='notifications'}}" class="fa fa-bell tooltipped" data-position="bottom" data-delay="50" data-tooltip="NOTIFICATION">
                 {{#if notificationCount}}
                   <span class="badge">{{notificationCount}}</span>
@@ -114,7 +118,12 @@
             </li>
           {{/if}}
           <li>
-            <a href="{{pathFor route='conversationListing'}}" class="fa fa-envelope-o">Messages</a>
+            <a href="{{pathFor route='conversationListing'}}" class="fa fa-envelope-o">
+            Messages
+            {{#if messageCount}}
+                <span class="badge">{{messageCount}}</span>
+              {{/if}}
+            </a>
           </li>
 
           <li>
