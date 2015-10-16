@@ -6,6 +6,10 @@ if (Meteor.isServer) {
         Topics.insert({name:topic})
       });
     }
+    WebApp.connectHandlers.use(function(req, res, next) {
+      res.setHeader("Access-Control-Allow-Origin", "*");
+      return next();
+    });
   });
 
   if (!Meteor.users.findOne({"emails.address": "admin@medcircle.com"})) {
