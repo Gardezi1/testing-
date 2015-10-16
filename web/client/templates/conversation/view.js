@@ -17,11 +17,26 @@ Template.conversationView.helpers({
       return false;
   },
   gteMyImage: function(){
+    
     var path = Meteor.user().profile.picture;
+    console.log("Path" + path);
       var file = Data.findOne({_id:path});
+      console.log("File" + file);
       if(file){
         url = "https://s3.amazonaws.com/medcircle/upload/data/"+file._id+"-"+file.name();
         return url;
+      }
+  },
+  getCurrentUserImage: function(){
+    
+      user = Meteor.user();
+      console.log(user);
+      if(user && user.profile.picture){
+        var file = Data.findOne({_id:user.profile.picture});
+        if(file){
+          url = "https://s3.amazonaws.com/medcircle/upload/data/"+file._id+"-"+file.name();
+            return url;
+        }
       }
   },
   fromMe: function(fromId){
@@ -34,6 +49,7 @@ Template.conversationView.helpers({
     return user && user.profile.firstName;
   },
   gteUserImage: function(id){
+    // debugger;
     if(id){
       user = Meteor.users.findOne({_id:id});
       if(user && user.profile.picture){

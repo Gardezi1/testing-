@@ -27,7 +27,7 @@ Template.articleList.helpers({
       // Map initialization options
       return {
         // center: new google.maps.LatLng(Session.get('lat') , Session.get('lon')),
-        zoom: 10
+        zoom: 13
       };
     }
   },
