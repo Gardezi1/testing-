@@ -17,6 +17,11 @@
     </div>
   {{/contentFor}}
 <div class="custom-container">
+  {{#if onWeb}}
+    <camera id='Medcircle' data-app-id='a-bf344ab0-4b03-0133-0e9f-22000b8b3aed'></camera>
+  {{else}}
+    <button type='submit' class="btn btn-primary record-video">Record Video</button>
+  {{/if}}
   <div class="form-holder">  
     <div class="row">
       <div class="col-md-12">
