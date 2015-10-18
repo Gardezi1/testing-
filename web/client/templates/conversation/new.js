@@ -1,5 +1,6 @@
 Template.startConversation.helpers({
   settings: function() {
+    debugger;
     user =  Meteor.users.findOne({_id: Meteor.userId()});
     if(Roles.userIsInRole(user._id, [ROLES.Admin])){
       return {
@@ -10,6 +11,7 @@ Template.startConversation.helpers({
             // token: '@',
             collection: Meteor.users,
             field: 'profile.firstName',
+            // field: 'profile.lastName',
             filter: {$or: [{ 'profile.type': "advocate" }, {'profile.type': "doctor"} ]},
             // filter: {_id: {$in: user.profile.followers}},
             template: Template.userPill
@@ -25,6 +27,7 @@ Template.startConversation.helpers({
             // token: '@',
             collection: Meteor.users,
             field: 'profile.firstName',
+            // field: 'profile.lastName',
             filter: {_id: {$in: user.profile.firstCircle}},
             // filter: {_id: {$in: user.profile.followers}},
             template: Template.userPill
@@ -41,6 +44,7 @@ Template.startConversation.helpers({
             // token: '@',
             collection: Meteor.users,
             field: 'profile.firstName',
+            // field: 'profile.lastName',
             // filter: {$or: [{ 'profile.type': "advocate" }, {'profile.type': "doctor"} ]},
             filter: {_id: {$in: user.profile.followers}},
             template: Template.userPill
@@ -53,6 +57,7 @@ Template.startConversation.helpers({
 
 Template.startConversation.events({  
   'click #send_message_to_advo': function(e) {
+    debugger;
     name = $("#advocate_name").val();
     message = $("#advo_message").val();
     if(name && message){

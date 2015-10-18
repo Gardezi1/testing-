@@ -10,6 +10,8 @@ Template.doctorsListing.helpers({
     }
   },
   searchResults: function() {
+    // debugger;
+    console.log(Session.get("doctorSearchQuery"));
     if (Session.get("doctorSearchQuery")) {
       lat = Meteor.user().profile.lat;
       lon = Meteor.user().profile.lon;
