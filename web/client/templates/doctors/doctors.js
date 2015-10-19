@@ -10,8 +10,6 @@ Template.doctorsListing.helpers({
     }
   },
   searchResults: function() {
-    // debugger;
-    console.log(Session.get("doctorSearchQuery"));
     if (Session.get("doctorSearchQuery")) {
       lat = Meteor.user().profile.lat;
       lon = Meteor.user().profile.lon;
@@ -23,7 +21,18 @@ Template.doctorsListing.helpers({
       {  
           results.insert(r[i]);
       }
-     return results.find({ $and:[{"profile.type": "doctor"},{"profile.firstName": {$regex: new RegExp((Session.get("doctorSearchQuery")), "i")}}]});
+      
+      t= Session.get("doctorSearchQuery").split(" ");
+      
+      regexQueryString = t[0];
+      for(var i = 1 ; i < t.length ; i++){
+        if (t[i]!= ""){
+          regexQueryString= regexQueryString+ "|"
+          regexQueryString =regexQueryString+ t[i];
+        }
+      }
+      //debugger;
+     return results.find({ $and:[{"profile.type": "doctor"},{$or: [{"profile.firstName": {$regex: new RegExp(p, "i")}} , {"profile.lastName": {$regex: new RegExp(p, "i")}}]}]});
     }
   },
   checkIfloggedIn: function(authorId){

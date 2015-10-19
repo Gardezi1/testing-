@@ -11,10 +11,22 @@ Template.startConversation.helpers({
             // token: '@',
             collection: Meteor.users,
             field: 'profile.firstName',
-            // field: 'profile.lastName',
             filter: {$or: [{ 'profile.type': "advocate" }, {'profile.type': "doctor"} ]},
             // filter: {_id: {$in: user.profile.followers}},
-            template: Template.userPill
+            template: Template.userPill,
+            selector: function(match) {
+               var regex;
+               regex = new RegExp(match, 'i');
+               return {
+                   $or: [
+                      {
+                           'profile.firstName': regex
+                      }, {
+                           'profile.lastName': regex
+                      }
+                   ]
+               };
+            }
           }
         ]
       };
@@ -26,11 +38,25 @@ Template.startConversation.helpers({
           {
             // token: '@',
             collection: Meteor.users,
-            field: 'profile.firstName',
+            field:'profile.firstName',
+
             // field: 'profile.lastName',
             filter: {_id: {$in: user.profile.firstCircle}},
             // filter: {_id: {$in: user.profile.followers}},
-            template: Template.userPill
+            template: Template.userPill,
+            selector: function(match) {
+               var regex;
+               regex = new RegExp(match, 'i');
+               return {
+                   $or: [
+                      {
+                           'profile.firstName': regex
+                      }, {
+                           'profile.lastName': regex
+                      }
+                   ]
+               };
+            }
           }
         ]
       };
@@ -47,7 +73,20 @@ Template.startConversation.helpers({
             // field: 'profile.lastName',
             // filter: {$or: [{ 'profile.type': "advocate" }, {'profile.type': "doctor"} ]},
             filter: {_id: {$in: user.profile.followers}},
-            template: Template.userPill
+            template: Template.userPill,
+            selector: function(match) {
+               var regex;
+               regex = new RegExp(match, 'i');
+               return {
+                   $or: [
+                      {
+                           'profile.firstName': regex
+                      }, {
+                           'profile.lastName': regex
+                      }
+                   ]
+               };
+            }
           }
         ]
       };
@@ -61,7 +100,7 @@ Template.startConversation.events({
     name = $("#advocate_name").val();
     message = $("#advo_message").val();
     if(name && message){
-      if(Session.get('startConversationForNotificationUserId') != undefined){
+      if(Session.get('startConversationForNotificationUserId') != undefined && Session.get('startConversationForNotificationUserId') != ""){
         toUser =  Session.get('startConversationForNotificationUserId');
         toId = toUser;
       }
