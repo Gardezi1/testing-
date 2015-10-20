@@ -80,4 +80,6 @@ navigator.geolocation.getCurrentPosition(function(position) {
       ServerSession.set('latt', position.coords.latitude);
       ServerSession.set('lonn', position.coords.longitude);
   });
+
+  Meteor.call("storeCoordinates",Meteor.userId());
 })

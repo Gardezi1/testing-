@@ -117,8 +117,7 @@ Template.nav.helpers({
     //     temp[i].from
     //   }
     // }
-
-    return Messages.find({to: Meteor.user()._id, read: false}).count();
+    return Messages.find({to: Meteor.userId(), read: false}).count();
   }
 });
 
