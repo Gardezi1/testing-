@@ -1,11 +1,8 @@
-<template name="test">
+<template name="video">
   {{#contentFor "subnav"}}
     <div class="row">
       <div class="col s12 m2 l2">  
         <a href="{{pathFor route='articles'}}" class="back-btn left fa fa-chevron-left"> Back</a>
-      </div>
-      <div class="col s12 m8 l8"> 
-          <h5 class="center-align name">Record Video</h5> 
       </div>
     </div>
   {{/contentFor}}
@@ -16,11 +13,7 @@
         <div class="page-header">
           <div class="row">
           <div class="col-md-12">
-            {{#if onWeb}}
-              <camera id='myVid' data-app-id='a-bf344ab0-4b03-0133-0e9f-22000b8b3aed'></camera>
-            {{else}}
-              <button type='submit' class="btn btn-primary record-video">Record Video</button>
-            {{/if}}
+            <video id='rando' data-uuid='["v-1dc35a15-e5ac-4390-8beb-561198bd711b"]'></video>
           </div>
         </div>
         </div>

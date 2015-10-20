@@ -111,19 +111,22 @@ Router.configureBodyParsers = function() {
 };
 
 
-Router.route("/test", {
+Router.route("/record/video", {
   name: "test",
   onBeforeAction: function(){
     if(Roles.userIsInRole(Meteor.userId(), [ROLES.Admin, ROLES.Doctor, ROLES.Advocate]))
       this.next();
     else
       this.render("/pageNotAuthorize");
-  },
-  waitOn: function(){
-    console.log(this.request.body);
-    Session.set("vidResponse", this.request.body);
-    return [
-      Meteor.subscribe("Messages")
-    ]
+  }
+});
+
+Router.route("/video", {
+  name: "video",
+  onBeforeAction: function(){
+    if(Roles.userIsInRole(Meteor.userId(), [ROLES.Admin, ROLES.Doctor, ROLES.Advocate]))
+      this.next();
+    else
+      this.render("/pageNotAuthorize");
   }
 });

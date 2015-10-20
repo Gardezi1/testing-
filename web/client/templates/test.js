@@ -42,13 +42,13 @@ if (Meteor.isClient) {
     });
   }
   else{
-   CameraTag.observe("myVid", "initialized", function(){
-      myCamera = CameraTag.cameras["myVid"];
-      var myVideo = myCamera.getVideo();
-      console.log("vid"+ myVideo);
-      var mp4_url = myVideo.formats[0].mp4_url;
-      console.log("url"+mp4_url);
-    }); 
+   // CameraTag.observe("myVid", "initialized", function(){
+   //    myCamera = CameraTag.cameras["myVid"];
+   //    var myVideo = myCamera.getVideo();
+   //    console.log("vid"+ myVideo);
+   //    var mp4_url = myVideo.formats[0].mp4_url;
+   //    console.log("url"+mp4_url);
+   //  }); 
   }
 
   var captureError = function(error) {
