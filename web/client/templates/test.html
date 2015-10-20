@@ -10,22 +10,10 @@
     </div>
   {{/contentFor}}
 <div class="custom-container">
-  <div class="form-holder">  
-    <div class="row">
-      <div class="col-md-12">
-        <div class="page-header">
-          <div class="row">
-          <div class="col-md-12">
-            {{#if onWeb}}
-              <camera id='myVid' data-app-id='a-bf344ab0-4b03-0133-0e9f-22000b8b3aed'></camera>
-            {{else}}
-              <button type='submit' class="btn btn-primary record-video">Record Video</button>
-            {{/if}}
-          </div>
-        </div>
-        </div>
-      </div>
-    </div>
-  </div>
+  {{#if onWeb}}
+    <camera id='myVidProd' data-app-id='a-bf344ab0-4b03-0133-0e9f-22000b8b3aed'></camera>
+  {{else}}
+    <button type='submit' class="btn btn-primary record-video">Record Video</button>
+  {{/if}}
 </div>
 </template>
