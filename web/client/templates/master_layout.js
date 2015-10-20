@@ -63,6 +63,8 @@ Template.masterLayout.onRendered(function() {
       // console.log("This is niether ipad or iphone or android or blackbary 2nd time");
     }
     if(deviceType == "iPhone"){
-      $(".hiddendiv").css("display","block");
+      $(".i-header").css("height", "85px");
+      $(".i-header nav").css("height", "85px");
+      $(".i-header nav").css("padding-top", "20px");
     }
 });
