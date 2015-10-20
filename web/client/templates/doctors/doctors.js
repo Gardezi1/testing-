@@ -32,7 +32,7 @@ Template.doctorsListing.helpers({
         }
       }
       //debugger;
-     return results.find({ $and:[{"profile.type": "doctor"},{$or: [{"profile.firstName": {$regex: new RegExp(p, "i")}} , {"profile.lastName": {$regex: new RegExp(p, "i")}}]}]});
+     return results.find({ $and:[{"profile.type": "doctor"},{$or: [{"profile.firstName": {$regex: new RegExp(regexQueryString, "i")}} , {"profile.lastName": {$regex: new RegExp(regexQueryString, "i")}}]}]});
     }
   },
   checkIfloggedIn: function(authorId){
