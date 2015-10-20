@@ -118,9 +118,6 @@ Router.route('/test', {
     this.layout('test');
       Session.set("vidResponse", this.request.body);
       console.log(this.request.body);
-      this.response.writeHead(200, {'Content-Type': 
-                                    'application/json; charset=utf-8'});
-      this.response.end(JSON.stringify(resp));
       this.next();
   }
 
