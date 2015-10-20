@@ -110,20 +110,18 @@ Router.configureBodyParsers = function() {
   }));
 };
 
-Router.route('/test', 'test', {
-  onBeforeAction: function(){
-    if(Roles.userIsInRole(Meteor.userId(), [ROLES.Admin, ROLES.Doctor, ROLES.Advocate])){
+
+Router.route('/test', {
+  name: 'test',
+  // layoutTemplate: "home",
+  action: function() {
+    this.layout('test');
       Session.set("vidResponse", this.request.body);
       console.log(this.request.body);
+      this.response.writeHead(200, {'Content-Type': 
+                                    'application/json; charset=utf-8'});
+      this.response.end(JSON.stringify(resp));
       this.next();
-    }
-    else
-      this.render("/pageNotAuthorize");
-  },
-  waitOn: function(){
-    return [
-      Meteor.subscribe("Posts"),
-      Meteor.subscribe("followerTopics")
-    ]
   }
+
 });
