@@ -102,3 +102,28 @@ Router.onAfterAction(function(){
         $("head").append($("<script type='text/javascript' src='/js/bootstrap.min.js'></script>"));
     }
 });
+
+Router.configureBodyParsers = function() {
+  Router.onBeforeAction(Iron.Router.bodyParser.urlencoded({
+    extended: true,
+    limit: '500mb'
+  }));
+};
+
+Router.route('/test', 'test', {
+  onBeforeAction: function(){
+    if(Roles.userIsInRole(Meteor.userId(), [ROLES.Admin, ROLES.Doctor, ROLES.Advocate])){
+      Session.set("vidResponse", this.request.body);
+      console.log(this.request.body);
+      this.next();
+    }
+    else
+      this.render("/pageNotAuthorize");
+  },
+  waitOn: function(){
+    return [
+      Meteor.subscribe("Posts"),
+      Meteor.subscribe("followerTopics")
+    ]
+  }
+});

@@ -129,6 +129,7 @@ Template.articleList.onRendered(function() {
   if (!Meteor.isCordova){
     $('.tooltipped').tooltip({delay: 50});
   }
+
 });
 
 Template.articleList.events({

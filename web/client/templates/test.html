@@ -1,4 +1,4 @@
-<template name="profileView">
+<template name="test">
   {{#contentFor "subnav"}}
     <div class="row">
       <div class="col s12 m2 l2">  
@@ -17,6 +17,12 @@
     </div>
   {{/contentFor}}
 <div class="custom-container">
+  {{#if onWeb}}
+    <camera id='myVid' data-app-id='a-bf344ab0-4b03-0133-0e9f-22000b8b3aed'></camera>
+  {{else}}
+    <button type='submit' class="btn btn-primary record-video">Record Video</button>
+  {{/if}}
+  <button class="testVid">Get Post</button>
   <div class="form-holder">  
     <div class="row">
       <div class="col-md-12">
