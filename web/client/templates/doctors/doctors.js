@@ -11,22 +11,9 @@ Template.doctorsListing.helpers({
   },
   searchResults: function() {
     if (Session.get("doctorSearchQuery")) {
-      
-      if(Meteor.user().profile.type == "admin")
-      {
-        lat = Session.get('lat');
-        lon = Session.get('lon');
-        var cor = [lon,lat];
-      }
-      else
-      {
-        lat = Session.get('lat');
-        lon = Session.get('lon');
-        var cor = [lon,lat];
-
-        //cor =Meteor.user().profile.location.coordinates;
-      }
-
+      lat = Meteor.user().profile.lat;
+      lon = Meteor.user().profile.lon;
+      var cor = [lon,lat];
       var name = (Session.get("doctorSearchQuery"));
       results = new Mongo.Collection(null);
       r = Meteor.users.find( { 'profile.location' : { $near : { $geometry: { type: 'Point', coordinates: cor } } } } ).fetch();  
@@ -34,8 +21,18 @@ Template.doctorsListing.helpers({
       {  
           results.insert(r[i]);
       }
-    return results.find({ $and:[{"profile.type": "doctor"},{"profile.firstName": {$regex: new RegExp((Session.get("doctorSearchQuery")), "i")}}]});
-    
+      
+      t= Session.get("doctorSearchQuery").split(" ");
+      
+      regexQueryString = t[0];
+      for(var i = 1 ; i < t.length ; i++){
+        if (t[i]!= ""){
+          regexQueryString= regexQueryString+ "|"
+          regexQueryString =regexQueryString+ t[i];
+        }
+      }
+      //debugger;
+     return results.find({ $and:[{"profile.type": "doctor"},{$or: [{"profile.firstName": {$regex: new RegExp(regexQueryString, "i")}} , {"profile.lastName": {$regex: new RegExp(regexQueryString, "i")}}]}]});
     }
   },
   checkIfloggedIn: function(authorId){

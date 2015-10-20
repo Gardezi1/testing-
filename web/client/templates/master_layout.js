@@ -34,6 +34,13 @@ Template.masterLayout.events({
     })
   },
   'click .where': function(){
+    navigator.geolocation.getCurrentPosition(function(position) {
+      Session.set('lat', position.coords.latitude);
+      Session.set('lon', position.coords.longitude);
+      ServerSession.set('latt', position.coords.latitude);
+      ServerSession.set('lonn', position.coords.longitude);
+  });
+    Meteor.call("storeCoordinates",Meteor.user()._id);
     var lat = Meteor.user().profile.lat;
     var lon = Meteor.user().profile.lon;
     google.maps.event.trigger(GoogleMaps.maps.exampleMap.instance , 'resize');
@@ -48,4 +55,14 @@ Template.masterLayout.events({
       vid.play();
     }
   }
+});
+
+Template.masterLayout.onRendered(function() {
+   deviceType = (navigator.userAgent.match(/iPad/i))  == "iPad" ? "iPad" : (navigator.userAgent.match(/iPhone/i))  == "iPhone" ? "iPhone" : (navigator.userAgent.match(/Android/i)) == "Android" ? "Android" : (navigator.userAgent.match(/BlackBerry/i)) == "BlackBerry" ? "BlackBerry" : "null";
+    if (deviceType =="null"){
+      console.log("This is niether ipad or iphone or android or blackbary 2nd time");
+    }
+    if(deviceType == "iPhone"){
+      $(".hiddendiv").css("display","block");
+    }
 });

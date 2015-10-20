@@ -3,16 +3,16 @@
     <div class="row">
       {{#contentFor "subnav"}}
       <ul class="tabs bottom-p0 article-tabs">
-        <li class="tab what"><a class="active tooltipped" href="#what" data-position="bottom" data-delay="50" data-tooltip="Is the condition">What</a>
+        <li class="tab what"><a class="active tooltipped" href="#what" data-position="bottom" data-delay="50" data-tooltip="is the condition">What..</a>
           <!-- <div class="sub-tab">Is the condition</div> -->
         </li>
-        <li class="tab how"><a class="tooltipped" href="#how" data-position="bottom" data-delay="50" data-tooltip="Do I get better">How</a>
+        <li class="tab how"><a class="tooltipped" href="#how" data-position="bottom" data-delay="50" data-tooltip="do i get better">How..</a>
           <!-- <div class="sub-tab">Do I get better</div> -->
         </li>
-        <li class="tab where"><a class="tooltipped" href="#where" data-position="bottom" data-delay="50" data-tooltip="Do I get help">Where</a>
+        <li class="tab where"><a class="tooltipped" href="#where" data-position="bottom" data-delay="50" data-tooltip="do i get help">Where..</a>
           <!-- <div class="sub-tab">Do I get help</div> -->
         </li>
-        <li class="tab more"><a class="tooltipped" href="#more" data-position="bottom" data-delay="50" data-tooltip="Resources">More</a>
+        <li class="tab more"><a class="tooltipped" href="#more" data-position="bottom" data-delay="50" data-tooltip="resources">More</a>
           <!-- <div class="sub-tab">Resources</div> -->
         </li>
       </ul>
@@ -54,7 +54,7 @@
                                     <li><b>{{getArticleName this}}</b></li>
                                   {{/each}}
                                 </ul> -->
-                                <a href="{{url}}" target="_blank"><b>{{source}}</b></a>
+                                <a href="#" target="_blank" onclick="window.open('{{url}}', '_system');"><b>{{source}}</b></a>
                                 <p> {{body}} </p>
                                 <!-- {{#if videoId}}
                                  <video width="320" height="240" controls>
@@ -125,7 +125,7 @@
                                 </div>
                               </div>
                               <div class="col s7">
-                                <a href="{{url}}" target="_blank"><b>{{source}}</b></a>
+                                <a href="{{url}}" target="_blank" onclick="window.open('{{url}}', '_system');"><b>{{source}}</b></a>
                                 <p> {{body}} </p>
                                 <!-- {{#if videoId}}
                                  <video width="320" height="240" controls>
@@ -218,7 +218,7 @@
                                 </div>
                               </div>
                               <div class="col s7">
-                                <a href="{{url}}" target="_blank"><b>{{source}}</b></a>
+                                <a href="#" target="_blank" onclick="window.open('{{url}}', '_system');"><b>{{source}}</b></a>
                                 <p> {{body}} </p>
                                 <!-- {{#if videoId}}
                                  <video width="320" height="240" controls>
@@ -282,7 +282,7 @@
                                 </div>
                               </div>
                               <div class="col s7">
-                                <a href="{{url}}" target="_blank"><b>{{source}}</b></a>
+                                <a href="#" target="_blank" onclick="window.open('{{url}}', '_system');"><b>{{source}}</b></a>
                                 <p> {{body}} </p>
                                 <!-- {{#if videoId}}
                                  <video width="320" height="240" controls>

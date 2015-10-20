@@ -52,7 +52,7 @@ Router.route("/article/:id", {
   }
 });
 
-Router.route('/articles', 'articleList', {
+Router.route('/articles', '/articleList', {
   onBeforeAction: function(){
     if(Roles.userIsInRole(Meteor.userId(), [ROLES.Admin, ROLES.Doctor, ROLES.Advocate]))
       this.next();

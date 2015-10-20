@@ -30,3 +30,17 @@ Template.editProfile.rendered = function(){
   var user = Meteor.users.findOne({_id: Meteor.userId() });
   $("#gender input[value='"+user.profile.gender+"']").prop("checked", true)
 }
+
+
+// Template.editProfile.helpers({
+//   PictureValue:function(){
+//     user = Meteor.user();
+//       if(user && user.profile.picture){
+//         var file = Data.findOne({_id:user.profile.picture});
+//         if(file){
+//           url = "https://s3.amazonaws.com/medcircle/upload/data/"+file._id+"-"+file.name();
+//             return url;
+//         }
+//       }
+//   }
+// });

@@ -70,6 +70,10 @@ nav{
   background: #f25d47;
 }
 
+.navbar-fixed{
+  height: 65px;
+}
+
 .normal-nav{
   margin: 17px 0;
   li{
@@ -121,11 +125,10 @@ nav{
 
 .logo-title{
   display: block;
-  text-align: right;
   color: #fff;
   font-size: 18px;
   margin-top: -25px;
-  padding-right: 48px;
+  padding-left: 97px;
 }
 
 /* Start sub header Styling */
@@ -135,6 +138,7 @@ nav{
   padding: 20px 0;
   background: #fff;
   margin: 0 0 30px;
+  position: relative;
   .row{
     margin-bottom: 0;
   }
@@ -746,25 +750,15 @@ li.admin {
     padding:0 45px;
     margin: 0 0 20px;
     width: 100%;
-    position: relative;
-    min-height: 46px;
     input[type=text]{
       margin: 0;
       border: 0;
-      position: absolute;
-      left: 0;
-      top: 0;
-      padding: 0 45px;  
     }
     &:before{
       position: absolute;
       top: 15px;
       left: 15px;
       color: #007ccd;
-    }
-    *{
-      -moz-box-sizing: border-box;
-      box-sizing: border-box;
     }
   }
 }
@@ -773,7 +767,6 @@ li.admin {
   left: -14px;
   position: relative;
 }
-
 .doc-detail{
   img, .img {
     width: 100%;
@@ -894,15 +887,13 @@ li.admin {
       border-bottom:1px solid transparent;
       box-sizing: border-box;
       padding-right: 100px;
-      padding-left: 20px;
-      margin:0; 
     }
     p{
       padding: 0;
       font-size:13px;
       color: #666;
-      padding: 0 20px;
     }
+    padding:0 18px;
     .btn{
       position: absolute;
       top: 18px;
@@ -1328,7 +1319,7 @@ li.admin {
   }
 }
 
-.fa-bell .badge{
+.badge-s .badge{
   right: 8px;
   top: -15px;
   background-color: #fff;
@@ -1349,9 +1340,6 @@ li.admin {
   }
   .accept-doc {
     padding-top: 9px;
-    .btn{
-      background-color: #039be5;
-    }
   }
   h5 {
     float: left;
@@ -1498,11 +1486,10 @@ li.admin {
   a{
     .badge{
       float: right;
-      position: absolute;
-      top: 28px;
-      right: 10px;
+      margin-top: 43px;
       background-color: #f25d47;
       color: #fff;
+      position: relative;
     }
     &:before{
       font-size: 25px;
@@ -1513,6 +1500,16 @@ li.admin {
     }
   }
 }
+
+.top-space{
+  height: 85px;
+  padding-top: 20px;
+}
+
+.sub-head-space{
+  margin-top:20px;
+}
+
 #nav-mobile{
   a{
     font-size: 13px;
@@ -1565,9 +1562,7 @@ input .valid {
   border-bottom: 2px solid #f55853 !important;
 }
 
-.blue-btn{
-  background-color: #039be5;
-}
+
 
 .custom-file-btn{
   background-color: #337ab7;
@@ -1585,6 +1580,23 @@ input .valid {
   }
 }
 
+.d-active-modal{
+  top: 35% !important;
+  text-align: center;
+  width: 40%;
+  h5{
+    font-size: 20px;
+  }
+  .btn{
+    display: inline-block;
+    float:none !important;
+  }
+  .blue{
+    background: #039be5;
+  }
+}
+
+
 /* Large desktops and laptops */
 @media (min-width: 1200px) {
 
@@ -1596,6 +1608,7 @@ input .valid {
   nav {
     height: 65px;
     line-height: 80px;
+
     .button-collapse{
       float: right;
     }
@@ -1604,6 +1617,18 @@ input .valid {
     .prof-pl{
       text-align: right;
     }
+  }
+  .d-active-modal {
+    width: 80%;
+  }
+  .shadow-box.z-depth-1{
+    position: relative;
+  }
+  .reply{
+    position: absolute;
+    top: 10px;
+    right: 0;
+    border-left: 0;
   }
 }
 @media (min-width: 640px) and (max-width: 767px) {
@@ -1618,7 +1643,6 @@ input .valid {
     .edite-btn{
       position: absolute;
       right: 10px;
-      top: 85px;
     }
   }
   .doc-sub-head{
@@ -1626,7 +1650,9 @@ input .valid {
       text-align: right;
     }
   }
-
+  .d-active-modal {
+    width: 80%;
+  }
 }
 @media (min-width: 480px) and (max-width: 639px) {
   nav {
@@ -1647,25 +1673,19 @@ input .valid {
     max-width: 450px;
     margin: 0 auto;
   }
-  .sub-head h5 {
-    margin: 5px 0 0;
-  }
-  .sub-head .back-btn{
-    position: absolute;
-    left: 10px;
-    top: 82px;
-    font-size: 13px;
-  }
-  .sub-head .edite-btn{
-    position: absolute;
-    right: 10px;
-    top: 82px;
-  }
   .sub-head{
+    .back-btn{
+      position: absolute;
+      left: 10px;
+      font-size: 13px;
+    }
     .edite-btn{
       position: absolute;
       right: 10px;
-      top: 85px;
+      top: 21px;
+    }
+    h5{
+      font-size: 19px;
     }
   }
   .prof-con{
@@ -1694,16 +1714,20 @@ input .valid {
       top: 5px;
     }
   }
+  .d-active-modal {
+    width: 90%;
+  }
+  .shadow-box.z-depth-1{
+    position: relative;
+  }
+  .reply{
+    position: absolute;
+    top: 10px;
+    right: 0;
+    border-left: 0;
+  }
 }
 @media (min-width: 320px) and (max-width: 479px) {
-  .post-head {
-    & > img {
-      float: left;
-    } 
-    & > .auhtor-name {
-      top: 30px;
-    }
-  }
   nav {
     height: 65px;
     line-height: 80px;
@@ -1745,7 +1769,7 @@ input .valid {
     .edite-btn,
     .back-btn{
       position: absolute;
-      top: 82px;
+      top: 18px;
       font-size: 10px;
     }
     .edite-btn{
@@ -1753,7 +1777,7 @@ input .valid {
     }
     h5{
       font-size: 17px;
-      line-height: 37px;
+      line-height: 17px;
       padding: 0;
     }
   }
@@ -1807,6 +1831,26 @@ input .valid {
       top: 5px;
     }
   }
+  .logo-title{
+    padding-left: 82px;
+  }
+  .d-active-modal {
+    top: 25% !important;
+    text-align: center;
+    width: 80%;
+    h5{
+      font-size: 18px;
+    }
+  }
+  .shadow-box.z-depth-1{
+    position: relative;
+  }
+  .reply{
+    position: absolute;
+    top: 10px;
+    right: 0;
+    border-left: 0;
+  }
 }
 
 .select-list{
@@ -1817,12 +1861,6 @@ input .valid {
       right: 0;
       top: 13px;
     }
-  }
-}
-
-#gender{
-  .input-field{
-    margin-left: -1rem;
   }
 }
 
@@ -1884,7 +1922,6 @@ input .valid {
     }
   }
 }
-
 
 @media only screen and (max-width : 992px) {
   .doc-detail img, .doc-detail .img {

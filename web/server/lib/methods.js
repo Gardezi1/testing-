@@ -259,12 +259,20 @@ Meteor.methods({
     }
   },
   addToMessageList: function(data, convId){
-
+    // var temp = Messages.find({$and: [{ $and: [  {to: data.fromId}, { from: data.fromId} ]  },{ read:false }] }).fetch();
+    // console.log(temp);
+    // for(var i = 0 ; i <temp.length; i++)
+    // {
+    //   Messages.update(temp[i]._id, {$set: {read: true}});
+    // }
     id = Messages.insert({'name':data.name ,'from':data.fromId,'to':data.toId, 'body': data.message, 'conversationId': convId, 'read': false}, function(error) {
       if (error) {
         return console.log(error);
       }
     }); 
+  },
+  removeUser: function(id){
+    Meteor.users.remove({"_id":id});
   },
   updateEmail: function(email){
     Meteor.users.update(Meteor.userId(), {$set: {"emails.0.address" :email}});
@@ -272,6 +280,16 @@ Meteor.methods({
   acceptUser: function(id, email){
     Meteor.users.update(id, {$set: {"profile.approve" :true}});
     Accounts.sendVerificationEmail(id, email);
+  },
+  readMessages: function(sender, receiver){
+    console.log(sender);
+    console.log(receiver);
+    var temp = Messages.find({$and: [{ $and: [  {to: receiver}, { from: sender} ]  },{ read:false }] }).fetch();
+    console.log(temp);
+    for(var i = 0 ; i <temp.length; i++)
+    {
+      Messages.update(temp[i]._id, {$set: {read: true}});
+    }
   },
   locationSpecification :function(address)
   {
@@ -305,6 +323,17 @@ Meteor.methods({
               "\n\n" + "Thanks"
       });
       Meteor.users.remove({_id:id});
+    }
+  },
+  storeCoordinates: function(id){
+
+    var lat = ServerSession.get('latt');
+    lat = parseFloat(lat);
+    var lon = ServerSession.get('lonn');
+    lon = parseFloat(lon);
+    if((lat != undefined) && (lon != undefined)){
+      Meteor.users.update(id, {$set: {"profile.lat": lat}});
+      Meteor.users.update(id, {$set: {"profile.lon": lon}});
     }
   }
 });

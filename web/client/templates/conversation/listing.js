@@ -77,9 +77,27 @@ Template.conversationListing.helpers({
 Template.conversationListing.events({
   'click .message-view': function(e) {
     msg = Messages.findOne({_id: this._id});
-    if(msg.from != Meteor.userId()){
-      Messages.update(this._id, {$set: {read: true}});
+    var sender = msg.from;
+    //console.log(sender);
+    receiver = Meteor.user()._id;
+    console.log(sender);
+    console.log(receiver);
+    var temp = Messages.find({$and: [{ $and: [  {to: receiver}, { from: sender} ]  },{ read:false }] }).fetch();
+    console.log(temp);
+    for(var i = 0 ; i <temp.length; i++)
+    {
+      Messages.update(temp[i]._id, {$set: {read: true}});
     }
+    //Meteor.call("readMessages",sender,Meteor.user()._id);
+
+    // var temp = Messages.find({$and: [{ $and: [  {to: Meteor.user()._id}, { from: sender} ]  },{ read:false }] }).fetch();
+    // for(var i = 0 ; i <temp.length; i++)
+    // {
+    //   Messages.update(temp._id, {$set: {read: true}});
+    // }
+    // if(msg.from != Meteor.userId()){
+    //   Messages.update(this._id, {$set: {read: true}});
+    // }
   },
   'click .more-conversation': function(e){
     limit = Session.get("conversationLimit");
