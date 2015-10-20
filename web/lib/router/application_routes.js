@@ -111,14 +111,19 @@ Router.configureBodyParsers = function() {
 };
 
 
-Router.route('/test', {
-  name: 'test',
-  // layoutTemplate: "home",
-  action: function() {
-    this.layout('test');
-      Session.set("vidResponse", this.request.body);
-      console.log(this.request.body);
+Router.route("/test", {
+  name: "test",
+  onBeforeAction: function(){
+    if(Roles.userIsInRole(Meteor.userId(), [ROLES.Admin, ROLES.Doctor, ROLES.Advocate]))
       this.next();
+    else
+      this.render("/pageNotAuthorize");
+  },
+  waitOn: function(){
+    console.log(this.request.body);
+    Session.set("vidResponse", this.request.body);
+    return [
+      Meteor.subscribe("Messages")
+    ]
   }
-
 });
