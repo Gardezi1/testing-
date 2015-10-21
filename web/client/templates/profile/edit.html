@@ -27,16 +27,15 @@
                   <div class="col s12">
                     <div class="img-rel">
                       {{#if isInRole 'doctor'}}
-                        
                         <div class="upload-btn-holder">
-                          <div class="fileUpload">
+                          <div class="fileUpload" >
                             <div class="form-group mdi-content-add upl-img prof-img-circle">
+                            <div id="showImg">
                             {{> afQuickField name='profile.picture'}}
+                            </div>
                             </div>
                           </div>
                         </div>
-
-
                         <div class="row">
                           <div class="col s12">
                             {{> afQuickField name='profile.firstName'}}
@@ -101,7 +100,9 @@
                         <div class="upload-btn-holder prof-img-circle">
                           <div class="fileUpload">
                             <div class="form-group mdi-content-add upl-img">
-                              {{> afQuickField name='profile.picture'}}
+                              <div id="showImg">
+                                {{> afQuickField name='profile.picture'}}
+                              </div>
                             </div>
                           </div>
                         </div>
