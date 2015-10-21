@@ -73,13 +73,13 @@ Template.doctorsListing.events({
   }
 });
 
-Template.nav.onRendered(function(){
-navigator.geolocation.getCurrentPosition(function(position) {
-      Session.set('lat', position.coords.latitude);
-      Session.set('lon', position.coords.longitude);
-      ServerSession.set('latt', position.coords.latitude);
-      ServerSession.set('lonn', position.coords.longitude);
-  });
+// Template.nav.onRendered(function(){
+// navigator.geolocation.getCurrentPosition(function(position) {
+//       Session.set('lat', position.coords.latitude);
+//       Session.set('lon', position.coords.longitude);
+//       ServerSession.set('latt', position.coords.latitude);
+//       ServerSession.set('lonn', position.coords.longitude);
+//   });
 
-  Meteor.call("storeCoordinates",Meteor.userId());
-})
+//   Meteor.call("storeCoordinates",Meteor.userId());
+// })

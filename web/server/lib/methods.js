@@ -328,12 +328,13 @@ Meteor.methods({
   storeCoordinates: function(id){
 
     var lat = ServerSession.get('latt');
-    lat = parseFloat(lat);
+    var lat1 = parseFloat(lat);
     var lon = ServerSession.get('lonn');
-    lon = parseFloat(lon);
+    var lon1 = parseFloat(lon);
     if((lat != undefined) && (lon != undefined)){
-      Meteor.users.update(id, {$set: {"profile.lat": lat}});
-      Meteor.users.update(id, {$set: {"profile.lon": lon}});
+      Meteor.users.update(id, {$set: {"profile.lat": lat1}});
+      Meteor.users.update(id, {$set: {"profile.lon": lon1}});
+      console.log("job done");
     }
   }
 });
