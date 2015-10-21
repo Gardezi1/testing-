@@ -219,20 +219,20 @@ var imageStore = new FS.Store.S3("images", {
 
 Files = new FS.Collection("files", {
   stores: [imageStore],
-  filter: {
-    allow: {
-      contentTypes: ['image/*'] //allow only images in this FS.Collection
-    }
-  }
+  // filter: {
+  //   allow: {
+  //     contentTypes: ['image/*'] //allow only images in this FS.Collection
+  //   }
+  // }
 });
 
 VideoFiles = new FS.Collection("Videofiles", {
   stores: [imageStore],
-  filter: {
-    allow: {
-      contentTypes: ['video/*'] //allow only images in this FS.Collection
-    }
-  }
+  // filter: {
+  //   allow: {
+  //     contentTypes: ['video/*'] //allow only images in this FS.Collection
+  //   }
+  // }
 });
 
 // Posts.before.insert(function (userId, doc) {

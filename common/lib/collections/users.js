@@ -162,7 +162,18 @@ Schema.UserProfile = new SimpleSchema({
     type: Number,
     decimal: true,
     optional: true
-  }
+  },
+  profileVideo:{
+    type: String,
+    optional: true,
+    autoform: {
+      label: "Upload Video",
+      afFieldInput: {
+        type: "fileUpload",
+        collection: "profileVid"
+      }
+    }
+  },
 });
 
 Schema.User = new SimpleSchema({
@@ -251,4 +262,13 @@ var imageStore = new FS.Store.S3("profileImages", {
 
 Data = new FS.Collection("data", {
   stores: [imageStore]
+});
+
+ProfileVid = new FS.Collection("profileVid", {
+  stores: [imageStore],
+  // filter: {
+  //   allow: {
+  //     contentTypes: ['video/*'] //allow only images in this FS.Collection
+  //   }
+  // }
 });
