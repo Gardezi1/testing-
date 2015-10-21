@@ -23,7 +23,6 @@ ongoworks:security
 useraccounts:core
 aldeed:delete-button
 cfs:autoform
-cfs:standard-packages
 cfs:s3
 cfs:filesystem
 matb33:collection-hooks
@@ -45,3 +44,4 @@ jeremy:geocomplete
 aldeed:geocoder
 yogiben:admin
 goltfisch:cameratag
+cfs:standard-packages

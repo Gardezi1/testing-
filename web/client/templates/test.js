@@ -20,6 +20,8 @@ Template.test.helpers({
   }
 });
 
+events = new Meteor.Collection('events');
+
 Template.test.events({
   'click .record-video': function () {
     if (Meteor.isCordova){
@@ -31,10 +33,44 @@ Template.test.events({
   'click .testVid': function(event){
     console.log(Session.get("vidResponse"));
   }
-})
+});
 
 
 if (Meteor.isClient) {
+
+   Template.hello.helpers({
+      fshttp: function (){
+          return FS.HTTP.uploadUrl;
+      }
+    });
+
+   Template.imageView.helpers({
+    images: function () {
+        //console.log("passed through image id:" + this.img_id);
+        return Files.find(); // Where Images is an FS.Collection instance
+    },
+    root_url: function() {
+        if(Meteor.isCordova)
+        {
+            return __meteor_runtime_config__.ROOT_URL+FS.HTTP.uploadUrl.slice(1);
+        }else{
+            return __meteor_runtime_config__.ROOT_URL.slice(0,-1);
+        }
+    }
+  });
+
+  Template.hello.events({
+    'change #upload-btn': function (event, template) {
+        var files = event.target.files;
+        console.log(files);
+        console.log(files.length);
+        for (var i = 0, ln = files.length; i < ln; i++) {
+          Files.insert(files[i], function (err, fileObj) {
+            //Inserted new doc with ID fileObj._id, and kicked off the data upload using HTTP
+          });
+        }
+    }
+  });
 
   if (Meteor.isCordova) {
       Meteor.startup(function(){
@@ -65,16 +101,3 @@ if (Meteor.isClient) {
     }
   }
 }
-
-Template.test.onRendered(function() {
-   // CameraTag.observe("Medcircle", "initialized", function(){
-   //    myCamera = CameraTag.cameras["Medcircle"];
-   //    var myVideo = myCamera.getVideo();
-   //    console.log("vid"+ myVideo);
-   //    var mp4_url = myVideo.formats[0].mp4_url;
-   //    console.log("url"+mp4_url);
-   //  }); 
-
-      // console.log("inside camera");
-      // var myCamera = CameraTag.cameras["Medcircle"];
-});

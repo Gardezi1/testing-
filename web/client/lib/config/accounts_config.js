@@ -4,6 +4,7 @@ if (Meteor.isClient) {
   Meteor.subscribe('Posts')
   Meteor.subscribe("files")
   Meteor.subscribe("Videofiles")
+  Meteor.subscribe("profileVid")
   Meteor.subscribe("data")
   Meteor.subscribe("doctor");
   Meteor.subscribe("Topics");

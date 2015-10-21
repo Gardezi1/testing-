@@ -6,8 +6,14 @@ if (Meteor.isServer) {
         Topics.insert({name:topic})
       });
     }
-    WebApp.connectHandlers.use(function(req, res, next) {
-      res.setHeader("Access-Control-Allow-Origin", "*");
+    // WebApp.connectHandlers.use(function(req, res, next) {
+    //   res.setHeader("Access-Control-Allow-Origin", "*");
+    //   return next();
+    // });
+    WebApp.connectHandlers.use(function (req, res, next) {
+      res.setHeader("Access-Control-Allow-Origin", "http://meteor.local");
+      res.setHeader("Access-Control-Allow-Methods", "PUT");
+      res.setHeader("Access-Control-Allow-Headers", "Content-Type");
       return next();
     });
   });
