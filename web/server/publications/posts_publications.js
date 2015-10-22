@@ -56,6 +56,10 @@ Meteor.publish('Videofiles', function() {
   return VideoFiles.find();
 });
 
+Meteor.publish('profileVid', function() {
+  return ProfileVid.find();
+});
+
 Meteor.publish('data', function() {
   return Data.find();
 });

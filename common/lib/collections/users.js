@@ -162,7 +162,19 @@ Schema.UserProfile = new SimpleSchema({
     type: Number,
     decimal: true,
     optional: true
-  }
+  },
+  profileVideo:{
+    type: String,
+    optional: true,
+    autoform: {
+      // label: "Upload Video",
+      label: false,
+      afFieldInput: {
+        type: "fileUpload",
+        collection: "profileVid"
+      }
+    }
+  },
 });
 
 Schema.User = new SimpleSchema({
@@ -250,5 +262,23 @@ var imageStore = new FS.Store.S3("profileImages", {
 });
 
 Data = new FS.Collection("data", {
-  stores: [imageStore]
+  stores: [imageStore],
+  // beforeWrite: function (fileObj) {
+  //   fileObj.extension('jpg', {imageStore: "jpegs", save: false});
+  //   fileObj.type('image/jpg', {imageStore: "jpegs", save: false});
+  // },
+  // filter: {
+  //   allow: {
+  //     contentTypes: ['image/*'], //allow only images in this FS.Collection
+  //   }
+  // }
+});
+
+ProfileVid = new FS.Collection("profileVid", {
+  stores: [imageStore],
+  // filter: {
+  //   allow: {
+  //     contentTypes: ['video/*'] //allow only images in this FS.Collection
+  //   }
+  // }
 });

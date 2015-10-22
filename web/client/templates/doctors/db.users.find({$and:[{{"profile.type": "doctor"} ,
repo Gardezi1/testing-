@@ -1,7 +1,0 @@
-db.users.find({$and:[{{"profile.type": "doctor"} , {$or :[db.users.find({'profile.firstName' : 'ali'}) , db.users.find({'profile.lastName': 'Geller'})]}]})
-
-db.users.find({$and:[{'profile.type':'doctor'}, {$or:[db.users.find({'profile.firstName': {$regex: 'ali'}}) , db.users.find(){'profile.lastName': {$regex: 'Ross'}}]}]})
-
-
-
-db.users.find({ $and:[{"profile.type": "doctor"},{$or: [{"profile.firstName": {$regex: new RegExp('ali', "i")}} , {"profile.lastName": {$regex: new RegExp('Ross', "i")}}]}]})

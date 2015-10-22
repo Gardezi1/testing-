@@ -188,7 +188,7 @@ Template.nav.events({
     if(user){
       Session.set('doctorTopicsId', user.fetch()[0]._id);
     }
-    location.reload();
+    // location.reload();
   },
   'click .fa-envelope-o': function(event) {
     Session.set("messageLimit", 5);

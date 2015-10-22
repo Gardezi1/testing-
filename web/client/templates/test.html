@@ -10,10 +10,25 @@
     </div>
   {{/contentFor}}
 <div class="custom-container">
-  {{#if onWeb}}
-    <camera id='myVidProd' data-app-id='a-bf344ab0-4b03-0133-0e9f-22000b8b3aed'></camera>
-  {{else}}
-    <button type='submit' class="btn btn-primary record-video">Record Video</button>
-  {{/if}}
+  <h1>Welcome to Meteor!</h1>
+  {{> hello}}
 </div>
+</template>
+
+<template name="hello">
+    This is my current cfs uploadurl: {{fshttp}}<br>
+  <input id="upload-btn" type="file">
+
+  {{> imageView}}
+</template>
+
+<template name="imageView">
+    {{#each images}}
+        {{root_url}}{{this.url}}
+        {{#if Meteor.isCordova}}
+            <img src="{{this.url}}" alt="" />
+        {{else}}
+            <img src="{{root_url}}{{this.url}}" alt="" />
+        {{/if}}
+    {{/each}}
 </template>

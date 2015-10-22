@@ -23,11 +23,14 @@
         <div class="page-header">
           <div class="row">
           <div class="col-md-12">
-            {{#if onWeb}}
-              <camera id='myVid' data-app-id='a-bf344ab0-4b03-0133-0e9f-22000b8b3aed'></camera>
-            {{else}}
-              <button type='submit' class="btn btn-primary record-video">Record Video</button>
+            {{#if currentUser.profile.profileVideo}}
+              <!-- {{#if showVideo}}
+                {{profileVideo}}
+              {{else}}  --> 
+                <button class="btn playProfileVideo">Play Video</button>
+              <!-- {{/if}} -->
             {{/if}}
+            {{profileVideo}}
             <div class="shadow-box z-depth-1 profile-edit">
               {{#if ifDoctor}}
                 {{#if getImage}}

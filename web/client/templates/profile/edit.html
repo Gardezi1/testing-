@@ -26,6 +26,32 @@
                 <div class="row">
                   <div class="col s12">
                     <div class="img-rel">
+                      {{#if onWeb}}
+                        <camera id='myVid' data-app-id='a-bf344ab0-4b03-0133-0e9f-22000b8b3aed'></camera>
+                      {{else}}
+                        <!-- {{#if showUpload}} -->
+                          <div class="row">
+                            <div class="col s12">
+                              <label for="user-video" class="userProfileVideo">Please select and upload the recorded video</label>
+                              <div class="profile-video">
+                                {{> afQuickField name='profile.profileVideo'}}
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col s12">
+                              <label for="user-video" class="userProfileVideo">Or record a new video</label>
+                            </div>
+                          </div>
+                        <!-- {{else}} -->
+                          <div class="row">
+                            <div class="col s12">
+                              <button type='submit' class="btn btn-primary record-video">Record Video</button>    
+                            </div>
+                          </div>
+                          
+                        <!-- {{/if}} -->
+                      {{/if}}
                       {{#if isInRole 'doctor'}}
                         <div class="upload-btn-holder">
                           <div class="fileUpload" >
@@ -95,7 +121,7 @@
                             {{> afQuickField name='profile.bio'}}
                           </div>
                         </div>
-                        <button type='submit' style="display: none;" class="btn btn-primary save-profile">Save profile</button>
+                        <button  style="display: none;" class="btn btn-primary save-profile">Save profile</button>
                       {{else}}
                         <div class="upload-btn-holder prof-img-circle">
                           <div class="fileUpload">
@@ -131,7 +157,7 @@
                             {{> afQuickField name='profile.dob'}}
                           </div>
                         </div>
-                        <button type='submit' style="display: none;" class="btn btn-primary save-profile">Save profile</button>
+                        <button  style="display: none;" class="btn btn-primary save-profile">Save profile</button>
                       {{/if}}  
                     </div>
                   </div>
