@@ -34,13 +34,33 @@ Template.masterLayout.events({
     })
   },
   'click .where': function(){
-    navigator.geolocation.getCurrentPosition(function(position) {
-      Session.set('lat', position.coords.latitude);
-      Session.set('lon', position.coords.longitude);
-      ServerSession.set('latt', position.coords.latitude);
-      ServerSession.set('lonn', position.coords.longitude);
-  });
-    Meteor.call("storeCoordinates",Meteor.userId(),function (error, result) {
+    if(Meteor.isCordova){
+        GeolocationFG.get(function(location) {
+          var lat = location.coords.latitude
+          var lon = location.coords.longitude
+          Meteor.call("storeCoordinates",Meteor.userId(),lat,lon ,function (error, result) {
+          if(error)
+          {
+            console.log("Error in updateing location")
+          }else
+          {
+            var lat = Meteor.user().profile.lat;
+            var lon = Meteor.user().profile.lon;
+            google.maps.event.trigger(GoogleMaps.maps.exampleMap.instance , 'resize');
+            GoogleMaps.maps.exampleMap.instance.setCenter({lat:lat , lng:lon});
+            // console.log("doing great");
+          }    
+
+          });
+        });
+      }
+    else{
+      navigator.geolocation.getCurrentPosition(function(position) {
+      Session.set('latitude', position.coords.latitude);
+      Session.set('longitude', position.coords.longitude);
+      var lat1 = position.coords.latitude;
+      var lon1 = position.coords.longitude;
+      Meteor.call("storeCoordinates",Meteor.userId(),lat1,lon1 ,function (error, result) {
       if(error)
       {
         console.log("Error in updateing location")
@@ -49,11 +69,14 @@ Template.masterLayout.events({
         var lat = Meteor.user().profile.lat;
         var lon = Meteor.user().profile.lon;
         google.maps.event.trigger(GoogleMaps.maps.exampleMap.instance , 'resize');
-        GoogleMaps.maps.exampleMap.instance.setCenter({lat:lat , lng:lon});
+        GoogleMaps.maps.exampleMap.instance.setCenter({lat:position.coords.latitude , lng:position.coords.longitude});
+        // console.log("doing great");
       }
-    });
-   
-  },
+        });
+      });
+    }
+  
+},
   'click .video-holder':function(e){
     if(e.target.tagName == "DIV"){
       $('#'+e.target.id).css("display","none")
