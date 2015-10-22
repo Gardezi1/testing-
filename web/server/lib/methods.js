@@ -325,16 +325,16 @@ Meteor.methods({
       Meteor.users.remove({_id:id});
     }
   },
-  storeCoordinates: function(id){
-
-    var lat = ServerSession.get('latt');
-    var lat1 = parseFloat(lat);
-    var lon = ServerSession.get('lonn');
-    var lon1 = parseFloat(lon);
-    if((lat != undefined) && (lon != undefined)){
+  storeCoordinates: function(id, lat1 ,lon1){
+    // check(lat1, Match.Any);
+    // check(lon1, Match.Any);
+    // var lat = ServerSession.get('latt');
+    // var lat1 = parseFloat(lat);
+    // var lon = ServerSession.get('lonn');
+    // var lon1 = parseFloat(lon);
+    if((lat1 != undefined) && (lon1 != undefined)){
       Meteor.users.update(id, {$set: {"profile.lat": lat1}});
       Meteor.users.update(id, {$set: {"profile.lon": lon1}});
-      console.log("job done");
     }
   }
 });

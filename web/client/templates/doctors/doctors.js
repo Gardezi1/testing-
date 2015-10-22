@@ -73,13 +73,32 @@ Template.doctorsListing.events({
   }
 });
 
-// Template.nav.onRendered(function(){
-// navigator.geolocation.getCurrentPosition(function(position) {
-//       Session.set('lat', position.coords.latitude);
-//       Session.set('lon', position.coords.longitude);
-//       ServerSession.set('latt', position.coords.latitude);
-//       ServerSession.set('lonn', position.coords.longitude);
-//   });
+Template.doctorsListing.onRendered(function(){
+  if(Meteor.isCordova){
+        GeolocationFG.get(function(location) {
+          var lat = location.coords.latitude
+          var lon = location.coords.longitude
+          Meteor.call("storeCoordinates",Meteor.userId(),lat,lon ,function (error, result) {
+            if(error)
+            {
+              console.log("Error in updateing location")
+            }
 
-//   Meteor.call("storeCoordinates",Meteor.userId());
-// })
+          });
+        });
+      }
+    else{
+      navigator.geolocation.getCurrentPosition(function(position) {
+            Session.set('latitude', position.coords.latitude);
+            Session.set('longitude', position.coords.longitude);
+            var lat1 = position.coords.latitude;
+            var lon1 = position.coords.longitude;
+           Meteor.call("storeCoordinates",Meteor.userId(),lat1,lon1 ,function (error, result) {
+           if(error)
+           {
+              console.log("Error in updateing location")
+            }
+         });
+      });
+    }
+});
