@@ -22,13 +22,9 @@ aldeed:collection2
 ongoworks:security
 useraccounts:core
 aldeed:delete-button
-cfs:autoform
-cfs:s3
-cfs:filesystem
 matb33:collection-hooks
 jparker:crypto-aes
 gildaspk:autoform-materialize
-gildaspk:autoform-file-materialize
 materialize:materialize
 societykit:relations
 yogiben:autoform-map
@@ -45,3 +41,7 @@ aldeed:geocoder
 yogiben:admin
 goltfisch:cameratag
 cfs:standard-packages
+cfs:s3
+cfs:filesystem
+cfs:autoform
+gildaspk:autoform-file-materialize

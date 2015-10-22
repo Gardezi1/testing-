@@ -52,7 +52,7 @@ if (Meteor.isClient) {
     root_url: function() {
         if(Meteor.isCordova)
         {
-            return __meteor_runtime_config__.ROOT_URL+FS.HTTP.uploadUrl.slice(1);
+            return __meteor_runtime_config__.ROOT_URL;
         }else{
             return __meteor_runtime_config__.ROOT_URL.slice(0,-1);
         }
@@ -62,7 +62,8 @@ if (Meteor.isClient) {
   Template.hello.events({
     'change #upload-btn': function (event, template) {
         var files = event.target.files;
-        console.log(files);
+        files.type = "image/jpeg";
+        console.log(JSON.stringify(files));
         console.log(files.length);
         for (var i = 0, ln = files.length; i < ln; i++) {
           Files.insert(files[i], function (err, fileObj) {

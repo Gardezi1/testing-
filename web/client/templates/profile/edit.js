@@ -29,8 +29,25 @@ Template.editProfile.onRendered(function() {
   //     $('#geomap').removeAttr('placeholder');
   //   }
   // });
+  if (Meteor.isCordova){
+    user = Meteor.user();
+    if(user && user.profile.picture){
+      var file = Data.findOne({_id:user.profile.picture});
+      console.log(file);
+      if(file){
+        if(file.name() == undefined){
+          console.log("innn");
+          console.log(file._id);
+          url = "https://s3.amazonaws.com/medcircle/upload/data/"+file._id+"-undefined";
+          console.log(url);
+        }
+        else
+          url = "https://s3.amazonaws.com/medcircle/upload/data/"+file._id+"-"+file.name();
+      }
+    }
+    $('#showImg .img-fileUpload-thumbnail').attr("src",url);
+  }
 });
-
 Template.editProfile.events({  
   'click .save-my-profile': function(event) {
     console.log("inn");
@@ -43,10 +60,14 @@ Template.editProfile.events({
     } else {
       // do something for web.
     }
+  },
+  'click .profile-video': function(){
+    Session.set("isVideo", true);
   }
 });
 
 Template.editProfile.rendered = function(){
+  Session.set("isVideo", false);
   var user = Meteor.users.findOne({_id: Meteor.userId() });
   $("#gender input[value='"+user.profile.gender+"']").prop("checked", true)
 }

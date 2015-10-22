@@ -40,11 +40,19 @@ Template.masterLayout.events({
       ServerSession.set('latt', position.coords.latitude);
       ServerSession.set('lonn', position.coords.longitude);
   });
-    Meteor.call("storeCoordinates",Meteor.user()._id);
-    var lat = Meteor.user().profile.lat;
-    var lon = Meteor.user().profile.lon;
-    google.maps.event.trigger(GoogleMaps.maps.exampleMap.instance , 'resize');
-    GoogleMaps.maps.exampleMap.instance.setCenter({lat:lat , lng:lon});
+    Meteor.call("storeCoordinates",Meteor.userId(),function (error, result) {
+      if(error)
+      {
+        console.log("Error in updateing location")
+      }else
+      {
+        var lat = Meteor.user().profile.lat;
+        var lon = Meteor.user().profile.lon;
+        google.maps.event.trigger(GoogleMaps.maps.exampleMap.instance , 'resize');
+        GoogleMaps.maps.exampleMap.instance.setCenter({lat:lat , lng:lon});
+      }
+    });
+   
   },
   'click .video-holder':function(e){
     if(e.target.tagName == "DIV"){
