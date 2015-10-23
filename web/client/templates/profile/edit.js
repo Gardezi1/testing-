@@ -56,7 +56,7 @@ Template.editProfile.events({
   'click .record-video': function () {
     if (Meteor.isCordova){
       Session.set("startRecording", true);
-      navigator.device.capture.captureVideo(captureSuccess, captureError, {limit:1, duration: 13});
+      navigator.device.capture.captureVideo(captureSuccess, captureError, {limit:1, duration: 180});
     } else {
       // do something for web.
     }
