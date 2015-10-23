@@ -18,6 +18,9 @@ Template.editProfile.helpers({
   },
   showUpload: function(){
     return Session.get("startRecording");
+  },
+  userId: function(){
+    return Meteor.user()._id;
   }
 });
 
