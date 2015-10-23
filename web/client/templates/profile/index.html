@@ -23,14 +23,12 @@
         <div class="page-header">
           <div class="row">
           <div class="col-md-12">
-            {{#if currentUser.profile.profileVideo}}
-              <!-- {{#if showVideo}}
-                {{profileVideo}}
-              {{else}}  --> 
+            {{#if ifCordova}}
+              {{#if currentUser.profile.profileVideo}}
                 <button class="btn playProfileVideo">Play Video</button>
-              <!-- {{/if}} -->
+              {{/if}}
             {{/if}}
-            {{profileVideo}}
+<!--             {{profileVideo}} -->
             <div class="shadow-box z-depth-1 profile-edit">
               {{#if ifDoctor}}
                 {{#if getImage}}

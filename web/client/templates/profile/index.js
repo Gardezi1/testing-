@@ -23,6 +23,12 @@ Template.profileView.helpers({
   },
   showVideo: function(){
     return Session.get("profileVideoUrl");
+  },
+  ifCordova: function(){
+    if(Meteor.isCordova)
+      return true;
+    else
+      return false;
   }
 });
 
