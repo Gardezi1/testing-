@@ -26,16 +26,22 @@
                 <div class="row">
                   <div class="col s12">
                     <div class="img-rel">
-                      {{#if onWeb}}
+                      <!-- {{#if onWeb}} -->
                         <camera id='myVid-{{userId}}' data-app-id='a-bf344ab0-4b03-0133-0e9f-22000b8b3aed'></camera>
-                      {{else}}
+                      <!-- {{else}} -->
                         <!-- {{#if showUpload}} -->
                           <div class="row">
                             <div class="col s12">
                               <label for="user-video" class="userProfileVideo">Please select and upload the recorded video</label>
-                              <div class="profile-video">
-                                {{> afQuickField name='profile.profileVideo'}}
-                              </div>
+                               <div class="upload-btn-holder">
+                                  <div class="fileUpload" >
+                                   <div class="form-group mdi-content-add upl-img prof-img-circle">
+                                     
+                                      {{> afQuickField name='profile.profileVideo'}}
+                                     
+                                   </div>
+                                  </div>
+                                </div>
                             </div>
                           </div>
                           <div class="row">
@@ -45,13 +51,13 @@
                           </div>
                         <!-- {{else}} -->
                           <div class="row">
-                            <div class="col s12">
+                            <div class="col s12 recordVideoClass" >
                               <button type='submit' class="btn btn-primary record-video">Record Video</button>    
                             </div>
                           </div>
                           
                         <!-- {{/if}} -->
-                      {{/if}}
+                      <!-- {{/if}} -->
                       {{#if isInRole 'doctor'}}
                         <div class="upload-btn-holder">
                           <div class="fileUpload" >

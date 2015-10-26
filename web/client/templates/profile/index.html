@@ -10,9 +10,10 @@
         {{else}}
           <h5 class="center-align name">{{currentUser.profile.firstName}} {{currentUser.profile.lastName}}</h5>
         {{/if}}  
+        <a href="{{pathFor 'editProfile'}}" class="org-color edite-btn">Edit Profile</a>
       </div>
       <div class="col s12 m2 l2">
-        <a href="{{pathFor 'editProfile'}}" class="org-color right edite-btn">Edit Profile</a>
+        
       </div>
     </div>
   {{/contentFor}}

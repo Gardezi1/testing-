@@ -1,6 +1,6 @@
 Template.startConversation.helpers({
   settings: function() {
-    debugger;
+    //debugger;
     user =  Meteor.users.findOne({_id: Meteor.userId()});
     if(Roles.userIsInRole(user._id, [ROLES.Admin])){
       return {
@@ -96,7 +96,7 @@ Template.startConversation.helpers({
 
 Template.startConversation.events({  
   'click #send_message_to_advo': function(e) {
-    debugger;
+    //debugger;
     name = $("#advocate_name").val();
     message = $("#advo_message").val();
     if(name && message){
@@ -133,7 +133,15 @@ Template.startConversation.events({
         }
       }); 
     } 
-   }
+   }, 
+   'keyup #advocate_name': function(e){
+    if (e.keyCode == 8){
+      $("#advo_message").prop('disabled', true);
+    }
+   }, 
+   "autocompleteselect #advocate_name": function(event, template, doc) {
+    $("#advo_message").prop('disabled', false);
+  }
 });
 
 Template.userPill.helpers({
@@ -154,6 +162,8 @@ Template.startConversation.onRendered(function() {
   {
       $("#advocate_name").val(Session.get('startConversationForNotificationName'));
       $("#newConversationFromNotification label").addClass("active");
+      
      // $("#advo_message").focus();
   }
+  $("#advo_message").prop('disabled', true);
 });

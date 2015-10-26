@@ -2,7 +2,7 @@ Template.inviteAdvocate.events({
   'click #invite-advocate-by-email': function (e) {
     mail = $("#user-email").val();
     if(mail){
-      mails_array = mail.split(',');
+      mails_array = mail.split(';');
       uid = Meteor.userId();
       for(i=0; i < mails_array.length; i++){
         mails_array[i] = mails_array[i].toLowerCase().trim();
@@ -13,7 +13,7 @@ Template.inviteAdvocate.events({
         var emailExists = Invites.findOne({"email": invitee.email});
 
         if (emailExists) {
-          sAlert.error('Email '+ invitee.email +' already invited.  :-/', {effect: 'genie', position: 'top-right', timeout: 5000, onRouteClose: false, stack: false, offset: '80px'});
+          sAlert.error('Email '+ invitee.email +' already invited.  :-)', {effect: 'genie', position: 'top-right', timeout: 5000, onRouteClose: false, stack: false, offset: '80px'});
         } else {
           id = Invites.insert(invitee, function(error) {
             if (error) {
@@ -49,7 +49,7 @@ Template.inviteAdvocate.events({
   'click #invite-advocate-by-phone': function (e) {
     phone = $("#user-phone").val();
     if(phone){
-      phone_array = phone.split(',');
+      phone_array = phone.split(';');
       uid = Meteor.userId();
       console.log(phone_array);
       for(k=0; k < phone_array.length; k++){
@@ -58,7 +58,7 @@ Template.inviteAdvocate.events({
         user = Meteor.users.findOne({"profile.phone":phone_array[k]})
 
         if (user) {
-          sAlert.error('Phone '+ phone_array[k] +' already invited.  :-/', {effect: 'genie', position: 'top-right', timeout: 5000, onRouteClose: false, stack: false, offset: '80px'});
+          sAlert.error('Phone '+ phone_array[k] +' already invited.  :-)', {effect: 'genie', position: 'top-right', timeout: 5000, onRouteClose: false, stack: false, offset: '80px'});
         } else{
           token = Random.hexString(10);
           url = Meteor.absoluteUrl();

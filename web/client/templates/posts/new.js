@@ -15,8 +15,22 @@ Template.articleNew.events({
 	},
 	'click .videoUpload .red-text':function(e){
 		$(".videoUpload label").css("display","block");
-	}
-	
+	},
+	"keyup input[type='text'][name='source']": function(e){
+		if (e.target.value != ""){
+			$('.urlField').css('display' , 'block');
+		}else if (e.target.value == ""){
+			$('.urlField').css('display' , 'none');
+		}
+	}	
 });
+
+Template.articleNew.rendered = function(){
+	$('.urlField').css('display' , 'none');
+}
+
+
+
+
 
 
