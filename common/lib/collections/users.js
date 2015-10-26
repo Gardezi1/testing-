@@ -5,6 +5,7 @@ Schema.UserProfile = new SimpleSchema({
     type: String,
     optional: true,
     autoform: {
+      dropEnabled: true,
       afFieldInput: {
         type: 'fileUpload',
         collection: 'data'
@@ -167,8 +168,8 @@ Schema.UserProfile = new SimpleSchema({
     type: String,
     optional: true,
     autoform: {
-      // label: "Upload Video",
-      label: false,
+     label: "Upload Video",
+      label: true,
       afFieldInput: {
         type: "fileUpload",
         collection: "profileVid"

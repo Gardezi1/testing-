@@ -15,6 +15,7 @@ Posts.attachSchema(new SimpleSchema({
     optional: true,
     autoform: {
       label: "ADD PHOTO",
+      dropEnabled: true,
       afFieldInput: {
         type: "fileUpload",
         collection: "files"
