@@ -293,6 +293,7 @@ Meteor.methods({
   },
   locationSpecification :function(address)
   {
+    Meteor.users.update(Meteor.userId(), {$set: {"profile.address": address}});
     var geo = new GeoCoder();
     var result = geo.geocode(address);
    // Meteor.users.update(Meteor.userId(), {$set: {"profile.state": result[0].state}});
