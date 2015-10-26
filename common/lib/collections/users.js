@@ -67,6 +67,11 @@ Schema.UserProfile = new SimpleSchema({
     optional: true,
     label: "City"
   },
+    address:{
+    type: String,
+    optional: true,
+    label: "Address"  
+  },
   country:{
     type: String,
     optional: true

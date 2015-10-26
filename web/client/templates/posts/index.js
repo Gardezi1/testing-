@@ -100,6 +100,7 @@ Template.articleList.helpers({
 
 Template.articleList.onCreated(function() {
   // We can use the `ready` callback to interact with the map API once the map is ready.
+  //var infowindow = new google.maps.InfoWindow();
   GoogleMaps.ready('exampleMap', function(map) {
     // Add a marker to the map once it's ready
     var image ='imgs/pin2.png';
@@ -120,8 +121,20 @@ Template.articleList.onCreated(function() {
         animation: google.maps.Animation.DROP,
         icon: image
       }));
+      attachSecretMessage(markers[i], temp[i].profile.address);
     }
   });
+
+function attachSecretMessage(marker, secretMessage) {
+  var infowindow = new google.maps.InfoWindow({
+    content: secretMessage
+  });
+
+  marker.addListener('click', function() {
+    infowindow.open(marker.get('map'), marker);
+  });
+}
+
 });
 
 Template.articleList.onRendered(function() {
