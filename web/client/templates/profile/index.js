@@ -42,11 +42,30 @@ Template.profileView.helpers({
 Template.profileView.onRendered(function(){
   $('.playProfileVideo').on("click", function(event){
     console.log("inside");
+    // var video = ProfileVid.findOne({_id:Meteor.user().profile.profileVideo});
+    // if(video){
+    //   url = "https://s3.amazonaws.com/medcircle/upload/profileVid/"+video._id+"-undefined";
+    //   // Session.set("profileVideoUrl", url);
+    //   VideoPlayer.play(url);
+    // }
+
     var video = ProfileVid.findOne({_id:Meteor.user().profile.profileVideo});
+    var videoUrl = "https://s3.amazonaws.com/medcircle/upload/profileVid/"+video._id+"-undefined";
+
     if(video){
-      url = "https://s3.amazonaws.com/medcircle/upload/profileVid/"+video._id+"-undefined";
-      // Session.set("profileVideoUrl", url);
-      VideoPlayer.play(url);
+      // Just play a video
+      window.plugins.streamingMedia.playVideo(videoUrl);
+
+      // Play a video with callbacks
+      // var options = {
+      //   successCallback: function() {
+      //     console.log("Video was closed without error.");
+      //   },
+      //   errorCallback: function(errMsg) {
+      //     console.log("Error! " + errMsg);
+      //   }
+      // };
+      // window.plugins.streamingMedia.playVideo(videoUrl, options);
     }
   });
 });

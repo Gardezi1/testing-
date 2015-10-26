@@ -66,10 +66,12 @@ Template.editProfile.events({
   },
   'click .profile-video': function(){
     Session.set("isVideo", true);
+    console.log("inside click");
   }
 });
 
 Template.editProfile.rendered = function(){
+  console.log("inside rendered");
   Session.set("isVideo", false);
   var user = Meteor.users.findOne({_id: Meteor.userId() });
   $("#gender input[value='"+user.profile.gender+"']").prop("checked", true)
