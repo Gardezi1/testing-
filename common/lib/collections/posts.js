@@ -15,6 +15,7 @@ Posts.attachSchema(new SimpleSchema({
     optional: true,
     autoform: {
       label: "ADD PHOTO",
+      dropEnabled: true,
       afFieldInput: {
         type: "fileUpload",
         collection: "files"
@@ -44,7 +45,9 @@ Posts.attachSchema(new SimpleSchema({
     optional: true,
     // label: "Article Source URL",
     autoform:{
-      label: false,
+      type: "url",
+      label: false, 
+      validate: true,
       placeholder: "Article Source URL",
     }
   },
