@@ -4,19 +4,16 @@
     <div class="col s12 m2 l2">  
       <a href="{{pathFor route='articles'}}" class="back-btn left fa fa-chevron-left"> Back</a>
     </div>
-    <div class="col s10 m7 l8">
+    <div class="col s12 m7 l8">
       <h5 class="center-align">Conversations</h5>
+      {{#if isInRole 'admin , doctor'}}
+        <a href="{{pathFor route='startConversation'}}" class="org-color edite-btn"> New Conversation</a>
+      {{/if}}  
+      {{#if getFirstCircle}}
+        <a href="{{pathFor route='startConversation'}}" class="org-color edite-btn"> New Conversation</a>
+      {{/if}}    
     </div>
-    {{#if isInRole 'admin , doctor'}} 
-      <div class="col s12 m3 l2">
-        <a href="{{pathFor route='startConversation'}}" class="org-color right edite-btn"> New Conversation</a>
-      </div>
-    {{/if}}  
-    {{#if getFirstCircle}}
-      <div class="col s12 m3 l2">
-          <a href="{{pathFor route='startConversation'}}" class="org-color right edite-btn"> New Conversation</a>
-        </div>
-    {{/if}}
+    
   </div>
   {{/contentFor}}
   <div class="custom-container"> 

@@ -1,6 +1,6 @@
 <template name="doctorView">
   {{#contentFor "subnav"}}
-    <div class="custom-container doctor">
+    <div class="doctor">
       <div class="row">
         <div class="col s12 m2 l2">  
           <a href="{{pathFor route='doctorsListing'}}" class="back-btn left fa fa-chevron-left"> Back</a>
@@ -14,7 +14,7 @@
           </div> 
         {{else}}
           <div class="col s12 m2 l2">
-            <a href="" class="right btn start-follow btn-primary grey" id="{{_id}}">FOLLOW</a>
+            <a href="" class="right btn start-follow btn-primary grey m-style" id="{{_id}}">FOLLOW</a>
           </div>
         {{/if}}  
       </div>
