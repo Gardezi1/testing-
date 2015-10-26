@@ -45,7 +45,10 @@ Posts.attachSchema(new SimpleSchema({
     // label: "Article Source URL",
     autoform:{
       label: false,
-      placeholder: "Article Source URL",
+      afFieldInput: {
+        type: "url",
+        placeholder: "Article Source URL",
+      }
     }
   },
   articleTopic: {
