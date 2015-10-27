@@ -458,13 +458,13 @@ nav{
 }
 
 .play {
-  background: url('imgs/play.png') center center no-repeat;
+  background: url('imgs/play.png') center center no-repeat rgba(000, 000, 000, 0.5);
   position: absolute;
   z-index: 10;
   left: 0;
   top: 0;
   height: 100%;
-  width: 100%;
+  width: 100%; 
 }
 video{
    display: inline-block;
@@ -1079,6 +1079,19 @@ li.admin {
   }
 }
 
+.mobile-video-holder{
+  position: relative;
+  min-height: 110px;
+  overflow: hidden;
+  img{
+    width: 100%;
+    float: left;
+  }
+}
+.video-holder{
+  position: relative;
+}
+
 .show-topic{
   visibility: hidden;
 }
@@ -1143,6 +1156,7 @@ li.admin {
   line-height: 50px;
   font-size: 45px;
   font-weight: 300;
+  z-index: 100;
   &:hover{
     background: #00abd2;
     color: #fff;

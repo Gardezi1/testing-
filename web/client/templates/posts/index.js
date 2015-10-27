@@ -95,6 +95,12 @@ Template.articleList.helpers({
       return "image-opacity";
     else
       return "";
+  },
+  onWeb: function(){
+    if(Meteor.isCordova)
+      return false;
+    else
+      return false;
   }
 });
 
@@ -148,5 +154,14 @@ Template.articleList.onRendered(function() {
 Template.articleList.events({
   'click .pluse-icon': function(event) {
     $('.pluse-icon').tooltip( "close");
+  },
+  'click .playArticleVideo': function(event){
+    console.log(event.target.id);
+    videoId = event.target.id;
+    var file = VideoFiles.findOne({_id:videoId});
+    if(file){
+      videoUrl = "https://s3.amazonaws.com/medcircle/upload/Videofiles/"+file._id+"-"+file.name();
+      window.plugins.streamingMedia.playVideo(videoUrl);
+    }
   }
 });

@@ -29,26 +29,43 @@
                           <div class="panel-body custom-panel-body">
                             <h4><a href="{{pathFor 'articleView' id=_id }}" target="_blank">{{title}}</a></h4>
                             <div class="row">
-                              <div class="col s5">
-                                <div class="video-holder">
-                                  {{#if fileId}}  
-                                    <img src="{{file_S3}}" class="{{imageOpacity videoId}}">
-                                    {{#if videoId}}
-                                      <div id="play-{{_id}}" class="play"></div>
-                                      <video id="playVideo-{{_id}}" class="{{checkIfVideo videoId}}" controls>
-                                        <source src="{{video_S3}}" type="video/mp4">
-                                      </video>   
-                                    {{/if}}
-                                  {{else}}
-                                    {{#if videoId}}
-                                      <video id="playVideo-{{_id}}"  controls>
+                              <div class="col s12 m5 l5">
+                                {{#if onWeb}}
+                                  <div class="video-holder">
+                                    {{#if fileId}}  
+                                      <img src="{{file_S3}}">
+                                      {{#if videoId}}
+                                        <div id="play-{{_id}}" class="play"></div>
+                                        <video id="playVideo-{{_id}}" class="{{checkIfVideo videoId}}" controls>
                                           <source src="{{video_S3}}" type="video/mp4">
-                                      </video> 
-                                    {{/if}}
-                                  {{/if}}    
-                                </div>
+                                        </video>   
+                                      {{/if}}
+                                    {{else}}
+                                      {{#if videoId}}
+                                        <video id="playVideo-{{_id}}"  controls>
+                                            <source src="{{video_S3}}" type="video/mp4">
+                                        </video> 
+                                      {{/if}}
+                                    {{/if}}    
+                                  </div>
+                                {{else}}
+                                  <div class="mobile-video-holder">
+                                    {{#if fileId}}  
+                                      <img src="{{file_S3}}">
+                                      {{#if videoId}}
+                                        <!-- <div id="play-{{_id}}" class="play"></div> -->
+                                        <div class="playArticleVideo play" id="{{videoId}}"></div>   
+                                      {{/if}}
+                                    {{else}}
+                                      {{#if videoId}}
+                                        <!-- <div id="play-{{_id}}" class="play"></div> -->
+                                        <div class="playArticleVideo play" id="{{videoId}}"></div> 
+                                      {{/if}}
+                                    {{/if}}    
+                                  </div>
+                                {{/if}}
                               </div>
-                              <div class="col s7">
+                              <div class="col s12 m7 l7">
                                 <!-- <ul>
                                   {{#each articleTopic}}
                                     <li><b>{{getArticleName this}}</b></li>
@@ -106,23 +123,38 @@
                             <h4><a href="{{pathFor 'articleView' id=_id }}" target="_blank">{{title}}</a></h4>
                             <div class="row">
                               <div class="col s5">
-                                <div class="video-holder">
-                                  {{#if fileId}}  
-                                    <img src="{{file_S3}}">
-                                    {{#if videoId}}
-                                      <div id="play-{{_id}}" class="play"></div>
-                                      <video id="playVideo-{{_id}}" class="{{checkIfVideo videoId}}" controls>
-                                        <source src="{{video_S3}}" type="video/mp4">
-                                      </video>   
-                                    {{/if}}
-                                  {{else}}
-                                    {{#if videoId}}
-                                      <video id="playVideo-{{_id}}"  controls>
+                                {{#if onWeb}}
+                                  <div class="video-holder">
+                                    {{#if fileId}}  
+                                      <img src="{{file_S3}}">
+                                      {{#if videoId}}
+                                        <div id="play-{{_id}}" class="play"></div>
+                                        <video id="playVideo-{{_id}}" class="{{checkIfVideo videoId}}" controls>
                                           <source src="{{video_S3}}" type="video/mp4">
-                                      </video> 
-                                    {{/if}}
-                                  {{/if}}    
-                                </div>
+                                        </video>   
+                                      {{/if}}
+                                    {{else}}
+                                      {{#if videoId}}
+                                        <video id="playVideo-{{_id}}"  controls>
+                                            <source src="{{video_S3}}" type="video/mp4">
+                                        </video> 
+                                      {{/if}}
+                                    {{/if}}    
+                                  </div>
+                                {{else}}
+                                  <div class="mobile-video-holder">
+                                    {{#if fileId}}  
+                                      <img src="{{file_S3}}">
+                                      {{#if videoId}}
+                                        <div id="play-{{_id}}" class="play"></div>   
+                                      {{/if}}
+                                    {{else}}
+                                      {{#if videoId}}
+                                        <div id="play-{{_id}}" class="play"></div>
+                                      {{/if}}
+                                    {{/if}}    
+                                  </div>
+                                {{/if}}  
                               </div>
                               <div class="col s7">
                                 <a href="{{url}}" target="_blank" onclick="window.open('{{url}}', '_system');"><b>{{source}}</b></a>

@@ -51,7 +51,7 @@ Template.profileView.onRendered(function(){
 
     var video = ProfileVid.findOne({_id:Meteor.user().profile.profileVideo});
     var videoUrl = "https://s3.amazonaws.com/medcircle/upload/profileVid/"+video._id+"-undefined";
-
+    console.log(videoUrl);
     if(video){
       // Just play a video
       window.plugins.streamingMedia.playVideo(videoUrl);
