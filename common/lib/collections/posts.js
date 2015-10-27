@@ -43,9 +43,11 @@ Posts.attachSchema(new SimpleSchema({
   url: {
     type: String,
     optional: true,
+    regEx: SimpleSchema.RegEx.Url,
     // label: "Article Source URL",
     autoform:{
       label: false,
+      
       afFieldInput: {
         type: "url",
         placeholder: "Article Source URL",
