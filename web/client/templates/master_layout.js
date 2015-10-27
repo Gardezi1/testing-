@@ -34,27 +34,28 @@ Template.masterLayout.events({
     })
   },
   'click .where': function(){
-    if(Meteor.isCordova){
-        GeolocationFG.get(function(location) {
-          var lat = location.coords.latitude
-          var lon = location.coords.longitude
-          Meteor.call("storeCoordinates",Meteor.userId(),lat,lon ,function (error, result) {
-          if(error)
-          {
-            console.log("Error in updateing location")
-          }else
-          {
-            var lat = Meteor.user().profile.lat;
-            var lon = Meteor.user().profile.lon;
-            google.maps.event.trigger(GoogleMaps.maps.exampleMap.instance , 'resize');
-            GoogleMaps.maps.exampleMap.instance.setCenter({lat:lat , lng:lon});
-            // console.log("doing great");
-          }    
+    // if(Meteor.isCordova){
+    //     GeolocationFG.get(function(location) {
+    //       var lat = location.coords.latitude
+    //       var lon = location.coords.longitude
+    //       Meteor.call("storeCoordinates",Meteor.userId(),lat,lon ,function (error, result) {
+    //       if(error)
+    //       {
+    //         console.log("Error in updateing location")
+    //       }else
+    //       {
+    //         var lat = Meteor.user().profile.lat;
+    //         var lon = Meteor.user().profile.lon;
+    //         google.maps.event.trigger(GoogleMaps.maps.exampleMap.instance , 'resize');
+    //         GoogleMaps.maps.exampleMap.instance.setCenter({lat:lat , lng:lon});
+    //         // console.log("doing great");
+    //       }    
 
-          });
-        });
-      }
-    else{
+    //       });
+    //     });
+    //   }
+    // else{
+
       navigator.geolocation.getCurrentPosition(function(position) {
       Session.set('latitude', position.coords.latitude);
       Session.set('longitude', position.coords.longitude);
@@ -73,8 +74,8 @@ Template.masterLayout.events({
         // console.log("doing great");
       }
         });
-      });
-    }
+      },function(error){console.log("Error in Navigator" +error)}, { maximumAge: 3000, timeout: 5000, enableHighAccuracy: true });
+    //}
   
 },
   'click .video-holder':function(e){
