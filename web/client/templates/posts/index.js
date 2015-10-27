@@ -100,7 +100,7 @@ Template.articleList.helpers({
     if(Meteor.isCordova)
       return false;
     else
-      return false;
+      return true;
   }
 });
 
