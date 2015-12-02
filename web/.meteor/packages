@@ -46,3 +46,4 @@ cfs:filesystem
 cfs:autoform
 gildaspk:autoform-file-materialize
 zeroasterisk:cordova-geolocation-foreground
+mrt:cron
